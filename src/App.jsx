@@ -7,8 +7,9 @@ import store from './store';
 import Theme from './themes/default';
 
 import Layout from 'Component/Layout';
-import Main from 'Page/Main';
-import Login from 'Page/Login';
+
+const Main = React.lazy(() => import('Page/Main'));
+const Login = React.lazy(() => import('Page/Login'));
 
 function App() {
     return (

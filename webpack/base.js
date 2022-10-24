@@ -19,7 +19,6 @@ module.exports = (defined = {}) => {
                 'axios-case-converter',
                 'clone',
                 'immutability-helper',
-                'js-cookie',
                 'jss',
                 'jss-plugin-default-unit',
                 'moment',
