@@ -4,20 +4,21 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 
 import Preloader from 'Component/Preloader';
 import getNoun from 'Util/getNoun';
+import {useSelector} from 'react-redux';
 
 export default function ProfessionList({
-    professions: {
-        isLoading,
-        valueList,
-        nextPage,
-    },
-    
-    dispatcher: {
-        fetchNextProfessionList,
-    },
+    fetchNextProfessionList,
     
     classes,
 }) {
+    const {
+        professions: {
+            isLoading,
+            valueList,
+            nextPage,
+        },
+    } = useSelector(({Main}) => Main);
+    
     const formatMoney = value => accounting.formatMoney(value, {
         symbol: '',
         precision: 0,
@@ -30,6 +31,7 @@ export default function ProfessionList({
     return (
         <Preloader isDisplayed={isLoading}>
             <InfiniteScroll
+                className={classes.infiniteScroll}
                 dataLength={valueList}
                 next={fetchNextProfessionList}
                 hasMore={nextPage}

@@ -3,24 +3,26 @@ import React, {useEffect} from 'react';
 import Input from 'Component/Input';
 import Dropdown from 'Component/Dropdown';
 import ProfessionList from './components/ProfessionList';
+import {useSelector} from 'react-redux';
 
 export default function Professions({
-    searchProfession,
-    areaId,
-    areaName,
-    areas,
-    professions,
-    
-    dispatcher,
     dispatcher: {
         fetchAreaList,
         fetchProfessionList,
+        fetchNextProfessionList,
         updateSearchProfession,
         updateArea,
     },
     
     classes,
 }) {
+    const {
+        searchProfession,
+        areaId,
+        areaName,
+        areas,
+    } = useSelector(({Main}) => Main);
+    
     useEffect(() => {
         fetchAreaList();
         fetchProfessionList();
@@ -52,9 +54,7 @@ export default function Professions({
                     selectedValue={areaName}
                     onSelect={updateArea}/>
             </div>
-            <ProfessionList
-                professions={professions}
-                dispatcher={dispatcher}/>
+            <ProfessionList fetchNextProfessionList={fetchNextProfessionList}/>
         </div>
     );
 }

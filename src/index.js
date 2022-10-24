@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import {createRoot} from 'react-dom/client';
 import Jss from 'jss';
 import DefaultUnits from 'jss-plugin-default-unit';
 
@@ -8,4 +8,5 @@ import App from './App.jsx';
 
 Jss.use(DefaultUnits());
 
-ReactDOM.render(<App/>, document.getElementById('root'));
+createRoot(document.getElementById('root'))
+    .render(<App/>);

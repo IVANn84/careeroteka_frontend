@@ -4,6 +4,10 @@ import {memo} from 'react';
 import ProfessionList from './ProfessionList.jsx';
 
 const style = ({font}) => ({
+    infiniteScroll: {
+        padding: [20],
+        margin: [-20],
+    },
     professionsContainer: {
         marginTop: 50,
         display: 'grid',

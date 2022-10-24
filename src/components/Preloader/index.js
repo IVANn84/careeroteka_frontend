@@ -25,7 +25,7 @@ const style = {
         borderBottom: '8px solid rgba(0, 0, 0, 0.1)',
         borderLeft: '8px solid rgba(0, 0, 0, 0.2)',
         transform: 'translateZ(0)',
-        animation: 'spin 3.1s infinite linear',
+        animation: '$spin 3.1s infinite linear',
     },
     
     '@keyframes spin': {

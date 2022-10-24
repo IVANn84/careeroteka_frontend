@@ -1,8 +1,6 @@
 import withStyle from 'react-jss';
-import {connect} from 'react-redux';
 
 import Professions from './Professions.jsx';
-import connector from './connector';
 
 const style = ({font}) => ({
     header: {
@@ -44,4 +42,4 @@ const style = ({font}) => ({
     },
 });
 
-export default connect(connector)(withStyle(style)(Professions));
+export default withStyle(style)(Professions);
