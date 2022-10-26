@@ -3,14 +3,15 @@ import withStyle from 'react-jss';
 import Preloader from './Preloader.jsx';
 
 const style = {
-    preloader: {
+    container: {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         width: '100%',
         height: '100%',
-        minHeight: ({indicatorSize = 60}) => `${indicatorSize*2}px`,
+        minHeight: ({indicatorSize = 60}) => `${indicatorSize * 2}px`,
         position: ({isAbsolute}) => isAbsolute && 'absolute',
+        background: ({isAbsolute}) => isAbsolute && 'rgba(255, 255, 255, .5)',
         top: 0,
         zIndex: '1',
     },

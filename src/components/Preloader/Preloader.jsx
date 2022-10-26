@@ -16,7 +16,7 @@ export default function Preloader({
 }) {
     return isDisplayed
         ? (
-            <div className={classes.preloader}>
+            <div className={classes.container}>
                 <div className={classes.indicator}/>
             </div>
         )

@@ -15,6 +15,7 @@ import {XMarkIcon, MagnifyingGlassIcon} from '@heroicons/react/24/solid';
  * @param {String?} className - Класс для стилей
  * @param {Function?} onChange - Функция, вызывающаяся при изменении значения инпута
  * @param {Function?} onSubmit - Функция, вызывающаяся при нажатии Enter или кнопки поиска
+ * @param {Function?} onClear - Функция, вызывающаяся при нажатии на кнопку очищения
  * @param {Object} classes
  * @returns {JSX.Element}
  */
@@ -32,6 +33,7 @@ export default function TextInput({
     
     onChange,
     onSubmit,
+    onClear,
     
     classes,
 }) {
@@ -66,12 +68,13 @@ export default function TextInput({
     };
     
     const clear = () => {
-        if (isDisabled || !onChange) {
+        if (isDisabled) {
             return;
         }
         
-        onChange(null);
+        onChange?.(null);
         $input.current.focus();
+        onClear?.();
     };
     
     const normalizedValue = useMemo(() =>

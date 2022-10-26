@@ -1,10 +1,10 @@
 import React from 'react';
 import accounting from 'accounting-big';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import {useSelector} from 'react-redux';
 
 import Preloader from 'Component/Preloader';
 import getNoun from 'Util/getNoun';
-import {useSelector} from 'react-redux';
 
 export default function ProfessionList({
     fetchNextProfessionList,
@@ -29,12 +29,15 @@ export default function ProfessionList({
         getNoun(count, ['специальность', 'специальности', 'специальностей']);
     
     return (
-        <Preloader isDisplayed={isLoading}>
+        <div className={classes.container}>
+            <Preloader
+                isDisplayed={isLoading}
+                isAbsolute/>
             <InfiniteScroll
                 className={classes.infiniteScroll}
                 dataLength={valueList}
                 next={fetchNextProfessionList}
-                hasMore={nextPage}
+                hasMore={!isLoading && nextPage}
                 loader={<Preloader isDisplayed/>}
                 scrollThreshold="600px">
                 <div className={classes.professionsContainer}>
@@ -63,6 +66,6 @@ export default function ProfessionList({
                         )}
                 </div>
             </InfiniteScroll>
-        </Preloader>
+        </div>
     );
 }

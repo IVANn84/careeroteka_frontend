@@ -1,9 +1,9 @@
 import React, {useEffect} from 'react';
+import {useSelector} from 'react-redux';
 
 import Input from 'Component/Input';
 import Dropdown from 'Component/Dropdown';
 import ProfessionList from './components/ProfessionList';
-import {useSelector} from 'react-redux';
 
 export default function Professions({
     dispatcher: {
@@ -43,6 +43,7 @@ export default function Professions({
                     value={searchProfession}
                     onChange={updateSearchProfession}
                     onSubmit={fetchProfessionList}
+                    onClear={fetchProfessionList}
                     isClearable
                     isSearchable/>
                 <Dropdown

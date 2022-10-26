@@ -15,6 +15,7 @@ import {MagnifyingGlassIcon, XMarkIcon} from '@heroicons/react/24/solid';
  * @param {String?} className - Класс для стилей
  * @param {Function?} onChange - Функция, вызывающаяся при изменении значения инпута
  * @param {Function?} onSubmit - Функция, вызывающаяся при нажатии Enter или кнопки поиска
+ * @param {Function?} onClear - Функция, вызывающаяся при нажатии на кнопку очищения
  * @param {Object} classes
  * @returns {JSX.Element}
  */
@@ -32,6 +33,7 @@ export default function NumberInput({
     
     onChange,
     onSubmit,
+    onClear,
     
     classes,
 }) {
@@ -76,12 +78,13 @@ export default function NumberInput({
     };
     
     const clear = () => {
-        if (isDisabled || !onChange) {
+        if (isDisabled) {
             return;
         }
-        
-        onChange(null);
+    
+        onChange?.(null);
         $input.current.focus();
+        onClear?.();
     };
     
     return (
