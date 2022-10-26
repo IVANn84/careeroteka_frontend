@@ -59,4 +59,23 @@ export default {
             return wrapAnswer(data, hasError);
         };
     })(),
+    
+    FetchCurrentUser: (() => {
+        return async (hasError = false) => {
+            // eslint-disable-next-line no-console
+            console.log('FetchCurrentUser');
+            
+            await timeout(1000);
+            
+            const data = {
+                id: 1,
+                username: 'alex',
+                email: '',
+                firstName: '',
+                lastName: '',
+            };
+            
+            return wrapAnswer(data, hasError);
+        };
+    })(),
 };

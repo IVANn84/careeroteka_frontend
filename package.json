@@ -101,9 +101,9 @@
             "^Util(.*)": "./src/utils\\1",
             "^Page(.*)": "./src/pages\\1",
             "^Component(.*)": "./src/components\\1",
+            "^Image": "./src/images\\1",
             "^Api": "./src/api/methods.js",
-            "^Mock": "./src/api/mock.js",
-            "^Image": "./src/images\\1"
+            "^Mock": "./src/api/mock.js"
           }
         }
       ],

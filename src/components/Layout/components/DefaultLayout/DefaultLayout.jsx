@@ -3,15 +3,20 @@ import {NavLink} from 'react-router-dom';
 import moment from 'moment';
 
 import Icon from 'Component/Icon';
+import Preloader from 'Component/Preloader';
 
 /**
  * Основной лейаут
- * @param {JSX.Element} children
+ * @param {JSX.Element | Function} children
+ * @param {Boolean} isLoading
+ * @param {Boolean} isAuth - Авторизован ли пользователь
  * @param {Object} classes - Классы со стилями
  * @returns {JSX.Element}
  */
-export default function Layout({
+export default function DefaultLayout({
     children,
+    isLoading,
+    isAuth,
     
     classes,
 }) {
@@ -26,7 +31,13 @@ export default function Layout({
                 </NavLink>
             </div>
             <main className={classes.contentContainer}>
-                {children}
+                <Preloader
+                    isDisplayed={isLoading}
+                    isAbsolute>
+                    {typeof children === 'function'
+                        ? children({isAuth})
+                        : children}
+                </Preloader>
             </main>
             <div className={classes.footerContainer}>
                 <div className={classes.footer}>
