@@ -18,7 +18,9 @@ export default function Login({
     
     return (
         <div className={classes.container}>
-            <Preloader isDisplayed={isLoading}/>
+            <Preloader
+                isDisplayed={isLoading}
+                isAbsolute/>
             {error && (
                 <p className={classes.error}>
                     {error}

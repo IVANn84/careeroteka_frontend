@@ -14,7 +14,6 @@ class Methods {
         return axiosWithConverter.post('/api/v1/login/', params);
     }
     
-    @RequireAuth
     @Format
     FetchCurrentUser() {
         return axiosWithConverter.get('/api/v1/user/current/');
