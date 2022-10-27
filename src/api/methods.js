@@ -2,10 +2,12 @@ import axios from 'axios';
 import applyCaseMiddleware from 'axios-case-converter';
 
 import Format from './intercepters/format';
-import RequireAuth from './intercepters/requireAuth';
 
 const axiosWithConverter = applyCaseMiddleware(axios.create(), {
     ignoreHeaders: true,
+    caseOptions: {
+        stripRegexp: /([^A-Z0-9_[\]]|(?<=[A-Z0-9])_(?=[A-Z0-9]))+/gi,
+    },
 });
 
 class Methods {
