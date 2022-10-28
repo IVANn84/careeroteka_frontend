@@ -4,4 +4,3 @@ COPY package*.json .
 RUN npm i
 COPY . .
 RUN npm run production
-CMD cp -r build result_build
