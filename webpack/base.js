@@ -52,7 +52,6 @@ module.exports = (defined = {}) => {
             new webpack.DefinePlugin({
                 REDUX_LOGGING: JSON.stringify(!!defined.REDUX_LOGGING),
             }),
-            new webpack.NoEmitOnErrorsPlugin(),
             new HtmlWebpackPlugin({
                 template: '../public/index.html',
                 chunks: ['vendor', 'index'],
@@ -102,6 +101,7 @@ module.exports = (defined = {}) => {
                     return chunk.name !== 'index';
                 },
             },
+            noEmitOnErrors: true,
         },
         module: {
             rules: [

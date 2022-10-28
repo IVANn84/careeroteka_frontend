@@ -5,13 +5,7 @@ import Format from './intercepters/format';
 
 const axiosWithConverter = applyCaseMiddleware(axios.create(), {
     ignoreHeaders: true,
-    caseOptions: {
-        // Перевод camel -> snake, snake -> camel только с одним подчеркиванием, поэтому требовать от бэка,
-        // чтобы они присылали данные только в camel или с одним подчеркиванием, иначе на фронт придет snake
-        // Пример перевода при отправке на бэк:
-        // areasId -> areas_id, areas_id -> areas_id, areas__id -> areas__id, areas___id -> areas___id
-        stripRegexp: /([^A-Z0-9_[\]]|(?<=[A-Z0-9])_(?=[A-Z0-9]))+/gi,
-    },
+    preservedKeys: key => key.includes('__'),
 });
 
 class Methods {
