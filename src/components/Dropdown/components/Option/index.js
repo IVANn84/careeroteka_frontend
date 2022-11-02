@@ -9,7 +9,7 @@ const style = ({
 }) => ({
     container: {
         display: 'flex',
-        padding: [13, 13, 13, 10],
+        padding: 12,
         cursor: 'pointer',
         transition: 'background 0.2s ease-in',
         borderRadius: 8,

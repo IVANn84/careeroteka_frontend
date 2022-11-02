@@ -34,7 +34,7 @@ const style = ({font}) => ({
         background: 'linear-gradient(43.17deg, #F4F4F4 3.67%, #FEFEFE 67.4%)',
         transition: 'transform .2s, box-shadow .2s',
         
-        '&:hover': {
+        '&:hover, &:focus-visible': {
             transform: 'translateY(-5px)',
             boxShadow: [[0, 8, 20, 2, 'rgba(0, 0, 0, .1)']],
         },

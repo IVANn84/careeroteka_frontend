@@ -16,11 +16,10 @@ const style = ({
     container: {
         fontSize: 20,
         width: '100%',
-        padding: ({isSearchable}) => isSearchable
-            ? [[0, 12, 8, 12]]
-            : [[8, 12]],
+        padding: [8, 18],
+        paddingTop: ({isSearchable}) => isSearchable && 0,
         position: 'absolute',
-        top: ({isReversedY}) => isReversedY ? 0 : null,
+        top: ({isReversedY}) => isReversedY && 0,
         zIndex: 2,
         overflowY: 'hidden',
         transform: ({isReversedY}) => isReversedY && 'translateY(-100%)',
@@ -39,7 +38,6 @@ const style = ({
         flexDirection: 'column',
         minHeight: ({isLoading}) => isLoading && 120,
         maxHeight: ({maxHeight}) => maxHeight,
-        top: ({isReversedY}) => isReversedY ? 0 : null,
         pointerEvents: 'initial',
     },
     options: {

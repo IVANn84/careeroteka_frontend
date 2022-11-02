@@ -16,7 +16,7 @@ const style = ({font, layout, iconButton}) => ({
             width: 48,
             transition: 'color .2s',
             
-            '&:hover': {
+            '&:hover, &:focus-visible': {
                 color: iconButton.color.hovered,
             },
             

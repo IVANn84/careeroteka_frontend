@@ -45,6 +45,7 @@ export default function ProfessionList({
                         ? valueList.map(({id, name, salaryMinValue, countDirections}) => (
                             <div
                                 key={id}
+                                tabIndex={0}
                                 className={classes.professionItem}>
                                 <div className={classes.professionTitle}>
                                     <p>

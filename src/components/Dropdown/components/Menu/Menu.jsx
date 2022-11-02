@@ -32,6 +32,7 @@ export default function Menu({
             ? filteredOptions.map(option => (
                 <Option
                     key={option.id}
+                    tabIndex={0}
                     value={option.optionValue || option.name}
                     isSelected={selectedId === option.id}
                     onSelect={() => optionClick(option)}/>

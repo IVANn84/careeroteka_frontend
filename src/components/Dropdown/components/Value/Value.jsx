@@ -18,6 +18,7 @@ export default function Value({
     return (
         <div
             className={classes.container}
+            tabIndex={0}
             onClick={click}>
             <span>
                 {selectedValue || placeholder}

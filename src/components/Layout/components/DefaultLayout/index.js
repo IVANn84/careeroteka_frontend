@@ -67,8 +67,37 @@ const style = ({layout, font, background}) => ({
         fontSize: 18,
         fontWeight: font.weight.regular,
         
-        '& > *:not(:first-child)': {
-            marginLeft: 25,
+        '& > *': {
+            position: 'relative',
+            fontWeight: font.weight.normal,
+            transition: 'font-weight .2s',
+            
+            '&:not(:first-child)': {
+                marginLeft: 25,
+            },
+            
+            '&::after': {
+                content: '""',
+                position: 'absolute',
+                opacity: 0,
+                left: 1,
+                right: 1,
+                bottom: -2,
+                height: 1,
+                width: '80%',
+                margin: 'auto',
+                background: '#FFF',
+                transition: 'opacity .2s',
+            },
+            
+            '&:hover::after, &:focus-visible::after': {
+                opacity: 1,
+            },
+            
+            '&:active::after': {
+                opacity: 1,
+                width: '100%',
+            },
         },
     },
     copyright: {

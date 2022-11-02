@@ -101,7 +101,7 @@ export default {
         background: '#FFF',
         boxShadow: [[0, 8, 20, 2, 'rgba(0, 0, 0, .1)']],
         border: {
-            default: [[1, 'solid', 'rgba(0, 0, 0, .1)']],
+            default: [[1, 'solid', 'rgba(0, 0, 0, .4)']],
             negative: [[1, 'solid', '#EA4E1B']],
         },
         icon: {
@@ -118,13 +118,13 @@ export default {
     
     dropdown: {
         boxShadow: {
-            default: [[0, 8, 20, 2, 'rgba(0, 0, 0, .1)']],
-            reversed: [[0, -8, 20, 2, 'rgba(0, 0, 0, .1)']],
+            default: [[0, 20, 20, 2, 'rgba(0, 0, 0, .1)']],
+            reversed: [[0, -20, 20, 2, 'rgba(0, 0, 0, .1)']],
         },
         background: {
             default: 'transparent',
-            selected: 'rgba(196, 196, 196, .2)',
-            hovered: 'rgba(196, 196, 196, .3)',
+            selected: 'rgba(72, 97, 171, .2)',
+            hovered: 'rgba(196, 196, 196, .2)',
         },
     },
 };

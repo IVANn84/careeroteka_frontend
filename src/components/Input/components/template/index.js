@@ -14,34 +14,40 @@ export const style = ({
     },
     input: {
         background,
-        boxShadow: ({value}) => value && boxShadow,
+        boxShadow: ({value, error}) => value && !error && boxShadow,
         display: 'flex',
         alignItems: 'center',
         borderRadius: 16,
         transition: 'box-shadow .2s',
-        padding: ({value}) => value && [[1, 1]],
+        padding: ({value, error}) => value && !error && [[1, 1]],
         border: ({error, value}) => value
-            ? 0
+            ? error
+                ? border.negative
+                : 0
             : error
                 ? border.negative
                 : border.default,
         opacity: ({isDisabled}) => isDisabled && 0.5,
+        
+        '&:focus-within': {
+            padding: ({error}) => !error && [[1, 1]],
+            border: ({error}) => error
+                ? border.negative
+                : 0,
+            boxShadow: ({error}) => !error && boxShadow,
+        },
         
         '& > input': {
             fontSize: 20,
             border: 0,
             width: '100%',
             padding: [padding, 0, padding, padding],
-            color: ({error}) => error
-                ? font.color.negative
-                : font.color.regular,
+            color: font.color.regular,
             background: 'transparent',
             
             '&::placeholder': {
                 userSelect: 'none',
-                color: ({error}) => error
-                    ? placeholder.negative
-                    : placeholder.default,
+                color: placeholder.default,
             },
         },
     },
@@ -49,9 +55,7 @@ export const style = ({
     actions: {
         display: 'flex',
         margin: [0, padding, 0, 8],
-        color: ({error}) => error
-            ? icon.color.negative
-            : icon.color.default,
+        color: icon.color.default,
         
         '& > *': {
             border: 0,
@@ -77,9 +81,8 @@ export const style = ({
     },
     
     error: {
-        marginTop: 5,
+        margin: [5, 0, 0, 15],
         fontSize: 15,
         color: font.color.negative,
-        textAlign: 'end',
     },
 });

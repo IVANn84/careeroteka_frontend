@@ -21,7 +21,7 @@ const style = ({button}) => ({
             ? 0.5
             : 1,
         
-        '&:hover': {
+        '&:hover, &:focus-visible': {
             background: ({isDisabled, variant = 'filled', mode = 'light'}) => isDisabled
                 ? button[variant][mode].background.default
                 : button[variant][mode].background.hovered,
