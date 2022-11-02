@@ -46,9 +46,15 @@ const style = ({font, layout, iconButton}) => ({
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'cover',
-            
+            transition: 'transform .2s, box-shadow .2s',
+    
             '&:not(:first-child)': {
                 marginLeft: 30,
+            },
+            
+            '&:hover, &:focus-visible': {
+                transform: 'translateY(-5px)',
+                boxShadow: [[0, 8, 20, 2, 'rgba(0, 0, 0, .1)']],
             },
         },
     },
