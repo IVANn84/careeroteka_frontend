@@ -67,6 +67,7 @@
     "webpack-merge": "4.2.2"
   },
   "scripts": {
+    "postinstall": "git config core.hooksPath ./git-hooks",
     "local": "webpack-dev-server --watch --progress --mode=development --inline --hot --config webpack/local.js",
     "production": "webpack --mode=production --config webpack/production.js",
     "linter": "eslint src/ --ext .js --ext .jsx",
