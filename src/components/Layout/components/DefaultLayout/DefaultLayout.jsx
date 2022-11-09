@@ -4,6 +4,7 @@ import moment from 'moment';
 
 import Icon from 'Component/Icon';
 import Preloader from 'Component/Preloader';
+import ExternalLink from 'Component/ExternalLink';
 
 /**
  * Основной лейаут
@@ -81,18 +82,16 @@ export default function DefaultLayout({
                         </NavLink>
                     </div>
                     <div className={classes.footerLinksMobile}>
-                        <a
-                            href="https://vk.com"
-                            rel="noopener noreferrer"
+                        <ExternalLink
+                            to="https://vk.com"
                             target="_blank">
                             <Icon name="vk"/>
-                        </a>
-                        <a
-                            href="https://vk.com"
-                            rel="noopener noreferrer"
+                        </ExternalLink>
+                        <ExternalLink
+                            to="https://telegram.com"
                             target="_blank">
                             <Icon name="telegram"/>
-                        </a>
+                        </ExternalLink>
                     </div>
                 </div>
                 <div className={classes.copyright}>

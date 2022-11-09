@@ -55,7 +55,6 @@ module.exports = (defined = {}) => {
             new HtmlWebpackPlugin({
                 template: '../public/index.html',
                 chunks: ['vendor', 'index'],
-                base: defined.BASE || '',
             }),
             new FaviconsWebpackPlugin({
                 logo: '../public/favicon.png',

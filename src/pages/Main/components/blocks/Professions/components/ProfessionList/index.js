@@ -64,6 +64,11 @@ const style = ({font}) => ({
         },
         professionItem: {
             width: '100%',
+            
+            '&:hover, &:focus-visible': {
+                transform: 'translateY(0)',
+                boxShadow: 'none',
+            },
         },
     },
 });

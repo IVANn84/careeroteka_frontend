@@ -18,13 +18,24 @@ export function InitSlider({$slider, $sliderButtonLeft = null, $sliderButtonRigh
     useEffect(() => {
         const slides = $slider.current && [...$slider.current.querySelectorAll('*')] || [];
         
+        if ($slider.current
+            && (!slides.length
+                || getFullDisplayed($slider.current, slides).lastIndex === slides.length - 1)) {
+            if ($sliderButtonLeft?.current) {
+                $sliderButtonLeft.current.style.display = 'none';
+            }
+            if ($sliderButtonRight?.current) {
+                $sliderButtonRight.current.style.display = 'none';
+            }
+        }
+        
         const slideToRight = async () => {
             const {lastIndex} = getFullDisplayed($slider.current, slides);
             
             if (lastIndex === slides.length - 1) {
                 return;
             }
-    
+            
             slides[lastIndex + 1].scrollIntoView({
                 behavior: 'smooth',
                 block: 'nearest',

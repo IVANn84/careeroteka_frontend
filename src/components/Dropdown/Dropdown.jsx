@@ -45,10 +45,10 @@ export default function Dropdown ({
     
     const [isOpen, setIsOpen] = useState(false);
     const [isReversedY, setIsReversedY] = useState(false);
-    const domElement = useRef(null);
+    const $domElement = useRef(null);
     
     const toggle = async () => {
-        const {height, top} = domElement.current.getBoundingClientRect();
+        const {height, top} = $domElement.current.getBoundingClientRect();
         const reversedY = (height + maxHeight + top) > window.innerHeight && top > (height + maxHeight);
         setIsReversedY(reversedY);
         setIsOpen(!isOpen);
@@ -61,7 +61,7 @@ export default function Dropdown ({
     return (
         <div
             className={`${classes.container} ${className || ''}`}
-            ref={domElement}>
+            ref={$domElement}>
             {!isDisabled && isOpen && (
                 <div
                     className={classes.cloak}

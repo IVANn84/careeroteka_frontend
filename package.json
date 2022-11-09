@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Энциклопедия о карьере с данными от реальных специалистов и экспертов",
   "author": "TroExol",
-  "main": "index.js",
+  "main": "./src/index.js",
   "dependencies": {
     "@heroicons/react": "2.0.12",
     "accounting-big": "1.0.1",
