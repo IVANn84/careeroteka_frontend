@@ -2,8 +2,8 @@ import {useEffect} from 'react';
 
 export function InitSlider({$slider, $sliderButtonLeft = null, $sliderButtonRight = null}) {
     const getFullDisplayed = ($slider, slides) =>
-        slides.reduce((result, slide, index) => {
-            const position = slide.getBoundingClientRect();
+        slides.reduce((result, $slide, index) => {
+            const position = $slide.getBoundingClientRect();
             
             if (position.left >= 0 && position.right <= $slider.offsetWidth) {
                 if (result.firstIndex === null) {

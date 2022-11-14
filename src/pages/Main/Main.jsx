@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 
 import MainBlock from './components/blocks/Main';
 import Articles from './components/blocks/Articles';
@@ -9,11 +9,15 @@ export default function Main({
     
     classes,
 }) {
+    const $professions = useRef(null);
+    
     return (
         <div className={classes.container}>
-            <MainBlock/>
+            <MainBlock $professions={$professions}/>
             <Articles/>
-            <Professions dispatcher={dispatcher}/>
+            <Professions
+                ref={$professions}
+                dispatcher={dispatcher}/>
         </div>
     );
 }

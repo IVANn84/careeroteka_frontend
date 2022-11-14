@@ -4,8 +4,15 @@ import Button from 'Component/Button';
 import mainHeaderImage from 'Image/main-header.png';
 
 export default function Main({
+    $professions,
+    
     classes,
 }) {
+    const onClickFindProfession = () => window.scrollTo({
+        top: $professions.current.getBoundingClientRect().top + window.scrollY,
+        behavior: 'smooth',
+    });
+    
     return (
         <div className={classes.container}>
             <div className={classes.about}>
@@ -16,7 +23,7 @@ export default function Main({
                     Энциклопедия о карьере с данными от реальных специалистов и экспертов
                 </span>
                 <div className={classes.actions}>
-                    <Button onClick={() => window.open('/', '_blank')}>
+                    <Button onClick={onClickFindProfession}>
                         Найти профессию
                     </Button>
                     <Button

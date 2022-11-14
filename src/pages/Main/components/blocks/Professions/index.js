@@ -1,3 +1,4 @@
+import {forwardRef} from 'react';
 import withStyle from 'react-jss';
 
 import Professions from './Professions.jsx';
@@ -42,4 +43,4 @@ const style = ({font}) => ({
     },
 });
 
-export default withStyle(style)(Professions);
+export default withStyle(style)(forwardRef(Professions));

@@ -15,7 +15,7 @@ export default function Professions({
     },
     
     classes,
-}) {
+}, ref) {
     const {
         searchProfession,
         areaId,
@@ -30,7 +30,9 @@ export default function Professions({
     
     return (
         <div>
-            <div className={classes.header}>
+            <div
+                ref={ref}
+                className={classes.header}>
                 <h2>
                     Найдите свою <span>профессию</span>
                 </h2>
