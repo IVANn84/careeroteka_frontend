@@ -1,13 +1,12 @@
 import {forwardRef} from 'react';
 import withStyle from 'react-jss';
+import {observer} from 'mobx-react-lite';
 
 import Professions from './Professions.jsx';
 
 const style = ({font}) => ({
     header: {
         marginBottom: 35,
-        fontWeight: font.weight.bold,
-        fontSize: 48,
         
         '& span': {
             color: font.color.alternative,
@@ -21,12 +20,11 @@ const style = ({font}) => ({
     },
     areasDropdown: {
         marginLeft: 30,
-        width: 305,
+        minWidth: 305,
     },
     
     '@media screen and (max-device-width: 576px)': {
         header: {
-            fontSize: 32,
             marginBottom: 31,
         },
         controls: {
@@ -38,9 +36,10 @@ const style = ({font}) => ({
         areasDropdown: {
             marginLeft: 0,
             marginTop: 20,
+            minWidth: 'auto',
             width: '100%',
         },
     },
 });
 
-export default withStyle(style)(forwardRef(Professions));
+export default withStyle(style)(observer(forwardRef(Professions)));

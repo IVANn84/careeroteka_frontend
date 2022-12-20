@@ -1,23 +1,20 @@
 import React from 'react';
 import accounting from 'accounting-big';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import {useSelector} from 'react-redux';
+import {Link} from 'react-router-dom';
 
-import Preloader from 'Component/Preloader';
-import getNoun from 'Util/getNoun';
+import {useStoreMainPage} from 'Page/Main/stores';
+import {getNoun} from 'Util/getNoun';
+
+import Typography from 'Component/Typography';
+import ListSkeleton from './components/ListSkeleton';
 
 export default function ProfessionList({
-    fetchNextProfessionList,
-    
     classes,
 }) {
     const {
-        professions: {
-            isLoading,
-            valueList,
-            nextPage,
-        },
-    } = useSelector(({Main}) => Main);
+        professionsStore,
+    } = useStoreMainPage();
     
     const formatMoney = value => accounting.formatMoney(value, {
         symbol: '',
@@ -30,43 +27,65 @@ export default function ProfessionList({
     
     return (
         <div className={classes.container}>
-            <Preloader
-                isDisplayed={isLoading}
-                isAbsolute/>
-            <InfiniteScroll
-                className={classes.infiniteScroll}
-                dataLength={valueList}
-                next={fetchNextProfessionList}
-                hasMore={!isLoading && nextPage}
-                loader={<Preloader isDisplayed/>}
-                scrollThreshold="600px">
-                <div className={classes.professionsContainer}>
-                    {valueList.length
-                        ? valueList.map(({id, name, salaryMinValue, countDirections}) => (
-                            <div
-                                key={id}
-                                tabIndex={0}
-                                className={classes.professionItem}>
-                                <div className={classes.professionTitle}>
-                                    <p>
-                                        {name}
-                                    </p>
-                                    <span>
-                                        {countDirections} {getDirectionNoun(countDirections)}
-                                    </span>
-                                </div>
-                                <p className={classes.professionMinSalary}>
-                                    от {formatMoney(salaryMinValue)} ₽
-                                </p>
-                            </div>
-                        ))
-                        : (
-                            <span>
-                                Ничего не найдено
-                            </span>
-                        )}
-                </div>
-            </InfiniteScroll>
+            {professionsStore.isLoading
+                ? (
+                    <div className={classes.professionsContainer}>
+                        <ListSkeleton isDisplayed/>
+                    </div>
+                )
+                : (
+                    <InfiniteScroll
+                        className={classes.infiniteScroll}
+                        dataLength={professionsStore.values.length}
+                        next={() => professionsStore.fetchProfessions(true)}
+                        hasMore={!professionsStore.isLoading && !!professionsStore.nextPage}
+                        loader={null}
+                        scrollThreshold='600px'>
+                        <div className={classes.professionsContainer}>
+                            {professionsStore.values.length
+                                ? <>
+                                    {professionsStore.values.map(({id, name, salaryMinValue, countDirections}) => (
+                                        <Link
+                                            key={id}
+                                            to={`/professions/${id}`}
+                                            tabIndex={0}
+                                            className={classes.professionItem}>
+                                            <div className={classes.professionTitle}>
+                                                <Typography
+                                                    variant='B1'
+                                                    variantMobile='B1'
+                                                    weight='semiBold'
+                                                    weightMobile='semiBold'
+                                                    component='p'>
+                                                    {name}
+                                                </Typography>
+                                                <Typography
+                                                    variant='B2'
+                                                    variantMobile='B2'>
+                                                    {countDirections} {getDirectionNoun(countDirections)}
+                                                </Typography>
+                                            </div>
+                                            <Typography
+                                                variant='H5'
+                                                variantMobile='H5'
+                                                className={classes.professionMinSalary}
+                                                component='p'>
+                                                от {formatMoney(salaryMinValue)} ₽
+                                            </Typography>
+                                        </Link>
+                                    ))}
+                                    <ListSkeleton isDisplayed={professionsStore.isLoadingNext}/>
+                                </>
+                                : (
+                                    <Typography
+                                        variant='B1'
+                                        variantMobile='B1'>
+                                        Ничего не найдено
+                                    </Typography>
+                                )}
+                        </div>
+                    </InfiniteScroll>
+                )}
         </div>
     );
 }

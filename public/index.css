@@ -1,58 +1,8 @@
 @import './reset';
 
-@font-face {
-    font-family: 'San Francisco Pro';
-    src: local('San Francisco Pro Display Regular'), local('San-Francisco-Pro-Display-Regular'),
-    url('./fonts/SFPro/SFProDisplay-Regular.woff2') format('woff2'),
-    url('./fonts/SFPro/SFProDisplay-Regular.woff') format('woff'),
-    url('./fonts/SFPro/SFProDisplay-Regular.ttf') format('truetype');
-    font-weight: 400;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'San Francisco Pro';
-    src: local('San Francisco Pro Display Medium'), local('San-Francisco-Pro-Display-Medium'),
-    url('./fonts/SFPro/SFProDisplay-Medium.woff2') format('woff2'),
-    url('./fonts/SFPro/SFProDisplay-Medium.woff') format('woff'),
-    url('./fonts/SFPro/SFProDisplay-Medium.ttf') format('truetype');
-    font-weight: 500;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'San Francisco Pro';
-    src: local('San Francisco Pro Display Bold'), local('San-Francisco-Pro-Display-Bold'),
-    url('./fonts/SFPro/SFProDisplay-Bold.woff2') format('woff2'),
-    url('./fonts/SFPro/SFProDisplay-Bold.woff') format('woff'),
-    url('./fonts/SFPro/SFProDisplay-Bold.ttf') format('truetype');
-    font-weight: 700;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Montserrat';
-    src: local('Montserrat Regular'), local('Montserrat-Regular'),
-    url('./fonts/Montserrat/Montserrat-Regular.woff2') format('woff2'),
-    url('./fonts/Montserrat/Montserrat-Regular.woff') format('woff'),
-    url('./fonts/Montserrat/Montserrat-Regular.ttf') format('truetype');
-    font-weight: 400;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Montserrat';
-    src: local('Montserrat Bold'), local('Montserrat-Bold'),
-    url('./fonts/Montserrat/Montserrat-Bold.woff2') format('woff2'),
-    url('./fonts/Montserrat/Montserrat-Bold.woff') format('woff'),
-    url('./fonts/Montserrat/Montserrat-Bold.ttf') format('truetype');
-    font-weight: 700;
-    font-style: normal;
-}
-
 body {
     min-width: 1440px;
-    font-family: 'San Francisco Pro', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 400;
     font-size: 14px;
     color: #1A1C1F;

@@ -3,42 +3,47 @@ import {NavLink} from 'react-router-dom';
 import moment from 'moment';
 
 import Icon from 'Component/Icon';
-import Preloader from 'Component/Preloader';
 import ExternalLink from 'Component/ExternalLink';
+import Typography from 'Component/Typography';
+import {PageSkeleton} from 'Component/Skeleton';
+
+import {useStoreLayoutComponent} from 'Component/Layout/stores';
 
 /**
  * Основной лейаут
  * @param {JSX.Element | Function} children
- * @param {Boolean} isLoading
- * @param {Boolean} isAuth - Авторизован ли пользователь
  * @param {Object} classes - Классы со стилями
  * @returns {JSX.Element}
  */
 export default function DefaultLayout({
     children,
-    isLoading,
-    isAuth,
     
     classes,
 }) {
+    const {
+        isLoading,
+        isAuth,
+    } = useStoreLayoutComponent();
+    
     return (
         <div className={classes.container}>
             <div className={classes.header}>
                 <NavLink
                     className={classes.headerTitle}
-                    to="/"
+                    to='/'
                     exact>
                     careeroteka
                 </NavLink>
             </div>
             <main className={classes.contentContainer}>
-                <Preloader
-                    isDisplayed={isLoading}
-                    isAbsolute>
-                    {typeof children === 'function'
+                {isLoading
+                    ? (
+                        <PageSkeleton/>
+                    )
+                    : typeof children === 'function'
                         ? children({isAuth})
-                        : children}
-                </Preloader>
+                        : children
+                }
             </main>
             <div className={classes.footerContainer}>
                 <div className={classes.footer}>
@@ -48,59 +53,101 @@ export default function DefaultLayout({
                         </span>
                         <div className={classes.footerLinksDesktop}>
                             <a
-                                href="https://vk.com"
-                                rel="noopener noreferrer"
-                                target="_blank">
-                                <Icon name="vk"/>
+                                href='https://vk.com'
+                                rel='noopener noreferrer'
+                                target='_blank'>
+                                <Icon name='vk'/>
                             </a>
                             <a
-                                href="https://vk.com"
-                                rel="noopener noreferrer"
-                                target="_blank">
-                                <Icon name="telegram"/>
+                                href='https://vk.com'
+                                rel='noopener noreferrer'
+                                target='_blank'>
+                                <Icon name='telegram'/>
                             </a>
                         </div>
                     </div>
                     <div className={classes.footerNavigation}>
-                        <NavLink to="/about">
-                            О нас
-                        </NavLink>
-                        <NavLink to="/donate">
-                            Купите нам кофе
-                        </NavLink>
-                        <NavLink to="/bug">
-                            Нашли ошибку?
-                        </NavLink>
-                        <NavLink to="/faq">
-                            FAQ
-                        </NavLink>
-                        <NavLink to="/">
-                            Кураторам
-                        </NavLink>
-                        <NavLink to="/">
-                            Курсам
-                        </NavLink>
+                        <Typography
+                            variant='B1'
+                            variantMobile='B2'>
+                            <NavLink to='/about'>
+                                О нас
+                            </NavLink>
+                        </Typography>
+                        <Typography
+                            variant='B1'
+                            variantMobile='B2'>
+                            <NavLink to='/donate'>
+                                Купите нам кофе
+                            </NavLink>
+                        </Typography>
+                        <Typography
+                            variant='B1'
+                            variantMobile='B2'>
+                            <NavLink to='/bug'>
+                                Нашли ошибку?
+                            </NavLink>
+                        </Typography>
+                        <Typography
+                            variant='B1'
+                            variantMobile='B2'>
+                            <NavLink to='/faq'>
+                                FAQ
+                            </NavLink>
+                        </Typography>
+                        <Typography
+                            variant='B1'
+                            variantMobile='B2'>
+                            <NavLink to='/'>
+                                Кураторам
+                            </NavLink>
+                        </Typography>
+                        <Typography
+                            variant='B1'
+                            variantMobile='B2'>
+                            <NavLink to='/'>
+                                Курсам
+                            </NavLink>
+                        </Typography>
                     </div>
                     <div className={classes.footerLinksMobile}>
                         <ExternalLink
-                            to="https://vk.com"
-                            target="_blank">
-                            <Icon name="vk"/>
+                            to='https://vk.com'
+                            target='_blank'>
+                            <Icon name='vk'/>
                         </ExternalLink>
                         <ExternalLink
-                            to="https://telegram.com"
-                            target="_blank">
-                            <Icon name="telegram"/>
+                            to='https://telegram.com'
+                            target='_blank'>
+                            <Icon name='telegram'/>
                         </ExternalLink>
                     </div>
+                    <div className={classes.copyrightMobile}>
+                        <Typography
+                            variant='B1'
+                            variantMobile='B2'
+                            component='div'>
+                            ООО «Careeroteka»
+                        </Typography>
+                        <Typography
+                            variant='B1'
+                            variantMobile='B2'
+                            component='div'>
+                            © {moment().year()}
+                        </Typography>
+                    </div>
                 </div>
-                <div className={classes.copyright}>
-                    <span>
+                <div className={classes.copyrightDesktop}>
+                    <Typography
+                        variant='B1'
+                        variantMobile='B2'>
                         © {moment().year()}
-                    </span>
-                    <span>
+                    </Typography>
+                    <Typography
+                        variant='B1'
+                        variantMobile='B2'>
                         ООО «Careeroteka»
-                    </span>
+                    </Typography>
                 </div>
             </div>
         </div>

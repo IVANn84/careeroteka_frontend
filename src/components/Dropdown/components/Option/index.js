@@ -4,7 +4,7 @@ import Option from './Option.jsx';
 
 const style = ({
     dropdown: {
-        background,
+        optionBackground,
     },
 }) => ({
     container: {
@@ -14,11 +14,11 @@ const style = ({
         transition: 'background 0.2s ease-in',
         borderRadius: 8,
         background: ({isSelected}) => isSelected
-            ? background.selected
-            : background.default,
+            ? optionBackground.selected
+            : optionBackground.default,
         
         '&:hover': {
-            background: background.hovered,
+            background: optionBackground.hovered,
         },
     },
 });

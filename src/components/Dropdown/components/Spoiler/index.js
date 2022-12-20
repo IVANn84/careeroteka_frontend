@@ -4,9 +4,11 @@ import Spoiler from './Spoiler.jsx';
 
 const style = ({
     dropdown: {
-        background,
+        optionBackground,
+        spoiler: {
+            color,
+        },
     },
-    font,
 }) => ({
     container: {
         display: 'flex',
@@ -15,10 +17,10 @@ const style = ({
         cursor: 'pointer',
         transition: 'background 0.2s ease-in',
         borderRadius: 8,
-        color: font.color.alternative,
+        color: ({mode}) => color[mode],
         
         '&:hover': {
-            background: background.hovered,
+            background: optionBackground.hovered,
         },
     },
 });

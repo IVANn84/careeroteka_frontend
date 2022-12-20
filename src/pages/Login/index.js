@@ -1,9 +1,7 @@
 import withStyle from 'react-jss';
-import {connect} from 'react-redux';
+import {observer} from 'mobx-react-lite';
 
 import Login from './Login.jsx';
-import connector from './connector';
-import dispatcher from './dispatcher';
 
 const style = {
     container: {
@@ -14,4 +12,4 @@ const style = {
     },
 };
 
-export default connect(connector, dispatcher)(withStyle(style)(Login));
+export default withStyle(style)(observer(Login));

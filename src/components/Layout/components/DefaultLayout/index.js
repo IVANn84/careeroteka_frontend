@@ -1,4 +1,5 @@
 import withStyle from 'react-jss';
+import {observer} from 'mobx-react-lite';
 
 import DefaultLayout from './DefaultLayout.jsx';
 
@@ -12,12 +13,13 @@ const style = ({layout, font, background}) => ({
     header: {
         display: 'flex',
         justifyContent: 'space-between',
-        fontFamily: 'Montserrat',
     },
     headerTitle: {
+        fontFamily: 'Montserrat, Inter, sans-serif',
         fontStyle: 'normal',
-        fontWeight: font.weight.bold,
+        fontWeight: font.weight.extraBold,
         fontSize: 24,
+        lineHeight: '29px',
     },
     footerContainer: {
         minHeight: 50,
@@ -27,7 +29,6 @@ const style = ({layout, font, background}) => ({
         flex: 1,
     },
     footer: {
-        fontFamily: 'Montserrat',
         display: 'flex',
         justifyContent: 'space-between',
         background: background.dark,
@@ -37,14 +38,15 @@ const style = ({layout, font, background}) => ({
         color: font.color.light,
     },
     footerLogo: {
-        margin: [25, 0, 40, 0],
+        margin: [35, 0],
     },
     footerTitle: {
-        fontFamily: 'Montserrat',
         display: 'inline-block',
+        fontFamily: 'Montserrat, Inter, sans-serif',
         fontStyle: 'normal',
-        fontWeight: font.weight.bold,
-        fontSize: 25,
+        fontWeight: font.weight.extraBold,
+        fontSize: 24,
+        lineHeight: '29px',
     },
     footerLinksDesktop: {
         marginTop: 20,
@@ -55,7 +57,7 @@ const style = ({layout, font, background}) => ({
     },
     footerLinksMobile: {
         display: 'none',
-        marginTop: 20,
+        marginTop: 35,
         
         '& > *:not(:first-child)': {
             marginLeft: 15,
@@ -64,17 +66,15 @@ const style = ({layout, font, background}) => ({
     footerNavigation: {
         display: 'flex',
         alignItems: 'center',
-        fontSize: 18,
-        fontWeight: font.weight.regular,
         
-        '& > *': {
+        '& > span:not(:first-child)': {
+            marginLeft: 25,
+        },
+        
+        '& a': {
             position: 'relative',
             fontWeight: font.weight.normal,
             transition: 'font-weight .2s',
-            
-            '&:not(:first-child)': {
-                marginLeft: 25,
-            },
             
             '&::after': {
                 content: '""',
@@ -100,12 +100,20 @@ const style = ({layout, font, background}) => ({
             },
         },
     },
-    copyright: {
-        fontFamily: 'Montserrat',
+    copyrightDesktop: {
         display: 'flex',
-        fontSize: 18,
         justifyContent: 'space-between',
+        marginTop: 10,
+        color: 'rgba(0, 0, 0, .6)',
+    },
+    copyrightMobile: {
+        display: 'none',
         marginTop: 25,
+        color: 'rgba(255, 255, 255, .6)',
+        
+        '& > *:not(:first-child)': {
+            marginTop: 12,
+        },
     },
     
     '@media screen and (max-device-width: 576px)': {
@@ -115,17 +123,17 @@ const style = ({layout, font, background}) => ({
         footer: {
             flexDirection: 'column',
             alignItems: 'flex-start',
-            padding: [35, 25],
+            padding: [35, 20],
             color: font.color.light,
         },
         footerLogo: {
-            margin: [0, 0, 26, 0],
+            margin: [0, 0, 30, 0],
         },
         footerNavigation: {
             flexDirection: 'column',
             alignItems: 'flex-start',
             
-            '& > *:not(:first-child)': {
+            '& > span:not(:first-child)': {
                 marginLeft: 0,
                 marginTop: 25,
             },
@@ -134,6 +142,12 @@ const style = ({layout, font, background}) => ({
             display: 'none',
         },
         footerLinksMobile: {
+            display: 'block',
+        },
+        copyrightDesktop: {
+            display: 'none',
+        },
+        copyrightMobile: {
             display: 'block',
         },
         copyright: {
@@ -147,4 +161,4 @@ const style = ({layout, font, background}) => ({
     },
 });
 
-export default withStyle(style)(DefaultLayout);
+export default withStyle(style)(observer(DefaultLayout));

@@ -1,15 +1,7 @@
 import React from 'react';
 
-/**
- * @param {String | JSX.Element} children - Текст или элемент внутри кнопки
- * @param {String?} title - Описание кнопки при наведении
- * @param {Boolean} isDisabled - Блокирует кнопку для нажатия
- * @param {Boolean} isDisplayed - Отображается ли кнопка
- * @param {'filled' | 'outlined'} variant=['filled'] - Вариант отображения кнопки
- * @param {'light' | 'dark'} mode=['light'] - Светлая или темная кнопка
- * @param {Function} onClick - Функция вызываемая при нажатии на кнопку
- * @returns {JSX.Element | false}
- */
+import Typography from 'Component/Typography';
+
 export default function Button({
     children,
     title,
@@ -26,7 +18,13 @@ export default function Button({
             title={title}
             disabled={isDisabled}
             onClick={onClick}>
-            {children}
+            <Typography
+                variant='B1'
+                variantMobile='B2'
+                weight='semiBold'
+                weightMobile='semiBold'>
+                {children}
+            </Typography>
         </button>
     );
 }

@@ -1,63 +1,54 @@
-import React, {useEffect} from 'react';
-import {useSelector} from 'react-redux';
+import React from 'react';
+
+import {useStoreMainPage} from 'Page/Main/stores';
 
 import Input from 'Component/Input';
 import Dropdown from 'Component/Dropdown';
+import Typography from 'Component/Typography';
 import ProfessionList from './components/ProfessionList';
 
 export default function Professions({
-    dispatcher: {
-        fetchAreaList,
-        fetchProfessionList,
-        fetchNextProfessionList,
-        updateSearchProfession,
-        updateArea,
-    },
-    
     classes,
 }, ref) {
     const {
-        searchProfession,
-        areaId,
-        areaName,
-        areas,
-    } = useSelector(({Main}) => Main);
-    
-    useEffect(() => {
-        fetchAreaList();
-        fetchProfessionList();
-    }, []);
+        areasStore,
+        professionsStore,
+        fieldsStore,
+    } = useStoreMainPage();
     
     return (
         <div>
             <div
                 ref={ref}
                 className={classes.header}>
-                <h2>
+                <Typography
+                    variant='H2'
+                    variantMobile='H3'
+                    component='h2'>
                     Найдите свою <span>профессию</span>
-                </h2>
+                </Typography>
             </div>
             <div className={classes.controls}>
                 <Input
                     className={classes.searchButton}
-                    type="text"
-                    placeholder="Поиск профессии"
-                    value={searchProfession}
-                    onChange={updateSearchProfession}
-                    onSubmit={fetchProfessionList}
-                    onClear={fetchProfessionList}
+                    type='text'
+                    placeholder='Поиск профессии'
+                    value={fieldsStore.searchProfession}
+                    onChange={fieldsStore.setSearchProfession}
+                    onSubmit={() => professionsStore.fetchProfessions(false)}
+                    onClear={() => professionsStore.fetchProfessions(false)}
                     isClearable
                     isSearchable/>
                 <Dropdown
                     className={classes.areasDropdown}
-                    placeholder="Выберите направление"
-                    options={areas.valueList}
-                    isLoading={areas.isLoading}
-                    selectedId={areaId}
-                    selectedValue={areaName}
-                    onSelect={updateArea}/>
+                    placeholder='Выберите направление'
+                    options={areasStore.values}
+                    isDisabled={areasStore.isLoading}
+                    selectedId={fieldsStore.areaId}
+                    selectedValue={fieldsStore.areaName}
+                    onSelect={fieldsStore.setArea}/>
             </div>
-            <ProfessionList fetchNextProfessionList={fetchNextProfessionList}/>
+            <ProfessionList/>
         </div>
     );
 }

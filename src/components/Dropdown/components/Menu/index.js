@@ -4,17 +4,20 @@ import Menu from './Menu.jsx';
 
 const style = ({
     input: {
-        background,
-        placeholder,
+        placeholder: inputPlaceholder,
     },
     dropdown: {
         boxShadow,
+        color,
+        placeholder,
+        background,
     },
+    typography,
     separator,
-    font,
 }) => ({
     container: {
-        fontSize: 20,
+        fontSize: typography.variants.B1.fontSize,
+        lineHeight: typography.variants.B1.lineHeight,
         width: '100%',
         padding: [8, 18],
         paddingTop: ({isSearchable}) => isSearchable && 0,
@@ -23,8 +26,8 @@ const style = ({
         zIndex: 2,
         overflowY: 'hidden',
         transform: ({isReversedY}) => isReversedY && 'translateY(-100%)',
-        background,
-        color: font.color.regular,
+        background: ({mode}) => background[mode],
+        color: ({mode}) => color[mode],
         pointerEvents: 'none',
         boxShadow: ({isReversedY}) => isReversedY
             ? boxShadow.reversed
@@ -39,14 +42,24 @@ const style = ({
         minHeight: ({isLoading}) => isLoading && 120,
         maxHeight: ({maxHeight}) => maxHeight,
         pointerEvents: 'initial',
+        
+        '& > svg': {
+            marginTop: 3,
+        },
     },
     options: {
         flex: 1,
         overflowY: 'auto',
         minHeight: 1,
+        scrollbarWidth: 'none',
+        scrollbarHeight: 'none',
         
         '& > *:not(:first-child)': {
             marginTop: 3,
+        },
+        
+        '&::-webkit-scrollbar': {
+            display: 'none',
         },
     },
     search: {
@@ -57,14 +70,20 @@ const style = ({
         
         '& > input::placeholder': {
             userSelect: 'none',
-            color: ({error}) => error
-                ? placeholder.negative
-                : placeholder.default,
+            color: ({error, mode}) => error
+                ? inputPlaceholder.negative
+                : placeholder[mode],
         },
     },
     placeholder: {
-        fontSize: 18,
         padding: 8,
+    },
+    
+    '@media screen and (max-device-width: 576px)': {
+        container: {
+            fontSize: typography.variants.B2.fontSize,
+            lineHeight: typography.variants.B2.lineHeight,
+        },
     },
 });
 

@@ -226,7 +226,7 @@ export default function MoneyInput({
         if (isDisabled) {
             return;
         }
-    
+        
         onChange?.(null);
         $input.current.focus();
         onClear?.();
@@ -237,8 +237,8 @@ export default function MoneyInput({
             <div className={classes.input}>
                 <input
                     ref={setSelectionToDOM}
-                    type="text"
-                    spellCheck="false"
+                    type='text'
+                    spellCheck='false'
                     disabled={isDisabled}
                     placeholder={placeholder}
                     value={formattedValue(value)}

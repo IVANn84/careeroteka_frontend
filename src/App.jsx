@@ -1,45 +1,56 @@
 import React, {Suspense} from 'react';
-import {Provider} from 'react-redux';
 import {ThemeProvider} from 'react-jss';
 import {Switch, Route, Redirect, BrowserRouter} from 'react-router-dom';
 
-import store from './store';
 import Theme from './themes/default';
 
 import Layout from 'Component/Layout';
-import Preloader from 'Component/Preloader';
+import {PageSkeleton} from 'Component/Skeleton';
+import ScrollToTop from 'Component/ScrollToTop';
+import ErrorBoundary from 'Component/ErrorBoundary';
 
 const Main = React.lazy(() => import('Page/Main'));
 const Login = React.lazy(() => import('Page/Login'));
+const Profession = React.lazy(() => import('Page/Profession'));
 
 function App() {
     return (
         <ThemeProvider theme={Theme}>
-            <Provider store={store}>
-                <BrowserRouter>
-                    <Layout>
-                        {({isAuth}) => (
-                            <Suspense fallback={<Preloader isDisplayed isAbsolute/>}>
-                                <Switch>
-                                    <Route
-                                        path="/"
-                                        exact
-                                        component={Main}/>
-                                    {!isAuth && (
+            <BrowserRouter>
+                <Layout>
+                    {({isAuth}) => (
+                        <ErrorBoundary style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            height: 500,
+                        }}>
+                            <Suspense fallback={<PageSkeleton/>}>
+                                <ScrollToTop>
+                                    <Switch>
                                         <Route
-                                            path="/login"
-                                            component={Login}/>
-                                    )}
-                                    <Redirect
-                                        from="*"
-                                        push
-                                        to="/"/>
-                                </Switch>
+                                            path='/'
+                                            exact
+                                            component={Main}/>
+                                        <Route
+                                            path='/professions/:id(\d+)'
+                                            component={Profession}/>
+                                        {!isAuth && (
+                                            <Route
+                                                path='/login'
+                                                component={Login}/>
+                                        )}
+                                        <Redirect
+                                            from='*'
+                                            push
+                                            to='/'/>
+                                    </Switch>
+                                </ScrollToTop>
                             </Suspense>
-                        )}
-                    </Layout>
-                </BrowserRouter>
-            </Provider>
+                        </ErrorBoundary>
+                    )}
+                </Layout>
+            </BrowserRouter>
         </ThemeProvider>
     );
 }

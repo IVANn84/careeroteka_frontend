@@ -1,0 +1,1 @@
+export const getCountDecimal = value => value.toString().split('.')[1]?.length || 0;

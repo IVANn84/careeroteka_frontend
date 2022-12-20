@@ -1,7 +1,7 @@
 import withStyle from 'react-jss';
 import Main from './Main.jsx';
 
-const style = ({font}) => ({
+const style = {
     container: {
         display: 'flex',
         justifyContent: 'space-between',
@@ -11,14 +11,8 @@ const style = ({font}) => ({
         flexDirection: 'column',
         justifyContent: 'center',
         
-        '& > h1': {
-            fontWeight: font.weight.bold,
-            fontSize: 56,
-        },
-        
         '& > span': {
             marginTop: 30,
-            fontSize: 24,
         },
     },
     actions: {
@@ -44,19 +38,11 @@ const style = ({font}) => ({
                 margin: [13, 0, 45, 0],
             },
         },
-        about: {
-            '& > h1': {
-                fontSize: 52,
-            },
-            '& > span': {
-                fontSize: 20,
-            },
-        },
         image: {
             margin: [0, 'auto'],
             width: 350,
         },
     },
-});
+};
 
 export default withStyle(style)(Main);

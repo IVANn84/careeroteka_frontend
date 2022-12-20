@@ -81,7 +81,7 @@ export default function NumberInput({
         if (isDisabled) {
             return;
         }
-    
+        
         onChange?.(null);
         $input.current.focus();
         onClear?.();
@@ -92,8 +92,8 @@ export default function NumberInput({
             <div className={classes.input}>
                 <input
                     ref={$input}
-                    type="text"
-                    spellCheck="false"
+                    type='text'
+                    spellCheck='false'
                     disabled={isDisabled}
                     placeholder={placeholder}
                     value={toNumber(value)}

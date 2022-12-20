@@ -1,4 +1,6 @@
+import {memo} from 'react';
 import withStyle from 'react-jss';
+
 import Articles from './Articles.jsx';
 
 const style = ({layout}) => ({
@@ -15,8 +17,8 @@ const style = ({layout}) => ({
         
         '& > a': {
             display: 'inline-block',
-            width: 370,
-            height: 370,
+            width: 260,
+            height: 260,
             boxShadow: [0, 4, 20, 2, 'rgba(0, 0, 0, 0.1)'],
             borderRadius: 32,
             backgroundPosition: 'center',
@@ -34,16 +36,6 @@ const style = ({layout}) => ({
             },
         },
     },
-    item: {
-        display: 'inline-block',
-        width: 370,
-        height: 370,
-        boxShadow: [0, 4, 20, 2, 'rgba(0, 0, 0, 0.1)'],
-        borderRadius: 32,
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-    },
     
     '@media screen and (max-device-width: 576px)': {
         slider: {
@@ -55,11 +47,7 @@ const style = ({layout}) => ({
                 boxShadow: 'none',
             },
         },
-        item: {
-            width: 350,
-            height: 350,
-        },
     },
 });
 
-export default withStyle(style)(Articles);
+export default memo(withStyle(style)(Articles));

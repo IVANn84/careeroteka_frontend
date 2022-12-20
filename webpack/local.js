@@ -6,9 +6,7 @@ const argv = require('minimist')(process.argv.slice(2));
 const backend = argv.backend || 'http://130.193.50.229';
 const port = argv.port || 3000;
 
-module.exports = merge(base({
-    REDUX_LOGGING: true,
-}), {
+module.exports = merge(base, {
     devtool: 'eval-cheap-module-source-map',
     devServer: {
         clientLogLevel: 'warning',
@@ -30,6 +28,16 @@ module.exports = merge(base({
         publicPath: '/',
         proxy: {
             '/api': {
+                target: backend,
+                secure: false,
+                changeOrigin: true,
+            },
+            '/swagger': {
+                target: backend,
+                secure: false,
+                changeOrigin: true,
+            },
+            '/media': {
                 target: backend,
                 secure: false,
                 changeOrigin: true,

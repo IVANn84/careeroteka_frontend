@@ -1,8 +1,9 @@
 import React, {useMemo, useState} from 'react';
 
-import Preloader from 'Component/Preloader';
+import Typography from 'Component/Typography';
 import Spoiler from '../Spoiler';
 import Option from '../Option';
+import TextsSkeleton from './components/TextsSkeleton';
 
 export default function Menu({
     spoilerSize = 50,
@@ -12,6 +13,7 @@ export default function Menu({
     isLoading,
     isSearchable,
     closeOnSelect = true,
+    mode,
     
     onSelect,
     toggle,
@@ -38,31 +40,36 @@ export default function Menu({
                     onSelect={() => optionClick(option)}/>
             ))
             : (
-                <span className={classes.placeholder}>
+                <Typography
+                    variant='B1'
+                    variantMobile='B2'
+                    className={classes.placeholder}>
                     Ничего не найдено
-                </span>
+                </Typography>
             );
     }, [options, search, isOpen, selectedId]);
     
     return isOpen && (
         <div className={classes.container}>
             <div className={classes.menu}>
-                <Preloader isDisplayed={isLoading}>
+                <TextsSkeleton isDisplayed={isLoading}>
                     {isSearchable && (
                         <div className={classes.search}>
                             <input
-                                type="text"
-                                placeholder="Поиск"
+                                type='text'
+                                placeholder='Поиск'
                                 value={search}
                                 onChange={({target: {value}}) => setSearch(value)}/>
                         </div>
                     )}
                     <div className={classes.options}>
-                        <Spoiler size={spoilerSize}>
+                        <Spoiler
+                            mode={mode}
+                            size={spoilerSize}>
                             {optionChildren}
                         </Spoiler>
                     </div>
-                </Preloader>
+                </TextsSkeleton>
             </div>
         </div>
     );

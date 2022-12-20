@@ -5,7 +5,7 @@ import relocationImage from 'Image/articles/relocation.svg';
 import aboutUsImage from 'Image/articles/about-us.svg';
 import buildCareerPlanImage from 'Image/articles/build-career-plan.svg';
 
-import {InitSlider} from 'Util/slider';
+import {useSlider} from 'Hook/useSlider';
 
 const articleList = [
     {
@@ -30,7 +30,7 @@ export default function Articles({
     classes,
 }) {
     const $slider = useRef(null);
-    InitSlider({
+    useSlider({
         $slider,
         $sliderButtonRight: buttonRightRef,
         $sliderButtonLeft: buttonLeftRef,
@@ -46,8 +46,7 @@ export default function Articles({
                     <Link
                         key={id}
                         to={`/article/${id}`}
-                        target="_blank"
-                        className={classes.sliderItem}
+                        target='_blank'
                         style={{backgroundImage: `url(${image})`}}/>
                 ))}
         </div>

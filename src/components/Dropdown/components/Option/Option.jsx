@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Typography from 'Component/Typography';
+
 export default function Option({
     value,
     
@@ -11,7 +13,11 @@ export default function Option({
         <div
             className={classes.container}
             onClick={onSelect}>
-            {value}
+            <Typography
+                variant='B1'
+                variantMobile='B2'>
+                {value}
+            </Typography>
         </div>
     );
 }

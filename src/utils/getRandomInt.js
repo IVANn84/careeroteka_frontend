@@ -1,3 +1,3 @@
-export default function getRandomInt(intFrom, intTo) {
+export function getRandomInt(intFrom, intTo) {
     return Math.floor(Math.random() * intTo) + intFrom;
 }

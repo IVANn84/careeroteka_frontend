@@ -18,11 +18,11 @@ export default function Spoiler({
                 {Children.map(children, (child, index) => index < limit ? child : null)}
                 {length > limit
                     ? (
-                        <load-more
-                            class={classes.container}
+                        <div
+                            className={classes.container}
                             onClick={click}>
                             И еще {length - limit} ...
-                        </load-more>
+                        </div>
                     )
                     : null}
             </>

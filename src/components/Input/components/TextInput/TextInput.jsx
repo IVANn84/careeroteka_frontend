@@ -88,8 +88,8 @@ export default function TextInput({
             <div className={classes.input}>
                 <input
                     ref={$input}
-                    type="text"
-                    spellCheck="false"
+                    type='text'
+                    spellCheck='false'
                     disabled={isDisabled}
                     placeholder={placeholder}
                     value={normalizedValue}

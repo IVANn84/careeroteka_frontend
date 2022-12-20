@@ -1,5 +1,5 @@
-import withStyle from 'react-jss';
 import {memo} from 'react';
+import withStyle from 'react-jss';
 
 import DropdownWrapper from './Dropdown.jsx';
 

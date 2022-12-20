@@ -1,4 +1,5 @@
 import withStyle from 'react-jss';
+import PropTypes from 'prop-types';
 
 import Preloader from './Preloader.jsx';
 
@@ -39,4 +40,18 @@ const style = {
     },
 };
 
-export default withStyle(style)(Preloader);
+const Component = withStyle(style)(Preloader);
+
+Component.propTypes = {
+    children: PropTypes.node,
+    isDisplayed: PropTypes.bool.isRequired,
+    // Абсолютное ли позиционирование
+    isAbsolute: PropTypes.bool,
+    indicatorSize: PropTypes.number,
+};
+
+Component.defaultProps = {
+    indicatorSize: 60,
+};
+
+export default Component;

@@ -7,6 +7,7 @@ export const style = ({
         placeholder,
         padding,
     },
+    typography,
     font,
 }) => ({
     container: {
@@ -38,10 +39,11 @@ export const style = ({
         },
         
         '& > input': {
-            fontSize: 20,
+            fontSize: typography.variants.B1.fontSize,
+            lineHeight: typography.variants.B1.lineHeight,
             border: 0,
             width: '100%',
-            padding: [padding, 0, padding, padding],
+            padding: [padding.desktop.yAxis, 0, padding.desktop.yAxis, padding.desktop.xAxis],
             color: font.color.regular,
             background: 'transparent',
             
@@ -54,7 +56,7 @@ export const style = ({
     
     actions: {
         display: 'flex',
-        margin: [0, padding, 0, 8],
+        margin: [0, padding.desktop.xAxis, 0, 8],
         color: icon.color.default,
         
         '& > *': {
@@ -84,5 +86,19 @@ export const style = ({
         margin: [5, 0, 0, 15],
         fontSize: 15,
         color: font.color.negative,
+    },
+    
+    '@media screen and (max-device-width: 576px)': {
+        input: {
+            '& > input': {
+                fontSize: typography.variants.B2.fontSize,
+                lineHeight: typography.variants.B2.lineHeight,
+                padding: [padding.mobile.yAxis, 0, padding.mobile.yAxis, padding.mobile.xAxis],
+            },
+        },
+    
+        actions: {
+            margin: [0, padding.mobile.xAxis, 0, 8],
+        },
     },
 });

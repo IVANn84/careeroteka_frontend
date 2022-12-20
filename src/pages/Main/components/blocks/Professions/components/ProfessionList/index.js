@@ -1,7 +1,8 @@
 import withStyle from 'react-jss';
-import {memo} from 'react';
 
 import ProfessionList from './ProfessionList.jsx';
+import {observer} from 'mobx-react-lite';
+import {memo} from 'react';
 
 const style = ({font}) => ({
     container: {
@@ -16,10 +17,6 @@ const style = ({font}) => ({
         display: 'grid',
         gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
         gridGap: '40px',
-        
-        '& > span': {
-            fontSize: 24,
-        },
     },
     professionItem: {
         display: 'flex',
@@ -41,26 +38,26 @@ const style = ({font}) => ({
     },
     professionTitle: {
         '& > p': {
-            fontSize: 24,
-            fontWeight: font.weight.medium,
+            wordBreak: 'break-word',
         },
         '& > span': {
             display: 'block',
             marginTop: 10,
-            fontSize: 16,
             color: font.color.secondary,
         },
     },
     professionMinSalary: {
         width: '100%',
         textAlign: 'end',
-        fontSize: 24,
-        fontWeight: font.weight.medium,
     },
     
     '@media screen and (max-device-width: 576px)': {
         professionsContainer: {
             gridGap: '30px',
+        },
+        infiniteScroll: {
+            padding: 0,
+            margin: 0,
         },
         professionItem: {
             width: '100%',
@@ -73,4 +70,4 @@ const style = ({font}) => ({
     },
 });
 
-export default memo(withStyle(style)(ProfessionList));
+export default memo(withStyle(style)(observer(ProfessionList)));

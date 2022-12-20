@@ -1,26 +1,25 @@
 import React, {useEffect} from 'react';
 
-import Preloader from 'Component/Preloader';
+import {useStoreLoginPage} from 'Page/Login/stores';
 
 export default function Login({
-    isLoading,
-    error,
-    
-    dispatcher: {
-        login,
-    },
-    
     classes,
 }) {
+    const {
+        // isLoading,
+        error,
+        login,
+        reset,
+    } = useStoreLoginPage();
+    
     useEffect(() => {
         login();
+        
+        return reset;
     }, []);
     
     return (
         <div className={classes.container}>
-            <Preloader
-                isDisplayed={isLoading}
-                isAbsolute/>
             {error && (
                 <p className={classes.error}>
                     {error}

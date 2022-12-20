@@ -4,12 +4,17 @@ import Value from './Value.jsx';
 
 const style = ({
     input: {
-        background,
         boxShadow,
-        border,
+        border: inputBorder,
+        placeholder: inputPlaceholder,
         icon,
-        placeholder,
         padding,
+    },
+    dropdown: {
+        color,
+        placeholder,
+        background,
+        border,
     },
     font,
 }) => ({
@@ -17,7 +22,7 @@ const style = ({
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        background,
+        background: ({mode}) => background[mode],
         boxShadow: ({selectedValue, isOpen}) => (selectedValue || isOpen) && boxShadow,
         borderRadius: ({isOpen, isReversedY}) => isOpen
             ? isReversedY
@@ -25,32 +30,37 @@ const style = ({
                 : [[16, 16, 0, 0]]
             : 16,
         padding: ({selectedValue, isOpen}) => selectedValue || isOpen
-            ? [[padding + 1, 1, padding + 1, padding + 1]]
-            : [[padding, 0, padding, padding]],
-        fontSize: 20,
-        color: ({error, selectedValue}) => selectedValue
+            ? [[padding.desktop.yAxis + 1, 1, padding.desktop.yAxis + 1, padding.desktop.xAxis + 1]]
+            : [[padding.desktop.yAxis, 0, padding.desktop.yAxis, padding.desktop.xAxis]],
+        color: ({error, selectedValue, mode}) => selectedValue
             ? error
                 ? font.color.negative
-                : font.color.regular
+                : color[mode]
             : error
-                ? placeholder.negative
-                : placeholder.default,
+                ? inputPlaceholder.negative
+                : placeholder[mode],
         cursor: ({isDisabled}) => !isDisabled && 'pointer',
-        border: ({error, selectedValue, isOpen}) => (selectedValue || isOpen)
+        border: ({error, selectedValue, isOpen, mode}) => (selectedValue || isOpen)
             ? 0
             : error
-                ? border.negative
-                : border.default,
+                ? inputBorder.negative
+                : border[mode],
         opacity: ({isDisabled}) => isDisabled && 0.5,
         transition: 'box-shadow .2s',
         userSelect: ({selectedValue}) => !selectedValue && 'none',
+    
+        '@media screen and (max-device-width: 576px)': {
+            padding: ({selectedValue, isOpen}) => selectedValue || isOpen
+                ? [[padding.mobile.yAxis + 1, 1, padding.mobile.yAxis + 1, padding.mobile.xAxis + 1]]
+                : [[padding.mobile.yAxis, 0, padding.mobile.yAxis, padding.mobile.xAxis]],
+        },
     },
     
     button: {
-        margin: [0, padding, 0, 8],
-        color: ({error}) => error
+        margin: [0, padding.desktop.xAxis, 0, 8],
+        color: ({error, mode}) => error
             ? icon.color.negative
-            : icon.color.default,
+            : color[mode],
         transform: ({isOpen}) => isOpen ? 'rotate(180deg)' : null,
         transition: 'opacity .2s, transform .2s',
         
@@ -65,6 +75,12 @@ const style = ({
         '&:active': {
             transition: 'none',
             opacity: ({isDisabled}) => !isDisabled && '.9',
+        },
+    },
+    
+    '@media screen and (max-device-width: 576px)': {
+        button: {
+            margin: [0, padding.mobile.xAxis, 0, 8],
         },
     },
 });

@@ -1,6 +1,7 @@
 import React from 'react';
-
 import {ChevronDownIcon} from '@heroicons/react/24/solid';
+
+import Typography from 'Component/Typography';
 
 export default function Value({
     selectedValue,
@@ -20,9 +21,11 @@ export default function Value({
             className={classes.container}
             tabIndex={0}
             onClick={click}>
-            <span>
+            <Typography
+                variant='B1'
+                variantMobile='B2'>
                 {selectedValue || placeholder}
-            </span>
+            </Typography>
             <ChevronDownIcon
                 className={classes.button}
                 width={24}

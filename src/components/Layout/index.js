@@ -1,14 +1,18 @@
 import React, {useEffect} from 'react';
-import {connect} from 'react-redux';
 
 import DefaultLayout from './components/DefaultLayout';
-
-import connector from './connector';
-import dispatcher from './dispatcher';
+import {useStoreLayoutComponent} from 'Component/Layout/stores';
 
 const Layout = props => {
+    const {
+        reset,
+        fetchCurrentUser,
+    } = useStoreLayoutComponent();
+    
     useEffect(() => {
-        props.dispatcher.fetchCurrentUser();
+        fetchCurrentUser();
+        
+        return reset;
     }, []);
     
     return (
@@ -16,4 +20,4 @@ const Layout = props => {
     );
 };
 
-export default connect(connector, dispatcher)(Layout);
+export default Layout;

@@ -12,6 +12,7 @@ import Value from './components/Value';
  * @param {({id: *, name: (String | JSX.Element)} | {id: *, optionValue: (String | JSX.Element)})[]} options - Элементы списка
  * @param {String | JSX.Element} selectedValue - Выбранное значение
  * @param {*} selectedId - Выбранный id
+ * @param {'light' | 'primary'} mode=['primary'] - Стиль дропдауна
  * @param {Boolean} isDisabled - Заблокирован ли
  * @param {Boolean} isLoading - Загружается ли список (отображается прелоадер в списке)
  * @param {Boolean} isSearchable - Есть ли поиск по списку
@@ -21,7 +22,7 @@ import Value from './components/Value';
  * @param classes
  * @returns {JSX.Element}
  */
-export default function Dropdown ({
+export default function Dropdown({
     maxHeight = 300,
     error,
     spoilerSize,
@@ -34,6 +35,7 @@ export default function Dropdown ({
     isSearchable,
     isDisplayed = true,
     placeholder,
+    mode = 'light',
     
     onSelect,
     
@@ -74,6 +76,7 @@ export default function Dropdown ({
                 isOpen={isOpen}
                 isReversedY={isReversedY}
                 placeholder={placeholder}
+                mode={mode}
                 toggle={toggle}/>
             {!isDisabled && (
                 <Menu
@@ -86,6 +89,7 @@ export default function Dropdown ({
                     isSearchable={isSearchable}
                     toggle={toggle}
                     onSelect={onSelect}
+                    mode={mode}
                     isLoading={isLoading}/>
             )}
             {error && typeof error === 'string' && (

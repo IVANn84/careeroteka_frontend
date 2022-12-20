@@ -1,5 +1,7 @@
 import withStyle from 'react-jss';
+
 import Button from './Button.jsx';
+import PropTypes from 'prop-types';
 
 const style = ({button}) => ({
     button: {
@@ -11,10 +13,9 @@ const style = ({button}) => ({
         transition: [['background', '.2s'], ['color', '.2s']],
         padding: ({variant = 'filled'}) => variant === 'outlined' ? [[14, 19]] : [[15, 20]],
         textAlign: 'center',
-        fontSize: 20,
-        color: ({variant = 'filled', mode = 'light'}) => button[variant][mode].color.default,
-        background: ({variant = 'filled', mode = 'light'}) => button[variant][mode].background.default,
-        border: ({variant = 'filled', mode = 'light'}) => variant === 'outlined'
+        color: ({variant = 'filled', mode = 'primary'}) => button[variant][mode].color.default,
+        background: ({variant = 'filled', mode = 'primary'}) => button[variant][mode].background.default,
+        border: ({variant = 'filled', mode = 'primary'}) => variant === 'outlined'
             && [[1, 'solid', button.outlined[mode].border]],
         borderRadius: 100,
         opacity: ({isDisabled}) => isDisabled
@@ -22,28 +23,54 @@ const style = ({button}) => ({
             : 1,
         
         '&:hover, &:focus-visible': {
-            background: ({isDisabled, variant = 'filled', mode = 'light'}) => isDisabled
+            background: ({isDisabled, variant = 'filled', mode = 'primary'}) => isDisabled
                 ? button[variant][mode].background.default
                 : button[variant][mode].background.hovered,
-            color: ({isDisabled, variant = 'filled', mode = 'light'}) => isDisabled
+            color: ({isDisabled, variant = 'filled', mode = 'primary'}) => isDisabled
                 ? button[variant][mode].color.default
                 : button[variant][mode].color.hovered,
-            border: 0,
-            padding: [15, 20],
+            border: ({isDisabled, variant = 'filled', mode = 'primary'}) => variant === 'outlined'
+                && isDisabled && [[1, 'solid', button.outlined[mode].border]] || 0,
+            padding: ({isDisabled, variant = 'filled'}) => variant === 'outlined' && isDisabled
+                ? [[14, 19]]
+                : [[15, 20]],
         },
         
         '&:active': {
             transition: 'none',
-            background: ({isDisabled, variant = 'filled', mode = 'light'}) => isDisabled
+            background: ({isDisabled, variant = 'filled', mode = 'primary'}) => isDisabled
                 ? button[variant][mode].background.default
                 : button[variant][mode].background.focused,
-            color: ({isDisabled, variant = 'filled', mode = 'light'}) => isDisabled
+            color: ({isDisabled, variant = 'filled', mode = 'primary'}) => isDisabled
                 ? button[variant][mode].color.default
                 : button[variant][mode].color.focused,
-            border: 0,
-            padding: [15, 20],
+            border: ({isDisabled, variant = 'filled', mode = 'primary'}) => variant === 'outlined'
+                && isDisabled && [[1, 'solid', button.outlined[mode].border]] || 0,
+            padding: ({isDisabled, variant = 'filled'}) => variant === 'outlined' && isDisabled
+                ? [[14, 19]]
+                : [[15, 20]],
         },
     },
 });
 
-export default withStyle(style)(Button);
+const Component = withStyle(style)(Button);
+
+Component.propTypes = {
+    children: PropTypes.node.isRequired,
+    variant: PropTypes.oneOf(['filled', 'outlined']),
+    mode: PropTypes.oneOf(['light', 'dark', 'primary']),
+    isDisabled: PropTypes.bool,
+    isDisplayed: PropTypes.bool,
+    // Описание кнопки при наведении
+    title: PropTypes.string,
+    onClick: PropTypes.func,
+};
+
+Component.defaultProps = {
+    variant: 'filled',
+    mode: 'primary',
+    isDisabled: false,
+    isDisplayed: true,
+};
+
+export default Component;

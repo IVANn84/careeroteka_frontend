@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 export default function ExternalLink({
     to,
     children,
@@ -9,7 +8,7 @@ export default function ExternalLink({
     return (
         <a
             href={to}
-            rel="noopener noreferrer"
+            rel='noopener noreferrer'
             {...props}>
             {children}
         </a>
