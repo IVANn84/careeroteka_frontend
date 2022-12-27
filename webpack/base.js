@@ -51,8 +51,6 @@ module.exports = ({
             'Hook': path.join(__dirname, '..', 'src', 'hooks'),
             'Hoc': path.join(__dirname, '..', 'src', 'hoc'),
             'Theme': path.join(__dirname, '..', 'src', 'themes'),
-            '/media': path.join(__dirname, 'media'),
-            '/swagger': path.join(__dirname, 'swagger'),
         },
         modules: ['node_modules'],
     },
