@@ -3,7 +3,7 @@ import {types} from 'mobx-state-tree';
 import actions from './actions';
 
 const Profession = types.model('Profession', {
-    id: types.identifierNumber,
+    id: types.number,
     name: types.string,
     salaryMinValue: types.number,
     countDirections: types.number,

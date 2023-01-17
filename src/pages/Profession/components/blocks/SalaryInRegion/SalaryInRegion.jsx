@@ -24,6 +24,7 @@ export default function SalaryInRegion({
             neg: '-%v%s',
             zero: '%v%s',
         },
+        thousand: ' ',
         decimal: ',',
         precision: getCountDecimal(entityStore.entity?.statistic?.percentInRegion)
             ? 1

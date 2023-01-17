@@ -3,7 +3,7 @@ import {types} from 'mobx-state-tree';
 import actions from './actions';
 
 const Grade = types.model('Grade', {
-    id: types.identifierNumber,
+    id: types.number,
     name: types.string,
 });
 

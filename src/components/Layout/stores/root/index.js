@@ -4,7 +4,7 @@ import actions from './actions';
 
 export const User = types
     .model('User', {
-        id: types.identifierNumber,
+        id: types.number,
         username: types.string,
         email: types.string,
         firstName: types.string,

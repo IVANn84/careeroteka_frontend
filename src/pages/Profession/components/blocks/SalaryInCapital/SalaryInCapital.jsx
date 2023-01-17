@@ -24,6 +24,7 @@ export default function SalaryInCapital({
             neg: '-%v%s',
             zero: '%v%s',
         },
+        thousand: ' ',
         decimal: ',',
         precision: getCountDecimal(entityStore.entity?.statistic?.percentInCapital)
             ? 1
