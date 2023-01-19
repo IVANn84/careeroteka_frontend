@@ -87,7 +87,7 @@ const style = ({font}) => ({
     },
     logo: {
         borderRadius: [16, 16, 0, 0],
-        height: 210,
+        height: 225,
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
@@ -105,7 +105,7 @@ const style = ({font}) => ({
     name: {
         display: 'block',
         wordBreak: 'break-word',
-        margin: [10, 0, 16, 0],
+        margin: [8, 0, 16, 0],
     },
     rating: {
         height: 14,

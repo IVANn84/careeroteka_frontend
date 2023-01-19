@@ -52,18 +52,12 @@ export default function DefaultLayout({
                             careeroteka
                         </span>
                         <div className={classes.footerLinksDesktop}>
-                            <a
-                                href='https://vk.com'
-                                rel='noopener noreferrer'
-                                target='_blank'>
+                            <ExternalLink to='https://vk.com'>
                                 <Icon name='vk'/>
-                            </a>
-                            <a
-                                href='https://vk.com'
-                                rel='noopener noreferrer'
-                                target='_blank'>
+                            </ExternalLink>
+                            <ExternalLink href='https://vk.com'>
                                 <Icon name='telegram'/>
-                            </a>
+                            </ExternalLink>
                         </div>
                     </div>
                     <div className={classes.footerNavigation}>
@@ -88,37 +82,12 @@ export default function DefaultLayout({
                                 Нашли ошибку?
                             </NavLink>
                         </Typography>
-                        <Typography
-                            variant='B1'
-                            variantMobile='B2'>
-                            <NavLink to='/faq'>
-                                FAQ
-                            </NavLink>
-                        </Typography>
-                        <Typography
-                            variant='B1'
-                            variantMobile='B2'>
-                            <NavLink to='/'>
-                                Кураторам
-                            </NavLink>
-                        </Typography>
-                        <Typography
-                            variant='B1'
-                            variantMobile='B2'>
-                            <NavLink to='/'>
-                                Курсам
-                            </NavLink>
-                        </Typography>
                     </div>
                     <div className={classes.footerLinksMobile}>
-                        <ExternalLink
-                            to='https://vk.com'
-                            target='_blank'>
+                        <ExternalLink to='https://vk.com'>
                             <Icon name='vk'/>
                         </ExternalLink>
-                        <ExternalLink
-                            to='https://telegram.com'
-                            target='_blank'>
+                        <ExternalLink to='https://telegram.com'>
                             <Icon name='telegram'/>
                         </ExternalLink>
                     </div>

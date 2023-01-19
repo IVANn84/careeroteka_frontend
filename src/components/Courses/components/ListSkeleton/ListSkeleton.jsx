@@ -9,7 +9,7 @@ function ListItemSkeleton() {
         <ContentLoader
             speed={2}
             width={deviceType === 'desktop' ? 270 : '100%'}
-            height={325}
+            height={340}
             backgroundColor='#f3f3f3'
             foregroundColor='#ecebeb'>
             <rect
@@ -18,7 +18,7 @@ function ListItemSkeleton() {
                 rx='32'
                 ry='32'
                 width={deviceType === 'desktop' ? 270 : '100%'}
-                height={325}/>
+                height={340}/>
         </ContentLoader>
     );
 }
