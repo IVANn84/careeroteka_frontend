@@ -17,6 +17,8 @@ export default function SalaryInCapital({
         entityStore,
     } = useStoreProfessionPage();
     
+    const yMin = Math.min(...(entityStore.entity?.statistic?.inCapital?.map(({salary}) => salary)) || []);
+    
     const formatMoney = value => accounting.formatMoney(value, {
         symbol: '%',
         format: {
@@ -64,7 +66,9 @@ export default function SalaryInCapital({
             </div>
             <div>
                 <BarChartSkeleton isDisplayed={entityStore.isLoadingStatistic}>
-                    <BarChart data={data}/>
+                    <BarChart
+                        data={data}
+                        yMin={yMin}/>
                 </BarChartSkeleton>
             </div>
         </Block>

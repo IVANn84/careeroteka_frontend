@@ -17,7 +17,11 @@ ChartJS.register(
     ChartDataLabels,
 );
 
-function BarChart({data, options}) {
+function BarChart({
+    data,
+    options,
+    yMin,
+}) {
     const deviceType = useDevice();
     
     const formatMoney = value => accounting.formatMoney(value, {
@@ -101,7 +105,9 @@ function BarChart({data, options}) {
                 },
             },
             yAxis: {
-                min: 20000,
+                min: yMin > 20000
+                    ? 20000
+                    : 0,
                 grid: {
                     borderDash: [2, 2],
                     drawBorder: false,

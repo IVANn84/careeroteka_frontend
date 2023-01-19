@@ -11,7 +11,7 @@ const style = ({
         display: 'flex',
         padding: 12,
         cursor: 'pointer',
-        transition: 'background 0.2s ease-in',
+        transition: 'background .2s ease-in',
         borderRadius: 8,
         background: ({isSelected}) => isSelected
             ? optionBackground.selected
