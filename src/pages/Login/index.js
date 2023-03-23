@@ -22,6 +22,36 @@ const style = {
     button: {
         width: '100%',
     },
+    links: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+
+        '& > *': {
+            marginTop: 25,
+        },
+    },
+    link: {
+        position: 'relative',
+        cursor: 'pointer',
+        
+        '&::after': {
+            content: '""',
+            position: 'absolute',
+            left: 1,
+            right: 1,
+            bottom: -2,
+            height: 1,
+            width: '90%',
+            margin: 'auto',
+            background: '#000',
+            transition: 'width .2s',
+        },
+        
+        '&:hover::after, &:focus-visible::after': {
+            width: '100%',
+        },
+    },
     
     '@media screen and (max-device-width: 576px)': {
         container: {

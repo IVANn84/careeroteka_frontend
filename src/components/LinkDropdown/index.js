@@ -11,8 +11,6 @@ export const Style = ({font}) => ({
         marginTop: 18,
         color: font.color.alternative,
         position: 'relative',
-        fontWeight: font.weight.normal,
-        transition: 'font-weight .2s',
         
         '&::after': {
             content: '""',

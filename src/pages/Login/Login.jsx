@@ -1,4 +1,5 @@
 import React, {useEffect} from 'react';
+import {useHistory} from 'react-router';
 
 import {useStoreLoginPage} from 'Page/Login/stores';
 
@@ -9,6 +10,8 @@ import Typography from 'Component/Typography';
 export default function Login({
     classes,
 }) {
+    const history = useHistory();
+
     const {
         isLoading,
         error,
@@ -18,6 +21,9 @@ export default function Login({
     } = useStoreLoginPage();
     
     useEffect(() => reset, []);
+
+    const gotoRecovery = () => history.push('/password-recovery');
+    const gotoRegistration = () => history.push('/registration');
     
     return (
         <div className={classes.container}>
@@ -56,6 +62,27 @@ export default function Login({
                 onClick={login}>
                 Продолжить
             </Button>
+            <div className={classes.links}>
+                <Typography
+                    className={classes.link}
+                    variant='B2'
+                    variantMobile='B2'
+                    component='p'
+                    onClick={gotoRecovery}>
+                    Забыли пароль?
+                </Typography>
+                <Typography
+                    className={classes.registration}
+                    variant='B2'
+                    variantMobile='B2'>
+                    Еще нет аккаунта?{' '}
+                    <span
+                        className={classes.link}
+                        onClick={gotoRegistration}>
+                        Зарегистрируйтесь
+                    </span>
+                </Typography>
+            </div>
         </div>
     );
 }

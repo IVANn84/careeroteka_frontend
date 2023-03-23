@@ -3,15 +3,13 @@ import {observer} from 'mobx-react-lite';
 
 import HeaderNavigation from './HeaderNavigation.jsx';
 
-const style = ({font}) => ({
+const style = {
     container: {
         display: 'flex',
         alignItems: 'center',
     
         '& > *': {
             position: 'relative',
-            fontWeight: font.weight.normal,
-            transition: 'font-weight .2s',
             cursor: 'pointer',
         
             '&:not(:first-child)': {
@@ -42,6 +40,6 @@ const style = ({font}) => ({
             },
         },
     },
-});
+};
 
 export default withStyle(style)(observer(HeaderNavigation));
