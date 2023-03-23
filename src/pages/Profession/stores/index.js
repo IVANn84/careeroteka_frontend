@@ -1,7 +1,7 @@
 import {createContext, useContext} from 'react';
 
-import rootStore from './root';
+import {rootStoreProfessionPage} from './root';
 
-export const StoreProfessionPageContext = createContext(rootStore);
+export const StoreProfessionPageContext = createContext(rootStoreProfessionPage);
 
 export const useStoreProfessionPage = () => useContext(StoreProfessionPageContext);

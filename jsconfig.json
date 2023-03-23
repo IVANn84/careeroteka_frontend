@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+      "module": "commonjs",
+      "target": "es2017",
+      "allowSyntheticDefaultImports": true,
+      "baseUrl": "./",
+      "paths": {
+        "Util/*": ["src/utils/*"],
+        "Page/*": ["src/pages/*"],
+        "Component/*": ["src/components/*"],
+        "Api/*": ["src/api/methods/*"],
+        "Mock/*": ["src/api/mock/*"],
+        "Image/*": ["src/images/*"],
+        "Hook/*": ["src/hooks/*"],
+        "Hoc/*": ["src/hoc/*"],
+        "Theme/*": ["src/themes/*"]
+      }
+    },
+    "exclude": ["node_modules", "build"]
+  }

@@ -1,5 +1,7 @@
 import React from 'react';
 
+import {useDevice} from 'Hook/useDevice';
+
 import {useStoreProfessionPage} from 'Page/Profession/stores';
 import Block from 'Component/Block';
 import Button from 'Component/Button';
@@ -8,11 +10,21 @@ import TextSkeleton from './components/TextSkeleton';
 import ImageSkeleton from './components/ImageSkeleton';
 
 export default function Main({
+    $survey,
+    
     classes,
 }) {
+    const deviceType = useDevice();
+    
     const {
         entityStore,
     } = useStoreProfessionPage();
+    
+    const onClickTellAboutProfession = () => window.scrollTo({
+        // Вычитаемое - высота прикрепленного к верху страницы блока с выпадашками
+        top: $survey.current.getBoundingClientRect().top + window.scrollY - (deviceType === 'desktop' ? 136 : 148),
+        behavior: 'smooth',
+    });
     
     return (
         <Block
@@ -45,7 +57,7 @@ export default function Main({
                     <Button
                         mode={!entityStore.isLoading && entityStore.entity?.color?.buttonColor || 'dark'}
                         variant='outlined'
-                        onClick={() => {}}
+                        onClick={onClickTellAboutProfession}
                         isDisplayed={!entityStore.isLoading}>
                         Расскажите нам о профессии
                     </Button>

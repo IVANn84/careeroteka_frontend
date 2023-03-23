@@ -1,5 +1,6 @@
 import React, {useMemo, useState} from 'react';
 
+import {useDebouncedValue} from 'Hook/useDebouncedValue';
 import Typography from 'Component/Typography';
 import Spoiler from '../Spoiler';
 import Option from '../Option';
@@ -9,6 +10,7 @@ export default function Menu({
     spoilerSize = 50,
     options,
     selectedId,
+    checkIsSelected,
     isOpen,
     isLoading,
     isSearchable,
@@ -22,6 +24,8 @@ export default function Menu({
 }) {
     const [search, setSearch] = useState('');
     
+    const debouncedSearch = useDebouncedValue(search, 300);
+    
     const optionClick = option => {
         onSelect?.(option);
         closeOnSelect && toggle();
@@ -29,25 +33,27 @@ export default function Menu({
     
     const optionChildren = useMemo(() => {
         const filteredOptions = options
-            .filter(({name}) => name.toLowerCase().includes(search));
+            .filter(({name}) => name.toLowerCase().includes(debouncedSearch.toLowerCase()));
         return filteredOptions.length
             ? filteredOptions.map(option => (
                 <Option
                     key={option.id}
                     tabIndex={0}
                     value={option.optionValue || option.name}
-                    isSelected={selectedId === option.id}
+                    isSelected={checkIsSelected
+                        ? checkIsSelected(option)
+                        : selectedId === option.id}
                     onSelect={() => optionClick(option)}/>
             ))
             : (
                 <Typography
-                    variant='B1'
+                    variant='B2'
                     variantMobile='B2'
                     className={classes.placeholder}>
                     Ничего не найдено
                 </Typography>
             );
-    }, [options, search, isOpen, selectedId]);
+    }, [options, debouncedSearch, isOpen, selectedId, checkIsSelected, isLoading]);
     
     return isOpen && (
         <div className={classes.container}>

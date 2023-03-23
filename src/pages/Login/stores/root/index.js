@@ -1,12 +1,16 @@
 import {types} from 'mobx-state-tree';
 
+import {fieldsStoreLoginPage, FieldsStoreModel} from 'Page/Login/stores/fields';
 import actions from './actions';
 
-export const RootStore = types
+export const RootStoreModel = types
     .model('Root', {
         isLoading: types.optional(types.boolean, false),
         error: types.maybeNull(types.string),
+        fieldsStore: types.maybe(FieldsStoreModel),
     })
     .actions(actions);
 
-export default RootStore.create();
+export const rootStoreLoginPage = RootStoreModel.create({
+    fieldsStore: fieldsStoreLoginPage,
+});

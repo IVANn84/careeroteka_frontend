@@ -17,6 +17,7 @@ const style = ({font}) => ({
             display: 'none',
         },
         
+        // Жалкая попытка сделать красивый скроллбар по макету
         // '&::-webkit-scrollbar': {
         //     height: 12,
         // },
@@ -41,13 +42,14 @@ const style = ({font}) => ({
         //     backgroundColor: 'transparent',
         // },
         
-        '& > a': {
+        '& > div': {
             display: 'inline-block',
             width: 270,
             boxShadow: [0, 4, 20, 2, 'rgba(0, 0, 0, 0.1)'],
             borderRadius: 16,
             background: '#FFF',
             whiteSpace: 'normal',
+            cursor: 'pointer',
             transition: 'transform .2s, box-shadow .2s',
             
             '&:not(:first-child)': {

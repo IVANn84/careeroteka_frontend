@@ -5,10 +5,28 @@ import Login from './Login.jsx';
 
 const style = {
     container: {
-        margin: [60, 0, 130, 0],
+        width: '40%',
+        margin: 'auto',
     },
-    error: {
-        fontSize: 24,
+    title: {
+        textAlign: 'center',
+    },
+    inputs: {
+        marginTop: 32,
+        marginBottom: 32,
+        
+        '& > *:not(:first-child)': {
+            marginTop: 16,
+        },
+    },
+    button: {
+        width: '100%',
+    },
+    
+    '@media screen and (max-device-width: 576px)': {
+        container: {
+            width: '100%',
+        },
     },
 };
 

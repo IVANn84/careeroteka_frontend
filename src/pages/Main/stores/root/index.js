@@ -1,20 +1,20 @@
 import {types} from 'mobx-state-tree';
 
-import areasStore, {AreasStore} from '../areas';
-import fieldsStore, {FieldsStore} from '../fields';
-import professionsStore, {ProfessionsStore} from '../professions';
+import {areasStoreMainPage, AreasStoreModel} from '../areas';
+import {fieldsStoreMainPage, FieldsStoreModel} from '../fields';
+import {professionsStoreMainPage, ProfessionsStoreModel} from '../professions';
 import actions from './actions';
 
-export const RootStore = types
+export const RootStoreModel = types
     .model('Root', {
-        areasStore: types.maybe(AreasStore),
-        fieldsStore: types.maybe(FieldsStore),
-        professionsStore: types.maybe(ProfessionsStore),
+        areasStore: types.maybe(AreasStoreModel),
+        fieldsStore: types.maybe(FieldsStoreModel),
+        professionsStore: types.maybe(ProfessionsStoreModel),
     })
     .actions(actions);
 
-export default RootStore.create({
-    areasStore,
-    fieldsStore,
-    professionsStore,
+export const rootStoreMainPage = RootStoreModel.create({
+    areasStore: areasStoreMainPage,
+    fieldsStore: fieldsStoreMainPage,
+    professionsStore: professionsStoreMainPage,
 });

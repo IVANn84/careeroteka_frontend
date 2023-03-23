@@ -3,24 +3,24 @@ import {types} from 'mobx-state-tree';
 import actions from './actions';
 import views from './views';
 
-export const Salary = types.model('Salary', {
+export const SalaryModel = types.model('Salary', {
     minValue: types.number,
     maxValue: types.number,
 });
 
-export const Skill = types.model('Skill', {
+export const SkillModel = types.model('Skill', {
     id: types.number,
     name: types.string,
     value: types.string,
 });
 
-export const Review = types.model('Review', {
+export const ReviewModel = types.model('Review', {
     id: types.number,
-    title: types.string,
+    name: types.string,
     value: types.number,
 });
 
-export const Color = types.model('Color', {
+export const ColorModel = types.model('Color', {
     textColor: types.string,
     backgroundColor: types.string,
     buttonColor: types.union(
@@ -30,7 +30,7 @@ export const Color = types.model('Color', {
     ),
 });
 
-export const Course = types.model('Course', {
+export const CourseModel = types.model('Course', {
     id: types.number,
     name: types.string,
     company: types.string,
@@ -42,43 +42,43 @@ export const Course = types.model('Course', {
     rating: types.number,
 });
 
-export const StatisticMonths = types.model('StatisticMonths', {
+export const StatisticMonthsModel = types.model('StatisticMonths', {
     id: types.number,
     salary: types.number,
     month: types.string,
 });
 
-export const Statistic = types.model('Statistic', {
-    inCapital: types.array(StatisticMonths),
-    inRegion: types.array(StatisticMonths),
+export const StatisticModel = types.model('Statistic', {
+    inCapital: types.array(StatisticMonthsModel),
+    inRegion: types.array(StatisticMonthsModel),
     percentInCapital: types.number,
     percentInRegion: types.number,
 });
 
-export const Entity = types
+export const EntityModel = types
     .model('Entity', {
         id: types.maybeNull(types.number),
         name: types.maybeNull(types.string),
         description: types.maybeNull(types.string),
         areas: types.optional(types.array(types.string), []),
-        color: types.maybeNull(Color),
+        color: types.maybeNull(ColorModel),
         image: types.maybeNull(types.string),
         
         salaries: types.maybeNull(types.model({
-            inCapital: types.maybeNull(Salary),
-            inRegion: types.maybeNull(Salary),
+            inCapital: types.maybeNull(SalaryModel),
+            inRegion: types.maybeNull(SalaryModel),
         })),
         
-        skills: types.optional(types.array(Skill), []),
+        skills: types.optional(types.array(SkillModel), []),
         
-        reviews: types.optional(types.array(Review), []),
+        reviews: types.optional(types.array(ReviewModel), []),
         
-        courses: types.optional(types.array(Course), []),
+        courses: types.optional(types.array(CourseModel), []),
         
-        statistic: types.maybeNull(Statistic),
+        statistic: types.maybeNull(StatisticModel),
     });
 
-export const EntityStore = types
+export const EntityStoreModel = types
     .model('EntityStore', {
         isLoading: types.optional(types.boolean, true),
         isLoadingSalaries: types.optional(types.boolean, true),
@@ -86,9 +86,9 @@ export const EntityStore = types
         isLoadingReviews: types.optional(types.boolean, true),
         isLoadingCourses: types.optional(types.boolean, true),
         isLoadingStatistic: types.optional(types.boolean, true),
-        entity: types.optional(Entity, {}),
+        entity: types.optional(EntityModel, {}),
     })
     .actions(actions)
     .views(views);
 
-export default EntityStore.create();
+export const entityStoreProfessionPage = EntityStoreModel.create();

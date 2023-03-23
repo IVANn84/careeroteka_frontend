@@ -1,5 +1,6 @@
-import React, {useMemo, useRef} from 'react';
+import React, {useEffect, useMemo, useRef, useState} from 'react';
 import {XMarkIcon, MagnifyingGlassIcon} from '@heroicons/react/24/solid';
+import HintMenu from '../HintMenu';
 
 /**
  * Текстовый инпут
@@ -12,6 +13,7 @@ import {XMarkIcon, MagnifyingGlassIcon} from '@heroicons/react/24/solid';
  * @param {Boolean} hasAutoFocus - Авто-фокус
  * @param {Number?} maxLength - Максимальная длина значения
  * @param {Boolean} isDisplayed - Отображается ли поле
+ * @param {Boolean} isRequired - Обязательное поле
  * @param {String?} className - Класс для стилей
  * @param {Function?} onChange - Функция, вызывающаяся при изменении значения инпута
  * @param {Function?} onSubmit - Функция, вызывающаяся при нажатии Enter или кнопки поиска
@@ -28,7 +30,13 @@ export default function TextInput({
     placeholder,
     hasAutoFocus,
     maxLength,
+    hintMaxHeight = 300,
+    hintOptions = [],
+    hintPlaceholder,
+    hintIsLoading,
+    onHintSelect,
     isDisplayed = true,
+    hasHint = false,
     className,
     
     onChange,
@@ -41,7 +49,26 @@ export default function TextInput({
         return null;
     }
     
+    const [isFocused, setIsFocused] = useState(false);
+    const [isOpenHint, setIsOpenHint] = useState(false);
+    const [isReversedY, setIsReversedY] = useState(false);
+    const $container = useRef(null);
     const $input = useRef(null);
+    
+    const onFocus = () => {
+        setIsFocused(true);
+    };
+    
+    const onBlur = () => {
+        setIsFocused(false);
+    };
+    
+    useEffect(() => {
+        const {height, top} = $container.current.getBoundingClientRect();
+        const reversedY = (height + hintMaxHeight + top) > window.innerHeight && top > (height + hintMaxHeight);
+        setIsReversedY(reversedY);
+        setIsOpenHint(isFocused);
+    }, [isFocused]);
     
     const change = ({target: {value}}) => {
         if (isDisabled || !onChange) {
@@ -77,6 +104,12 @@ export default function TextInput({
         onClear?.();
     };
     
+    const onKeyDown = fn => ({key}) => {
+        if (key === 'Enter') {
+            fn();
+        }
+    };
+    
     const normalizedValue = useMemo(() =>
         [null, undefined].includes(value)
             ? ''
@@ -84,28 +117,59 @@ export default function TextInput({
     , [value]);
     
     return (
-        <div className={`${classes.container} ${className || ''}`}>
-            <div className={classes.input}>
-                <input
-                    ref={$input}
-                    type='text'
-                    spellCheck='false'
-                    disabled={isDisabled}
-                    placeholder={placeholder}
-                    value={normalizedValue}
-                    onKeyDown={submit}
-                    onChange={change}
-                    autoFocus={hasAutoFocus}
-                    maxLength={maxLength}/>
+        <div
+            ref={$container}
+            className={`${classes.container} ${className || ''}`}
+            onBlur={onBlur}
+            onFocus={onFocus}>
+            <div className={`${classes.wrapper} ${hasHint && isOpenHint
+                ? isReversedY
+                    ? classes.wrapperWithHintReversed
+                    : classes.wrapperWithHint
+                : ''}`}>
+                <div className={classes.input}>
+                    <input
+                        ref={$input}
+                        type='text'
+                        spellCheck='false'
+                        autoCorrect='off'
+                        autoComplete='off'
+                        disabled={isDisabled}
+                        value={normalizedValue}
+                        onKeyDown={submit}
+                        onChange={change}
+                        autoFocus={hasAutoFocus}
+                        maxLength={maxLength}/>
+                    {placeholder && (
+                        <span className={classes.placeholder}>{placeholder}</span>
+                    )}
+                </div>
                 <div className={classes.actions}>
                     {isClearable && !isDisabled && value && (
-                        <XMarkIcon onClick={clear}/>
+                        <XMarkIcon
+                            tabIndex={0}
+                            onKeyDown={onKeyDown(clear)}
+                            onClick={clear}/>
                     )}
                     {isSearchable && (
-                        <MagnifyingGlassIcon onClick={search}/>
+                        <MagnifyingGlassIcon
+                            tabIndex={0}
+                            onKeyDown={onKeyDown(search)}
+                            onClick={search}/>
                     )}
                 </div>
             </div>
+            {hasHint && (
+                <HintMenu
+                    isReversedY={isReversedY}
+                    maxHeight={hintMaxHeight}
+                    value={value}
+                    isOpen={isOpenHint}
+                    isLoading={hintIsLoading}
+                    placeholder={hintPlaceholder}
+                    onSelect={onHintSelect}
+                    options={hintOptions}/>
+            )}
             {error && typeof error === 'string' &&
                 <div
                     className={classes.error}

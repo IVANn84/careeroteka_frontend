@@ -1,56 +1,81 @@
 export const style = ({
     input: {
         background,
-        boxShadow,
         border,
         icon,
         placeholder,
         padding,
+        requireStarColor,
     },
     typography,
     font,
 }) => ({
     container: {
         width: '100%',
+        position: 'relative',
     },
-    input: {
+    wrapper: {
+        width: '100%',
         background,
-        boxShadow: ({value, error}) => value && !error && boxShadow,
         display: 'flex',
         alignItems: 'center',
         borderRadius: 16,
-        transition: 'box-shadow .2s',
-        padding: ({value, error}) => value && !error && [[1, 1]],
         border: ({error, value}) => value
             ? error
                 ? border.negative
-                : 0
+                : border.filled
             : error
                 ? border.negative
                 : border.default,
         opacity: ({isDisabled}) => isDisabled && 0.5,
         
         '&:focus-within': {
-            padding: ({error}) => !error && [[1, 1]],
             border: ({error}) => error
                 ? border.negative
-                : 0,
-            boxShadow: ({error}) => !error && boxShadow,
+                : border.filled,
         },
-        
+    },
+    wrapperWithHint: {
+        borderBottomLeftRadius: 0,
+        borderBottomRightRadius: 0,
+    },
+    wrapperWithHintReversed: {
+        borderTopLeftRadius: 0,
+        borderTopRightRadius: 0,
+    },
+    input: {
+        overflow: 'hidden',
+        width: '100%',
+        display: 'inline-block',
+        position: 'relative',
+    
         '& > input': {
+            position: 'relative',
             fontSize: typography.variants.B1.fontSize,
             lineHeight: typography.variants.B1.lineHeight,
             border: 0,
+            zIndex: 1,
             width: '100%',
             padding: [padding.desktop.yAxis, 0, padding.desktop.yAxis, padding.desktop.xAxis],
             color: font.color.regular,
             background: 'transparent',
-            
-            '&::placeholder': {
-                userSelect: 'none',
-                color: placeholder.default,
-            },
+        },
+    },
+    placeholder: {
+        witheSpace: 'nowrap',
+        display: ({value}) => value && 'none',
+        fontSize: typography.variants.B1.fontSize,
+        lineHeight: typography.variants.B1.lineHeight,
+        position: 'absolute',
+        top: '50%',
+        transform: 'translateY(-50%)',
+        left: padding.desktop.xAxis,
+        userSelect: 'none',
+        color: placeholder.default,
+        
+        '&:after': {
+            content: ({isRequired}) => isRequired && '"*"',
+            color: requireStarColor,
         },
     },
     
@@ -73,6 +98,7 @@ export const style = ({
             
             '&:focus': {
                 outline: 'none',
+                opacity: ({isDisabled}) => !isDisabled && '.7',
             },
             
             '&:active': {
@@ -96,7 +122,7 @@ export const style = ({
                 padding: [padding.mobile.yAxis, 0, padding.mobile.yAxis, padding.mobile.xAxis],
             },
         },
-    
+        
         actions: {
             margin: [0, padding.mobile.xAxis, 0, 8],
         },

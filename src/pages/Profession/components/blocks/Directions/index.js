@@ -28,6 +28,7 @@ const style = ({layout}) => ({
         left: 0,
         right: 0,
         width: '100vw !important',
+        // При изменении отступов по Y или высоты, нужно изменить вычитаемое в функции onClickTellAboutProfession в Main блоке
         padding: [36, 0],
         paddingLeft: layout.paddingX.desktop,
         background: 'rgba(242, 242, 243, 0.7)',

@@ -11,28 +11,67 @@ export default {
             const data = [
                 {
                     id: 1,
-                    title: 'Work-life баланс',
+                    name: 'Work-life баланс',
                     value: 3.4,
                 },
                 {
                     id: 2,
-                    title: 'Карьерный рост',
+                    name: 'Карьерный рост',
                     value: 5,
                 },
                 {
                     id: 3,
-                    title: 'Уровень зарплаты',
+                    name: 'Уровень зарплаты',
                     value: 4,
                 },
                 {
                     id: 4,
-                    title: 'Переработки',
+                    name: 'Переработки',
                     value: 2,
                 },
                 {
                     id: 5,
-                    title: 'Разнообразие задач',
+                    name: 'Разнообразие задач',
                     value: 0,
+                },
+            ];
+            
+            return wrapAnswer(data, hasError);
+        };
+    })(),
+    
+    FetchTypesList: (() => {
+        return async (hasError = false) => {
+            // eslint-disable-next-line no-console
+            console.log('ReviewApi', 'FetchTypesList');
+            
+            await timeout(1000);
+            
+            const data = [
+                {
+                    id: 1,
+                    name: 'Work-life баланс',
+                    description: '- баланс, который необходим человеку между  работой и другими аспектами жизни.',
+                },
+                {
+                    id: 2,
+                    name: 'Карьерный рост',
+                    description: '- баланс, который необходим человеку между  работой и другими аспектами жизни.',
+                },
+                {
+                    id: 3,
+                    name: 'Уровень зарплаты',
+                    description: '- баланс, который необходим человеку между  работой и другими аспектами жизни.',
+                },
+                {
+                    id: 4,
+                    name: 'Переработки',
+                    description: '- баланс, который необходим человеку между  работой и другими аспектами жизни.',
+                },
+                {
+                    id: 5,
+                    name: 'Разнообразие задач',
+                    description: '- баланс, который необходим человеку между  работой и другими аспектами жизни.',
                 },
             ];
             

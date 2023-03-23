@@ -3,18 +3,15 @@ import withStyle from 'react-jss';
 import Value from './Value.jsx';
 
 const style = ({
-    input: {
-        boxShadow,
-        border: inputBorder,
-        placeholder: inputPlaceholder,
+    dropdown: {
         icon,
         padding,
-    },
-    dropdown: {
         color,
         placeholder,
         background,
         border,
+        valueBoxShadow,
+        requireStarColor,
     },
     font,
 }) => ({
@@ -23,13 +20,13 @@ const style = ({
         justifyContent: 'space-between',
         alignItems: 'center',
         background: ({mode}) => background[mode],
-        boxShadow: ({selectedValue, isOpen}) => (selectedValue || isOpen) && boxShadow,
+        boxShadow: ({isOpen}) => isOpen && valueBoxShadow,
         borderRadius: ({isOpen, isReversedY}) => isOpen
             ? isReversedY
                 ? [[0, 0, 16, 16]]
                 : [[16, 16, 0, 0]]
             : 16,
-        padding: ({selectedValue, isOpen}) => selectedValue || isOpen
+        padding: ({isOpen, mode}) => isOpen && mode !== 'primary'
             ? [[padding.desktop.yAxis + 1, 1, padding.desktop.yAxis + 1, padding.desktop.xAxis + 1]]
             : [[padding.desktop.yAxis, 0, padding.desktop.yAxis, padding.desktop.xAxis]],
         color: ({error, selectedValue, mode}) => selectedValue
@@ -37,23 +34,39 @@ const style = ({
                 ? font.color.negative
                 : color[mode]
             : error
-                ? inputPlaceholder.negative
-                : placeholder[mode],
+                ? placeholder[mode]?.negative
+                : placeholder[mode]?.default,
         cursor: ({isDisabled}) => !isDisabled && 'pointer',
-        border: ({error, selectedValue, isOpen, mode}) => (selectedValue || isOpen)
+        
+        border: ({error, selectedValue, isOpen, mode}) => isOpen
             ? 0
-            : error
-                ? inputBorder.negative
-                : border[mode],
+            : selectedValue
+                ? error
+                    ? border[mode]?.negative
+                    : border[mode]?.filled
+                : error
+                    ? border[mode]?.negative
+                    : border[mode]?.default,
         opacity: ({isDisabled}) => isDisabled && 0.5,
         transition: 'box-shadow .2s',
         userSelect: ({selectedValue}) => !selectedValue && 'none',
     
+        '&:focus': {
+            border: ({mode, isOpen, error}) => isOpen
+                ? 0
+                : error
+                    ? border[mode]?.negative
+                    : border[mode]?.filled,
+        },
+        
         '@media screen and (max-device-width: 576px)': {
             padding: ({selectedValue, isOpen}) => selectedValue || isOpen
                 ? [[padding.mobile.yAxis + 1, 1, padding.mobile.yAxis + 1, padding.mobile.xAxis + 1]]
                 : [[padding.mobile.yAxis, 0, padding.mobile.yAxis, padding.mobile.xAxis]],
         },
+    },
+    requireStar: {
+        color: requireStarColor,
     },
     
     button: {

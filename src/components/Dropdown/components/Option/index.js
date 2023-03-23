@@ -17,7 +17,7 @@ const style = ({
             ? optionBackground.selected
             : optionBackground.default,
         
-        '&:hover': {
+        '&:hover, &:focus': {
             background: optionBackground.hovered,
         },
     },

@@ -46,10 +46,10 @@ export default function Reviews({
                                 borderRadius='16px'
                                 borderRadiusMobile='16px'
                                 className={classes.rates}>
-                                {block.map(({id, title, value}) => (
+                                {block.map(({id, name, value}) => (
                                     <Review
                                         key={id}
-                                        title={title}
+                                        name={name}
                                         value={value}/>
                                 ))}
                             </Block>

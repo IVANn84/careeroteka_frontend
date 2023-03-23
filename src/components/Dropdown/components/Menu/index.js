@@ -3,9 +3,6 @@ import withStyle from 'react-jss';
 import Menu from './Menu.jsx';
 
 const style = ({
-    input: {
-        placeholder: inputPlaceholder,
-    },
     dropdown: {
         boxShadow,
         color,
@@ -71,11 +68,13 @@ const style = ({
         '& > input::placeholder': {
             userSelect: 'none',
             color: ({error, mode}) => error
-                ? inputPlaceholder.negative
-                : placeholder[mode],
+                ? placeholder[mode]?.negative
+                : placeholder[mode]?.default,
         },
     },
     placeholder: {
+        display: 'block',
+        color: ({mode}) => placeholder[mode]?.default,
         padding: 8,
     },
     

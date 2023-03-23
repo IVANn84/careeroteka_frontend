@@ -11,11 +11,13 @@ import Value from './components/Value';
  * @param {String?} className - Класс для стилей
  * @param {({id: *, name: (String | JSX.Element)} | {id: *, optionValue: (String | JSX.Element)})[]} options - Элементы списка
  * @param {String | JSX.Element} selectedValue - Выбранное значение
- * @param {*} selectedId - Выбранный id
+ * @param {*?} selectedId - Выбранный id (не обязательный, если есть checkIsSelected)
+ * @param {(function(Object): boolean)?} checkIsSelected - Проверка, выбран ли элемент (если нужна логика, отличная от сравнения id)
  * @param {'light' | 'primary'} mode=['primary'] - Стиль дропдауна
  * @param {Boolean} isDisabled - Заблокирован ли
  * @param {Boolean} isLoading - Загружается ли список (отображается прелоадер в списке)
  * @param {Boolean} isSearchable - Есть ли поиск по списку
+ * @param {Boolean} isRequired - Обязательное поле
  * @param {Boolean} isDisplayed - Отображается ли дропдаун
  * @param {String} placeholder - Плейсхолдер
  * @param {Function} onSelect - Функция, вызывающаяся при нажатии на элемент списка (передается объект, по которому нажали)
@@ -30,10 +32,12 @@ export default function Dropdown({
     options = [],
     selectedValue,
     selectedId,
+    checkIsSelected,
     isDisabled,
     isLoading = false,
     isSearchable,
     isDisplayed = true,
+    isRequired,
     placeholder,
     mode = 'light',
     
@@ -71,6 +75,7 @@ export default function Dropdown({
             )}
             <Value
                 isDisabled={isDisabled}
+                isRequired={isRequired}
                 error={error}
                 selectedValue={selectedValue}
                 isOpen={isOpen}
@@ -86,6 +91,7 @@ export default function Dropdown({
                     isReversedY={isReversedY}
                     options={options}
                     selectedId={selectedId}
+                    checkIsSelected={checkIsSelected}
                     isSearchable={isSearchable}
                     toggle={toggle}
                     onSelect={onSelect}

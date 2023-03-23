@@ -10,6 +10,7 @@ import ScrollToTop from 'Component/ScrollToTop';
 import ErrorBoundary from 'Component/ErrorBoundary';
 
 const Main = React.lazy(() => import('Page/Main'));
+const Survey = React.lazy(() => import('Page/Survey'));
 const Login = React.lazy(() => import('Page/Login'));
 const Profession = React.lazy(() => import('Page/Profession'));
 
@@ -32,6 +33,9 @@ function App() {
                                             path='/'
                                             exact
                                             component={Main}/>
+                                        <Route
+                                            path='/survey'
+                                            component={Survey}/>
                                         <Route
                                             path='/professions/:id(\d+)'
                                             component={Profession}/>

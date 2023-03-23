@@ -56,6 +56,7 @@ const style = ({button}) => ({
 const Component = withStyle(style)(Button);
 
 Component.propTypes = {
+    className: PropTypes.string,
     children: PropTypes.node.isRequired,
     variant: PropTypes.oneOf(['filled', 'outlined']),
     mode: PropTypes.oneOf(['light', 'dark', 'primary']),

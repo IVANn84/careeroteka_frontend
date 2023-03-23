@@ -9,9 +9,17 @@ export default function Option({
     
     classes,
 }) {
+    const onKeyDown = ({key}) => {
+        if (key === 'Enter') {
+            onSelect?.();
+        }
+    };
+    
     return (
         <div
             className={classes.container}
+            tabIndex={0}
+            onKeyDown={onKeyDown}
             onClick={onSelect}>
             <Typography
                 variant='B1'

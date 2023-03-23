@@ -1,7 +1,7 @@
 import {createContext, useContext} from 'react';
 
-import rootStore from './root';
+import {rootStoreLayoutComponent} from './root';
 
-export const StoreLayoutComponentContext = createContext(rootStore);
+export const StoreLayoutComponentContext = createContext(rootStoreLayoutComponent);
 
 export const useStoreLayoutComponent = () => useContext(StoreLayoutComponentContext);

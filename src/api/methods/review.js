@@ -10,6 +10,11 @@ class ReviewApi {
     FetchList(params) {
         return axiosWithConverter.get('/api/v1/reviews/', {params});
     }
+    
+    @Format
+    FetchTypesList() {
+        return axiosWithConverter.get('/api/v1/reviews_type/');
+    }
 }
 
 export default new ReviewApi();

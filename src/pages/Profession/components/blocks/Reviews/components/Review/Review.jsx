@@ -6,7 +6,7 @@ import accounting from 'accounting-big';
 import Typography from 'Component/Typography';
 
 function Review({
-    title,
+    name,
     value,
     classes,
 }) {
@@ -21,7 +21,7 @@ function Review({
                 variant='B1'
                 variantMobile='B2'
                 className={classes.rateTitle}>
-                {title}
+                {name}
             </Typography>
             <span className={classes.stars}>
                 {Array(Math.round(value)).fill(0)

@@ -1,7 +1,7 @@
 import React, {useRef} from 'react';
 import {ArrowRightIcon} from '@heroicons/react/24/solid';
 
-import ArticleList from 'Component/Articles';
+import ArticlesSlider from 'Component/ArticlesSlider';
 import Typography from 'Component/Typography';
 
 export default function Articles({
@@ -24,7 +24,7 @@ export default function Articles({
                         title='Дальше'/>
                 </div>
             </div>
-            <ArticleList buttonRightRef={$sliderButtonRight}/>
+            <ArticlesSlider buttonRightRef={$sliderButtonRight}/>
         </div>
     );
 }

@@ -18,6 +18,7 @@ import {correctToString} from 'Util/bigMath';
  * @param {Number?} precision - Максимальное кол-во цифр после запятой
  * @param {Boolean} hasAutoFocus - Авто-фокус
  * @param {Boolean} isDisplayed - Отображается ли поле
+ * @param {Boolean} isRequired - Обязательное поле
  * @param {String?} className - Класс для стилей
  * @param {Function?} onChange - Функция, вызывающаяся при изменении значения инпута
  * @param {Function?} onSubmit - Функция, вызывающаяся при нажатии Enter или кнопки поиска
@@ -232,25 +233,43 @@ export default function MoneyInput({
         onClear?.();
     };
     
+    const onKeyDown = fn => ({key}) => {
+        if (key === 'Enter') {
+            fn();
+        }
+    };
+    
     return (
         <div className={`${classes.container} ${className || ''}`}>
-            <div className={classes.input}>
-                <input
-                    ref={setSelectionToDOM}
-                    type='text'
-                    spellCheck='false'
-                    disabled={isDisabled}
-                    placeholder={placeholder}
-                    value={formattedValue(value)}
-                    onKeyDown={preventNumberShift}
-                    onChange={change}
-                    autoFocus={hasAutoFocus}/>
+            <div className={classes.wrapper}>
+                <div className={classes.input}>
+                    <input
+                        ref={setSelectionToDOM}
+                        type='text'
+                        spellCheck='false'
+                        autoCorrect='off'
+                        autoComplete='off'
+                        disabled={isDisabled}
+                        value={formattedValue(value)}
+                        onKeyDown={preventNumberShift}
+                        onChange={change}
+                        autoFocus={hasAutoFocus}/>
+                    {placeholder && (
+                        <span className={classes.placeholder}>{placeholder}</span>
+                    )}
+                </div>
                 <div className={classes.actions}>
                     {value !== null && isClearable && !isDisabled && (
-                        <XMarkIcon onClick={clear}/>
+                        <XMarkIcon
+                            tabIndex={0}
+                            onKeyDown={onKeyDown(clear)}
+                            onClick={clear}/>
                     )}
                     {isSearchable && (
-                        <MagnifyingGlassIcon onClick={search}/>
+                        <MagnifyingGlassIcon
+                            tabIndex={0}
+                            onKeyDown={onKeyDown(search)}
+                            onClick={search}/>
                     )}
                 </div>
             </div>

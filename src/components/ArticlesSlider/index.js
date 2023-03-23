@@ -1,7 +1,7 @@
 import {memo} from 'react';
 import withStyle from 'react-jss';
 
-import Articles from './Articles.jsx';
+import ArticlesSlider from './ArticlesSlider.jsx';
 
 const style = ({layout}) => ({
     slider: {
@@ -50,4 +50,4 @@ const style = ({layout}) => ({
     },
 });
 
-export default memo(withStyle(style)(Articles));
+export default memo(withStyle(style)(ArticlesSlider));

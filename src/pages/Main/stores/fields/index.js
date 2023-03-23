@@ -2,7 +2,7 @@ import {types} from 'mobx-state-tree';
 
 import actions from './actions';
 
-export const FieldsStore = types
+export const FieldsStoreModel = types
     .model('Fields', {
         searchProfession: types.maybeNull(types.string),
         areaId: types.maybeNull(types.number),
@@ -10,4 +10,4 @@ export const FieldsStore = types
     })
     .actions(actions);
 
-export default FieldsStore.create();
+export const fieldsStoreMainPage = FieldsStoreModel.create();

@@ -3,6 +3,7 @@ import React from 'react';
 import Typography from 'Component/Typography';
 
 export default function Button({
+    className,
     children,
     title,
     isDisabled = false,
@@ -14,7 +15,7 @@ export default function Button({
 }) {
     return isDisplayed && (
         <button
-            className={classes.button}
+            className={`${classes.button} ${className || ''}`}
             title={title}
             disabled={isDisabled}
             onClick={onClick}>

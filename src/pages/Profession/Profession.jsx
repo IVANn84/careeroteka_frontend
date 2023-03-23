@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useRef} from 'react';
 
 import Main from './components/blocks/Main';
 import Description from './components/blocks/Description';
@@ -35,9 +35,11 @@ export default function Profession({
         return reset;
     }, []);
     
+    const $survey = useRef(null);
+    
     return (
         <div className={classes.container}>
-            <Main/>
+            <Main $survey={$survey}/>
             <div className={classes.inlineBlocks}>
                 <Description/>
                 <AverageSalaries/>
@@ -52,7 +54,7 @@ export default function Profession({
                 <Courses/>
             )}
             <Reviews/>
-            <Survey/>
+            <Survey ref={$survey}/>
         </div>
     );
 }

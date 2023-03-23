@@ -7,24 +7,33 @@ export default function Value({
     selectedValue,
     placeholder,
     isDisabled,
+    isRequired,
     
     toggle,
     
     classes,
 }) {
-    const click = () => {
+    const onClick = () => {
         !isDisabled && toggle?.();
+    };
+    
+    const onKeyDown = ({key}) => {
+        if (key === 'Enter') {
+            onClick();
+        }
     };
     
     return (
         <div
             className={classes.container}
             tabIndex={0}
-            onClick={click}>
+            onKeyDown={onKeyDown}
+            onClick={onClick}>
             <Typography
                 variant='B1'
                 variantMobile='B2'>
                 {selectedValue || placeholder}
+                {!selectedValue && isRequired && <span className={classes.requireStar}>*</span>}
             </Typography>
             <ChevronDownIcon
                 className={classes.button}
@@ -32,4 +41,5 @@ export default function Value({
                 height={24}/>
         </div>
     );
+
 }

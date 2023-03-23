@@ -22,7 +22,7 @@ const articleList = [
     },
 ];
 
-export default function Articles({
+export default function ArticlesSlider({
     buttonRightRef,
     buttonLeftRef,
     currentArticleId,

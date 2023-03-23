@@ -12,6 +12,7 @@ import {MagnifyingGlassIcon, XMarkIcon} from '@heroicons/react/24/solid';
  * @param {Boolean} hasAutoFocus - Авто-фокус
  * @param {Number?} maxLength - Максимальная длина числа
  * @param {Boolean} isDisplayed - Отображается ли поле
+ * @param {Boolean} isRequired - Обязательное поле
  * @param {String?} className - Класс для стилей
  * @param {Function?} onChange - Функция, вызывающаяся при изменении значения инпута
  * @param {Function?} onSubmit - Функция, вызывающаяся при нажатии Enter или кнопки поиска
@@ -87,26 +88,44 @@ export default function NumberInput({
         onClear?.();
     };
     
+    const onKeyDown = fn => ({key}) => {
+        if (key === 'Enter') {
+            fn();
+        }
+    };
+    
     return (
         <div className={`${classes.container} ${className || ''}`}>
-            <div className={classes.input}>
-                <input
-                    ref={$input}
-                    type='text'
-                    spellCheck='false'
-                    disabled={isDisabled}
-                    placeholder={placeholder}
-                    value={toNumber(value)}
-                    onKeyDown={submit}
-                    onChange={change}
-                    autoFocus={hasAutoFocus}
-                    maxLength={maxLength}/>
+            <div className={classes.wrapper}>
+                <div className={classes.input}>
+                    <input
+                        ref={$input}
+                        type='text'
+                        spellCheck='false'
+                        autoCorrect='off'
+                        autoComplete='off'
+                        disabled={isDisabled}
+                        value={toNumber(value)}
+                        onKeyDown={submit}
+                        onChange={change}
+                        autoFocus={hasAutoFocus}
+                        maxLength={maxLength}/>
+                    {placeholder && (
+                        <span className={classes.placeholder}>{placeholder}</span>
+                    )}
+                </div>
                 <div className={classes.actions}>
                     {isClearable && !isDisabled && value && (
-                        <XMarkIcon onClick={clear}/>
+                        <XMarkIcon
+                            tabIndex={0}
+                            onKeyDown={onKeyDown(clear)}
+                            onClick={clear}/>
                     )}
                     {isSearchable && (
-                        <MagnifyingGlassIcon onClick={search}/>
+                        <MagnifyingGlassIcon
+                            tabIndex={0}
+                            onKeyDown={onKeyDown(search)}
+                            onClick={search}/>
                     )}
                 </div>
             </div>

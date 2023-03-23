@@ -2,7 +2,7 @@ import {types} from 'mobx-state-tree';
 
 import actions from './actions';
 
-export const User = types
+export const UserModel = types
     .model('User', {
         id: types.number,
         username: types.string,
@@ -11,13 +11,13 @@ export const User = types
         lastName: types.string,
     });
 
-export const RootStore = types
+export const RootStoreModel = types
     .model('Root', {
         isLoading: types.optional(types.boolean, true),
         error: types.maybeNull(types.string),
         isAuth: types.optional(types.boolean, false),
-        currentUser: types.maybeNull(User),
+        currentUser: types.maybeNull(UserModel),
     })
     .actions(actions);
 
-export default RootStore.create();
+export const rootStoreLayoutComponent = RootStoreModel.create();

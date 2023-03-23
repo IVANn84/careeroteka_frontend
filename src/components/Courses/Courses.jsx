@@ -1,8 +1,10 @@
 import React, {useRef} from 'react';
-import {Link} from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 import {StarIcon as FilledStar} from '@heroicons/react/24/solid';
 import {StarIcon as EmptyStar, HeartIcon} from '@heroicons/react/24/outline';
 import {getSnapshot} from 'mobx-state-tree';
+
+import {useStoreLayoutComponent} from 'Component/Layout/stores';
 
 import {useSlider} from 'Hook/useSlider';
 
@@ -14,10 +16,15 @@ export default function Courses({
     buttonLeftRef,
     courses = [],
     isLoading,
-    onClick,
     
     classes,
 }) {
+    const {
+        isAuth,
+    } = useStoreLayoutComponent();
+    
+    const history = useHistory();
+    
     const $slider = useRef(null);
     useSlider({
         $slider,
@@ -26,12 +33,24 @@ export default function Courses({
         slideList: getSnapshot(courses),
     });
     
-    const onLike = (event, id) => {
-        event.preventDefault();
-        
-        if (onClick) {
-            onClick(id);
+    const onClickCourse = id => {
+        if (!isAuth) {
+            return history.push('/registration');
         }
+        
+        window.open(`/courses/${id}`, '_blank');
+    };
+    
+    const onClickLike = (event, id) => {
+        event.preventDefault();
+        event.stopPropagation();
+    
+        if (!isAuth) {
+            return history.push('/registration');
+        }
+    
+        // eslint-disable-next-line no-console
+        console.log(id);
     };
     
     return (
@@ -51,15 +70,14 @@ export default function Courses({
                         rating,
                         type,
                     }) => (
-                        <Link
+                        <div
                             key={id}
-                            to={`/courses/${id}`}
-                            target='_blank'>
+                            onClick={() => onClickCourse(id)}>
                             <div className={classes.content}>
                                 <HeartIcon
                                     className={classes.like}
                                     fill='#FFF'
-                                    onClick={event => onLike(event, id)}/>
+                                    onClick={event => onClickLike(event, id)}/>
                                 <div
                                     className={classes.logo}
                                     style={{backgroundImage: `url(${image})`}}/>
@@ -93,7 +111,7 @@ export default function Courses({
                                     </div>
                                 </div>
                             </div>
-                        </Link>
+                        </div>
                     ))}
         </div>
     );

@@ -30,7 +30,6 @@ function TextsSkeleton({
                 <TextSkeleton/>
                 <TextSkeleton/>
                 <TextSkeleton/>
-                <TextSkeleton/>
             </>
         )
         : children;

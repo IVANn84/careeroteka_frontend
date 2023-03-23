@@ -1,8 +1,8 @@
 import withStyle from 'react-jss';
-
-import ProfessionList from './ProfessionList.jsx';
 import {observer} from 'mobx-react-lite';
 import {memo} from 'react';
+
+import ProfessionList from './ProfessionList.jsx';
 
 const style = ({font}) => ({
     container: {

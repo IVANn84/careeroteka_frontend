@@ -1,3 +1,5 @@
+const colorNegative = '#DB0000';
+
 export default {
     layout: {
         paddingX: {
@@ -96,7 +98,7 @@ export default {
             regular: '#1A1C1F',
             secondary: 'rgba(0, 0, 0, .6)',
             alternative: '#367CF3',
-            negative: '#EA4E1B',
+            negative: colorNegative,
         },
         weight: {
             normal: 400,
@@ -111,6 +113,7 @@ export default {
     },
     
     input: {
+        requireStarColor: '#DD657B',
         padding: {
             desktop: {
                 xAxis: 18,
@@ -124,29 +127,53 @@ export default {
         background: '#FFF',
         boxShadow: [[0, 8, 20, 2, 'rgba(0, 0, 0, .1)']],
         border: {
-            default: [[1, 'solid', 'rgba(0, 0, 0, .4)']],
-            negative: [[1, 'solid', '#EA4E1B']],
+            default: [[1, 'solid', 'rgba(26, 28, 31, .6)']],
+            filled: [[1, 'solid', '#1A1C1F']],
+            negative: [[1, 'solid', colorNegative]],
         },
         icon: {
             color: {
                 default: '#1A1C1F',
-                negative: '#EA4E1B',
+                negative: colorNegative,
             },
         },
         placeholder: {
-            default: 'rgba(0, 0, 0, .4)',
-            negative: 'rgba(250, 130, 130, .4)',
+            default: 'rgba(26, 28, 31, .6)',
+            negative: `${colorNegative}99`,
         },
     },
     
     dropdown: {
+        requireStarColor: '#DD657B',
+        padding: {
+            desktop: {
+                xAxis: 18,
+                yAxis: 18,
+            },
+            mobile: {
+                xAxis: 10,
+                yAxis: 17,
+            },
+        },
+        icon: {
+            color: {
+                default: '#1A1C1F',
+                negative: colorNegative,
+            },
+        },
         color: {
             light: '#1A1C1F',
             primary: '#FFF',
         },
         placeholder: {
-            light: 'rgba(0, 0, 0, .4)',
-            primary: 'rgba(255, 255, 255, .9)',
+            light: {
+                default: 'rgba(26, 28, 31, .6)',
+                negative: `${colorNegative}99`,
+            },
+            primary: {
+                default: 'rgba(255, 255, 255, .9)',
+                negative: `${colorNegative}99`,
+            },
         },
         spoiler: {
             color: {
@@ -155,9 +182,18 @@ export default {
             },
         },
         border: {
-            light: [[1, 'solid', 'rgba(0, 0, 0, .4)']],
-            regular: 'none',
+            light: {
+                default: [[1, 'solid', 'rgba(26, 28, 31, .6)']],
+                filled: [[1, 'solid', '#1A1C1F']],
+                negative: [[1, 'solid', colorNegative]],
+            },
+            primary: {
+                default: 'none',
+                filled: 'none',
+                negative: [[1, 'solid', colorNegative]],
+            },
         },
+        valueBoxShadow: [[0, 8, 20, 2, 'rgba(0, 0, 0, .1)']],
         boxShadow: {
             default: [[0, 20, 20, 2, 'rgba(0, 0, 0, .1)']],
             reversed: [[0, -20, 20, 2, 'rgba(0, 0, 0, .1)']],

@@ -29,6 +29,22 @@ export default self => ({
         self.currentUser = value;
     },
     
+    logout: flow(function * (after) {
+        self.setIsLoading(true);
+        
+        const {errors} = yield UserApi.Logout();
+        
+        if (errors) {
+            self.setError(errors.detail || 'Неизвестная ошибка');
+        } else {
+            self.setCurrentUser(null);
+            self.setIsAuth(false);
+            after();
+        }
+        
+        self.setIsLoading(false);
+    }),
+    
     fetchCurrentUser: flow(function * () {
         self.setIsLoading(true);
         

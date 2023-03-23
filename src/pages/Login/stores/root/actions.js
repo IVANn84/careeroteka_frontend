@@ -22,11 +22,20 @@ export default self => ({
     },
     
     login: flow(function * () {
+        const {
+            email,
+            password,
+        } = self.fieldsStore;
+        
+        if (!email || !password) {
+            return;
+        }
+    
         self.setIsLoading(true);
         
         const {errors} = yield UserApi.Login({
-            username: 'troexol',
-            password: '123qwe',
+            email,
+            password,
         });
         
         self.setIsLoading(false);

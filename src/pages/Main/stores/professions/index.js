@@ -2,20 +2,20 @@ import {types} from 'mobx-state-tree';
 
 import actions from './actions';
 
-const Profession = types.model('Profession', {
+const ProfessionModel = types.model('Profession', {
     id: types.number,
     name: types.string,
     salaryMinValue: types.number,
     countDirections: types.number,
 });
 
-export const ProfessionsStore = types
+export const ProfessionsStoreModel = types
     .model('Professions', {
         isLoading: types.optional(types.boolean, true),
         isLoadingNext: types.optional(types.boolean, false),
-        values: types.optional(types.array(Profession), []),
+        values: types.optional(types.array(ProfessionModel), []),
         nextPage: types.maybeNull(types.number),
     })
     .actions(actions);
 
-export default ProfessionsStore.create();
+export const professionsStoreMainPage = ProfessionsStoreModel.create();

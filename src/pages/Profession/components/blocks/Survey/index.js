@@ -1,6 +1,6 @@
 import withStyle from 'react-jss';
 import {observer} from 'mobx-react-lite';
-import {memo} from 'react';
+import {forwardRef, memo} from 'react';
 
 import Survey from './Survey.jsx';
 
@@ -49,4 +49,4 @@ const style = ({block}) => ({
     },
 });
 
-export default memo(withStyle(style)(observer(Survey)));
+export default memo(withStyle(style)(observer(forwardRef(Survey))));

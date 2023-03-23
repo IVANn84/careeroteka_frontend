@@ -2,6 +2,7 @@ import React, {Children, useState} from 'react';
 
 export default function Spoiler({
     children,
+    showNextButton = true,
     size,
     
     classes,
@@ -16,7 +17,7 @@ export default function Spoiler({
         return (
             <>
                 {Children.map(children, (child, index) => index < limit ? child : null)}
-                {length > limit
+                {showNextButton && length > limit
                     ? (
                         <div
                             className={classes.container}

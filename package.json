@@ -108,9 +108,9 @@
             "^Image": "./src/images\\1",
             "^Api": "./src/api/methods\\1",
             "^Mock": "./src/api/mock\\1",
-            "^Hook": "./src/api/hooks\\1",
-            "^Hoc": "./src/api/hoc\\1",
-            "^Theme": "./src/api/themes\\1"
+            "^Hook": "./src/hooks\\1",
+            "^Hoc": "./src/hoc\\1",
+            "^Theme": "./src/themes\\1"
           }
         }
       ]

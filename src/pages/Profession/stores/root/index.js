@@ -1,23 +1,23 @@
 import {types} from 'mobx-state-tree';
 
-import entityStore, {EntityStore} from '../entity';
-import fieldsStore, {FieldsStore} from '../fields';
-import directionsStore, {DirectionsStore} from '../directions';
-import gradesStore, {GradesStore} from '../grades';
+import {entityStoreProfessionPage, EntityStoreModel} from '../entity';
+import {fieldsStoreProfessionPage, FieldsStoreModel} from '../fields';
+import {directionsStoreProfessionPage, DirectionsStoreModel} from '../directions';
+import {gradesStoreProfessionPage, GradesStoreModel} from '../grades';
 import actions from './actions';
 
 export const RootStore = types
     .model('Root', {
-        entityStore: types.maybe(EntityStore),
-        fieldsStore: types.maybe(FieldsStore),
-        directionsStore: types.maybe(DirectionsStore),
-        gradesStore: types.maybe(GradesStore),
+        entityStore: types.maybe(EntityStoreModel),
+        fieldsStore: types.maybe(FieldsStoreModel),
+        directionsStore: types.maybe(DirectionsStoreModel),
+        gradesStore: types.maybe(GradesStoreModel),
     })
     .actions(actions);
 
-export default RootStore.create({
-    entityStore,
-    fieldsStore,
-    directionsStore,
-    gradesStore,
+export const rootStoreProfessionPage = RootStore.create({
+    entityStore: entityStoreProfessionPage,
+    fieldsStore: fieldsStoreProfessionPage,
+    directionsStore: directionsStoreProfessionPage,
+    gradesStore: gradesStoreProfessionPage,
 });
