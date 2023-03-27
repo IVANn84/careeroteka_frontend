@@ -1,5 +1,12 @@
 import {memo} from 'react';
+import PropTypes from 'prop-types';
 
 import Input from './Input.jsx';
 
-export default memo(Input);
+const Component = memo(Input);
+
+Component.propTypes = {
+    props: PropTypes.object,
+};
+
+export default Component;

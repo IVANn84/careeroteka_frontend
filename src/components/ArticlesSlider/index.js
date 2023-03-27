@@ -1,5 +1,6 @@
 import {memo} from 'react';
 import withStyle from 'react-jss';
+import PropTypes from 'prop-types';
 
 import ArticlesSlider from './ArticlesSlider.jsx';
 
@@ -50,4 +51,13 @@ const style = ({layout}) => ({
     },
 });
 
-export default memo(withStyle(style)(ArticlesSlider));
+const Component = memo(withStyle(style)(ArticlesSlider));
+
+Component.propTypes = {
+    buttonRightRef: PropTypes.node,
+    buttonLeftRef: PropTypes.node,
+    currentArticleId: PropTypes.number,
+    classes: PropTypes.object,
+};
+
+export default Component;

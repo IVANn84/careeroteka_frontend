@@ -1,4 +1,5 @@
 import withStyle from 'react-jss';
+import PropTypes from 'prop-types';
 
 import Option from './Option.jsx';
 
@@ -23,4 +24,12 @@ const style = ({
     },
 });
 
-export default withStyle(style)(Option);
+const Component = withStyle(style)(Option);
+
+Component.propTypes = {
+    value: PropTypes.string,
+    onSelect: PropTypes.func,
+    classes: PropTypes.object,
+};
+
+export default Component;

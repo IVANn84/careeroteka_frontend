@@ -1,5 +1,6 @@
 import {memo} from 'react';
 import withStyle from 'react-jss';
+import PropTypes from 'prop-types';
 
 import DropdownWrapper from './Dropdown.jsx';
 
@@ -24,4 +25,37 @@ export const dropdownStyle = ({font}) => ({
     },
 });
 
-export default memo(withStyle(dropdownStyle)(DropdownWrapper));
+const Component = memo(withStyle(dropdownStyle)(DropdownWrapper));
+
+Component.propTypes = {
+    maxHeight: PropTypes.number,
+    error: PropTypes.string,
+    className: PropTypes.object,
+    options: PropTypes.array,
+    selectedValue: PropTypes.string,
+    selectedId: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number,
+    ]),
+    checkIsSelected: PropTypes.func,
+    isDisabled: PropTypes.bool,
+    isLoading: PropTypes.bool,
+    isSearchable: PropTypes.bool,
+    isDisplayed: PropTypes.bool,
+    isRequired: PropTypes.bool,
+    placeholder: PropTypes.string,
+    mode: PropTypes.oneOf(['light', 'primary']),
+    onSelect: PropTypes.func,
+    classes: PropTypes.object,
+};
+
+Component.defaultProps = {
+    maxHeight: 300,
+    options: [],
+    isLoading: false,
+    isDisplayed: true,
+    mode: 'light',
+};
+
+
+export default Component;

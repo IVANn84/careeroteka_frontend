@@ -1,4 +1,5 @@
 import withStyle from 'react-jss';
+import PropTypes from 'prop-types';
 
 import Menu from './Menu.jsx';
 
@@ -86,4 +87,29 @@ const style = ({
     },
 });
 
-export default withStyle(style)(Menu);
+const Component = withStyle(style)(Menu);
+
+Component.propTypes = {
+    spoilerSize: PropTypes.number,
+    options: PropTypes.object,
+    selectedId: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number,
+    ]),
+    checkIsSelected: PropTypes.func,
+    isOpen: PropTypes.bool,
+    isLoading: PropTypes.bool,
+    isSearchable: PropTypes.bool,
+    closeOnSelect: PropTypes.bool,
+    mode: PropTypes.oneOf(['light', 'primary']),    
+    onSelect: PropTypes.func,
+    toggle: PropTypes.func,
+    classes: PropTypes.object,
+};
+
+Component.defaultProps = {
+    spoilerSize: 50,
+    closeOnSelect: true,
+};
+
+export default Component;
