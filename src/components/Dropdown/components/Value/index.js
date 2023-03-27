@@ -1,4 +1,5 @@
 import withStyle from 'react-jss';
+import PropTypes from 'prop-types';
 
 import Value from './Value.jsx';
 
@@ -98,4 +99,15 @@ const style = ({
     },
 });
 
-export default withStyle(style)(Value);
+const Component = withStyle(style)(Value);
+
+Component.propTypes = {
+    selectedValue: PropTypes.string,
+    placeholder: PropTypes.string,
+    isDisabled: PropTypes.bool,
+    isRequired: PropTypes.bool,   
+    toggle: PropTypes.func,
+    classes: PropTypes.object,
+};
+
+export default Component;

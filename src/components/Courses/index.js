@@ -1,5 +1,6 @@
 import withStyle from 'react-jss';
 import {memo} from 'react';
+import PropTypes from 'prop-types';
 
 import Courses from './Courses.jsx';
 
@@ -137,4 +138,18 @@ const style = ({font}) => ({
     },
 });
 
-export default memo(withStyle(style)(Courses));
+const Component = memo(withStyle(style)(Courses));
+
+Component.propTypes = {
+    buttonRightRef: PropTypes.node,
+    buttonLeftRef: PropTypes.node,
+    courses: PropTypes.array,
+    isLoading: PropTypes.bool,
+    classes: PropTypes.object,
+};
+
+Component.defaultProps = {
+    courses: [],
+};
+
+export default Component;

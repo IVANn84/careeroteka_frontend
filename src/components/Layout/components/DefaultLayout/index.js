@@ -1,5 +1,6 @@
 import withStyle from 'react-jss';
 import {observer} from 'mobx-react-lite';
+import PropTypes from 'prop-types';
 
 import DefaultLayout from './DefaultLayout.jsx';
 
@@ -24,4 +25,11 @@ const style = ({layout}) => ({
     },
 });
 
-export default withStyle(style)(observer(DefaultLayout));
+const Component = withStyle(style)(observer(DefaultLayout));
+
+Component.propTypes = {
+    children: PropTypes.node.isRequired,
+    classes: PropTypes.object,
+};
+
+export default Component;
