@@ -6,7 +6,8 @@ import BarChart from './BarChart.jsx';
 const Component = memo(BarChart);
 
 Component.propTypes = {
-    data: PropTypes.node,
+    // https://www.chartjs.org/docs/latest/general/data-structures.html
+    data: PropTypes.object,
     options: PropTypes.object,
     yMin: PropTypes.number,
 };

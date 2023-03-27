@@ -37,7 +37,6 @@ Component.propTypes = {
     children: PropTypes.node.isRequired,
     quantity: PropTypes.number,
     expandText: PropTypes.string,
-    isShowPart: PropTypes.bool,
 };
 
 Component.defaultProps = {
