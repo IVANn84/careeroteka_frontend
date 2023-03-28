@@ -18,6 +18,12 @@ import HintMenu from '../HintMenu';
  * @param {Function?} onChange - Функция, вызывающаяся при изменении значения инпута
  * @param {Function?} onSubmit - Функция, вызывающаяся при нажатии Enter или кнопки поиска
  * @param {Function?} onClear - Функция, вызывающаяся при нажатии на кнопку очищения
+ * @param {Number?} hintMaxHeight - Максимальная высота подсказки
+ * @param {Object[]?} hintOptions - Список опций для подсказки
+ * @param {String?} hintPlaceholder - Плейсхолдер для подсказки
+ * @param {Boolean?} hintIsLoading - Загружается ли подсказка
+ * @param {Function?} onHintSelect - Функция, вызывающаяся при выборе опции подсказки
+ * @param {Boolean?} hasHint - Есть ли подсказка
  * @param {Object} classes
  * @returns {JSX.Element}
  */

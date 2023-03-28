@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import {useLocation} from 'react-router';
 
+// Прокручивание страницы до верха при рендере
 const ScrollToTop = ({children}) => {
     const location = useLocation();
     

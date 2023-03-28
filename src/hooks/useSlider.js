@@ -1,5 +1,12 @@
 import {useEffect} from 'react';
 
+/**
+ *
+ * @param $slider - Рефка блока слайдера
+ * @param $sliderButtonLeft - Рефка кнопки пролистать влево
+ * @param $sliderButtonRight - Рефка кнопки пролистать вправо
+ * @param {Array} slideList - Список элементов
+ */
 export function useSlider({
     $slider,
     $sliderButtonLeft = null,

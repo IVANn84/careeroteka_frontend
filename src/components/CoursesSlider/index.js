@@ -2,7 +2,7 @@ import withStyle from 'react-jss';
 import {memo} from 'react';
 import PropTypes from 'prop-types';
 
-import Courses from './Courses.jsx';
+import CoursesSlider from './CoursesSlider.jsx';
 
 const style = ({font}) => ({
     slider: {
@@ -138,11 +138,12 @@ const style = ({font}) => ({
     },
 });
 
-const Component = memo(withStyle(style)(Courses));
+// Слайдер курсов
+const Component = memo(withStyle(style)(CoursesSlider));
 
 Component.propTypes = {
-    buttonRightRef: PropTypes.node,
-    buttonLeftRef: PropTypes.node,
+    buttonRightRef: PropTypes.shape({current: PropTypes.instanceOf(Element)}),
+    buttonLeftRef: PropTypes.shape({current: PropTypes.instanceOf(Element)}),
     courses: PropTypes.array,
     isLoading: PropTypes.bool,
     classes: PropTypes.object,

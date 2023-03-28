@@ -1,5 +1,6 @@
-import Icon from './Icon.jsx';
 import PropTypes from 'prop-types';
+
+import Icon from './Icon.jsx';
 
 Icon.propTypes = {
     name: PropTypes.oneOf(['vk', 'telegram']),

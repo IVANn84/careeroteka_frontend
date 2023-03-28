@@ -2,13 +2,7 @@ import React from 'react';
 
 import svgs from './svgs';
 
-/**
- * Иконка
- * @param {String} name - Название
- * @param {Number} size - Размер
- * @param props
- * @returns {JSX.Element}
- */
+// Иконка
 export default function Icon({
     name,
     size = 32,

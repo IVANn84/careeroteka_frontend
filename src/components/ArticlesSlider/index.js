@@ -51,11 +51,12 @@ const style = ({layout}) => ({
     },
 });
 
+// Слайдер статей
 const Component = memo(withStyle(style)(ArticlesSlider));
 
 Component.propTypes = {
-    buttonRightRef: PropTypes.node,
-    buttonLeftRef: PropTypes.node,
+    buttonRightRef: PropTypes.shape({current: PropTypes.instanceOf(Element)}),
+    buttonLeftRef: PropTypes.shape({current: PropTypes.instanceOf(Element)}),
     currentArticleId: PropTypes.number,
     classes: PropTypes.object,
 };

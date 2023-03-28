@@ -2,8 +2,8 @@ import React from 'react';
 
 export default function Typography({
     children,
-    isDisplayed,
-    component,
+    isDisplayed = true,
+    component = 'span',
     className,
     /* eslint-disable no-unused-vars */
     variant,

@@ -91,7 +91,7 @@ const Component = withStyle(style)(Menu);
 
 Component.propTypes = {
     spoilerSize: PropTypes.number,
-    options: PropTypes.object,
+    options: PropTypes.array,
     selectedId: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.number,
@@ -101,7 +101,11 @@ Component.propTypes = {
     isLoading: PropTypes.bool,
     isSearchable: PropTypes.bool,
     closeOnSelect: PropTypes.bool,
-    mode: PropTypes.oneOf(['light', 'primary']),    
+    error: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.bool,
+    ]),
+    mode: PropTypes.oneOf(['light', 'primary']),
     onSelect: PropTypes.func,
     toggle: PropTypes.func,
     classes: PropTypes.object,

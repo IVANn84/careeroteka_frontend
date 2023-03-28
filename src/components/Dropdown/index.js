@@ -25,18 +25,26 @@ export const dropdownStyle = ({font}) => ({
     },
 });
 
+// Выпадающий список
 const Component = memo(withStyle(dropdownStyle)(DropdownWrapper));
 
 Component.propTypes = {
+    // Максимальная высота открывающегося списка
     maxHeight: PropTypes.number,
-    error: PropTypes.string,
-    className: PropTypes.object,
-    options: PropTypes.array,
+    error: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+    className: PropTypes.string,
+    // Кол-во изначально отображающихся элементов в списке (на бОльшее кол-во будет выводиться "И еще {кол-во} ...")
+    spoilerSize: PropTypes.number,
+    // Элементы списка
+    options: PropTypes.array.isRequired,
+    // Выбранное значение
     selectedValue: PropTypes.string,
+    // Необязательный, если есть checkIsSelected
     selectedId: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.number,
     ]),
+    // Проверка, выбран ли элемент (если нужна логика, отличная от сравнения id)
     checkIsSelected: PropTypes.func,
     isDisabled: PropTypes.bool,
     isLoading: PropTypes.bool,
@@ -45,7 +53,7 @@ Component.propTypes = {
     isRequired: PropTypes.bool,
     placeholder: PropTypes.string,
     mode: PropTypes.oneOf(['light', 'primary']),
-    onSelect: PropTypes.func,
+    onSelect: PropTypes.func.isRequired,
     classes: PropTypes.object,
 };
 
@@ -56,6 +64,5 @@ Component.defaultProps = {
     isDisplayed: true,
     mode: 'light',
 };
-
 
 export default Component;

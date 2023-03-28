@@ -1,3 +1,8 @@
-export function isObject(item) {
-    return (item && typeof item === 'object' && !Array.isArray(item));
+/**
+ * Проверка на объект
+ * @param {*} value
+ * @return {boolean}
+ */
+export function isObject(value) {
+    return (value && typeof value === 'object' && !Array.isArray(value));
 }

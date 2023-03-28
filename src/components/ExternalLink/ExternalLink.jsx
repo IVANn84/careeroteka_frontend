@@ -1,5 +1,6 @@
 import React from 'react';
 
+// Внешняя ссылка
 export default function ExternalLink({
     to,
     children,

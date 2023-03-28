@@ -1,5 +1,11 @@
 import {isObject} from 'Util/isObject';
 
+/**
+ * Глубокое слияние объектов
+ * @param {Object} target - Объект для слияния
+ * @param {Object[] | Object} sources - Объекты для слияния
+ * @return {Object}
+ */
 export function objectDeepMerge(target, ...sources) {
     if (!sources.length) {
         return target;

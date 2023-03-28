@@ -27,7 +27,7 @@ const style = ({
 const Component = withStyle(style)(Option);
 
 Component.propTypes = {
-    value: PropTypes.string,
+    value: PropTypes.node,
     onSelect: PropTypes.func,
     classes: PropTypes.object,
 };

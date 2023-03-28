@@ -31,6 +31,7 @@ export const Style = ({font}) => ({
     },
 });
 
+// Свернуть/развернуть длинный текст или список
 const Component = memo(withStyle(Style)(LinkDropdown));
 
 Component.propTypes = {
