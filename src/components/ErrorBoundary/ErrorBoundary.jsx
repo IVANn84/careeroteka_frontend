@@ -2,6 +2,7 @@ import React from 'react';
 
 import Typography from 'Component/Typography';
 
+// Отлов ошибок в приложении
 class ErrorBoundary extends React.Component {
     constructor(props) {
         super(props);

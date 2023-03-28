@@ -21,6 +21,7 @@ const style = ({typography}) => ({
     },
 });
 
+// Типография
 const Component = withStyle(style)(Typography);
 
 Component.propTypes = {
@@ -61,8 +62,6 @@ Component.propTypes = {
 Component.defaultProps = {
     isDisplayed: true,
     component: 'span',
-    weight: 'regular',
-    weightMobile: 'regular',
 };
 
 export default Component;

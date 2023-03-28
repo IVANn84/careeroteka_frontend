@@ -25,10 +25,14 @@ const style = ({layout}) => ({
     },
 });
 
+// Основной лейаут
 const Component = withStyle(style)(observer(DefaultLayout));
 
 Component.propTypes = {
-    children: PropTypes.node.isRequired,
+    children: PropTypes.oneOfType([
+        PropTypes.node,
+        PropTypes.func,
+    ]).isRequired,
     classes: PropTypes.object,
 };
 

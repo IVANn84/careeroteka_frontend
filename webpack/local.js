@@ -7,7 +7,7 @@ const backend = argv.backend || 'http://130.193.50.229';
 const port = argv.port || 3000;
 
 module.exports = merge(base, {
-    devtool: 'eval-cheap-module-source-map',
+    devtool: 'eval-source-map',
     devServer: {
         clientLogLevel: 'warning',
         historyApiFallback: {

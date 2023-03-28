@@ -1,5 +1,6 @@
-import ExternalLink from './ExternalLink.jsx';
 import PropTypes from 'prop-types';
+
+import ExternalLink from './ExternalLink.jsx';
 
 ExternalLink.propTypes = {
     to: PropTypes.string,

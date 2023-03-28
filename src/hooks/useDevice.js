@@ -6,6 +6,10 @@ function getDeviceType() {
         : 'desktop';
 }
 
+/**
+ * Получение типа устройства
+ * @return {'mobile' | 'desktop'}
+ */
 export function useDevice() {
     const [device, setDevice] = useState(getDeviceType());
     

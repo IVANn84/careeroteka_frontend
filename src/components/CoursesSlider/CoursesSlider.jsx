@@ -11,7 +11,7 @@ import {useSlider} from 'Hook/useSlider';
 import Typography from 'Component/Typography';
 import ListSkeleton from './components/ListSkeleton';
 
-export default function Courses({
+export default function CoursesSlider({
     buttonRightRef,
     buttonLeftRef,
     courses = [],

@@ -40,6 +40,7 @@ const style = {
     },
 };
 
+// Прелоадер в виде крутилки
 const Component = withStyle(style)(Preloader);
 
 Component.propTypes = {

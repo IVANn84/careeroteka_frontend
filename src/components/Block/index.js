@@ -21,6 +21,7 @@ const style = ({block}) => ({
     },
 });
 
+// Обертка блока на странице
 const Component = withStyle(style)(Block);
 
 Component.propTypes = {

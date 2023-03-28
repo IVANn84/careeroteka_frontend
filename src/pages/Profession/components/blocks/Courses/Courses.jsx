@@ -3,7 +3,7 @@ import {ArrowRightIcon} from '@heroicons/react/24/solid';
 
 import {useStoreProfessionPage} from 'Page/Profession/stores';
 
-import CoursesList from 'Component/Courses';
+import CoursesList from 'Component/CoursesSlider';
 import Block from 'Component/Block';
 import Typography from 'Component/Typography';
 

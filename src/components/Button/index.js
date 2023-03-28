@@ -53,6 +53,7 @@ const style = ({button}) => ({
     },
 });
 
+// Кнопка
 const Component = withStyle(style)(Button);
 
 Component.propTypes = {
