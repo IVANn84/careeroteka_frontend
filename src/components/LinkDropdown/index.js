@@ -19,14 +19,14 @@ export const Style = ({font}) => ({
             right: 1,
             bottom: -2,
             height: 2,
-            width: '90%',
+            width: '100%',
             margin: 'auto',
             background: font.color.alternative,
             transition: 'width .2s',
         },
         
         '&:hover::after, &:focus-visible::after': {
-            width: '100%',
+            width: '90%',
         },
     },
 });

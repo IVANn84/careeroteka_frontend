@@ -33,7 +33,9 @@ export default function CoursesSlider({
     } = useStoreCoursesSliderComponent();
     
     useEffect(() => {
-        fetchLikeList();
+        if (isAuth) {
+            fetchLikeList();
+        }
         return reset;
     }, []);
     

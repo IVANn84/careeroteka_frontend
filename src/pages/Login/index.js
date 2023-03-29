@@ -42,14 +42,14 @@ const style = {
             right: 1,
             bottom: -2,
             height: 1,
-            width: '90%',
+            width: '100%',
             margin: 'auto',
             background: '#000',
             transition: 'width .2s',
         },
         
         '&:hover::after, &:focus-visible::after': {
-            width: '100%',
+            width: '90%',
         },
     },
     
