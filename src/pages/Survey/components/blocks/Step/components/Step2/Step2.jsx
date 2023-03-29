@@ -3,8 +3,7 @@ import React, {useEffect} from 'react';
 import Button from 'Component/Button';
 import Typography from 'Component/Typography';
 import Input from 'Component/Input';
-import Dropdown from 'Component/Dropdown';
-import DirectionList from './components/DirectionList';
+import AreaList from './components/AreaList';
 
 import {useStoreSurveyPage} from 'Page/Survey/stores';
 
@@ -14,15 +13,14 @@ export default function Step2({
     const {
         setStep,
         stepsStore,
-        gradesStore,
-        directionsStore,
+        areasStore,
     } = useStoreSurveyPage();
     
     useEffect(() => {
-        gradesStore.fetchGrades();
+        areasStore.fetchAreas();
         return () => {
             stepsStore.clearSupportData();
-            directionsStore.setValues([]);
+            areasStore.setValues([]);
         };
     }, []);
     
@@ -44,26 +42,14 @@ export default function Step2({
                         профессии.
                     </Typography>
                 </div>
-                <div className={classes.inputs}>
-                    <Input
-                        className={classes.directionSearchInput}
-                        type='text'
-                        isClearable
-                        value={stepsStore.supportData.directionSearch}
-                        placeholder='Поиск по направлению'
-                        onChange={stepsStore.setSupportDirectionSearch}/>
-                    <Dropdown
-                        className={classes.gradesDropdown}
-                        mode='primary'
-                        placeholder='Выберите грейд'
-                        error={stepsStore.errors.step_1.grade}
-                        options={gradesStore.values}
-                        isDisabled={gradesStore.isLoading}
-                        checkIsSelected={({name}) => name === stepsStore.stepsData[2].grade}
-                        selectedValue={stepsStore.stepsData[2].grade}
-                        onSelect={({name}) => stepsStore.setStepData(2, 'grade', name)}/>
-                </div>
-                <DirectionList/>
+                <Input
+                    className={classes.areaSearchInput}
+                    type='text'
+                    isClearable
+                    value={stepsStore.supportData.areaSearch}
+                    placeholder='Поиск по направлению'
+                    onChange={stepsStore.setSupportAreaSearch}/>
+                <AreaList/>
             </div>
             <div className={classes.actions}>
                 <Button

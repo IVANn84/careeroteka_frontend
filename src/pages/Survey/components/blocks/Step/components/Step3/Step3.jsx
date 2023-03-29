@@ -17,6 +17,7 @@ export default function Step3({
     } = useStoreSurveyPage();
     
     useEffect(() => {
+        skillsStore.fetchSkills();
         return () => {
             stepsStore.clearSupportData();
             skillsStore.setValues([]);

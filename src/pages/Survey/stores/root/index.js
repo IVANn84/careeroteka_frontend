@@ -4,8 +4,7 @@ import actions from './actions';
 
 import {stepsStoreSurveyPage, StepsStoreModel} from '../steps';
 import {citiesStoreSurveyPage, CitiesStoreModel} from '../cities';
-import {gradesStoreSurveyPage, GradesStoreModel} from '../grades';
-import {directionsStoreSurveyPage, DirectionsStoreModel} from '../directions';
+import {areasStoreSurveyPage, AreasStoreModel} from '../areas';
 import {skillsStoreSurveyPage, SkillsStoreModel} from '../skills';
 
 export const RootStore = types
@@ -13,8 +12,7 @@ export const RootStore = types
         step: types.optional(types.number, 0),
         stepsStore: types.maybe(StepsStoreModel),
         citiesStore: types.maybe(CitiesStoreModel),
-        gradesStore: types.maybe(GradesStoreModel),
-        directionsStore: types.maybe(DirectionsStoreModel),
+        areasStore: types.maybe(AreasStoreModel),
         skillsStore: types.maybe(SkillsStoreModel),
     })
     .actions(actions);
@@ -22,7 +20,6 @@ export const RootStore = types
 export const rootStoreSurveyPage = RootStore.create({
     stepsStore: stepsStoreSurveyPage,
     citiesStore: citiesStoreSurveyPage,
-    gradesStore: gradesStoreSurveyPage,
-    directionsStore: directionsStoreSurveyPage,
+    areasStore: areasStoreSurveyPage,
     skillsStore: skillsStoreSurveyPage,
 });

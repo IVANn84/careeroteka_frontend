@@ -3,10 +3,10 @@ import {XMarkIcon} from '@heroicons/react/24/outline';
 
 import Typography from 'Component/Typography';
 
-export default function Direction({
-    direction,
+export default function Area({
+    areaName,
     
-    removeDirection,
+    removeArea,
     onSelect,
     
     classes,
@@ -19,14 +19,14 @@ export default function Direction({
                 className={classes.title}
                 variant='B1'
                 variantMobile='B2'>
-                {direction}
+                {areaName}
             </Typography>
-            {removeDirection && (
+            {removeArea && (
                 <XMarkIcon
                     className={classes.removeButton}
                     width={25}
                     height={25}
-                    onClick={removeDirection}/>
+                    onClick={removeArea}/>
             )}
         </div>
     );

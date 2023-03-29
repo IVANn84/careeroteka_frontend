@@ -7,7 +7,7 @@ import ReviewApi from 'Api/review';
 
 import {rootStoreLayoutComponent} from 'Component/Layout/stores/root';
 
-const debouncedFetchDirections = debounce(self => getParent(self).directionsStore.fetchDirections(), 300);
+const debouncedFetchAreas = debounce(self => getParent(self).areasStore.fetchAreas(), 300);
 const debouncedFetchSkills = debounce(self => getParent(self).skillsStore.fetchSkills(), 300);
 
 export default self => ({
@@ -29,10 +29,10 @@ export default self => ({
         });
     },
     
-    setSupportDirectionSearch(value) {
-        self.supportData.directionSearch = value;
-        
-        debouncedFetchDirections(self);
+    setSupportAreaSearch(value) {
+        self.supportData.areaSearch = value;
+    
+        debouncedFetchAreas(self);
     },
     
     setSupportSkillSearch(value) {
@@ -105,7 +105,7 @@ export default self => ({
                 
                 if (data) {
                     self.setIsEditData(true);
-                    if (step !== 4) {                     
+                    if (step !== 4) {
                         applySnapshot(self.stepsData[step], data);
                     }
                 }
@@ -131,16 +131,16 @@ export default self => ({
         }
     }),
     
-    saveStepData(step) {
+    saveStepData: flow(function * (step) {
         const data = self.stepsData[step];
     
         if (step > 0) {
             if (rootStoreLayoutComponent.isAuth) {
                 // Сохраняем на бэке
                 if (self.isEditData) {
-                    SurveyApi.EditStep(1, `step_${step}`, data);
+                    yield SurveyApi.EditStep(1, `step_${step}`, data);
                 } else {
-                    SurveyApi.SaveStep(1, `step_${step}`, data);
+                    yield SurveyApi.SaveStep(1, `step_${step}`, data);
                 }
             } else {
                 // Сохраняем в localStorage
@@ -149,5 +149,5 @@ export default self => ({
                 localStorage.setItem('survey1StepsData', JSON.stringify(savedData));
             }
         }
-    },
+    }),
 });
