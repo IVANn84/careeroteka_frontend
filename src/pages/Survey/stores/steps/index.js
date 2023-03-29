@@ -13,7 +13,7 @@ export const ReviewTypeModel = types.model('ReviewType', {
 });
 
 export const SupportDataModel = types.model('SupportData', {
-    directionSearch: types.maybeNull(types.string),
+    areaSearch: types.maybeNull(types.string),
     skillSearch: types.maybeNull(types.string),
 });
 
@@ -26,8 +26,7 @@ export const Step1Model = types.model('Step1', {
 });
 
 export const Step2Model = types.model('Step2', {
-    direction: types.maybeNull(types.string),
-    grade: types.maybeNull(types.string),
+    area: types.maybeNull(types.string),
 });
 
 export const StepsDataModel = types.model('StepsData', {
@@ -46,8 +45,7 @@ export const ErrorsModel = types.model('Errors', {
         link: types.maybeNull(types.string),
     }), {}),
     step_2: types.optional(types.model({
-        direction: types.maybeNull(types.string),
-        grade: types.maybeNull(types.string),
+        area: types.maybeNull(types.string),
     }), {}),
     step_3: types.maybeNull(types.string),
     step_4: types.maybeNull(types.string),

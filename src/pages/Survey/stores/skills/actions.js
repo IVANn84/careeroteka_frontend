@@ -14,19 +14,14 @@ export default self => ({
     fetchSkills: flow(function * () {
         const search = getParent(self).stepsStore.supportData.skillSearch;
         
-        if (!search) {
-            self.setValues([]);
-            return;
-        }
-        
         self.setIsLoading(true);
     
-        const {data, errors} = yield SurveyApi.FetchSkillList({search});
+        const {data, errors} = yield SurveyApi.FetchSkillList({search, limit: 11});
     
         if (errors) {
             //TODO: сделать нормальную обработку ошибок
         } else {
-            self.setValues(data);
+            self.setValues(data.results);
         }
         
         self.setIsLoading(false);

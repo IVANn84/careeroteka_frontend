@@ -15,15 +15,15 @@ export default self => ({
         applySnapshot(self, initialState);
     },
     
-    setStep(value) {
+    setStep: flow(function * (value) {
         const prevStep = self.step;
         self.step = value;
         
         // Сохранение нужно вызывать перед загрузкой, тк в сохранении используются переменные,
         // которые перезатираются в загрузке
-        self.stepsStore.saveStepData(prevStep);
+        yield self.stepsStore.saveStepData(prevStep);
         self.stepsStore.fetchStepData();
-    },
+    }),
     
     completeSurvey: flow(function * () {
         const data = {

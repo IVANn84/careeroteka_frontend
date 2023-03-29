@@ -8,7 +8,7 @@ export default self => ({
                     && self.stepsData[step].position;
                 
             case 2:
-                return self.stepsData[step].direction && self.stepsData[step].grade;
+                return self.stepsData[step].area;
                 
             case 3:
                 return self.stepsData[step].length;

@@ -29,20 +29,9 @@ const style = {
         maxWidth: '70%',
         marginBottom: 90,
     },
-    inputs: {
-        display: 'flex',
-        justifyContent: 'center',
-        marginBottom: 40,
-        
-        '& > *:not(:last-child)': {
-            marginRight: 20,
-        },
-    },
-    directionSearchInput: {
+    areaSearchInput: {
+        margin: [0, 'auto', 40, 'auto'],
         width: 470,
-    },
-    gradesDropdown: {
-        minWidth: 300,
     },
     actions: {
         marginLeft: 'auto',

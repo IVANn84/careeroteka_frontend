@@ -2,7 +2,7 @@ import withStyle from 'react-jss';
 import {observer} from 'mobx-react-lite';
 import {memo} from 'react';
 
-import DirectionList from './DirectionList.jsx';
+import AreaList from './AreaList.jsx';
 
 const style = {
     container: {
@@ -12,4 +12,4 @@ const style = {
     },
 };
 
-export default memo(withStyle(style)(observer(DirectionList)));
+export default memo(withStyle(style)(observer(AreaList)));
