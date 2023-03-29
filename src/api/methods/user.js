@@ -1,6 +1,7 @@
 import {axiosWithConverter} from '../axiosWithConverter';
 
 import Format from '../intercepters/format';
+import RequireAuth from '../intercepters/requireAuth';
 
 class UserApi {
     @Format
@@ -8,6 +9,7 @@ class UserApi {
         return axiosWithConverter.post('/api/v1/login/', params);
     }
     
+    @RequireAuth
     @Format
     Logout() {
         return axiosWithConverter.get('/api/v1/logout/');

@@ -1,10 +1,11 @@
-import React, {useRef} from 'react';
+import React, {useEffect, useRef} from 'react';
 import {useHistory} from 'react-router-dom';
 import {StarIcon as FilledStar} from '@heroicons/react/24/solid';
 import {StarIcon as EmptyStar, HeartIcon} from '@heroicons/react/24/outline';
 import {getSnapshot} from 'mobx-state-tree';
 
 import {useStoreLayoutComponent} from 'Component/Layout/stores';
+import {useStoreCoursesSliderComponent} from './stores';
 
 import {useSlider} from 'Hook/useSlider';
 
@@ -22,6 +23,19 @@ export default function CoursesSlider({
     const {
         isAuth,
     } = useStoreLayoutComponent();
+    
+    const {
+        likeList,
+        toggleLike,
+        fetchLikeList,
+        isLoadingLike,
+        reset,
+    } = useStoreCoursesSliderComponent();
+    
+    useEffect(() => {
+        fetchLikeList();
+        return reset;
+    }, []);
     
     const history = useHistory();
     
@@ -45,12 +59,15 @@ export default function CoursesSlider({
         event.preventDefault();
         event.stopPropagation();
     
+        if (isLoadingLike.get(id)) {
+            return;
+        }
+        
         if (!isAuth) {
             return history.push('/registration');
         }
-    
-        // eslint-disable-next-line no-console
-        console.log(id);
+        
+        toggleLike(id);
     };
     
     return (
@@ -76,7 +93,13 @@ export default function CoursesSlider({
                             <div className={classes.content}>
                                 <HeartIcon
                                     className={classes.like}
-                                    fill='#FFF'
+                                    fill={
+                                        isLoadingLike.get(id)
+                                            ? 'gray'
+                                            : likeList.some(item => item.course === id)
+                                                ? 'red'
+                                                : '#FFF'
+                                }
                                     onClick={event => onClickLike(event, id)}/>
                                 <div
                                     className={classes.logo}
