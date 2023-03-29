@@ -1,6 +1,7 @@
 import withStyle from 'react-jss';
 import {memo} from 'react';
 import PropTypes from 'prop-types';
+import {observer} from 'mobx-react-lite';
 
 import CoursesSlider from './CoursesSlider.jsx';
 
@@ -82,10 +83,11 @@ const style = ({font}) => ({
         top: 20,
         right: 20,
         width: 30,
-        transition: 'fill .1s',
+        transition: 'transform .1s, fill .1s',
+        opacity: 0.85,
         
         '&:hover': {
-            fill: font.color.negative,
+            transform: 'scale(1.05)',
         },
     },
     logo: {
@@ -139,7 +141,7 @@ const style = ({font}) => ({
 });
 
 // Слайдер курсов
-const Component = memo(withStyle(style)(CoursesSlider));
+const Component = memo(withStyle(style)(observer(CoursesSlider)));
 
 Component.propTypes = {
     buttonRightRef: PropTypes.shape({current: PropTypes.instanceOf(Element)}),

@@ -1,4 +1,4 @@
-const colorNegative = '#DB0000';
+export const colorNegative = '#DB0000';
 
 export default {
     layout: {
