@@ -16,12 +16,16 @@ export default self => ({
     },
     
     setStep: flow(function * (value) {
+        self.stepsStore.setIsLoading(true);
+        
         const isSaved = yield self.stepsStore.saveStepData();
         
         if (isSaved) {
             self.step = value;
-            self.stepsStore.fetchStepData();
+            yield self.stepsStore.fetchStepData();
         }
+        
+        self.stepsStore.setIsLoading(false);
     }),
     
     completeSurvey: flow(function * () {
