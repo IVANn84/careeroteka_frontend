@@ -126,6 +126,7 @@ export const style = ({
         placeholder: {
             fontSize: typography.variants.B2.fontSize,
             lineHeight: typography.variants.B2.lineHeight,
+            left: padding.mobile.xAxis,
         },
         
         actions: {
