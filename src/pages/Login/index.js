@@ -3,7 +3,7 @@ import {observer} from 'mobx-react-lite';
 
 import Login from './Login.jsx';
 
-const style = {
+const style = ({font}) => ({
     container: {
         width: '40%',
         margin: 'auto',
@@ -34,6 +34,7 @@ const style = {
     link: {
         position: 'relative',
         cursor: 'pointer',
+        transition: 'color .2s',
         
         '&::after': {
             content: '""',
@@ -45,11 +46,15 @@ const style = {
             width: '100%',
             margin: 'auto',
             background: '#000',
-            transition: 'width .2s',
+            transition: 'background .2s',
+        },
+        
+        '&:hover, &:focus-visible': {
+            color: font.color.alternative,
         },
         
         '&:hover::after, &:focus-visible::after': {
-            width: '90%',
+            background: font.color.alternative,
         },
     },
     
@@ -58,6 +63,6 @@ const style = {
             width: '100%',
         },
     },
-};
+});
 
 export default withStyle(style)(observer(Login));

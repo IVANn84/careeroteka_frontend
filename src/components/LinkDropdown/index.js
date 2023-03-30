@@ -9,8 +9,8 @@ export const Style = ({font}) => ({
         display: 'inline-block',
         cursor: 'pointer',
         marginTop: 18,
-        color: font.color.alternative,
         position: 'relative',
+        transition: 'color .2s',
         
         '&::after': {
             content: '""',
@@ -21,12 +21,16 @@ export const Style = ({font}) => ({
             height: 2,
             width: '100%',
             margin: 'auto',
-            background: font.color.alternative,
-            transition: 'width .2s',
+            background: '#000',
+            transition: 'background .2s',
         },
-        
+    
+        '&:hover, &:focus-visible': {
+            color: font.color.alternative,
+        },
+    
         '&:hover::after, &:focus-visible::after': {
-            width: '90%',
+            background: font.color.alternative,
         },
     },
 });
