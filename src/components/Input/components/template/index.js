@@ -122,6 +122,11 @@ export const style = ({
                 padding: [padding.mobile.yAxis, 0, padding.mobile.yAxis, padding.mobile.xAxis],
             },
         },
+    
+        placeholder: {
+            fontSize: typography.variants.B2.fontSize,
+            lineHeight: typography.variants.B2.lineHeight,
+        },
         
         actions: {
             margin: [0, padding.mobile.xAxis, 0, 8],

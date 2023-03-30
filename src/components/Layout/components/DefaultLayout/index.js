@@ -16,11 +16,16 @@ const style = ({layout}) => ({
         flexDirection: 'column',
         position: 'relative',
         flex: 1,
+        margin: [60, 0, 100, 0],
     },
     
     '@media screen and (max-device-width: 576px)': {
         container: {
             padding: [16, layout.paddingX.mobile, 100, layout.paddingX.mobile],
+        },
+    
+        contentContainer: {
+            margin: [60, 0, 50, 0],
         },
     },
 });
