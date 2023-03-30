@@ -76,8 +76,6 @@ export default self => ({
     },
     
     fetchStepData: flow(function * () {
-        self.setIsEditData(false);
-        
         const step = getParent(self).step;
         
         self.setIsLoading(true);
@@ -108,6 +106,8 @@ export default self => ({
                     if (step !== 4) {
                         applySnapshot(self.stepsData[step], data);
                     }
+                } else {
+                    self.setIsEditData(false);
                 }
                 
                 self.setIsLoading(false);
@@ -118,7 +118,7 @@ export default self => ({
                 if (step === 4) {
                     applySnapshot(self.stepsData[step], reviewTypes.map(reviewType => ({
                         ...reviewType,
-                        value: savedData[step]?.find(({id}) => id === reviewType.id)?.value || 0,
+                        value: savedData[step]?.find(({name}) => name === reviewType.name)?.value || 0,
                     })));
                     return;
                 }
@@ -131,16 +131,23 @@ export default self => ({
         }
     }),
     
-    saveStepData: flow(function * (step) {
+    saveStepData: flow(function * () {
+        const step = getParent(self).step;
         const data = self.stepsData[step];
     
         if (step > 0) {
             if (rootStoreLayoutComponent.isAuth) {
+                self.setIsLoading(true);
+                
                 // Сохраняем на бэке
-                if (self.isEditData) {
-                    yield SurveyApi.EditStep(1, `step_${step}`, data);
-                } else {
-                    yield SurveyApi.SaveStep(1, `step_${step}`, data);
+                const {errors} = self.isEditData
+                    ? yield SurveyApi.EditStep(1, `step_${step}`, data)
+                    : yield SurveyApi.SaveStep(1, `step_${step}`, data);
+                
+                self.setIsLoading(false);
+                
+                if (errors) {
+                    return false;
                 }
             } else {
                 // Сохраняем в localStorage
@@ -149,5 +156,7 @@ export default self => ({
                 localStorage.setItem('survey1StepsData', JSON.stringify(savedData));
             }
         }
+        
+        return true;
     }),
 });

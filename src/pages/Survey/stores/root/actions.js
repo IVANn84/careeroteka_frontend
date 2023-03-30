@@ -16,13 +16,12 @@ export default self => ({
     },
     
     setStep: flow(function * (value) {
-        const prevStep = self.step;
-        self.step = value;
+        const isSaved = yield self.stepsStore.saveStepData();
         
-        // Сохранение нужно вызывать перед загрузкой, тк в сохранении используются переменные,
-        // которые перезатираются в загрузке
-        yield self.stepsStore.saveStepData(prevStep);
-        self.stepsStore.fetchStepData();
+        if (isSaved) {
+            self.step = value;
+            self.stepsStore.fetchStepData();
+        }
     }),
     
     completeSurvey: flow(function * () {
