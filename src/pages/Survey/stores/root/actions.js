@@ -29,6 +29,8 @@ export default self => ({
     }),
     
     completeSurvey: flow(function * () {
+        self.stepsStore.setIsLoading(true);
+        
         const data = {
             step_1: self.stepsStore.stepsData[1],
             step_2: self.stepsStore.stepsData[2],
@@ -41,15 +43,17 @@ export default self => ({
             : SurveyApi.SaveSurveyAnonim(1, data);
         
         if (errors) {
+            self.stepsStore.setIsLoading(false);
+            self.stepsStore.setErrors(errors);
             alert(
                 Object.entries(errors)
                     .map(([keyStep, error]) => Object.entries(error).map(([keyField, text]) =>`${keyStep}: ${keyField}: ${text}`))
                     .join('\n')
             );
-            self.stepsStore.setErrors(errors);
             return;
         }
         
+        self.stepsStore.setIsLoading(false);
         self.step = 5;
         localStorage.removeItem('survey1StepsData');
     }),

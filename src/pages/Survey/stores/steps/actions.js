@@ -95,16 +95,11 @@ export default self => ({
                         ...reviewType,
                         value: data?.find(({name}) => name === reviewType.name)?.value || 0,
                     })));
+                } else if (data) {
+                    applySnapshot(self.stepsData[step], data);
                 }
                 
-                if (data) {
-                    self.setIsEditData(true);
-                    if (step !== 4) {
-                        applySnapshot(self.stepsData[step], data);
-                    }
-                } else {
-                    self.setIsEditData(false);
-                }
+                self.setIsEditData(!!data);
             } else {
                 // Получаем из localStorage
                 const savedData = JSON.parse(localStorage.getItem('survey1StepsData')) || {};
@@ -114,11 +109,7 @@ export default self => ({
                         ...reviewType,
                         value: savedData[step]?.find(({name}) => name === reviewType.name)?.value || 0,
                     })));
-                    return;
-                }
-                
-                if (savedData[step]) {
-                    self.setIsEditData(true);
+                } else if (savedData[step]) {
                     applySnapshot(self.stepsData[step], savedData[step]);
                 }
             }
