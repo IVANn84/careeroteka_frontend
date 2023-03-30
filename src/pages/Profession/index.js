@@ -5,9 +5,7 @@ import Profession from './Profession.jsx';
 
 const style = {
     container: {
-        margin: [60, 0, 100, 0],
-        
-        '& > *': {
+        '& > *:not(:last-child)': {
             marginBottom: 70,
         },
     },
@@ -20,9 +18,7 @@ const style = {
     
     '@media screen and (max-device-width: 576px)': {
         container: {
-            margin: [60, 0, 50, 0],
-    
-            '& > *': {
+            '& > *:not(:last-child)': {
                 marginBottom: 60,
             },
         },

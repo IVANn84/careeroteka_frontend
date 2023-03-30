@@ -24,7 +24,7 @@ export default self => ({
                     id: null,
                     name: 'Все направления',
                 },
-                ...data,
+                ...data.results,
             ]);
         }
         

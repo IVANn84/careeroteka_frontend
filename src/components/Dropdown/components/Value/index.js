@@ -61,7 +61,7 @@ const style = ({
         },
         
         '@media screen and (max-device-width: 576px)': {
-            padding: ({selectedValue, isOpen}) => selectedValue || isOpen
+            padding: ({isOpen, mode}) => isOpen && mode !== 'primary'
                 ? [[padding.mobile.yAxis + 1, 1, padding.mobile.yAxis + 1, padding.mobile.xAxis + 1]]
                 : [[padding.mobile.yAxis, 0, padding.mobile.yAxis, padding.mobile.xAxis]],
         },
@@ -105,7 +105,7 @@ Component.propTypes = {
     selectedValue: PropTypes.string,
     placeholder: PropTypes.string,
     isDisabled: PropTypes.bool,
-    isRequired: PropTypes.bool,   
+    isRequired: PropTypes.bool,
     toggle: PropTypes.func,
     classes: PropTypes.object,
 };
