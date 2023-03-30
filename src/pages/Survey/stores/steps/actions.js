@@ -78,18 +78,14 @@ export default self => ({
     fetchStepData: flow(function * () {
         const step = getParent(self).step;
         
-        self.setIsLoading(true);
         // Доступные критерии оценки
         const reviewTypes = step === 4
             ? yield ReviewApi.FetchTypesList().then(({data}) => data)
             : [];
-        self.setIsLoading(false);
         
         if (step > 0) {
             if (rootStoreLayoutComponent.isAuth) {
                 // Получаем с бэка
-                self.setIsLoading(true);
-                
                 const {data} = yield SurveyApi.GetStep(1, `step_${step}`);
                 
                 if (step === 4) {
@@ -109,8 +105,6 @@ export default self => ({
                 } else {
                     self.setIsEditData(false);
                 }
-                
-                self.setIsLoading(false);
             } else {
                 // Получаем из localStorage
                 const savedData = JSON.parse(localStorage.getItem('survey1StepsData')) || {};
@@ -137,14 +131,10 @@ export default self => ({
     
         if (step > 0) {
             if (rootStoreLayoutComponent.isAuth) {
-                self.setIsLoading(true);
-                
                 // Сохраняем на бэке
                 const {errors} = self.isEditData
                     ? yield SurveyApi.EditStep(1, `step_${step}`, data)
                     : yield SurveyApi.SaveStep(1, `step_${step}`, data);
-                
-                self.setIsLoading(false);
                 
                 if (errors) {
                     return false;
