@@ -12,11 +12,14 @@ Component.propTypes = {
         'password',
         'number',
         'money',
+        'file',
+        'textarea',
     ]).isRequired,
     isDisabled: PropTypes.bool,
     value: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.number,
+        PropTypes.object,
     ]),
     error: PropTypes.oneOfType([
         PropTypes.string,
@@ -24,6 +27,7 @@ Component.propTypes = {
     ]),
     isClearable: PropTypes.bool,
     isSearchable: PropTypes.bool,
+    isRequired: PropTypes.bool,
     placeholder: PropTypes.string,
     hasAutoFocus: PropTypes.bool,
     maxLength: PropTypes.number,
@@ -50,6 +54,9 @@ Component.propTypes = {
     // Максимальное кол-во цифр после запятой
     precision: PropTypes.number,
     
+    // Файловый инпут
+    multiple: PropTypes.bool,
+    children: PropTypes.node,
 };
 
 Component.defaultProps = {
@@ -59,6 +66,7 @@ Component.defaultProps = {
     hasHint: false,
     intDigit: 12,
     precision: 2,
+    multiple: false,
 };
 
 export default Component;

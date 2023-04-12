@@ -1,4 +1,4 @@
-import React, {useMemo, useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 
 import {useDebouncedValue} from 'Hook/useDebouncedValue';
 import Typography from 'Component/Typography';
@@ -22,6 +22,22 @@ export default function Menu({
     
     classes,
 }) {
+    useEffect(() => {
+        if (isOpen) {
+            const onKeyDown = ({key}) => {
+                if (key === 'Escape') {
+                    toggle();
+                }
+            };
+            
+            document.addEventListener('keydown', onKeyDown);
+    
+            return () => {
+                document.removeEventListener('keydown', onKeyDown);
+            };
+        }
+    }, [isOpen, toggle]);
+    
     const [search, setSearch] = useState('');
     
     const debouncedSearch = useDebouncedValue(search, 300);

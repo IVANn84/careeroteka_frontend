@@ -5,10 +5,11 @@ import actions from './actions';
 export const UserModel = types
     .model('User', {
         id: types.number,
-        username: types.string,
         email: types.string,
-        firstName: types.string,
-        lastName: types.string,
+        firstName: types.maybeNull(types.string),
+        lastName: types.maybeNull(types.string),
+        isOnboardingDone: types.boolean,
+        isEmailConfirmed: types.optional(types.boolean, false),
     });
 
 export const RootStoreModel = types

@@ -13,19 +13,22 @@ const Main = React.lazy(() => import('Page/Main'));
 const Survey = React.lazy(() => import('Page/Survey'));
 const Login = React.lazy(() => import('Page/Login'));
 const Profession = React.lazy(() => import('Page/Profession'));
+const Onboarding = React.lazy(() => import('Page/Onboarding'));
+const VerifyEmail = React.lazy(() => import('Page/VerifyEmail'));
 
 function App() {
     return (
         <ThemeProvider theme={Theme}>
             <BrowserRouter>
                 <Layout>
-                    {({isAuth}) => (
-                        <ErrorBoundary style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            height: 500,
-                        }}>
+                    {({isAuth, currentUser}) => (
+                        <ErrorBoundary
+                            style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                height: 500,
+                            }}>
                             <Suspense fallback={<PageSkeleton/>}>
                                 <ScrollToTop>
                                     <Switch>
@@ -43,6 +46,16 @@ function App() {
                                             <Route
                                                 path='/login'
                                                 component={Login}/>
+                                        )}
+                                        {isAuth && !currentUser?.isOnboardingDone && (
+                                            <Route
+                                                path='/onboarding'
+                                                component={Onboarding}/>
+                                        )}
+                                        {isAuth && !currentUser?.isEmailConfirmed && (
+                                            <Route
+                                                path='/verify-email'
+                                                component={VerifyEmail}/>
                                         )}
                                         <Redirect
                                             from='*'

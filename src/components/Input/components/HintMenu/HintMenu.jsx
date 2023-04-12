@@ -1,4 +1,4 @@
-import React, {useMemo} from 'react';
+import React, {useEffect, useMemo} from 'react';
 
 import Typography from 'Component/Typography';
 import Spoiler from 'Component/Dropdown/components/Spoiler';
@@ -13,9 +13,26 @@ export default function HintsMenu({
     isLoading,
     
     onSelect,
+    toggle,
     
     classes,
 }) {
+    useEffect(() => {
+        if (isOpen) {
+            const onKeyDown = ({key}) => {
+                if (key === 'Escape') {
+                    toggle();
+                }
+            };
+            
+            document.addEventListener('keydown', onKeyDown);
+            
+            return () => {
+                document.removeEventListener('keydown', onKeyDown);
+            };
+        }
+    }, [isOpen, toggle]);
+    
     const optionClick = option => {
         onSelect?.(option);
     };

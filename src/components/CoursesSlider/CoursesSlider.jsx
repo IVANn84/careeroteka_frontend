@@ -1,5 +1,4 @@
 import React, {useEffect, useRef} from 'react';
-import {useHistory} from 'react-router-dom';
 import {StarIcon as FilledStar} from '@heroicons/react/24/solid';
 import {StarIcon as EmptyStar, HeartIcon} from '@heroicons/react/24/outline';
 import {getSnapshot} from 'mobx-state-tree';
@@ -12,6 +11,8 @@ import {useSlider} from 'Hook/useSlider';
 import Typography from 'Component/Typography';
 import ListSkeleton from './components/ListSkeleton';
 
+import {useRedirectToLogin} from 'Hook/useRedirectToLogin';
+
 export default function CoursesSlider({
     buttonRightRef,
     buttonLeftRef,
@@ -20,6 +21,8 @@ export default function CoursesSlider({
     
     classes,
 }) {
+    const redirectToLogin = useRedirectToLogin();
+    
     const {
         isAuth,
     } = useStoreLayoutComponent();
@@ -39,8 +42,6 @@ export default function CoursesSlider({
         return reset;
     }, []);
     
-    const history = useHistory();
-    
     const $slider = useRef(null);
     useSlider({
         $slider,
@@ -51,7 +52,7 @@ export default function CoursesSlider({
     
     const onClickCourse = id => {
         if (!isAuth) {
-            return history.push('/registration');
+            return redirectToLogin(true);
         }
         
         window.open(`/courses/${id}`, '_blank');
@@ -66,7 +67,7 @@ export default function CoursesSlider({
         }
         
         if (!isAuth) {
-            return history.push('/registration');
+            return redirectToLogin(true);
         }
         
         toggleLike(id);

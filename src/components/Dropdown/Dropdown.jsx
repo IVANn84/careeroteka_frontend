@@ -33,9 +33,11 @@ export default function Dropdown({
     const $domElement = useRef(null);
     
     const toggle = async () => {
-        const {height, top} = $domElement.current.getBoundingClientRect();
-        const reversedY = (height + maxHeight + top) > window.innerHeight && top > (height + maxHeight);
-        setIsReversedY(reversedY);
+        if (!isOpen) {
+            const {height, top} = $domElement.current.getBoundingClientRect();
+            const reversedY = (height + maxHeight + top) > window.innerHeight && top > (height + maxHeight);
+            setIsReversedY(reversedY);
+        }
         setIsOpen(!isOpen);
     };
     
