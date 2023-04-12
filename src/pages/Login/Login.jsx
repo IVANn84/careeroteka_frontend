@@ -14,6 +14,7 @@ export default function Login({
 
     const {
         isLoading,
+        isLoaded,
         error,
         login,
         reset,
@@ -22,6 +23,20 @@ export default function Login({
     
     useEffect(() => reset, []);
 
+    // Если пользователь авторизовался, то редиректим на прошлую страницу или на главную
+    useEffect(() => {
+        if (isLoaded) {
+            const unauthorizedFromUrl = sessionStorage.getItem('unauthorizedFromUrl');
+    
+            if (unauthorizedFromUrl) {
+                sessionStorage.removeItem('unauthorizedFromUrl');
+                history.push(unauthorizedFromUrl);
+            } else {
+                history.push('/');
+            }
+        }
+    }, [isLoaded]);
+    
     const gotoRecovery = () => history.push('/password-recovery');
     const gotoRegistration = () => history.push('/registration');
     

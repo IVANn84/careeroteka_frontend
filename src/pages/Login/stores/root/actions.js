@@ -2,6 +2,8 @@ import {applySnapshot, flow, getSnapshot} from 'mobx-state-tree';
 
 import UserApi from 'Api/user';
 
+import {rootStoreLayoutComponent} from 'Component/Layout/stores/root';
+
 let initialState = {};
 
 export default self => ({
@@ -15,6 +17,10 @@ export default self => ({
     
     setIsLoading(value) {
         self.isLoading = value;
+    },
+    
+    setIsLoaded(value) {
+        self.isLoaded = value;
     },
     
     setError(value) {
@@ -44,14 +50,9 @@ export default self => ({
             //TODO: сделать нормальную обработку ошибок
             self.setError(errors.detail || 'Неизвестная ошибка');
         } else {
-            const unauthorizedFromUrl = sessionStorage.getItem('unauthorizedFromUrl');
-            
-            if (unauthorizedFromUrl) {
-                sessionStorage.removeItem('unauthorizedFromUrl');
-                window.location.href = unauthorizedFromUrl;
-            } else {
-                window.location.href = '/';
-            }
+            rootStoreLayoutComponent.fetchCurrentUser();
+            // Флаг, обозначающий, что пользователь авторизовался (необходимо для редиректа после авторизации)
+            self.setIsLoaded(true);
         }
     }),
 });

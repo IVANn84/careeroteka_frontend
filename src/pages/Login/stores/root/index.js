@@ -6,6 +6,7 @@ import actions from './actions';
 export const RootStoreModel = types
     .model('Root', {
         isLoading: types.optional(types.boolean, false),
+        isLoaded: types.optional(types.boolean, false),
         error: types.maybeNull(types.string),
         fieldsStore: types.maybe(FieldsStoreModel),
     })

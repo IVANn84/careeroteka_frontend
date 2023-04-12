@@ -290,4 +290,9 @@ export default {
             },
         },
     },
+    
+    divider: {
+        color: 'rgba(38, 38, 38, 0.08)',
+        height: 1,
+    },
 };

@@ -5,10 +5,12 @@ import Button from 'Component/Button';
 import Typography from 'Component/Typography';
 
 import {useStoreLayoutComponent} from 'Component/Layout/stores';
+import {useRedirectToLogin} from 'Hook/useRedirectToLogin';
 
 export default function Step5({
     classes,
 }) {
+    const redirectToLogin = useRedirectToLogin();
     const history = useHistory();
 
     const {
@@ -16,9 +18,13 @@ export default function Step5({
     } = useStoreLayoutComponent();
 
     const gotoMain = () => history.push('/');
-    const gotoCreatePlan = () => isAuth
-        ? history.push('/')
-        : history.push('/login');
+    const gotoCreatePlan = () => {
+        if (isAuth) {
+            history.push('/create-plan');
+        } else {
+            redirectToLogin(false);
+        }
+    };
     
     return (
         <div className={classes.container}>

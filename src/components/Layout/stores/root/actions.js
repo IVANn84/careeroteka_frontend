@@ -59,5 +59,7 @@ export default self => ({
         
         self.setIsAuth(!errors);
         self.setIsLoading(false);
+        
+        return !!errors;
     }),
 });

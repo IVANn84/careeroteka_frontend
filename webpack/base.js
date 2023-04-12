@@ -34,6 +34,7 @@ module.exports = ({
             'mobx',
             'mobx-react-lite',
             'mobx-state-tree',
+            'mime-types',
         ],
     },
     output: {
@@ -46,6 +47,7 @@ module.exports = ({
             'Page': path.join(__dirname, '..', 'src', 'pages'),
             'Component': path.join(__dirname, '..', 'src', 'components'),
             'Api': path.join(__dirname, '..', 'src', 'api', 'methods'),
+            'ApiDir': path.join(__dirname, '..', 'src', 'api'),
             'Mock': path.join(__dirname, '..', 'src', 'api', 'mock'),
             'Image': path.join(__dirname, '..', 'src', 'images'),
             'Hook': path.join(__dirname, '..', 'src', 'hooks'),

@@ -4,11 +4,13 @@ import {useHistory} from 'react-router-dom';
 import {useStoreLayoutComponent} from 'Component/Layout/stores';
 
 import Typography from 'Component/Typography';
+import {useRedirectToLogin} from 'Hook/useRedirectToLogin';
 
 export default function HeaderNavigation({
     classes,
 }) {
     const history = useHistory();
+    const redirectToLogin = useRedirectToLogin();
     
     const {
         isAuth,
@@ -16,8 +18,7 @@ export default function HeaderNavigation({
     } = useStoreLayoutComponent();
     
     const gotoLogin = () => {
-        sessionStorage.setItem('unauthorizedFromUrl', window.location.pathname + window.location.hash + window.location.search);
-        history.push('/login');
+        redirectToLogin(true);
     };
     
     const onLogout = () => {

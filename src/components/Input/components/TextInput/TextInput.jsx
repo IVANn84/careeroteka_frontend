@@ -1,4 +1,4 @@
-import React, {useEffect, useMemo, useRef, useState} from 'react';
+import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import {XMarkIcon, MagnifyingGlassIcon} from '@heroicons/react/24/solid';
 import HintMenu from '../HintMenu';
 
@@ -61,6 +61,23 @@ export default function TextInput({
     const $container = useRef(null);
     const $input = useRef(null);
     
+    const toggle = useCallback(() => {
+        setIsOpenHint(!isOpenHint);
+    }, [isOpenHint, setIsOpenHint]);
+    
+    const updateIsReversed = () => {
+        const {height, top} = $container.current.getBoundingClientRect();
+        const reversedY = (height + hintMaxHeight + top) > window.innerHeight && top > (height + hintMaxHeight);
+        setIsReversedY(reversedY);
+    };
+    
+    const onClick = () => {
+        if (!isOpenHint) {
+            updateIsReversed();
+            setIsOpenHint(true);
+        }
+    };
+    
     const onFocus = () => {
         setIsFocused(true);
     };
@@ -70,11 +87,15 @@ export default function TextInput({
     };
     
     useEffect(() => {
-        const {height, top} = $container.current.getBoundingClientRect();
-        const reversedY = (height + hintMaxHeight + top) > window.innerHeight && top > (height + hintMaxHeight);
-        setIsReversedY(reversedY);
+        if (isFocused) {
+            updateIsReversed();
+        }
         setIsOpenHint(isFocused);
     }, [isFocused]);
+    
+    useEffect(() => {
+        return () => setIsOpenHint(false);
+    }, [window.location.pathname]);
     
     const change = ({target: {value}}) => {
         if (isDisabled || !onChange) {
@@ -126,6 +147,7 @@ export default function TextInput({
         <div
             ref={$container}
             className={`${classes.container} ${className || ''}`}
+            onClick={onClick}
             onBlur={onBlur}
             onFocus={onFocus}>
             <div className={`${classes.wrapper} ${hasHint && isOpenHint
@@ -171,6 +193,7 @@ export default function TextInput({
                     maxHeight={hintMaxHeight}
                     value={value}
                     isOpen={isOpenHint}
+                    toggle={toggle}
                     isLoading={hintIsLoading}
                     placeholder={hintPlaceholder}
                     onSelect={onHintSelect}
