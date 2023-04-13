@@ -7,10 +7,25 @@ export default function RequireAuth({ descriptor }) {
   descriptor.value = async (...args) => {
     const result = await method.apply(this, args);
     const { unauthorized } = result;
+    const refreshToken = localStorage.getItem('refresh');
 
     if (unauthorized) {
-      rootStoreInterceptersApi.setIsRedirectToLogin(true);
-      throw new Error('unauthorized');
+
+      try {
+        await fetch('/api/v1/refresh', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({refreshToken}),
+      });
+
+        const result = await originalMethod.apply(this, args);
+        return result;
+      } catch (error) {
+        rootStoreInterceptersApi.setIsRedirectToLogin(true);
+        throw new Error('unauthorized');
+      }
     }
 
     return result;

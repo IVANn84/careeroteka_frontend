@@ -42,7 +42,10 @@ export default self => ({
     const { errors } = yield UserApi.Login({
       email,
       password,
-    });
+    }).then(data => {
+      localStorage.setItem('refresh', data.data.refresh)
+      console.log(data.data.refresh)
+    })
 
     self.setIsLoading(false);
 
@@ -54,6 +57,7 @@ export default self => ({
       // Флаг, обозначающий, что пользователь авторизовался
       // (необходимо для редиректа после авторизации)
       self.setIsLoaded(true);
+
     }
   }),
 });
