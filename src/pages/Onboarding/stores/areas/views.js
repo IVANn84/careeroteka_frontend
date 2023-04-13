@@ -2,9 +2,9 @@ import {getParent} from 'mobx-state-tree';
 
 export default self => ({
     get filteredAreas() {
-        const area = getParent(self).stepsStore.stepsData[2].area;
-        return area
-            ? self.values.filter(({name}) => name !== area)
+        const selectedId = getParent(self).stepsStore.stepsData[2].id;
+        return selectedId
+            ? self.values.filter(({id}) => id !== selectedId)
             : self.values;
     },
 });
