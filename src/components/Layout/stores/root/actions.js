@@ -57,7 +57,7 @@ export default self => ({
             self.setCurrentUser(data);
         }
         
-        self.setIsAuth(!errors);
+        self.setIsAuth(!!data);
         self.setIsLoading(false);
         
         return !!errors;
