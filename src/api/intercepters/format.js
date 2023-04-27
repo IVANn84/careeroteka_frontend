@@ -7,11 +7,11 @@ export default function Format({descriptor}) {
             const {data} = await method.apply(this, args);
             
             return {
-                data,
+                data: data?.data,
             };
         } catch ({response: {data, status} = {}}) {
             return {
-                errors: data,
+                errors: data?.error,
                 unauthorized: 401 === status,
             };
         }
