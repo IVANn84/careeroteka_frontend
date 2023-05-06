@@ -35,6 +35,7 @@ module.exports = ({
             'mobx-react-lite',
             'mobx-state-tree',
             'mime-types',
+            'prop-types',
         ],
     },
     output: {
