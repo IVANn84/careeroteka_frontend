@@ -3,7 +3,7 @@ const merge = require('webpack-merge');
 const base = require('./base');
 const argv = require('minimist')(process.argv.slice(2));
 
-const backend = argv.backend || 'https://careeroteka.com';
+const backend = argv.backend || 'http://130.193.50.229:8080/';
 const port = argv.port || 3000;
 
 module.exports = merge(base, {
