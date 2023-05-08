@@ -1,5 +1,5 @@
 export default self => ({
-    setIsRedirectToLogin(value) {
-        self.isRedirectToLogin = value;
-    },
+  setIsRedirectToLogin(value) {
+    self.isRedirectToLogin = value;
+  },
 });

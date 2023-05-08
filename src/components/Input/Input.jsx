@@ -8,24 +8,28 @@ import FileInput from './components/FileInput';
 import TextArea from './components/TextArea';
 
 export default function Input(props) {
-    switch (props.type) {
-        case 'number':
-            return (<NumberInput {...props}/>);
-        
-        case 'money':
-            return (<MoneyInput {...props}/>);
-        
-        case 'password':
-            return (<PasswordInput {...props}/>);
-        
-        case 'file':
-            return (<FileInput {...props}/>);
-            
-        case 'textarea':
-            return (<TextArea {...props}/>);
-        
-        case 'text':
-        default:
-            return (<TextInput {...props}/>);
-    }
+  const {
+    type,
+  } = props;
+
+  switch (type) {
+    case 'number':
+      return (<NumberInput {...props} />);
+
+    case 'money':
+      return (<MoneyInput {...props} />);
+
+    case 'password':
+      return (<PasswordInput {...props} />);
+
+    case 'file':
+      return (<FileInput {...props} />);
+
+    case 'textarea':
+      return (<TextArea {...props} />);
+
+    case 'text':
+    default:
+      return (<TextInput {...props} />);
+  }
 }

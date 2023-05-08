@@ -1,6 +1,6 @@
-import {createContext, useContext} from 'react';
+import { createContext, useContext } from 'react';
 
-import {rootStoreInterceptersApi} from './root';
+import { rootStoreInterceptersApi } from './root';
 
 export const StoreInterceptersApiContext = createContext(rootStoreInterceptersApi);
 

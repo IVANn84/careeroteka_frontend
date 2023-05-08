@@ -52,6 +52,7 @@ export default self => ({
     if (errors) {
       self.stepsStore.setIsLoading(false);
       self.stepsStore.setErrors(errors);
+      // eslint-disable-next-line no-alert
       alert(
         Object.entries(errors)
           .map(([keyStep, error]) => Object.entries(error)

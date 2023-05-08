@@ -1,9 +1,9 @@
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 
 function getDeviceType() {
-    return window.innerWidth < 576
-        ? 'mobile'
-        : 'desktop';
+  return window.innerWidth < 576
+    ? 'mobile'
+    : 'desktop';
 }
 
 /**
@@ -11,19 +11,19 @@ function getDeviceType() {
  * @return {'mobile' | 'desktop'}
  */
 export function useDevice() {
-    const [device, setDevice] = useState(getDeviceType());
-    
-    useEffect(() => {
-        const resizeHandler = () => {
-            setDevice(getDeviceType());
-        };
-        
-        window.addEventListener('resize', resizeHandler);
-        
-        return () => {
-            window.removeEventListener('resize', resizeHandler);
-        };
-    }, []);
-    
-    return device;
+  const [device, setDevice] = useState(getDeviceType());
+
+  useEffect(() => {
+    const resizeHandler = () => {
+      setDevice(getDeviceType());
+    };
+
+    window.addEventListener('resize', resizeHandler);
+
+    return () => {
+      window.removeEventListener('resize', resizeHandler);
+    };
+  }, []);
+
+  return device;
 }

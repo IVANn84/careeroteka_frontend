@@ -1,6 +1,6 @@
-import {createContext, useContext} from 'react';
+import { createContext, useContext } from 'react';
 
-import {rootStoreProfessionPage} from './root';
+import { rootStoreProfessionPage } from './root';
 
 export const StoreProfessionPageContext = createContext(rootStoreProfessionPage);
 

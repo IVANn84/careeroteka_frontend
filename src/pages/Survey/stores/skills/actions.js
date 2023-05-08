@@ -1,29 +1,29 @@
-import {flow, getParent} from 'mobx-state-tree';
+import { flow, getParent } from 'mobx-state-tree';
 
 import SurveyApi from 'Api/survey';
 
 export default self => ({
-    setIsLoading(value) {
-        self.isLoading = value;
-    },
-    
-    setValues(value) {
-        self.values = value;
-    },
-    
-    fetchSkills: flow(function * () {
-        const search = getParent(self).stepsStore.supportData.skillSearch;
-        
-        self.setIsLoading(true);
-    
-        const {data, errors} = yield SurveyApi.FetchSkillList({search, limit: 11});
-    
-        if (errors) {
-            //TODO: сделать нормальную обработку ошибок
-        } else {
-            self.setValues(data.results);
-        }
-        
-        self.setIsLoading(false);
-    }),
+  setIsLoading(value) {
+    self.isLoading = value;
+  },
+
+  setValues(value) {
+    self.values = value;
+  },
+
+  fetchSkills: flow(function* () {
+    const search = getParent(self).stepsStore.supportData.skillSearch;
+
+    self.setIsLoading(true);
+
+    const { data, errors } = yield SurveyApi.FetchSkillList({ search, limit: 11 });
+
+    if (errors) {
+      // TODO: сделать нормальную обработку ошибок
+    } else {
+      self.setValues(data.results);
+    }
+
+    self.setIsLoading(false);
+  }),
 });

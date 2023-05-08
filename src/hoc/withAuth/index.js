@@ -1,3 +1,3 @@
 import withAuth from './withAuth.jsx';
 
-export {withAuth};
+export { withAuth };

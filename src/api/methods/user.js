@@ -1,24 +1,24 @@
-import {axiosWithConverter} from '../axiosWithConverter';
+import { axiosWithConverter } from '../axiosWithConverter';
 
 import Format from '../intercepters/format';
 import RequireAuth from '../intercepters/requireAuth';
 
 class UserApi {
-    @Format
-    Login(params) {
-        return axiosWithConverter.post('/api/v1/login/', params);
-    }
-    
-    @RequireAuth
-    @Format
-    Logout() {
-        return axiosWithConverter.get('/api/v1/logout/');
-    }
-    
-    @Format
-    FetchCurrent() {
-        return axiosWithConverter.get('/api/v1/user/current/');
-    }
+  @Format
+  Login(params) {
+    return axiosWithConverter.post('/api/v1/login/', params);
+  }
+
+  @RequireAuth
+  @Format
+  Logout() {
+    return axiosWithConverter.get('/api/v1/logout/');
+  }
+
+  @Format
+  FetchCurrent() {
+    return axiosWithConverter.get('/api/v1/user/current/');
+  }
 }
 
 export default new UserApi();

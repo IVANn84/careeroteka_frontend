@@ -1,10 +1,10 @@
-import {getParent} from 'mobx-state-tree';
+import { getParent } from 'mobx-state-tree';
 
 export default self => ({
-    get filteredAreas() {
-        const area = getParent(self).stepsStore.stepsData[2].area;
-        return area
-            ? self.values.filter(({name}) => name !== area)
-            : self.values;
-    },
+  get filteredAreas() {
+    const { area } = getParent(self).stepsStore.stepsData[2];
+    return area
+      ? self.values.filter(({ name }) => name !== area)
+      : self.values;
+  },
 });

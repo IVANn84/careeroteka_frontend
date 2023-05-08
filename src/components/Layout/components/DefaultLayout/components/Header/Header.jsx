@@ -1,28 +1,28 @@
 import React from 'react';
-import {NavLink} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
+import { useStoreLayoutComponent } from 'Component/Layout/stores';
 import HeaderNavigation from './components/HeaderNavigation';
 
-import {useStoreLayoutComponent} from 'Component/Layout/stores';
-
 export default function Header({
-    classes,
+  classes,
 }) {
-    const {
-        isLoading,
-    } = useStoreLayoutComponent();
-    
-    return (
-        <div className={classes.container}>
-            <NavLink
-                className={classes.title}
-                to='/'
-                exact>
-                careeroteka
-            </NavLink>
-            {!isLoading && (
-                <HeaderNavigation/>
-            )}
-        </div>
-    );
+  const {
+    isLoading,
+  } = useStoreLayoutComponent();
+
+  return (
+    <div className={classes.container}>
+      <NavLink
+        className={classes.title}
+        to="/"
+        exact
+      >
+        careeroteka
+      </NavLink>
+      {!isLoading && (
+        <HeaderNavigation />
+      )}
+    </div>
+  );
 }
