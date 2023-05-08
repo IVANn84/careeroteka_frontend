@@ -2,9 +2,9 @@ import React from 'react';
 
 // Разделяющая линия для контента
 export default function Divider({
-    classes,
+  classes,
 }) {
-    return (
-        <div className={classes.divider}/>
-    );
+  return (
+    <div className={classes.divider} />
+  );
 }

@@ -1,6 +1,6 @@
-import {createContext, useContext} from 'react';
+import { createContext, useContext } from 'react';
 
-import {rootStoreCoursesSliderComponent} from './root';
+import { rootStoreCoursesSliderComponent } from './root';
 
 export const StoreCoursesSliderComponentContext = createContext(rootStoreCoursesSliderComponent);
 

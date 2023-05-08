@@ -1,6 +1,6 @@
-import {createContext, useContext} from 'react';
+import { createContext, useContext } from 'react';
 
-import {rootStoreOnboardingPage} from './root';
+import { rootStoreOnboardingPage } from './root';
 
 export const StoreOnboardingPageContext = createContext(rootStoreOnboardingPage);
 

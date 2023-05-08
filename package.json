@@ -81,6 +81,7 @@
     "local": "webpack-dev-server --watch --progress --mode=development --inline --hot --config webpack/local.js",
     "production": "webpack --mode=production --config webpack/production.js",
     "linter": "eslint src/ --ext .js --ext .jsx",
+    "linter:fix": "eslint src/ --ext .js --ext .jsx",
     "linter:pages": "eslint src/pages --ext .js --ext .jsx",
     "linter:components": "eslint src/components --ext .js --ext .jsx"
   },
