@@ -20,7 +20,6 @@ class UserApi {
     return axiosWithConverter.get('/api/v1/logout/');
   }
 
-  @RequireAuth
   @Format
   FetchCurrent() {
     return axiosWithConverter.get('/api/v1/user/current/');

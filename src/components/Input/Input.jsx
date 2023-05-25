@@ -7,29 +7,31 @@ import PasswordInput from './components/PasswordInput';
 import FileInput from './components/FileInput';
 import TextArea from './components/TextArea';
 
-export default function Input(props) {
+const Input = React.forwardRef((props, ref) => {
   const {
     type,
   } = props;
 
   switch (type) {
     case 'number':
-      return (<NumberInput {...props} />);
+      return (<div ref={ref}><NumberInput {...props} /></div>);
 
     case 'money':
-      return (<MoneyInput {...props} />);
+      return (<div ref={ref}><MoneyInput {...props} /></div>);
 
     case 'password':
-      return (<PasswordInput {...props} />);
+      return (<div ref={ref}><PasswordInput {...props} /></div>);
 
     case 'file':
-      return (<FileInput {...props} />);
+      return (<div ref={ref}><FileInput {...props} /></div>);
 
     case 'textarea':
-      return (<TextArea {...props} />);
+      return (<div ref={ref}><TextArea {...props} /></div>);
 
     case 'text':
     default:
-      return (<TextInput {...props} />);
+      return (<div ref={ref}><TextInput {...props} /></div>);
   }
-}
+});
+
+export default Input;

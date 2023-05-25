@@ -52,6 +52,7 @@ export default function TextInput({
   onChange,
   onSubmit,
   onClear,
+  onBlur,
 
   classes,
 }) {
@@ -105,9 +106,9 @@ export default function TextInput({
     setIsFocused(true);
   };
 
-  const onBlur = () => {
-    setIsFocused(false);
-  };
+  // const onBlur = () => {
+  //   setIsFocused(false);
+  // };
 
   const change = ({ target: { value: inputValue } }) => {
     if (isDisabled || !onChange) {
@@ -216,8 +217,10 @@ export default function TextInput({
         && (
           <div
             className={classes.error}
-            dangerouslySetInnerHTML={{ __html: error }}
-          />
+            // dangerouslySetInnerHTML={{ __html: error }}
+          >
+            {error}
+          </div>
         )}
     </div>
   );

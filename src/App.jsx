@@ -1,6 +1,8 @@
 import React, { Suspense } from 'react';
 import { ThemeProvider } from 'react-jss';
-import { Switch, Route, Redirect, BrowserRouter } from 'react-router-dom';
+import {
+  Switch, Route, Redirect, BrowserRouter,
+} from 'react-router-dom';
 
 import Layout from 'Component/Layout/index.jsx';
 import { PageSkeleton } from 'Component/Skeleton';
@@ -33,25 +35,25 @@ function App() {
               <Suspense fallback={<PageSkeleton />}>
                 <ScrollToTop>
                   <Switch>
-                    <Route path='/' exact component={Main} />
-                    <Route path='/survey' component={Survey} />
+                    <Route path="/" exact component={Main} />
+                    <Route path="/survey" component={Survey} />
                     <Route
-                      path='/professions/:id(\d+)'
+                      path="/professions/:id(\d+)"
                       component={Profession}
                     />
                     {!isAuth && (
                       <>
-                        <Route path='/login' component={Login} />
-                        <Route path='/signup' component={Register} />
+                        <Route path="/login" component={Login} />
+                        <Route path="/signup" component={Register} />
                       </>
                     )}
                     {isAuth && !currentUser?.isOnboardingDone && (
-                      <Route path='/onboarding' component={Onboarding} />
+                      <Route path="/onboarding" component={Onboarding} />
                     )}
                     {isAuth && !currentUser?.isEmailConfirmed && (
-                      <Route path='/verify-email' component={VerifyEmail} />
+                      <Route path="/verify-email" component={VerifyEmail} />
                     )}
-                    <Redirect from='*' push to='/' />
+                    <Redirect from="*" push to="/" />
                   </Switch>
                 </ScrollToTop>
               </Suspense>
