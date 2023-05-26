@@ -23,7 +23,7 @@ function Register({ classes }) {
       .matches(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i, 'Неверный формат email'),
     password: Yup.string()
       .required('Пароль обязателен')
-      .min(6, 'Пароль должен содержать не менее 8 символов'),
+      .min(6, 'Пароль должен содержать не менее 6 символов'),
     confirmPassword: Yup.string()
       .required('Введите повторный пароль')
       .oneOf([Yup.ref('password'), null], 'Пароли должны совпадать'),
