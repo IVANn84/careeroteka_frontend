@@ -1,10 +1,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable import/no-extraneous-dependencies */
 import React, { useEffect } from 'react';
 import { useStoreRegisterPage } from 'Page/Register/stores';
 import { useHistory } from 'react-router';
-import { useObserver } from 'mobx-react-lite';
 import { useFormik } from 'formik';
 import { autorun } from 'mobx';
 import * as Yup from 'yup';
@@ -22,25 +19,14 @@ function Register({ classes }) {
 
   const validationSchema = Yup.object({
     email: Yup.string()
-      .email('Неправильный формат электронной почты')
       .required('Email обязателен')
-      .matches(/^\S+@\S+$/i, 'Неверный формат email'),
+      .matches(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i, 'Неверный формат email'),
     password: Yup.string()
       .required('Пароль обязателен')
       .min(6, 'Пароль должен содержать не менее 8 символов'),
-    //   .matches(
-    //     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/,
-    //     'Пароль должен содержать хотя бы одну заглавную букву, одну строчную букву,
-    // одну цифру и один специальный символ',
-    //   ),
     confirmPassword: Yup.string()
-      .required('Пароль обязателен')
-      .min(6, 'Пароль должен содержать не менее 6 символов'),
-    //   .matches(
-    //     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/,
-    //     'Пароль должен содержать хотя бы одну заглавную букву, одну строчную букву,
-    // одну цифру и один специальный символ',
-    //   ),
+      .required('Введите повторный пароль')
+      .oneOf([Yup.ref('password'), null], 'Пароли должны совпадать'),
   });
 
   const initialValues = {
@@ -52,16 +38,7 @@ function Register({ classes }) {
   const formik = useFormik({
     initialValues,
     validationSchema,
-    onSubmit: () => {
-      signup();
-    },
   });
-
-  console.log(!formik.isValid);
-  console.log(isLoading);
-  console.log(!fieldsStore.email);
-  console.log(!fieldsStore.password);
-  console.log(!fieldsStore.confirmPassword);
 
   useEffect(() => {
     reset();
@@ -89,7 +66,7 @@ function Register({ classes }) {
 
   const gotoLogin = () => history.push('/login');
 
-  return useObserver(() => (
+  return (
     <div className={classes.container}>
       <Typography
         className={classes.title}
@@ -99,7 +76,7 @@ function Register({ classes }) {
       >
         Ускорьте&nbsp;свой&nbsp;рост&nbsp;уже сегодня
       </Typography>
-      <form onSubmit={formik.handleSubmit} className={classes.inputs}>
+      <form className={classes.inputs}>
         <Input
           name="email"
           type="text"
@@ -141,22 +118,21 @@ function Register({ classes }) {
               : null
           }
         />
-
-        <Button
-          className={classes.button}
-          mode="primary"
-          onClick={signup}
-          isDisabled={
+      </form>
+      <Button
+        className={classes.button}
+        mode="primary"
+        onClick={() => signup(gotoLogin)}
+        isDisabled={
             !formik.isValid
             || isLoading
             || !fieldsStore.email
             || !fieldsStore.password
             || !fieldsStore.confirmPassword
           }
-        >
-          Продолжить
-        </Button>
-      </form>
+      >
+        Продолжить
+      </Button>
       <div className={classes.links}>
         <Typography
           className={classes.registration}
@@ -185,7 +161,7 @@ function Register({ classes }) {
         </Typography>
       </div>
     </div>
-  ));
+  );
 }
 
 export default Register;

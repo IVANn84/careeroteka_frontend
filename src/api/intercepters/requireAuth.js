@@ -1,5 +1,3 @@
-/* eslint-disable import/no-named-as-default */
-/* eslint-disable import/no-named-as-default-member */
 import { axiosWithConverter } from '../axiosWithConverter';
 import { rootStoreInterceptersApi } from './stores/root';
 
@@ -14,9 +12,7 @@ export default function RequireAuth({ descriptor }) {
 
     if (unauthorized) {
       try {
-        await axiosWithConverter.post('/api/v1/refresh/', {
-          body: JSON.stringify({ refreshToken }),
-        });
+        await axiosWithConverter.post('/api/v1/refresh/', { refreshToken });
         const res = await method.apply(this, args);
         return res;
       } catch (error) {
