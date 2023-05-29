@@ -107,8 +107,9 @@ export default function TextInput({
     setIsFocused(true);
   };
 
-  const handleBlur = () => {
+  const handleBlur = e => {
     setIsFocused(false);
+    onBlur(e);
   };
 
   const change = ({ target: { value: inputValue } }) => {
@@ -163,10 +164,7 @@ export default function TextInput({
       tabIndex={0}
       onKeyDown={onEnter(onClick)}
       onClick={onClick}
-      onBlur={e => {
-        onBlur(e);
-        handleBlur();
-      }}
+      onBlur={handleBlur}
       onFocus={onFocus}
     >
       <div className={`${classes.wrapper} ${getWrapperClass()}`}>
