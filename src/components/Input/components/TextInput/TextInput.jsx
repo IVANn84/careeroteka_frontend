@@ -109,7 +109,7 @@ export default function TextInput({
 
   const handleBlur = e => {
     setIsFocused(false);
-    onBlur(e);
+    onBlur?.(e);
   };
 
   const change = ({ target: { value: inputValue } }) => {
