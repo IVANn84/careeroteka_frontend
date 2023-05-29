@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 /* eslint-disable react/no-danger */
 import React, {
   useCallback, useEffect, useMemo, useRef, useState,
@@ -106,9 +107,9 @@ export default function TextInput({
     setIsFocused(true);
   };
 
-  // const onBlur = () => {
-  //   setIsFocused(false);
-  // };
+  const handleBlur = () => {
+    setIsFocused(false);
+  };
 
   const change = ({ target: { value: inputValue } }) => {
     if (isDisabled || !onChange) {
@@ -162,7 +163,10 @@ export default function TextInput({
       tabIndex={0}
       onKeyDown={onEnter(onClick)}
       onClick={onClick}
-      onBlur={onBlur}
+      onBlur={e => {
+        onBlur(e);
+        handleBlur();
+      }}
       onFocus={onFocus}
     >
       <div className={`${classes.wrapper} ${getWrapperClass()}`}>
@@ -217,7 +221,6 @@ export default function TextInput({
         && (
           <div
             className={classes.error}
-            // dangerouslySetInnerHTML={{ __html: error }}
           >
             {error}
           </div>

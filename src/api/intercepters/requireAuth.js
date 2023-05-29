@@ -9,6 +9,7 @@ export default function RequireAuth({ descriptor }) {
     const result = await method.apply(this, args);
     const { unauthorized } = result;
     const refreshToken = localStorage.getItem('refresh');
+    console.log(unauthorized);
 
     if (unauthorized) {
       try {

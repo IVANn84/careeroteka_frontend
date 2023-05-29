@@ -91,6 +91,7 @@ export default function Login({
           variant="B2"
           variantMobile="B2"
           component="p"
+          tabIndex={0}
           onClick={gotoRecovery}
         >
           Забыли пароль?

@@ -3,6 +3,7 @@ import { ThemeProvider } from 'react-jss';
 import {
   Switch, Route, Redirect, BrowserRouter,
 } from 'react-router-dom';
+import UserApi from 'Api/user';
 
 import Layout from 'Component/Layout/index.jsx';
 import { PageSkeleton } from 'Component/Skeleton';
@@ -19,6 +20,9 @@ const Onboarding = React.lazy(() => import('Page/Onboarding'));
 const VerifyEmail = React.lazy(() => import('Page/VerifyEmail'));
 
 function App() {
+  React.useEffect(() => {
+    UserApi.Login({});
+  });
   return (
     <ThemeProvider theme={Theme}>
       <BrowserRouter>
@@ -35,18 +39,18 @@ function App() {
               <Suspense fallback={<PageSkeleton />}>
                 <ScrollToTop>
                   <Switch>
-                    <Route path="/" exact component={Main} />
+                    <Route
+                      path="/"
+                      exact
+                      component={Main}
+                    />
                     <Route path="/survey" component={Survey} />
                     <Route
                       path="/professions/:id(\d+)"
                       component={Profession}
                     />
-                    {!isAuth && (
-                      <>
-                        <Route path="/login" component={Login} />
-                        <Route path="/signup" component={Register} />
-                      </>
-                    )}
+                    {!isAuth && <Route path="/signup" component={Register} />}
+                    {!isAuth && <Route path="/login" component={Login} />}
                     {isAuth && !currentUser?.isOnboardingDone && (
                       <Route path="/onboarding" component={Onboarding} />
                     )}

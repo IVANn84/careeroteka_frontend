@@ -19,15 +19,11 @@ export default self => ({
     self.isLoading = value;
   },
 
-  setIsLoaded(value) {
-    self.isLoaded = value;
-  },
-
   setError(value) {
     self.error = value;
   },
 
-  signup: flow(function* (func) {
+  signup: flow(function* (gotoLogin) {
     const { email, password, confirmPassword } = self.fieldsStore;
 
     if (!email || !password || !confirmPassword) {
@@ -43,11 +39,10 @@ export default self => ({
     });
 
     self.setIsLoading(false);
-    func();
 
     if (errors) {
       self.setError(errors.email || 'Неизвестная ошибка');
-      return Promise.reject(errors);
     }
+    gotoLogin();
   }),
 });

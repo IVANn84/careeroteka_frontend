@@ -10,7 +10,7 @@ import Input from 'Component/Input';
 import Button from 'Component/Button';
 import Typography from 'Component/Typography';
 
-function Register({ classes }) {
+export default function Register({ classes }) {
   const history = useHistory();
 
   const {
@@ -41,8 +41,6 @@ function Register({ classes }) {
   });
 
   useEffect(() => {
-    reset();
-
     autorun(() => {
       fieldsStore.setEmail(formik.values.email);
       fieldsStore.setPassword(formik.values.password);
@@ -50,6 +48,7 @@ function Register({ classes }) {
     });
 
     return () => {
+      reset();
       autorun(() => {
         fieldsStore.setEmail(null);
         fieldsStore.setPassword(null);
@@ -84,11 +83,7 @@ function Register({ classes }) {
           value={formik.values.email}
           onChange={formik.handleChange('email')}
           onBlur={formik.handleBlur('email')}
-          error={
-            formik.touched.email && formik.errors.email
-              ? formik.errors.email
-              : null
-          }
+          error={formik.touched.email && formik.errors.email}
         />
 
         <Input
@@ -98,11 +93,7 @@ function Register({ classes }) {
           value={formik.values.password}
           onChange={formik.handleChange('password')}
           onBlur={formik.handleBlur('password')}
-          error={
-            formik.touched.password && formik.errors.password
-              ? formik.errors.password
-              : null
-          }
+          error={formik.touched.password && formik.errors.password}
         />
 
         <Input
@@ -112,24 +103,14 @@ function Register({ classes }) {
           value={formik.values.confirmPassword}
           onChange={formik.handleChange('confirmPassword')}
           onBlur={formik.handleBlur('confirmPassword')}
-          error={
-            formik.touched.confirmPassword && formik.errors.confirmPassword
-              ? formik.errors.confirmPassword
-              : null
-          }
+          error={formik.touched.confirmPassword && formik.errors.confirmPassword}
         />
       </form>
       <Button
         className={classes.button}
         mode="primary"
         onClick={() => signup(gotoLogin)}
-        isDisabled={
-            !formik.isValid
-            || isLoading
-            || !fieldsStore.email
-            || !fieldsStore.password
-            || !fieldsStore.confirmPassword
-          }
+        isDisabled={!formik.isValid || isLoading}
       >
         Продолжить
       </Button>
@@ -141,7 +122,10 @@ function Register({ classes }) {
         >
           Уже есть аккаунт?
           {' '}
-          <span className={classes.link} onClick={gotoLogin}>
+          <span
+            className={classes.link}
+            onClick={gotoLogin}
+          >
             Войти
           </span>
         </Typography>
@@ -163,5 +147,3 @@ function Register({ classes }) {
     </div>
   );
 }
-
-export default Register;
