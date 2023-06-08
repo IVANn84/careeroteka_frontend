@@ -39,10 +39,11 @@ export default self => ({
 
     self.setIsLoading(true);
 
-    const { errors } = yield UserApi.Login({
+    const { errors, data } = yield UserApi.Login({
       email,
       password,
     });
+    localStorage.setItem('refresh', data.data.refresh);
 
     self.setIsLoading(false);
 

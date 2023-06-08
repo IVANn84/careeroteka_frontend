@@ -34,6 +34,7 @@ export default function PasswordInput({
   onChange,
   onSubmit,
   onClear,
+  onBlur,
 
   classes,
 }) {
@@ -101,6 +102,7 @@ export default function PasswordInput({
             onKeyDown={submit}
             onChange={change}
             maxLength={maxLength}
+            onBlur={onBlur}
           />
           {placeholder && (
             <span className={classes.placeholder}>{placeholder}</span>
@@ -137,8 +139,10 @@ export default function PasswordInput({
         && (
           <div
             className={classes.error}
-            dangerouslySetInnerHTML={{ __html: error }}
-          />
+            // dangerouslySetInnerHTML={{ __html: error }}
+          >
+            {error}
+          </div>
         )}
     </div>
   );

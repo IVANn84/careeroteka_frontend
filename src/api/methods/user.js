@@ -5,6 +5,11 @@ import RequireAuth from '../intercepters/requireAuth';
 
 class UserApi {
   @Format
+  Register(params) {
+    return axiosWithConverter.post('/api/v1/signup/', params);
+  }
+
+  @Format
   Login(params) {
     return axiosWithConverter.post('/api/v1/login/', params);
   }

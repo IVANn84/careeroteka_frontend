@@ -3,6 +3,7 @@ import { ThemeProvider } from 'react-jss';
 import {
   Switch, Route, Redirect, BrowserRouter,
 } from 'react-router-dom';
+import UserApi from 'Api/user';
 
 import Layout from 'Component/Layout/index.jsx';
 import { PageSkeleton } from 'Component/Skeleton';
@@ -13,11 +14,15 @@ import Theme from './themes/default';
 const Main = React.lazy(() => import('Page/Main'));
 const Survey = React.lazy(() => import('Page/Survey'));
 const Login = React.lazy(() => import('Page/Login'));
+const Register = React.lazy(() => import('Page/Register'));
 const Profession = React.lazy(() => import('Page/Profession'));
 const Onboarding = React.lazy(() => import('Page/Onboarding'));
 const VerifyEmail = React.lazy(() => import('Page/VerifyEmail'));
 
 function App() {
+  React.useEffect(() => {
+    UserApi.Login({});
+  });
   return (
     <ThemeProvider theme={Theme}>
       <BrowserRouter>
@@ -39,37 +44,20 @@ function App() {
                       exact
                       component={Main}
                     />
-                    <Route
-                      path="/survey"
-                      component={Survey}
-                    />
+                    <Route path="/survey" component={Survey} />
                     <Route
                       path="/professions/:id(\d+)"
                       component={Profession}
                     />
-                    {!isAuth && (
-                    <Route
-                      path="/login"
-                      component={Login}
-                    />
-                    )}
+                    {!isAuth && <Route path="/signup" component={Register} />}
+                    {!isAuth && <Route path="/login" component={Login} />}
                     {isAuth && !currentUser?.isOnboardingDone && (
-                    <Route
-                      path="/onboarding"
-                      component={Onboarding}
-                    />
+                      <Route path="/onboarding" component={Onboarding} />
                     )}
                     {isAuth && !currentUser?.isEmailConfirmed && (
-                    <Route
-                      path="/verify-email"
-                      component={VerifyEmail}
-                    />
+                      <Route path="/verify-email" component={VerifyEmail} />
                     )}
-                    <Redirect
-                      from="*"
-                      push
-                      to="/"
-                    />
+                    <Redirect from="*" push to="/" />
                   </Switch>
                 </ScrollToTop>
               </Suspense>

@@ -13,11 +13,12 @@
     "chart.js": "3.9.1",
     "chartjs-plugin-datalabels": "2.2.0",
     "clone": "2.1.2",
+    "formik": "^2.2.9",
     "jss": "10.9.2",
     "jss-plugin-default-unit": "10.9.2",
     "jss-plugin-vendor-prefixer": "10.9.2",
     "mime-types": "2.1.35",
-    "mobx": "6.7.0",
+    "mobx": "^6.9.0",
     "mobx-react-lite": "3.4.0",
     "mobx-state-tree": "5.1.6",
     "moment": "2.29.4",
@@ -31,7 +32,8 @@
     "react-jss": "10.9.2",
     "react-router": "5.2.0",
     "react-router-dom": "5.2.0",
-    "react-sticky-el": "2.0.9"
+    "react-sticky-el": "2.0.9",
+    "yup": "^1.1.1"
   },
   "devDependencies": {
     "@babel/core": "7.21.8",

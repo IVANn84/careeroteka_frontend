@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useEffect } from 'react';
 import { useHistory } from 'react-router';
 
@@ -6,7 +8,7 @@ import { useStoreLoginPage } from 'Page/Login/stores';
 import Input from 'Component/Input';
 import Button from 'Component/Button';
 import Typography from 'Component/Typography';
-import { onEnter } from 'Util/onEnter';
+// import { onEnter } from 'Util/onEnter';
 
 export default function Login({
   classes,
@@ -37,11 +39,10 @@ export default function Login({
         history.push('/');
       }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoaded]);
 
   const gotoRecovery = () => history.push('/password-recovery');
-  const gotoRegistration = () => history.push('/registration');
+  const gotoRegistration = () => history.push('/signup');
 
   return (
     <div className={classes.container}>
@@ -91,7 +92,6 @@ export default function Login({
           variantMobile="B2"
           component="p"
           tabIndex={0}
-          onKeyDown={onEnter(gotoRecovery)}
           onClick={gotoRecovery}
         >
           Забыли пароль?
@@ -104,10 +104,7 @@ export default function Login({
           Еще нет аккаунта?
           {' '}
           <span
-            role="button"
             className={classes.link}
-            tabIndex={0}
-            onKeyDown={onEnter(gotoRegistration)}
             onClick={gotoRegistration}
           >
             Зарегистрируйтесь
