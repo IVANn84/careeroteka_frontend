@@ -14,9 +14,9 @@ export default function CheckToken({ descriptor }) {
     }
 
     const result = await method.apply(this, args);
-    const { unauthorized } = result;
+    const { invalidToken, errors, unauthorized } = result;
 
-    if (unauthorized) {
+    if (invalidToken) {
       try {
         isTokenUpdating = true;
         const refreshToken = localStorage.getItem('refresh');
@@ -32,8 +32,9 @@ export default function CheckToken({ descriptor }) {
         isTokenUpdating = false;
 
         return {
-          errors: data?.error,
-          unauthorized: status === 401,
+          errors,
+          unauthorized,
+          invalidToken,
         };
       }
     }
