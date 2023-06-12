@@ -2,27 +2,32 @@ import { axiosWithConverter } from '../axiosWithConverter';
 
 import Format from '../intercepters/format';
 import RequireAuth from '../intercepters/requireAuth';
+import CheckToken from '../intercepters/checkToken';
 
 class SurveyApi {
   @RequireAuth
+  @CheckToken
   @Format
   SaveStep(surveyId, step, params) {
     return axiosWithConverter.post(`/api/v1/survey/${surveyId}/${step}/`, params);
   }
 
   @RequireAuth
+  @CheckToken
   @Format
   EditStep(surveyId, step, params) {
     return axiosWithConverter.put(`/api/v1/survey/${surveyId}/${step}/`, params);
   }
 
   @RequireAuth
+  @CheckToken
   @Format
   GetStep(surveyId, step) {
     return axiosWithConverter.get(`/api/v1/survey/${surveyId}/${step}/`);
   }
 
   @RequireAuth
+  @CheckToken
   @Format
   SaveSurveyAuth(surveyId, data) {
     return axiosWithConverter.put(`/api/v1/survey/${surveyId}/authorized_user/`, data);

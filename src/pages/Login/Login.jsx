@@ -17,7 +17,6 @@ export default function Login({
 
   const {
     isLoading,
-    isLoaded,
     error,
     login,
     reset,
@@ -28,18 +27,18 @@ export default function Login({
   useEffect(() => reset, []);
 
   // Если пользователь авторизовался, то редиректим на прошлую страницу или на главную
-  useEffect(() => {
-    if (isLoaded) {
-      const unauthorizedFromUrl = sessionStorage.getItem('unauthorizedFromUrl');
+  const redirectAfterLogin = () => {
+    const unauthorizedFromUrl = sessionStorage.getItem('unauthorizedFromUrl');
 
-      if (unauthorizedFromUrl) {
-        sessionStorage.removeItem('unauthorizedFromUrl');
-        history.push(unauthorizedFromUrl);
-      } else {
-        history.push('/');
-      }
+    if (unauthorizedFromUrl) {
+      sessionStorage.removeItem('unauthorizedFromUrl');
+      history.push(unauthorizedFromUrl);
+    } else {
+      history.push('/');
     }
-  }, [isLoaded]);
+  };
+
+  const onLogin = () => login(redirectAfterLogin);
 
   const gotoRecovery = () => history.push('/password-recovery');
   const gotoRegistration = () => history.push('/signup');
@@ -62,7 +61,7 @@ export default function Login({
           isRequired
           onChange={fieldsStore.setEmail}
           isDisabled={isLoading}
-          onSubmit={login}
+          onSubmit={onLogin}
           isClearable
         />
         <Input
@@ -73,7 +72,7 @@ export default function Login({
           onChange={fieldsStore.setPassword}
           isDisabled={isLoading}
           error={error}
-          onSubmit={login}
+          onSubmit={onLogin}
           isClearable
         />
       </div>
@@ -81,7 +80,7 @@ export default function Login({
         className={classes.button}
         mode="primary"
         isDisabled={isLoading || !fieldsStore.email || !fieldsStore.password}
-        onClick={login}
+        onClick={onLogin}
       >
         Продолжить
       </Button>

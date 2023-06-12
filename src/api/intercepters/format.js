@@ -13,6 +13,7 @@ export default function Format({ descriptor }) {
       return {
         errors: data?.error,
         unauthorized: status === 401,
+        invalidToken: data?.code === 'token_not_valid',
       };
     }
   };
