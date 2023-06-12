@@ -2,6 +2,7 @@ import { axiosWithConverter } from '../axiosWithConverter';
 
 import Format from '../intercepters/format';
 import RequireAuth from '../intercepters/requireAuth';
+import CheckToken from '../intercepters/checkToken';
 
 class UserApi {
   @Format
@@ -15,11 +16,13 @@ class UserApi {
   }
 
   @RequireAuth
+  @CheckToken
   @Format
   Logout() {
     return axiosWithConverter.get('/api/v1/logout/');
   }
 
+  @CheckToken
   @Format
   FetchCurrent() {
     return axiosWithConverter.get('/api/v1/user/current/');

@@ -3,7 +3,6 @@ import { ThemeProvider } from 'react-jss';
 import {
   Switch, Route, Redirect, BrowserRouter,
 } from 'react-router-dom';
-import UserApi from 'Api/user';
 
 import Layout from 'Component/Layout/index.jsx';
 import { PageSkeleton } from 'Component/Skeleton';
@@ -20,9 +19,6 @@ const Onboarding = React.lazy(() => import('Page/Onboarding'));
 const VerifyEmail = React.lazy(() => import('Page/VerifyEmail'));
 
 function App() {
-  React.useEffect(() => {
-    UserApi.Login({});
-  });
   return (
     <ThemeProvider theme={Theme}>
       <BrowserRouter>

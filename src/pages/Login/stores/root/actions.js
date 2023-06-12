@@ -19,15 +19,11 @@ export default self => ({
     self.isLoading = value;
   },
 
-  setIsLoaded(value) {
-    self.isLoaded = value;
-  },
-
   setError(value) {
     self.error = value;
   },
 
-  login: flow(function* () {
+  login: flow(function* (redirectAfterLogin) {
     const {
       email,
       password,
@@ -43,7 +39,7 @@ export default self => ({
       email,
       password,
     });
-    localStorage.setItem('refresh', data.data.refresh);
+    localStorage.setItem('refresh', data.refresh);
 
     self.setIsLoading(false);
 
@@ -51,10 +47,8 @@ export default self => ({
       // TODO: сделать нормальную обработку ошибок
       self.setError(errors.detail || 'Неизвестная ошибка');
     } else {
-      rootStoreLayoutComponent.fetchCurrentUser();
-      // Флаг, обозначающий, что пользователь авторизовался
-      // (необходимо для редиректа после авторизации)
-      self.setIsLoaded(true);
+      yield rootStoreLayoutComponent.fetchCurrentUser();
+      redirectAfterLogin();
     }
   }),
 });
