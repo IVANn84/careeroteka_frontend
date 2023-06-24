@@ -14,14 +14,13 @@ export default {
         .fill(null)
         .map(() => ({
           name: id === 3 ? 'Инженер по автоматизации тестирования' : `Вариант ${id}`,
-          id,
+          // eslint-disable-next-line no-plusplus
+          id: id++,
           company: 'ООО "Рога и копыта"',
           type: 'online',
           image: 'https://picsum.photos/200/300',
           rating: 3.4,
         }));
-
-      id += 1;
 
       return wrapAnswer(data, hasError);
     };

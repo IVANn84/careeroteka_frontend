@@ -14,10 +14,9 @@ export default {
         .fill(null)
         .map(() => ({
           name: `Вариант ${id}`,
-          id,
+          // eslint-disable-next-line no-plusplus
+          id: id++,
         }));
-
-      id += 1;
 
       return wrapAnswer(data, hasError);
     };

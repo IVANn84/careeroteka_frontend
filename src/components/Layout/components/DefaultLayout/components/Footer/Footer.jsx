@@ -18,10 +18,18 @@ export default function Footer({
           </span>
           <div className={classes.footerLinksDesktop}>
             <ExternalLink to="https://vk.com">
-              <Icon name="vk" />
+              <Icon
+                name="vk"
+                width={32}
+                height={32}
+              />
             </ExternalLink>
             <ExternalLink href="https://vk.com">
-              <Icon name="telegram" />
+              <Icon
+                name="telegram"
+                width={32}
+                height={32}
+              />
             </ExternalLink>
           </div>
         </div>

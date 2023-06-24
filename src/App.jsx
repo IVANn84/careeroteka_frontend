@@ -17,6 +17,7 @@ const Register = React.lazy(() => import('Page/Register'));
 const Profession = React.lazy(() => import('Page/Profession'));
 const Onboarding = React.lazy(() => import('Page/Onboarding'));
 const VerifyEmail = React.lazy(() => import('Page/VerifyEmail'));
+const Vacancies = React.lazy(() => import('Page/Vacancies'));
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
                       component={Main}
                     />
                     <Route path="/survey" component={Survey} />
+                    <Route path="/vacancies" component={Vacancies} />
                     <Route
                       path="/professions/:id(\d+)"
                       component={Profession}

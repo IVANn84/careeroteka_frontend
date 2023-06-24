@@ -8,7 +8,7 @@ export default {
 
     return async (params, hasError = false) => {
       // eslint-disable-next-line no-console
-      console.log('ProfessionApi', 'FetchList', params);
+      console.log('VacanciesApi', 'FetchList', params);
 
       await timeout(1000);
 
@@ -21,9 +21,28 @@ export default {
           .map(() => ({
             // eslint-disable-next-line no-plusplus
             id: id++,
-            name: 'Python',
-            salaryMinValue: getRandomInt(30000, 200000),
-            countDirections: getRandomInt(1, 4),
+            company: 'Lamoda',
+            name: 'Младший специалист по организации съемок',
+            city: 'Москва',
+            salary: getRandomInt(30000, 200000),
+            isRead: id === 3,
+            vacancyAggregators: [
+              {
+                id: 1,
+                name: 'Habr',
+                icon: 'https://career.habr.com/images/favicons/favicon-32.png',
+              },
+              {
+                id: 2,
+                name: 'hh',
+                icon: 'https://i.hh.ru/logos/svg/hh.ru__min_.svg?v=11032019',
+              },
+              {
+                id: 3,
+                name: 'hh',
+                icon: 'https://i.hh.ru/logos/svg/hh.ru__min_.svg?v=11032019',
+              },
+            ],
           })),
       };
 
@@ -88,9 +107,10 @@ export default {
         .map(() => ({
           name: directionId === 3 ? 'Technical Product менеджер' : `Вариант ${directionId}`,
           description: `Описание варианта ${directionId}`,
-          // eslint-disable-next-line no-plusplus
-          id: directionId++,
+          id: directionId,
         }));
+
+      directionId += 1;
 
       return wrapAnswer(data, hasError);
     };

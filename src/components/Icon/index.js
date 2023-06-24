@@ -3,12 +3,25 @@ import PropTypes from 'prop-types';
 import Icon from './Icon.jsx';
 
 Icon.propTypes = {
-  name: PropTypes.oneOf(['vk', 'telegram']),
+  name: PropTypes.oneOf([
+    'vk',
+    'telegram',
+    'searchPeopleInside',
+    'companyHouse',
+    'rocket',
+    'techScience',
+    'freelance',
+    'remote',
+    'cookie',
+    'worldBag',
+    'graduate',
+  ]),
   size: PropTypes.number,
 };
 
 Icon.defaultProps = {
-  size: 32,
+  width: 24,
+  height: 24,
 };
 
 export default Icon;
