@@ -4,9 +4,7 @@ import actions from './actions';
 
 export const FieldsStoreModel = types
   .model('Fields', {
-    searchProfession: types.maybeNull(types.string),
-    areaId: types.maybeNull(types.number),
-    areaName: types.optional(types.string, 'Все направления'),
+    searchVacancy: types.maybeNull(types.string),
   })
   .actions(actions);
 

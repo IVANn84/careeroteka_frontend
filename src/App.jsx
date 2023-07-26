@@ -18,13 +18,17 @@ const Profession = React.lazy(() => import('Page/Profession'));
 const Onboarding = React.lazy(() => import('Page/Onboarding'));
 const VerifyEmail = React.lazy(() => import('Page/VerifyEmail'));
 const Vacancies = React.lazy(() => import('Page/Vacancies'));
+const Vacancy = React.lazy(() => import('Page/Vacancy'));
 
 function App() {
   return (
     <ThemeProvider theme={Theme}>
       <BrowserRouter>
         <Layout>
-          {({ isAuth, currentUser }) => (
+          {({
+            isAuth,
+            currentUser,
+          }) => (
             <ErrorBoundary
               style={{
                 display: 'flex',
@@ -42,7 +46,11 @@ function App() {
                       component={Main}
                     />
                     <Route path="/survey" component={Survey} />
-                    <Route path="/vacancies" component={Vacancies} />
+                    <Route path="/vacancies" exact component={Vacancies} />
+                    <Route
+                      path="/vacancies/:id(\d+)"
+                      component={Vacancy}
+                    />
                     <Route
                       path="/professions/:id(\d+)"
                       component={Profession}

@@ -3,32 +3,9 @@ import { observer } from 'mobx-react-lite';
 
 import VacanciesFilters from './VacanciesFilters.jsx';
 
-const style = ({ customScrollbar }) => ({
+const style = {
   container: {
     marginTop: 30,
-  },
-  types: {
-    whiteSpace: 'nowrap',
-    overflowX: 'overlay',
-    scrollbarWidth: 'none',
-    marginBottom: 25,
-    paddingBottom: 30,
-    ...customScrollbar,
-
-    '& > div': {
-      display: 'inline-block',
-      cursor: 'pointer',
-
-      '& > svg': {
-        display: 'block',
-        margin: 'auto',
-        marginBottom: 16,
-      },
-
-      '&:not(:first-child)': {
-        marginLeft: 36,
-      },
-    },
   },
   controls: {
     display: 'flex',
@@ -57,6 +34,6 @@ const style = ({ customScrollbar }) => ({
       width: '100%',
     },
   },
-});
+};
 
 export default withStyle(style)(observer(VacanciesFilters));
