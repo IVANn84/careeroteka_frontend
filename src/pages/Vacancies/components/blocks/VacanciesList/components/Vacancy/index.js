@@ -14,6 +14,7 @@ const style = ({ font }) => ({
     minHeight: 190,
     transition: 'transform .2s, box-shadow .2s',
     boxShadow: [[0, 8, 20, 2, 'rgba(0, 0, 0, .1)']],
+    background: font.color.light,
 
     '&:hover, &:focus-visible': {
       transform: 'translateY(-5px)',
