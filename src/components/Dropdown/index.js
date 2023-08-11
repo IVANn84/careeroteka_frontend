@@ -50,6 +50,7 @@ Component.propTypes = {
   isDisabled: PropTypes.bool,
   isLoading: PropTypes.bool,
   isSearchable: PropTypes.bool,
+  isClearable: PropTypes.bool,
   isDisplayed: PropTypes.bool,
   isRequired: PropTypes.bool,
   placeholder: PropTypes.string,

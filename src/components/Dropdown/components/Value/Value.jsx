@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChevronDownIcon } from '@heroicons/react/24/solid';
+import { ChevronDownIcon, XMarkIcon } from '@heroicons/react/24/solid';
 
 import Typography from 'Component/Typography';
 import { onEnter } from 'Util/onEnter';
@@ -9,8 +9,10 @@ export default function Value({
   placeholder,
   isDisabled,
   isRequired,
+  isClearable,
 
   toggle,
+  onSelect,
 
   classes,
 }) {
@@ -18,6 +20,11 @@ export default function Value({
     if (!isDisabled) {
       toggle?.();
     }
+  };
+
+  const clear = event => {
+    event.stopPropagation();
+    onSelect?.(null);
   };
 
   return (
@@ -35,11 +42,16 @@ export default function Value({
         {selectedValue || placeholder}
         {!selectedValue && isRequired && <span className={classes.requireStar}>*</span>}
       </Typography>
-      <ChevronDownIcon
-        className={classes.button}
-        width={24}
-        height={24}
-      />
+      <div className={classes.actions}>
+        {isClearable && !isDisabled && selectedValue && (
+          <XMarkIcon
+            tabIndex={0}
+            onKeyDown={onEnter(clear)}
+            onClick={clear}
+          />
+        )}
+        <ChevronDownIcon className={classes.arrow} />
+      </div>
     </div>
   );
 }

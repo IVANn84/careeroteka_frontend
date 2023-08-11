@@ -27,6 +27,7 @@ Component.propTypes = {
   ]),
   isClearable: PropTypes.bool,
   isSearchable: PropTypes.bool,
+  isPlaceholderAtTop: PropTypes.bool,
   isRequired: PropTypes.bool,
   placeholder: PropTypes.string,
   maxLength: PropTypes.number,

@@ -42,7 +42,7 @@ function App() {
                       component={Main}
                     />
                     <Route path="/survey" component={Survey} />
-                    <Route path="/vacancies" component={Vacancies} />
+                    <Route path="/vacancies" exact component={Vacancies} />
                     <Route
                       path="/professions/:id(\d+)"
                       component={Profession}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import {
   BarElement,
   CategoryScale,
@@ -38,29 +38,9 @@ function BarChart({
     thousand: ' ',
   });
 
-  const generalOptions = {
+  const generalOptions = useMemo(() => ({
     responsive: true,
     plugins: {
-      // tooltip: {
-      //     caretSize: 0,
-      //     cornerRadius: 4,
-      //     displayColors: false,
-      //     padding: {
-      //         /* eslint-disable id-length */
-      //         x: 4,
-      //         y: 3,
-      //         /* eslint-enable id-length */
-      //     },
-      //     xAlign: 'center',
-      //     yAlign: 'bottom',
-      //     backgroundColor: '#1C1C3A',
-      //     callbacks: {
-      //         title: () => null,
-      //         label: ({parsed}) => `${formatMoney(parsed.y)}`,
-      //     },
-      //     intersect: false,
-      //     mode: 'point'
-      // },
       tooltip: {
         enabled: false,
       },
@@ -132,12 +112,17 @@ function BarChart({
         },
       },
     },
-  };
+  }), [deviceType, yMin]);
+
+  const mergedOptions = useMemo(
+    () => objectDeepMerge(generalOptions, options),
+    [options, generalOptions],
+  );
 
   return (
     <Bar
       data={data}
-      options={objectDeepMerge(generalOptions, options)}
+      options={mergedOptions}
     />
   );
 }

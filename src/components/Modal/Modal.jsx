@@ -22,6 +22,16 @@ export default function Modal({
   };
 
   useEffect(() => {
+    if (isDisplayed) {
+      document.body.style.overflow = 'hidden';
+      return () => {
+        document.body.style.overflow = 'auto';
+      };
+    }
+  }, [isDisplayed]);
+
+  // Анимация открытия/закрытия
+  useEffect(() => {
     setOpacity(isDisplayed ? 1 : 0);
 
     if (isDisplayed) {
@@ -32,7 +42,8 @@ export default function Modal({
       return () => {
         document.removeEventListener('keydown', onKeyDownCloak);
       };
-    } if ($modal.current) {
+    }
+    if ($modal.current) {
       // Ожидание завершения анимации при закрытии модалки
       const handleTransitionEnd = () => setIsInnerDisplayed(false);
 
@@ -40,11 +51,10 @@ export default function Modal({
 
       return () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
-        $modal.current.removeEventListener('transitionend', handleTransitionEnd);
+        $modal.current?.removeEventListener('transitionend', handleTransitionEnd);
       };
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isDisplayed, $modal]);
+  }, [isDisplayed, $modal.current]);
 
   const onClickCloak = ({ target }) => {
     if (target === $modal.current) {

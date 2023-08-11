@@ -13,6 +13,7 @@ import { onEnter } from 'Util/onEnter';
  * @param {String?} placeholder - Плейсхолдер
  * @param {Number?} maxLength - Максимальная длина значения
  * @param {Boolean} isDisplayed - Отображается ли поле
+ * @param {Boolean} isPlaceholderAtTop - Отображать плейсхолдер над инпутом
  * @param {Boolean} isRequired - Обязательное поле
  * @param {String?} className - Класс для стилей
  * @param {Function?} onChange - Функция, вызывающаяся при изменении значения инпута
@@ -29,6 +30,7 @@ export default function PasswordInput({
   placeholder,
   maxLength,
   isDisplayed = true,
+  isPlaceholderAtTop,
   className,
 
   onChange,
@@ -89,6 +91,9 @@ export default function PasswordInput({
 
   return (
     <div className={`${classes.container} ${className || ''}`}>
+      {placeholder && isPlaceholderAtTop && (
+        <p className={classes.placeholderAtTop}>{placeholder}</p>
+      )}
       <div className={classes.wrapper}>
         <div className={classes.input}>
           <input
@@ -104,7 +109,7 @@ export default function PasswordInput({
             maxLength={maxLength}
             onBlur={onBlur}
           />
-          {placeholder && (
+          {placeholder && !isPlaceholderAtTop && (
             <span className={classes.placeholder}>{placeholder}</span>
           )}
         </div>

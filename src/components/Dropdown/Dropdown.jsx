@@ -15,6 +15,7 @@ export default function Dropdown({
   checkIsSelected,
   isDisabled,
   isLoading = false,
+  isClearable = false,
   isSearchable,
   isDisplayed = true,
   isRequired,
@@ -66,8 +67,10 @@ export default function Dropdown({
         error={error}
         selectedValue={selectedValue}
         isOpen={isOpen}
+        isClearable={isClearable}
         isReversedY={isReversedY}
         placeholder={placeholder}
+        onSelect={onSelect}
         mode={mode}
         toggle={toggle}
       />

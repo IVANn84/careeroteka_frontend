@@ -12,11 +12,13 @@ export default function Vacancies({
 }) {
   const {
     vacanciesStore,
+    gradesStore,
     reset,
   } = useStoreVacanciesPage();
 
   useEffect(() => {
     vacanciesStore.fetchVacancies();
+    gradesStore.fetchGrades();
 
     return reset;
     // eslint-disable-next-line react-hooks/exhaustive-deps

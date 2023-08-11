@@ -15,6 +15,7 @@ import HintMenu from '../HintMenu';
  * Boolean - только подсветит)
  * @param {Boolean} isClearable - Есть ли кнопка очищения инпута
  * @param {Boolean} isSearchable - Есть ли кнопка поиска (вызывает onSubmit)
+ * @param {Boolean} isPlaceholderAtTop - Отображать плейсхолдер над инпутом
  * @param {String?} placeholder - Плейсхолдер
  * @param {Boolean} hasAutoFocus - Авто-фокус
  * @param {Number?} maxLength - Максимальная длина значения
@@ -39,6 +40,7 @@ export default function TextInput({
   error,
   isClearable,
   isSearchable,
+  isPlaceholderAtTop,
   placeholder,
   maxLength,
   hintMaxHeight = 300,
@@ -167,6 +169,9 @@ export default function TextInput({
       onBlur={handleBlur}
       onFocus={onFocus}
     >
+      {placeholder && isPlaceholderAtTop && (
+        <p className={classes.placeholderAtTop}>{placeholder}</p>
+      )}
       <div className={`${classes.wrapper} ${getWrapperClass()}`}>
         <div className={classes.input}>
           <input
@@ -181,7 +186,7 @@ export default function TextInput({
             onChange={change}
             maxLength={maxLength}
           />
-          {placeholder && (
+          {placeholder && !isPlaceholderAtTop && (
             <span className={classes.placeholder}>{placeholder}</span>
           )}
         </div>

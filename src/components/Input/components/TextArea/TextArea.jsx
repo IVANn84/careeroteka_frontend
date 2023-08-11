@@ -11,6 +11,7 @@ import { onEnter } from 'Util/onEnter';
  * Boolean - только подсветит)
  * @param {Boolean} isClearable - Есть ли кнопка очищения инпута
  * @param {Boolean} isSearchable - Есть ли кнопка поиска (вызывает onSubmit)
+ * @param {Boolean} isPlaceholderAtTop - Отображать плейсхолдер над инпутом
  * @param {String?} placeholder - Плейсхолдер
  * @param {Number?} maxLength - Максимальная длина значения
  * @param {Boolean} isDisplayed - Отображается ли поле
@@ -29,6 +30,7 @@ export default function TextArea({
   placeholder,
   maxLength,
   isDisplayed = true,
+  isPlaceholderAtTop,
   className,
 
   onChange,
@@ -73,6 +75,9 @@ export default function TextArea({
       ref={$container}
       className={`${classes.container} ${className || ''}`}
     >
+      {placeholder && isPlaceholderAtTop && (
+        <p className={classes.placeholderAtTop}>{placeholder}</p>
+      )}
       <div className={classes.wrapper}>
         <div className={classes.textarea}>
           <textarea
@@ -85,7 +90,7 @@ export default function TextArea({
             onChange={change}
             maxLength={maxLength}
           />
-          {placeholder && (
+          {placeholder && !isPlaceholderAtTop && (
             <span className={classes.placeholder}>{placeholder}</span>
           )}
         </div>

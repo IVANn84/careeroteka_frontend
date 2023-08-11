@@ -9,7 +9,6 @@ export default function Vacancy({
   value: {
     id,
     company,
-    vacancyAggregators,
     name,
     city,
     salary,
@@ -31,27 +30,13 @@ export default function Vacancy({
       tabIndex={0}
       className={classes.container}
     >
-      <div className={classes.title}>
-        <Typography
-          variant="B2"
-          variantMobile="B2"
-        >
-          {company}
-        </Typography>
-        <div className={classes.aggregators}>
-          {vacancyAggregators.map(({
-            id: aggregatorId,
-            icon: aggregatorIcon,
-            name: aggregatorName,
-          }) => (
-            <img
-              src={aggregatorIcon}
-              alt={aggregatorName}
-              key={aggregatorId}
-            />
-          ))}
-        </div>
-      </div>
+      <Typography
+        variant="B2"
+        variantMobile="B2"
+        className={classes.company}
+      >
+        {company}
+      </Typography>
       <Typography
         variant="B1"
         variantMobile="B1"

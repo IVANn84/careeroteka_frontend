@@ -8,7 +8,7 @@ const VacancyAggregatorModel = types.model('VacancyAggregator', {
   icon: types.string,
 });
 
-const VacanciesModel = types.model('Vacancies', {
+export const VacancyModel = types.model('Vacancy', {
   id: types.number,
   company: types.string,
   name: types.string,
@@ -19,10 +19,10 @@ const VacanciesModel = types.model('Vacancies', {
 });
 
 export const VacanciesStoreModel = types
-  .model('Professions', {
+  .model('Vacancies', {
     isLoading: types.optional(types.boolean, true),
     isLoadingNext: types.optional(types.boolean, false),
-    values: types.optional(types.array(VacanciesModel), []),
+    values: types.optional(types.array(VacancyModel), []),
     nextPage: types.maybeNull(types.number),
   })
   .actions(actions);

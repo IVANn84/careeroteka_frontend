@@ -19,20 +19,10 @@ const style = ({ font }) => ({
       transform: 'translateY(-5px)',
     },
   },
-  title: {
-    width: '100%',
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+  company: {
+    display: 'block',
     wordBreak: 'break-word',
     marginBottom: 24,
-  },
-  aggregators: {
-    '& > img': {
-      width: 24,
-      height: 24,
-      marginLeft: -10,
-    },
   },
   name: {
     wordBreak: 'break-word',
