@@ -15,6 +15,7 @@ import { onEnter } from 'Util/onEnter';
  * @param {Number?} maxLength - Максимальная длина числа
  * @param {Boolean} isDisplayed - Отображается ли поле
  * @param {Boolean} isRequired - Обязательное поле
+ * @param {Boolean} isPlaceholderAtTop - Отображать плейсхолдер над инпутом
  * @param {String?} className - Класс для стилей
  * @param {Function?} onChange - Функция, вызывающаяся при изменении значения инпута
  * @param {Function?} onSubmit - Функция, вызывающаяся при нажатии Enter или кнопки поиска
@@ -26,6 +27,7 @@ export default function NumberInput({
   value,
   isClearable,
   isSearchable,
+  isPlaceholderAtTop,
   isDisabled,
   error,
   placeholder,
@@ -93,6 +95,9 @@ export default function NumberInput({
 
   return (
     <div className={`${classes.container} ${className || ''}`}>
+      {placeholder && isPlaceholderAtTop && (
+        <p className={classes.placeholderAtTop}>{placeholder}</p>
+      )}
       <div className={classes.wrapper}>
         <div className={classes.input}>
           <input
@@ -107,7 +112,7 @@ export default function NumberInput({
             onChange={change}
             maxLength={maxLength}
           />
-          {placeholder && (
+          {placeholder && !isPlaceholderAtTop && (
             <span className={classes.placeholder}>{placeholder}</span>
           )}
         </div>

@@ -318,4 +318,15 @@ export default {
       backgroundColor: 'transparent',
     },
   },
+
+  checkbox: {
+    background: {
+      selected: colorAlternative,
+      unSelected: 'transparent',
+    },
+    border: {
+      selected: 'none',
+      unSelected: [[1, 'solid', '#767779']],
+    },
+  },
 };

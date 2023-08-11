@@ -1,3 +1,4 @@
+import { forwardRef } from 'react';
 import withStyle from 'react-jss';
 import PropTypes from 'prop-types';
 
@@ -22,7 +23,7 @@ const style = ({ typography }) => ({
 });
 
 // Типография
-const Component = withStyle(style)(Typography);
+const Component = withStyle(style)(forwardRef(Typography));
 
 Component.propTypes = {
   children: PropTypes.node,

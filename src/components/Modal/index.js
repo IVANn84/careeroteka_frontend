@@ -2,21 +2,19 @@ import withStyle from 'react-jss';
 import PropTypes from 'prop-types';
 
 import Modal from './Modal.jsx';
+import Header from './components/Header';
 import Content from './components/Content';
 import Footer from './components/Footer';
 
 const style = {
   container: {
-    padding: [24, 36],
-    borderRadius: 18,
+    padding: 48,
+    borderRadius: 16,
     background: '#FFF',
+    margin: [0, 'auto'],
   },
   cloak: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
     zIndex: 9999,
-    margin: 'auto',
     position: 'fixed',
     top: 0,
     left: 0,
@@ -40,6 +38,7 @@ ModalComponent.propTypes = {
 
 export default {
   Modal: ModalComponent,
+  Header,
   Content,
   Footer,
 };

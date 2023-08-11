@@ -3,7 +3,7 @@ import { types } from 'mobx-state-tree';
 import actions from './actions';
 import views from './views';
 
-export const SalaryModel = types.model('Salary', {
+export const SalaryModel = types.model('SalaryChart', {
   minValue: types.number,
   maxValue: types.number,
 });

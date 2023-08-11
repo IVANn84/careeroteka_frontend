@@ -10,9 +10,17 @@ const style = {
   controls: {
     display: 'flex',
     justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  filtersContainer: {
+    display: 'flex',
   },
   searchButton: {
-    width: 570,
+    minWidth: 470,
+  },
+  gradesDropdown: {
+    marginLeft: 16,
+    minWidth: 300,
   },
   filtersButtonContent: {
     display: 'flex',

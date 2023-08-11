@@ -14,9 +14,10 @@ export default function Typography({
 
   classes,
   ...props
-}) {
+}, ref) {
   return isDisplayed && React.createElement(component, {
     className: `${classes.typography} ${className || ''}`,
+    ref,
     ...props,
   }, children);
 }

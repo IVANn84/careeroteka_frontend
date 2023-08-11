@@ -1,4 +1,5 @@
 import withStyle from 'react-jss';
+import { observer } from 'mobx-react-lite';
 
 import Vacancies from './Vacancies.jsx';
 
@@ -8,4 +9,4 @@ const style = {
   },
 };
 
-export default withStyle(style)(Vacancies);
+export default withStyle(style)(observer(Vacancies));

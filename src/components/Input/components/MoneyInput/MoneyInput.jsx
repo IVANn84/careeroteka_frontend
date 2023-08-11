@@ -19,6 +19,7 @@ import { onEnter } from 'Util/onEnter';
  * @param {Number?} intDigit - Максимальное кол-во цифр до запятой
  * @param {Number?} precision - Максимальное кол-во цифр после запятой
  * @param {Boolean} isDisplayed - Отображается ли поле
+ * @param {Boolean} isPlaceholderAtTop - Отображать плейсхолдер над инпутом
  * @param {Boolean} isRequired - Обязательное поле
  * @param {String?} className - Класс для стилей
  * @param {Function?} onChange - Функция, вызывающаяся при изменении значения инпута
@@ -35,6 +36,7 @@ export default function MoneyInput({
   hasNegative,
   isClearable,
   isSearchable,
+  isPlaceholderAtTop,
   intDigit = 12,
   precision = 2,
   isDisplayed = true,
@@ -240,6 +242,9 @@ export default function MoneyInput({
 
   return (
     <div className={`${classes.container} ${className || ''}`}>
+      {placeholder && isPlaceholderAtTop && (
+        <p className={classes.placeholderAtTop}>{placeholder}</p>
+      )}
       <div className={classes.wrapper}>
         <div className={classes.input}>
           <input
@@ -253,7 +258,7 @@ export default function MoneyInput({
             onKeyDown={preventNumberShift}
             onChange={change}
           />
-          {placeholder && (
+          {placeholder && !isPlaceholderAtTop && (
             <span className={classes.placeholder}>{placeholder}</span>
           )}
         </div>

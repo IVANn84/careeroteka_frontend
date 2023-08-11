@@ -67,7 +67,11 @@ export const style = ({
   },
   placeholder: {
     witheSpace: 'nowrap',
+    textWrap: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
     display: ({ value }) => value && 'none',
+    width: `calc(100% - ${padding.desktop.xAxis}px)`,
     fontSize: typography.variants.B1.fontSize,
     lineHeight: typography.variants.B1.lineHeight,
     position: 'absolute',
@@ -76,6 +80,18 @@ export const style = ({
     left: padding.desktop.xAxis,
     userSelect: 'none',
     color: placeholder.default,
+
+    '&:after': {
+      content: ({ isRequired }) => isRequired && '"*"',
+      color: requireStarColor,
+    },
+  },
+  placeholderAtTop: {
+    fontSize: typography.variants.B1.fontSize,
+    lineHeight: typography.variants.B1.lineHeight,
+    userSelect: 'none',
+    color: placeholder.default,
+    marginBottom: 8,
 
     '&:after': {
       content: ({ isRequired }) => isRequired && '"*"',

@@ -135,4 +135,23 @@ export default {
 
     return wrapAnswer(data, hasError);
   })(),
+
+  FetchSalaryCostsByFilter: (() => async (params, hasError = false) => {
+    // eslint-disable-next-line no-console
+    console.log('VacanciesApi', 'FetchSalaryCostsByFilter', params);
+
+    await timeout(1000);
+
+    const data = [
+      50000, 100000, 200000, 300000, 400000,
+      20000, 300203, 123333, 123333, 123333,
+      123333, 123333, 123333, 123333, 123333,
+      123333, 123333, 123333, 123333, 123333, 124000,
+      100000, 200000, 300000, 400000, 500000,
+      100000, 200000, 300000, 400000, 500000,
+      100000, 200000, 300000, 400000, 500000, 539999, 19999,
+    ];
+
+    return wrapAnswer(data, hasError);
+  })(),
 };
