@@ -5,13 +5,7 @@ import Footer from './Footer.jsx';
 
 const style = {
   container: {
-    display: 'flex',
-    justifyContent: 'end',
-    marginTop: 25,
-
-    '& > *:not(:first-child)': {
-      marginLeft: 12,
-    },
+    marginTop: 36,
   },
 };
 
@@ -19,6 +13,7 @@ const Component = withStyle(style)(Footer);
 
 Component.propTypes = {
   children: PropTypes.node.isRequired,
+  className: PropTypes.string,
 };
 
 export default Component;

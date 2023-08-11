@@ -19,7 +19,8 @@ export default {
         results: Array(10)
           .fill(null)
           .map(() => ({
-            id,
+            // eslint-disable-next-line no-plusplus
+            id: id++,
             name: 'Python',
             salaryMinValue: getRandomInt(30000, 200000),
             countDirections: getRandomInt(1, 4),
@@ -27,7 +28,6 @@ export default {
       };
 
       nextPage += 1;
-      id += 1;
 
       return wrapAnswer(data, hasError);
     };
@@ -88,10 +88,9 @@ export default {
         .map(() => ({
           name: directionId === 3 ? 'Technical Product менеджер' : `Вариант ${directionId}`,
           description: `Описание варианта ${directionId}`,
-          id: directionId,
+          // eslint-disable-next-line no-plusplus
+          id: directionId++,
         }));
-
-      directionId += 1;
 
       return wrapAnswer(data, hasError);
     };

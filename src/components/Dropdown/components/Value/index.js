@@ -90,25 +90,44 @@ const style = ({
     color: requireStarColor,
   },
 
-  button: {
-    margin: [0, padding.desktop.xAxis, 0, 8],
+  arrow: {
+    transform: ({ isOpen }) => (isOpen ? 'rotate(180deg)' : null),
+
+    '&:hover, &:hover': {
+      opacity: ({ isDisabled }) => !isDisabled && '1 !important',
+    },
+  },
+
+  actions: {
+    display: 'flex',
     color: ({ error, mode }) => (error
       ? icon.color.negative
       : color[mode]),
-    transform: ({ isOpen }) => (isOpen ? 'rotate(180deg)' : null),
-    transition: 'opacity .2s, transform .2s',
+    margin: [0, padding.desktop.xAxis, 0, 8],
 
-    '&:hover': {
-      opacity: ({ isDisabled }) => !isDisabled && '.7',
-    },
+    '& > *': {
+      border: 0,
+      width: 24,
+      height: 24,
+      cursor: ({ isDisabled }) => !isDisabled && 'pointer',
+      transition: 'opacity .2s, transform .2s',
 
-    '&:focus': {
-      outline: 'none',
-    },
+      '&:not(:first-child)': {
+        marginLeft: 2,
+      },
 
-    '&:active': {
-      transition: 'none',
-      opacity: ({ isDisabled }) => !isDisabled && '.9',
+      '&:hover': {
+        opacity: ({ isDisabled }) => !isDisabled && '.7',
+      },
+
+      '&:focus': {
+        outline: 'none',
+      },
+
+      '&:active': {
+        transition: 'none',
+        opacity: ({ isDisabled }) => !isDisabled && '.9',
+      },
     },
   },
 

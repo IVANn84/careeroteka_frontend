@@ -3,15 +3,16 @@ import React from 'react';
 import Divider from 'Component/Divider';
 
 export default function Content({
-  classes,
+  hasDivider = true,
+  className,
   children,
 }) {
   return (
     <>
-      <div className={classes.container}>
+      <div className={className || ''}>
         {children}
       </div>
-      <Divider />
+      {hasDivider && (<Divider />)}
     </>
   );
 }

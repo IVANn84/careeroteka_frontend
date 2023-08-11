@@ -1,4 +1,5 @@
 export const colorNegative = '#DB0000';
+export const colorAlternative = '#367CF3';
 
 export default {
   layout: {
@@ -31,7 +32,7 @@ export default {
           focused: '#FFF',
         },
         background: {
-          default: '#367CF3',
+          default: colorAlternative,
           hovered: '#2F74EA',
           focused: '#226AE6',
         },
@@ -64,9 +65,9 @@ export default {
         },
       },
       primary: {
-        border: '#367CF3',
+        border: colorAlternative,
         color: {
-          default: '#367CF3',
+          default: colorAlternative,
           hovered: '#FFF',
           focused: '#FFF',
         },
@@ -97,7 +98,7 @@ export default {
       light: '#FFF',
       regular: '#1A1C1F',
       secondary: 'rgba(0, 0, 0, .6)',
-      alternative: '#367CF3',
+      alternative: colorAlternative,
       negative: colorNegative,
     },
     weight: {
@@ -177,7 +178,7 @@ export default {
     },
     spoiler: {
       color: {
-        light: '#367CF3',
+        light: colorAlternative,
         primary: '#FFF',
       },
     },
@@ -200,7 +201,7 @@ export default {
     },
     background: {
       light: '#FFF',
-      primary: '#367CF3',
+      primary: colorAlternative,
     },
     optionBackground: {
       default: 'transparent',
@@ -294,5 +295,38 @@ export default {
   divider: {
     color: 'rgba(38, 38, 38, 0.08)',
     height: 1,
+  },
+
+  customScrollbar: {
+    '&::-webkit-scrollbar': {
+      height: 12,
+    },
+    '&::-webkit-scrollbar-track': {
+      backgroundColor: '#CBCBCB',
+      borderRadius: 12,
+    },
+    '&::-webkit-scrollbar-thumb': {
+      backgroundColor: colorAlternative,
+      borderRadius: 12,
+    },
+    '&::-webkit-scrollbar-button': {
+      width: 0,
+      height: 0,
+      display: 'none',
+    },
+    '&::-webkit-scrollbar-corner': {
+      backgroundColor: 'transparent',
+    },
+  },
+
+  checkbox: {
+    background: {
+      selected: colorAlternative,
+      unSelected: 'transparent',
+    },
+    border: {
+      selected: 'none',
+      unSelected: [[1, 'solid', '#767779']],
+    },
   },
 };

@@ -13,12 +13,11 @@ export default {
       const data = Array(11)
         .fill(null)
         .map(() => ({
-          id,
+          // eslint-disable-next-line no-plusplus
+          id: id++,
           name: `Вариант ${id}`,
           value: 'A1',
         }));
-
-      id += 1;
 
       return wrapAnswer(data, hasError);
     };

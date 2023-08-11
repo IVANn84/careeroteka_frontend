@@ -10,7 +10,7 @@ const style = ({ font }) => ({
     display: 'grid',
     gridAutoFlow: 'column',
     gridAutoColumns: 'min-content',
-    overflowX: 'scroll',
+    overflowX: 'overlay',
     scrollbarWidth: 'none',
     padding: [20, 64],
     margin: [-20, -64],
