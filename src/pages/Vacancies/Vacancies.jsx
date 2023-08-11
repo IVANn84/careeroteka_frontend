@@ -13,11 +13,15 @@ export default function Vacancies({
   const {
     vacanciesStore,
     gradesStore,
+    fieldsStore,
     reset,
   } = useStoreVacanciesPage();
 
   useEffect(() => {
     vacanciesStore.fetchVacancies();
+  }, [fieldsStore.typeVacancy, fieldsStore.gradeId]);
+
+  useEffect(() => {
     gradesStore.fetchGrades();
 
     return reset;

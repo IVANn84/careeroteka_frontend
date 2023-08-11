@@ -30,12 +30,14 @@ export default self => ({
       fieldsStore: {
         searchVacancy,
         gradeId,
+        typeVacancy,
       },
     } = getParent(self);
 
     const { data, errors } = yield VacanciesApi.FetchList({
       search: searchVacancy,
       gradeId,
+      typeVacancy,
       page: isFetchNextPage
         ? self.nextPage
         : null,

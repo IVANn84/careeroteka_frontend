@@ -15,4 +15,8 @@ export default self => ({
       getParent(self).vacanciesStore.fetchVacancies();
     }
   },
+
+  setTypeVacancy(value) {
+    self.typeVacancy = value;
+  },
 });

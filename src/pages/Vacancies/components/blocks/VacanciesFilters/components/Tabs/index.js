@@ -16,6 +16,7 @@ const style = ({ customScrollbar }) => ({
       display: 'inline-block',
       color: '#6D7279',
       cursor: 'pointer',
+      transition: 'opacity .2s',
 
       '& > svg': {
         display: 'block',
@@ -25,6 +26,19 @@ const style = ({ customScrollbar }) => ({
 
       '&:not(:first-child)': {
         marginLeft: 36,
+      },
+
+      '&:hover, &:focus-visible': {
+        opacity: 0.8,
+      },
+    },
+  },
+  loading: {
+    '& > div': {
+      opacity: 0.7,
+
+      '&:hover, &:focus-visible': {
+        opacity: 0.7,
       },
     },
   },
