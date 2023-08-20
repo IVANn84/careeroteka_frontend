@@ -16,18 +16,17 @@ const style = ({ typography }) => ({
   },
 
   description: {
+    '& > *:not(:last-child)': {
+      marginBottom: 24,
+    },
+
     '& p, & ul': {
       ...typography.variants.B1,
     },
 
-    '& h2': {
-      marginBottom: 24,
+    '& p strong': {
       fontWeight: typography.fontWeight.bold,
       ...typography.variants.H2,
-
-      '&:not(:first-child)': {
-        marginTop: 34,
-      },
     },
 
     '& ul li': {

@@ -3,8 +3,9 @@ import React, { useEffect } from 'react';
 import { useStoreRegisterPage } from 'Page/Register/stores';
 import { useHistory } from 'react-router';
 import { useFormik } from 'formik';
-import { autorun } from 'mobx';
 import * as Yup from 'yup';
+
+import { onEnter } from 'Util/onEnter';
 
 import Input from 'Component/Input';
 import Button from 'Component/Button';
@@ -40,21 +41,18 @@ export default function Register({ classes }) {
     validationSchema,
   });
 
-  useEffect(() => {
-    autorun(() => {
-      fieldsStore.setEmail(formik.values.email);
-      fieldsStore.setPassword(formik.values.password);
-      fieldsStore.repeatPassword(formik.values.confirmPassword);
-    });
+  useEffect(() => reset, [reset]);
 
-    return () => {
-      reset();
-      autorun(() => {
-        fieldsStore.setEmail(null);
-        fieldsStore.setPassword(null);
-        fieldsStore.repeatPassword(null);
-      });
-    };
+  useEffect(() => {
+    if (fieldsStore.email !== formik.values.email) {
+      fieldsStore.setEmail(formik.values.email);
+    }
+    if (fieldsStore.password !== formik.values.password) {
+      fieldsStore.setPassword(formik.values.password);
+    }
+    if (fieldsStore.confirmPassword !== formik.values.confirmPassword) {
+      fieldsStore.repeatPassword(formik.values.confirmPassword);
+    }
   }, [
     fieldsStore,
     reset,
@@ -73,7 +71,7 @@ export default function Register({ classes }) {
         variantMobile="H1"
         component="h1"
       >
-        Ускорьте&nbsp;свой&nbsp;рост&nbsp;уже сегодня
+        Ускорьте свой рост уже сегодня
       </Typography>
       <form className={classes.inputs}>
         <Input
@@ -110,7 +108,13 @@ export default function Register({ classes }) {
         className={classes.button}
         mode="primary"
         onClick={() => signup(gotoLogin)}
-        isDisabled={!formik.isValid || isLoading}
+        isDisabled={
+          !formik.values.email
+          || !formik.values.password
+          || !formik.values.confirmPassword
+          || !formik.isValid
+          || isLoading
+        }
       >
         Продолжить
       </Button>
@@ -125,6 +129,7 @@ export default function Register({ classes }) {
           <span
             className={classes.link}
             onClick={gotoLogin}
+            onKeyDown={onEnter(gotoLogin)}
           >
             Войти
           </span>

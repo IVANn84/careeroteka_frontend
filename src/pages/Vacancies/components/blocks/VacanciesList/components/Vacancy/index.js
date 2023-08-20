@@ -7,10 +7,12 @@ import Vacancy from './Vacancy.jsx';
 const style = ({ font }) => ({
   container: {
     display: 'flex',
-    flexWrap: 'wrap',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
     padding: 20,
     borderRadius: 16,
     cursor: 'pointer',
+    height: '100%',
     minHeight: 190,
     transition: 'transform .2s, box-shadow .2s',
     boxShadow: [[0, 8, 20, 2, 'rgba(0, 0, 0, .1)']],
@@ -21,13 +23,22 @@ const style = ({ font }) => ({
     },
   },
   company: {
-    display: 'block',
     wordBreak: 'break-word',
     marginBottom: 24,
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    display: '-webkit-box',
+    lineClamp: 1,
+    boxOrient: 'vertical',
   },
   name: {
     wordBreak: 'break-word',
     marginBottom: 20,
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    display: '-webkit-box',
+    lineClamp: 2,
+    boxOrient: 'vertical',
   },
   city: {
     display: 'inline-block',
@@ -38,7 +49,6 @@ const style = ({ font }) => ({
   },
   salary: {
     display: 'inline-block',
-    marginLeft: 12,
     padding: [4, 6],
     borderRadius: 8,
     textAlign: 'center',
@@ -50,6 +60,12 @@ const style = ({ font }) => ({
     width: '100%',
     justifyContent: 'space-between',
     alignItems: 'center',
+  },
+  conditions: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    columnGap: '12px',
+    rowGap: '8px',
   },
   check: {
     '& > svg': {

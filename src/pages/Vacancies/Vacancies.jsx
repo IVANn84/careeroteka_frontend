@@ -19,6 +19,7 @@ export default function Vacancies({
 
   useEffect(() => {
     vacanciesStore.fetchVacancies();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fieldsStore.typeVacancy, fieldsStore.gradeId]);
 
   useEffect(() => {

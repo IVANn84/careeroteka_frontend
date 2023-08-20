@@ -54,6 +54,7 @@ export default function Modal({
         $modal.current?.removeEventListener('transitionend', handleTransitionEnd);
       };
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isDisplayed, $modal.current]);
 
   const onClickCloak = ({ target }) => {

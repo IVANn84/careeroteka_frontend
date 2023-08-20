@@ -17,7 +17,6 @@ export default function Description({
       <Typography
         variant="B1"
         variantMobile="B2"
-        className={classes.description}
       >
         {
           entityStore.isLoading
@@ -25,8 +24,11 @@ export default function Description({
               <Code />
             )
             : (
-              // eslint-disable-next-line react/no-danger
-              <div dangerouslySetInnerHTML={{ __html: entityStore.entity?.description }} />
+              <div
+                // eslint-disable-next-line react/no-danger
+                dangerouslySetInnerHTML={{ __html: entityStore.entity?.rawDescription }}
+                className={classes.description}
+              />
             )
         }
       </Typography>

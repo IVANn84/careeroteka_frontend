@@ -5,7 +5,6 @@ import { useStoreVacancyPage } from 'Page/Vacancy/stores';
 import Block from 'Component/Block';
 import Typography from 'Component/Typography';
 import TextSkeleton from './components/TextSkeleton';
-import IconSkeleton from './components/IconSkeleton';
 import BlocksSkeleton from './components/BlocksSkeleton';
 
 export default function Main({
@@ -19,19 +18,41 @@ export default function Main({
 
   const {
     entityStore,
+    entityStore: {
+      entity: {
+        salary,
+      },
+    },
   } = useStoreVacancyPage();
+
+  let salaryString;
+
+  if (salary) {
+    if (salary.minValue !== salary.maxValue) {
+      salaryString = `${salary.minValue
+        ? `от ${formatMoney(salary.minValue)} `
+        : ''} ${salary.maxValue
+        ? `до ${formatMoney(salary.maxValue)} `
+        : ''}`;
+    } else {
+      salaryString = `${formatMoney(salary.minValue ?? salary.maxValue)} `;
+    }
+  }
 
   return (
     <Block>
-      {(entityStore.isLoading || entityStore.entity?.icon) && (
-        <IconSkeleton isDisplayed={entityStore.isLoading}>
-          <img
-            className={classes.icon}
-            src={entityStore.entity?.icon}
-            alt="Иконка организации"
-          />
-        </IconSkeleton>
-      )}
+      <Typography
+        variant="B1"
+        variantMobile="B2"
+        component="p"
+      >
+        <TextSkeleton
+          isDisplayed={entityStore.isLoading}
+          height={54}
+        >
+          {entityStore.entity?.company}
+        </TextSkeleton>
+      </Typography>
       <Typography
         variant="H1"
         variantMobile="H1"
@@ -45,26 +66,24 @@ export default function Main({
           {entityStore.entity?.name}
         </TextSkeleton>
       </Typography>
-      <Typography
-        variant="H5"
-        variantMobile="H5"
-        component="p"
-        className={classes.salary}
-      >
-        <TextSkeleton
-          isDisplayed={entityStore.isLoading}
-          height={30}
+      {salary && (
+        <Typography
+          variant="H5"
+          variantMobile="H5"
+          component="p"
+          className={classes.salary}
         >
-          от
-          {' '}
-          {formatMoney(entityStore.entity?.salary)}
-          {' '}
-          ₽
-        </TextSkeleton>
-      </Typography>
+          <TextSkeleton
+            isDisplayed={entityStore.isLoading}
+            height={30}
+          >
+            {`${salaryString}${salary.currency.code}`}
+          </TextSkeleton>
+        </Typography>
+      )}
       <div className={classes.tags}>
         <BlocksSkeleton isDisplayed={entityStore.isLoading}>
-          {entityStore.entity?.tags.map(tag => (
+          {entityStore.tags.map(tag => (
             <Block
               key={tag}
               mode="dark"

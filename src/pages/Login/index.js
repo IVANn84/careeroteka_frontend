@@ -5,13 +5,18 @@ import Login from './Login.jsx';
 
 const style = ({ font }) => ({
   container: {
-    width: '40%',
-    margin: 'auto',
+    margin: '0 auto',
+    width: 470,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
   },
   title: {
     textAlign: 'center',
   },
   inputs: {
+    margin: '0 auto',
+    width: '100%',
     marginTop: 32,
     marginBottom: 32,
 

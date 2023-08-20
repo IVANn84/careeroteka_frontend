@@ -23,6 +23,20 @@ export default function Vacancy({
     thousand: ' ',
   });
 
+  let salaryString;
+
+  if (salary) {
+    if (salary.minValue !== salary.maxValue) {
+      salaryString = `${salary.minValue
+        ? `от ${formatMoney(salary.minValue)} `
+        : ''} ${salary.maxValue
+        ? `до ${formatMoney(salary.maxValue)} `
+        : ''}`;
+    } else {
+      salaryString = `${formatMoney(salary.minValue ?? salary.maxValue)} `;
+    }
+  }
+
   return (
     <Link
       key={id}
@@ -30,45 +44,49 @@ export default function Vacancy({
       tabIndex={0}
       className={classes.container}
     >
-      <Typography
-        variant="B2"
-        variantMobile="B2"
-        className={classes.company}
-      >
-        {company}
-      </Typography>
-      <Typography
-        variant="B1"
-        variantMobile="B1"
-        weight="semiBold"
-        weightMobile="semiBold"
-        component="p"
-        className={classes.name}
-      >
-        {name}
-      </Typography>
+      <abbr title={company}>
+        <Typography
+          variant="B2"
+          variantMobile="B2"
+          className={classes.company}
+        >
+          {company}
+        </Typography>
+      </abbr>
+      <abbr title={name}>
+        <Typography
+          variant="B1"
+          variantMobile="B2"
+          weight="semiBold"
+          weightMobile="semiBold"
+          component="p"
+          className={classes.name}
+        >
+          {name}
+        </Typography>
+      </abbr>
       <div className={classes.info}>
-        <div>
-          <Typography
-            variant="C1"
-            variantMobile="C1"
-            className={classes.city}
-            component="p"
-          >
-            {city}
-          </Typography>
-          <Typography
-            variant="C1"
-            variantMobile="C1"
-            className={classes.salary}
-            component="p"
-          >
-            от
-            {' '}
-            {formatMoney(salary)}
-            {' '}
-            ₽
-          </Typography>
+        <div className={classes.conditions}>
+          {city && (
+            <Typography
+              variant="C1"
+              variantMobile="C1"
+              className={classes.city}
+              component="p"
+            >
+              {city}
+            </Typography>
+          )}
+          {salary && (
+            <Typography
+              variant="C1"
+              variantMobile="C1"
+              className={classes.salary}
+              component="p"
+            >
+              {`${salaryString}${salary.currency.code}`}
+            </Typography>
+          )}
         </div>
         <div className={classes.check}>
           <CheckIcon />
