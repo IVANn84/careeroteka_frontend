@@ -16,31 +16,34 @@ const style = ({ typography }) => ({
   },
 
   description: {
+    ...typography.variants.B1,
+
     '& > *:not(:last-child)': {
+      display: 'block',
       marginBottom: 24,
     },
 
-    '& p, & ul': {
-      ...typography.variants.B1,
-    },
-
-    '& p strong': {
+    '& strong': {
       fontWeight: typography.fontWeight.bold,
-      ...typography.variants.H2,
     },
 
-    '& ul li': {
-      display: 'flex',
+    '& ul': {
+      marginLeft: 17,
 
-      '&:not(:last-child)': {
-        marginBottom: 18,
-      },
+      '& li': {
+        position: 'relative',
 
-      '&::before': {
-        content: '"\\2022"',
-        color: '#6D7279',
-        fontWeight: 'bold',
-        marginRight: 8,
+        '&:not(:last-child)': {
+          marginBottom: 18,
+        },
+
+        '&::before': {
+          content: '"\\2022"',
+          paddingRight: 8,
+          position: 'absolute',
+          right: '100%',
+          color: '#6D7279',
+        },
       },
     },
   },
