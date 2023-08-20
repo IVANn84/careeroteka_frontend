@@ -5,9 +5,6 @@ import { memo } from 'react';
 import Main from './Main.jsx';
 
 const style = {
-  icon: {
-    height: 24,
-  },
   name: {
     margin: [20, 0],
   },

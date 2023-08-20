@@ -1,6 +1,6 @@
 import { flow, getParent } from 'mobx-state-tree';
 
-import VacanciesApi from 'Mock/vacancies';
+import VacanciesApi from 'Api/vacancy';
 
 export default self => ({
   setIsLoading(value) {
@@ -46,9 +46,19 @@ export default self => ({
     if (errors) {
       // TODO: сделать нормальную обработку ошибок
     } else {
+      const localStorageVacancies = localStorage.getItem('visitedVacancies');
+      const visitedVacancyIds = localStorageVacancies
+        ? JSON.parse(localStorageVacancies)
+        : [];
+
+      const formedResults = data.results.map(vacancy => ({
+        ...vacancy,
+        isRead: visitedVacancyIds.includes(vacancy.id),
+      }));
+
       self.setValues(isFetchNextPage
-        ? [...self.values, ...data.results]
-        : data.results);
+        ? [...self.values, ...formedResults]
+        : formedResults);
       self.setNextPage(data.next);
     }
 

@@ -5,7 +5,8 @@ import Register from './Register.jsx';
 
 const style = {
   container: {
-    margin: '115px auto 102px',
+    margin: '0 auto',
+    width: 470,
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -17,7 +18,7 @@ const style = {
   },
   inputs: {
     margin: '0 auto',
-    width: '61%',
+    width: '100%',
     marginTop: 32,
     marginBottom: 32,
 
@@ -26,7 +27,7 @@ const style = {
     },
   },
   button: {
-    width: '61%',
+    width: '100%',
   },
   links: {
     width: 322,

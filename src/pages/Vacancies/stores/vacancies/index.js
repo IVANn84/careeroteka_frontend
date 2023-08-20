@@ -2,10 +2,12 @@ import { types } from 'mobx-state-tree';
 
 import actions from './actions';
 
-const VacancyAggregatorModel = types.model('VacancyAggregator', {
-  id: types.number,
-  name: types.string,
-  icon: types.string,
+const SalaryModel = types.model('Salary', {
+  minValue: types.maybeNull(types.number),
+  maxValue: types.maybeNull(types.number),
+  currency: types.model('Currency', {
+    code: types.string,
+  }),
 });
 
 export const VacancyModel = types.model('Vacancy', {
@@ -13,9 +15,8 @@ export const VacancyModel = types.model('Vacancy', {
   company: types.string,
   name: types.string,
   city: types.string,
-  salary: types.number,
-  isRead: types.boolean,
-  vacancyAggregators: types.array(VacancyAggregatorModel),
+  salary: types.maybeNull(types.union(SalaryModel, types.number)),
+  isRead: types.maybeNull(types.boolean),
 });
 
 export const VacanciesStoreModel = types

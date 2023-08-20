@@ -1,6 +1,6 @@
-import { flow, getParent } from 'mobx-state-tree';
+import { flow } from 'mobx-state-tree';
 
-import VacanciesApi from 'Mock/vacancies';
+import VacancyApi from 'Api/vacancy';
 
 export default self => ({
   setIsLoading(value) {
@@ -16,7 +16,7 @@ export default self => ({
 
     const vacancyId = +(self.entity.id || id);
 
-    const { data, errors } = yield VacanciesApi.FetchById(vacancyId);
+    const { data, errors } = yield VacancyApi.FetchById(vacancyId);
 
     if (errors) {
       // TODO: сделать нормальную обработку ошибок
@@ -29,6 +29,6 @@ export default self => ({
 
     self.setIsLoading(false);
 
-    getParent(self).vacanciesStore.fetchVacancies();
+    // getParent(self).vacanciesStore.fetchVacancies();
   }),
 });

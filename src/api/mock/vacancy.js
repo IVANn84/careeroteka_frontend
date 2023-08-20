@@ -8,7 +8,7 @@ export default {
 
     return async (params, hasError = false) => {
       // eslint-disable-next-line no-console
-      console.log('VacanciesApi', 'FetchList', params);
+      console.log('VacancyApi', 'FetchList', params);
 
       await timeout(1000);
 
@@ -57,7 +57,7 @@ export default {
 
     return async (params, hasError = false) => {
       // eslint-disable-next-line no-console
-      console.log('VacanciesApi', 'FetchSimilarList', params);
+      console.log('VacancyApi', 'FetchSimilarList', params);
 
       await timeout(1000);
 
@@ -69,25 +69,12 @@ export default {
           company: 'Lamoda',
           name: 'Младший специалист по организации съемок',
           city: 'Москва',
-          salary: getRandomInt(30000, 200000),
-          isRead: id === 3,
-          vacancyAggregators: [
-            {
-              id: 1,
-              name: 'Habr',
-              icon: 'https://career.habr.com/images/favicons/favicon-32.png',
+          salary: {
+            minValue: getRandomInt(30000, 200000),
+            currency: {
+              code: 'RUR',
             },
-            {
-              id: 2,
-              name: 'hh',
-              icon: 'https://i.hh.ru/logos/svg/hh.ru__min_.svg?v=11032019',
-            },
-            {
-              id: 3,
-              name: 'hh',
-              icon: 'https://i.hh.ru/logos/svg/hh.ru__min_.svg?v=11032019',
-            },
-          ],
+          },
         }));
 
       return wrapAnswer(data, hasError);
@@ -96,7 +83,7 @@ export default {
 
   FetchById: (() => async (id, hasError = false) => {
     // eslint-disable-next-line no-console
-    console.log('VacanciesApi', 'FetchById', id);
+    console.log('VacancyApi', 'FetchById', id);
 
     await timeout(1000);
 
@@ -138,7 +125,7 @@ export default {
 
   FetchSalaryCostsByFilter: (() => async (params, hasError = false) => {
     // eslint-disable-next-line no-console
-    console.log('VacanciesApi', 'FetchSalaryCostsByFilter', params);
+    console.log('VacancyApi', 'FetchSalaryCostsByFilter', params);
 
     await timeout(1000);
 
