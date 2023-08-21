@@ -1,7 +1,7 @@
 import withStyle from 'react-jss';
 import { observer } from 'mobx-react-lite';
 
-import HeaderNavigation from './HeaderNavigation.jsx';
+import RightHeaderNavigation from './RightHeaderNavigation.jsx';
 
 const style = {
   container: {
@@ -42,4 +42,4 @@ const style = {
   },
 };
 
-export default withStyle(style)(observer(HeaderNavigation));
+export default withStyle(style)(observer(RightHeaderNavigation));

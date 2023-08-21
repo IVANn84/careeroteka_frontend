@@ -2,7 +2,8 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 import { useStoreLayoutComponent } from 'Component/Layout/stores';
-import HeaderNavigation from './components/HeaderNavigation';
+import RightHeaderNavigation from './components/RightHeaderNavigation';
+import LeftHeaderNavigation from './components/LeftHeaderNavigation';
 
 export default function Header({
   classes,
@@ -13,15 +14,18 @@ export default function Header({
 
   return (
     <div className={classes.container}>
-      <NavLink
-        className={classes.title}
-        to="/"
-        exact
-      >
-        careeroteka
-      </NavLink>
+      <div className={classes.leftSideContainer}>
+        <NavLink
+          className={classes.title}
+          to="/"
+          exact
+        >
+          careeroteka
+        </NavLink>
+        <LeftHeaderNavigation />
+      </div>
       {!isLoading && (
-        <HeaderNavigation />
+        <RightHeaderNavigation />
       )}
     </div>
   );

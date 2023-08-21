@@ -7,7 +7,7 @@ import Typography from 'Component/Typography';
 import { useRedirectToLogin } from 'Hook/useRedirectToLogin';
 import { onEnter } from 'Util/onEnter';
 
-export default function HeaderNavigation({
+export default function RightHeaderNavigation({
   classes,
 }) {
   const history = useHistory();
