@@ -8,6 +8,9 @@ const style = ({ font }) => ({
     display: 'flex',
     justifyContent: 'space-between',
   },
+  leftSideContainer: {
+    display: 'flex',
+  },
   title: {
     fontFamily: 'Montserrat, Inter, sans-serif',
     fontStyle: 'normal',
