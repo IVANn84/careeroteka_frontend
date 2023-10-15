@@ -1,6 +1,7 @@
 import { types } from 'mobx-state-tree';
 
-import { fieldsStoreLoginPage, FieldsStoreModel } from 'Page/Login/stores/fields';
+import { FieldsStoreModel, fieldsStoreLoginPage } from 'Page/Login/stores/fields';
+
 import actions from './actions';
 
 export const RootStoreModel = types

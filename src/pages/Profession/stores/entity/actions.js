@@ -1,10 +1,10 @@
 import { flow, getParent } from 'mobx-state-tree';
 
-import ProfessionApi from 'Api/profession';
+import StatisticApi from 'Api/statistic';
 import SkillApi from 'Api/skill';
 import ReviewApi from 'Api/review';
+import ProfessionApi from 'Api/profession';
 import CourseApi from 'Api/course';
-import StatisticApi from 'Api/statistic';
 
 export default self => ({
   setIsLoading(value) {

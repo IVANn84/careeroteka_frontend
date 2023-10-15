@@ -1,9 +1,7 @@
 import React from 'react';
 
-import { useStoreVacanciesPage } from 'Page/Vacancies/stores';
-
 import { onEnter } from 'Util/onEnter';
-
+import { useStoreVacanciesPage } from 'Page/Vacancies/stores';
 import Typography from 'Component/Typography';
 import Icon from 'Component/Icon';
 
@@ -64,19 +62,19 @@ export default function Tabs({
       {
         types.map(type => (
           <div
-            key={type.id}
-            role="button"
-            tabIndex={0}
-            onClick={() => onClick(type.id)}
-            onKeyDown={onEnter(() => onClick(type.id))}
             className={fieldsStore.typeVacancy === type.id
               ? classes.selectedTab
               : ''}
+            key={type.id}
+            onClick={() => onClick(type.id)}
+            onKeyDown={onEnter(() => onClick(type.id))}
+            role="button"
+            tabIndex={0}
           >
             <Icon
+              height={48}
               name={type.icon}
               width={48}
-              height={48}
             />
             <Typography
               variant="B2"

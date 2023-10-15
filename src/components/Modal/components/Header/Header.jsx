@@ -2,9 +2,8 @@ import React from 'react';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 
 import { onEnter } from 'Util/onEnter';
-
-import Divider from 'Component/Divider';
 import Typography from 'Component/Typography';
+import Divider from 'Component/Divider';
 
 export default function Header({
   classes,
@@ -23,9 +22,9 @@ export default function Header({
           {children}
         </Typography>
         <XMarkIcon
-          tabIndex={0}
-          onKeyDown={onEnter(onDecline)}
           onClick={onDecline}
+          onKeyDown={onEnter(onDecline)}
+          tabIndex={0}
         />
       </div>
       {hasDivider && (<Divider />)}

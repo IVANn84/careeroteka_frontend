@@ -2,9 +2,10 @@ import React, { useEffect, useMemo, useState } from 'react';
 
 import { useDebouncedValue } from 'Hook/useDebouncedValue';
 import Typography from 'Component/Typography';
+
+import TextsSkeleton from './components/TextsSkeleton';
 import Spoiler from '../Spoiler';
 import Option from '../Option';
-import TextsSkeleton from './components/TextsSkeleton';
 
 export default function Menu({
   spoilerSize = 50,
@@ -55,20 +56,20 @@ export default function Menu({
     return filteredOptions.length
       ? filteredOptions.map(option => (
         <Option
-          key={option.id}
-          tabIndex={0}
-          value={option.optionValue || option.name}
           isSelected={checkIsSelected
             ? checkIsSelected(option)
             : selectedId === option.id}
+          key={option.id}
           onSelect={() => optionClick(option)}
+          tabIndex={0}
+          value={option.optionValue || option.name}
         />
       ))
       : (
         <Typography
+          className={classes.placeholder}
           variant="B2"
           variantMobile="B2"
-          className={classes.placeholder}
         >
           Ничего не найдено
         </Typography>
@@ -83,10 +84,10 @@ export default function Menu({
           {isSearchable && (
           <div className={classes.search}>
             <input
-              type="text"
-              placeholder="Поиск"
-              value={search}
               onChange={({ target: { value } }) => setSearch(value)}
+              placeholder="Поиск"
+              type="text"
+              value={search}
             />
           </div>
           )}

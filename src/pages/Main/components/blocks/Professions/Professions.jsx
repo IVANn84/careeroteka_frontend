@@ -1,10 +1,10 @@
 import React from 'react';
 
 import { useStoreMainPage } from 'Page/Main/stores';
-
+import Typography from 'Component/Typography';
 import Input from 'Component/Input';
 import Dropdown from 'Component/Dropdown';
-import Typography from 'Component/Typography';
+
 import ProfessionList from './components/ProfessionList';
 
 export default function Professions({
@@ -19,13 +19,13 @@ export default function Professions({
   return (
     <div>
       <div
-        ref={ref}
         className={classes.header}
+        ref={ref}
       >
         <Typography
+          component="h2"
           variant="H2"
           variantMobile="H3"
-          component="h2"
         >
           Найдите свою
           {' '}
@@ -35,23 +35,23 @@ export default function Professions({
       <div className={classes.controls}>
         <Input
           className={classes.searchButton}
-          type="text"
-          placeholder="Поиск профессии"
-          value={fieldsStore.searchProfession}
-          onChange={fieldsStore.setSearchProfession}
-          onSubmit={() => professionsStore.fetchProfessions(false)}
-          onClear={() => professionsStore.fetchProfessions(false)}
           isClearable
           isSearchable
+          onChange={fieldsStore.setSearchProfession}
+          onClear={() => professionsStore.fetchProfessions(false)}
+          onSubmit={() => professionsStore.fetchProfessions(false)}
+          placeholder="Поиск профессии"
+          type="text"
+          value={fieldsStore.searchProfession}
         />
         <Dropdown
           className={classes.areasDropdown}
-          placeholder="Выберите направление"
-          options={areasStore.values}
           isDisabled={areasStore.isLoading}
+          onSelect={fieldsStore.setArea}
+          options={areasStore.values}
+          placeholder="Выберите направление"
           selectedId={fieldsStore.areaId}
           selectedValue={fieldsStore.areaName}
-          onSelect={fieldsStore.setArea}
         />
       </div>
       <ProfessionList />

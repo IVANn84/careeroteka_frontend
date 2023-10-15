@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
+import React, { useEffect } from 'react';
 
 import { PageSkeleton } from 'Component/Skeleton';
-
 import { useStoreLayoutComponent } from 'Component/Layout/stores';
 import { useStoreInterceptersApi } from 'ApiDir/intercepters/stores';
 

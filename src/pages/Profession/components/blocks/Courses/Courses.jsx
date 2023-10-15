@@ -2,10 +2,9 @@ import React, { useRef } from 'react';
 import { ArrowRightIcon } from '@heroicons/react/24/solid';
 
 import { useStoreProfessionPage } from 'Page/Profession/stores';
-
+import Typography from 'Component/Typography';
 import CoursesList from 'Component/CoursesSlider';
 import Block from 'Component/Block';
-import Typography from 'Component/Typography';
 
 export default function Courses({
   classes,
@@ -20,9 +19,9 @@ export default function Courses({
     <Block mode="dark">
       <div className={classes.header}>
         <Typography
+          component="h2"
           variant="H2"
           variantMobile="H3"
-          component="h2"
         >
           Список курсов
         </Typography>
@@ -35,8 +34,8 @@ export default function Courses({
       </div>
       <CoursesList
         buttonRightRef={$sliderButtonRight}
-        isLoading={entityStore.isLoadingCourses}
         courses={entityStore.entity?.courses}
+        isLoading={entityStore.isLoadingCourses}
       />
     </Block>
   );

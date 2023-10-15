@@ -1,9 +1,7 @@
 import React from 'react';
 
-import { useStoreVacanciesPage } from 'Page/Vacancies/stores';
-
 import { onEnter } from 'Util/onEnter';
-
+import { useStoreVacanciesPage } from 'Page/Vacancies/stores';
 import Typography from 'Component/Typography';
 
 const variants = [
@@ -39,26 +37,26 @@ export default function CompanySizes({
   return (
     <>
       <Typography
+        className={classes.title}
+        component="p"
         variant="H4"
         variantMobile="H4"
-        component="p"
-        className={classes.title}
       >
         Размер компании
       </Typography>
       <div className={classes.variants}>
         {variants.map(variant => (
           <Typography
-            key={variant.id}
-            variant="B1"
-            variantMobile="B2"
-            role="button"
-            tabIndex={0}
-            onClick={() => onClick(variant.id)}
-            onKeyDown={onEnter(() => onClick(variant.id))}
             className={`${classes.variant} ${fieldsStore.companySizes.includes(variant.id)
               ? classes.selected
               : ''}`}
+            key={variant.id}
+            onClick={() => onClick(variant.id)}
+            onKeyDown={onEnter(() => onClick(variant.id))}
+            role="button"
+            tabIndex={0}
+            variant="B1"
+            variantMobile="B2"
           >
             {variant.name}
           </Typography>

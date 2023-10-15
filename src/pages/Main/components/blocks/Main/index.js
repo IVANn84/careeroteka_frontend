@@ -1,4 +1,5 @@
 import withStyle from 'react-jss';
+
 import Main from './Main.jsx';
 
 const style = {

@@ -1,6 +1,6 @@
 import withStyle from 'react-jss';
-import { observer } from 'mobx-react-lite';
 import { forwardRef, memo } from 'react';
+import { observer } from 'mobx-react-lite';
 
 import Survey from './Survey.jsx';
 

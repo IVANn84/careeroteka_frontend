@@ -3,8 +3,10 @@
 import React, {
   useCallback, useEffect, useMemo, useRef, useState,
 } from 'react';
-import { XMarkIcon, MagnifyingGlassIcon } from '@heroicons/react/24/solid';
+import { MagnifyingGlassIcon, XMarkIcon } from '@heroicons/react/24/solid';
+
 import { onEnter } from 'Util/onEnter';
+
 import HintMenu from '../HintMenu';
 
 /**
@@ -160,14 +162,14 @@ export default function TextInput({
 
   return (
     <div
-      role="button"
-      ref={$container}
       className={`${classes.container} ${className || ''}`}
-      tabIndex={0}
-      onKeyDown={onEnter(onClick)}
-      onClick={onClick}
       onBlur={handleBlur}
+      onClick={onClick}
       onFocus={onFocus}
+      onKeyDown={onEnter(onClick)}
+      ref={$container}
+      role="button"
+      tabIndex={0}
     >
       {placeholder && isPlaceholderAtTop && (
         <p className={classes.placeholderAtTop}>{placeholder}</p>
@@ -175,16 +177,16 @@ export default function TextInput({
       <div className={`${classes.wrapper} ${getWrapperClass()}`}>
         <div className={classes.input}>
           <input
-            ref={$input}
-            type="text"
-            spellCheck="false"
-            autoCorrect="off"
             autoComplete="off"
+            autoCorrect="off"
             disabled={isDisabled}
-            value={normalizedValue}
-            onKeyDown={submit}
-            onChange={change}
             maxLength={maxLength}
+            onChange={change}
+            onKeyDown={submit}
+            ref={$input}
+            spellCheck="false"
+            type="text"
+            value={normalizedValue}
           />
           {placeholder && !isPlaceholderAtTop && (
             <span className={classes.placeholder}>{placeholder}</span>
@@ -193,31 +195,31 @@ export default function TextInput({
         <div className={classes.actions}>
           {isClearable && !isDisabled && value && (
             <XMarkIcon
-              tabIndex={0}
-              onKeyDown={onEnter(clear)}
               onClick={clear}
+              onKeyDown={onEnter(clear)}
+              tabIndex={0}
             />
           )}
           {isSearchable && (
             <MagnifyingGlassIcon
-              tabIndex={0}
-              onKeyDown={onEnter(search)}
               onClick={search}
+              onKeyDown={onEnter(search)}
+              tabIndex={0}
             />
           )}
         </div>
       </div>
       {hasHint && (
         <HintMenu
+          isLoading={hintIsLoading}
+          isOpen={isOpenHint}
           isReversedY={isReversedY}
           maxHeight={hintMaxHeight}
-          value={value}
-          isOpen={isOpenHint}
-          toggle={toggle}
-          isLoading={hintIsLoading}
-          placeholder={hintPlaceholder}
           onSelect={onHintSelect}
           options={hintOptions}
+          placeholder={hintPlaceholder}
+          toggle={toggle}
+          value={value}
         />
       )}
       {error && typeof error === 'string'

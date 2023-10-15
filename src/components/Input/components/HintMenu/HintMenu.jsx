@@ -44,16 +44,16 @@ export default function HintsMenu({
       ? filteredOptions.map(option => (
         <Option
           key={option.id}
+          onSelect={() => optionClick(option)}
           tabIndex={0}
           value={option.optionValue || option.name}
-          onSelect={() => optionClick(option)}
         />
       ))
       : (
         <Typography
+          className={classes.placeholder}
           variant="B2"
           variantMobile="B2"
-          className={classes.placeholder}
         >
           {placeholder || 'Ничего не найдено'}
         </Typography>

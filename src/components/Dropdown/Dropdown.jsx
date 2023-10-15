@@ -1,8 +1,8 @@
 /* eslint-disable react/no-danger */
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
-import Menu from './components/Menu';
 import Value from './components/Value';
+import Menu from './components/Menu';
 
 export default function Dropdown({
   maxHeight = 300,
@@ -56,38 +56,38 @@ export default function Dropdown({
         // eslint-disable-next-line max-len
         // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions
         <div
-          role="complementary"
           className={classes.cloak}
           onClick={toggle}
+          role="complementary"
         />
       )}
       <Value
-        isDisabled={isDisabled}
-        isRequired={isRequired}
         error={error}
-        selectedValue={selectedValue}
-        isOpen={isOpen}
         isClearable={isClearable}
+        isDisabled={isDisabled}
+        isOpen={isOpen}
+        isRequired={isRequired}
         isReversedY={isReversedY}
-        placeholder={placeholder}
-        onSelect={onSelect}
         mode={mode}
+        onSelect={onSelect}
+        placeholder={placeholder}
+        selectedValue={selectedValue}
         toggle={toggle}
       />
       {!isDisabled && (
         <Menu
-          maxHeight={maxHeight}
+          checkIsSelected={checkIsSelected}
+          isLoading={isLoading}
           isOpen={isOpen}
-          spoilerSize={spoilerSize}
           isReversedY={isReversedY}
+          isSearchable={isSearchable}
+          maxHeight={maxHeight}
+          mode={mode}
+          onSelect={onSelect}
           options={options}
           selectedId={selectedId}
-          checkIsSelected={checkIsSelected}
-          isSearchable={isSearchable}
+          spoilerSize={spoilerSize}
           toggle={toggle}
-          onSelect={onSelect}
-          mode={mode}
-          isLoading={isLoading}
         />
       )}
       {error && typeof error === 'string' && (

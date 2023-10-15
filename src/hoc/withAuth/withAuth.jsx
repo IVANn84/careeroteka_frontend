@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
+import React, { useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 
 import { useStoreLayoutComponent } from 'Component/Layout/stores';

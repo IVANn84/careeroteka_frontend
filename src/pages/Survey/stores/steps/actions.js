@@ -1,11 +1,10 @@
 import { applySnapshot, flow, getParent } from 'mobx-state-tree';
+
 import { objectDeepMerge } from 'Util/objectDeepMerge';
-
-import SurveyApi from 'Api/survey';
 import { debounce } from 'Util/debounce';
-import ReviewApi from 'Api/review';
-
 import { rootStoreLayoutComponent } from 'Component/Layout/stores/root';
+import SurveyApi from 'Api/survey';
+import ReviewApi from 'Api/review';
 
 const debouncedFetchAreas = debounce(self => getParent(self).areasStore.fetchAreas(), 300);
 const debouncedFetchSkills = debounce(self => getParent(self).skillsStore.fetchSkills(), 300);

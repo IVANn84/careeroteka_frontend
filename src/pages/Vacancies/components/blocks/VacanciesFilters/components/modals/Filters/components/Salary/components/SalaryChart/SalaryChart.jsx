@@ -1,13 +1,12 @@
 import React, { useCallback, useMemo } from 'react';
-
-import { useStoreVacanciesPage } from 'Page/Vacancies/stores';
-import { stepBar } from 'Page/Vacancies/stores/FiltersModal/vacancies/views';
-
-import BarChart from 'Component/BarChart';
-import MultiRangeSlider from 'Component/MultiRangeSlider';
-import { getNoun } from 'Util/getNoun';
 import { getSnapshot } from 'mobx-state-tree';
+
 import { throttle } from 'Util/throttle';
+import { getNoun } from 'Util/getNoun';
+import { stepBar } from 'Page/Vacancies/stores/FiltersModal/vacancies/views';
+import { useStoreVacanciesPage } from 'Page/Vacancies/stores';
+import MultiRangeSlider from 'Component/MultiRangeSlider';
+import BarChart from 'Component/BarChart';
 
 const options = {
   maintainAspectRatio: false,
@@ -114,12 +113,12 @@ export default function SalaryChart({
       </div>
       <MultiRangeSlider
         className={classes.slider}
-        minRange={0}
         maxRange={maxSalary}
-        minValue={fieldsStore.minSalary}
         maxValue={fieldsStore.maxSalary}
-        step={1}
+        minRange={0}
+        minValue={fieldsStore.minSalary}
         onChange={onChangeMinMax}
+        step={1}
       />
     </div>
   );

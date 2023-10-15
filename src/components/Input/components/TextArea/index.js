@@ -1,7 +1,7 @@
 import withStyle from 'react-jss';
 
-import { style } from '../template';
 import TextArea from './TextArea.jsx';
+import { style } from '../template';
 
 const selfStyle = theme => {
   const {

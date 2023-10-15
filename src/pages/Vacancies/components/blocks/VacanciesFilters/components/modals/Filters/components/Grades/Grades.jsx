@@ -1,9 +1,9 @@
 import React, { useRef } from 'react';
 
 import { useStoreVacanciesPage } from 'Page/Vacancies/stores';
-
 import Typography from 'Component/Typography';
 import Divider from 'Component/Divider';
+
 import Grade from './components/Grade';
 
 const grades = [
@@ -49,28 +49,28 @@ export default function Grades({
   return (
     <>
       <Typography
+        className={classes.title}
+        component="p"
         variant="H4"
         variantMobile="H4"
-        component="p"
-        className={classes.title}
       >
         Грейд
       </Typography>
       <Typography
+        className={classes.description}
+        component="p"
         variant="B1"
         variantMobile="B2"
-        component="p"
-        className={classes.description}
       >
         Выберите необходимый грейд:
       </Typography>
       <div className={classes.variants} ref={$container}>
         {grades.map(grade => (
           <Grade
-            key={grade.id}
-            value={grade}
             $container={$container}
+            key={grade.id}
             onClick={onClick}
+            value={grade}
           />
         ))}
       </div>

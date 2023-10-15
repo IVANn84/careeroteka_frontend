@@ -1,6 +1,6 @@
 import withStyle from 'react-jss';
-
 import PropTypes from 'prop-types';
+
 import Button from './Button.jsx';
 
 const style = ({ button }) => ({

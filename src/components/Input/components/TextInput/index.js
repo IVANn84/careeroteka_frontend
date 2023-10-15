@@ -1,6 +1,6 @@
 import withStyle from 'react-jss';
 
-import { style } from '../template';
 import TextInput from './TextInput.jsx';
+import { style } from '../template';
 
 export default withStyle(style)(TextInput);

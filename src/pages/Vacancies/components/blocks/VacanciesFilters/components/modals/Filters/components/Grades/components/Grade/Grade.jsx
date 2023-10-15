@@ -1,10 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
-
-import { useStoreVacanciesPage } from 'Page/Vacancies/stores';
-
-import Typography from 'Component/Typography';
-import { onEnter } from 'Util/onEnter';
 import { CheckIcon } from '@heroicons/react/24/solid';
+
+import { onEnter } from 'Util/onEnter';
+import { useStoreVacanciesPage } from 'Page/Vacancies/stores';
+import Typography from 'Component/Typography';
 
 export default function Grade({
   value,
@@ -31,11 +30,11 @@ export default function Grade({
 
   return (
     <div
-      role="button"
       className={classes.container}
-      tabIndex={0}
       onClick={() => onClick(value.id)}
       onKeyDown={onEnter(() => onClick(value.id))}
+      role="button"
+      tabIndex={0}
     >
       <div className={classes.icons}>
         <div
@@ -44,16 +43,16 @@ export default function Grade({
         />
         <div className={classes.iconDescription}>i</div>
         <Typography
-          variant="B2"
-          variantMobile="B2"
-          component="p"
           className={classes.descriptionPopup}
+          component="p"
+          ref={$popup}
           style={{
             left: popupRight > containerRight
               ? `calc(30% - ${popupRight - containerRight}px)`
               : '30%',
           }}
-          ref={$popup}
+          variant="B2"
+          variantMobile="B2"
         >
           <span>{value.name}</span>
           {' – '}
@@ -62,11 +61,11 @@ export default function Grade({
       </div>
       <div className={classes.info}>
         <Typography
+          component="p"
           variant="B2"
           variantMobile="B2"
           weight="semiBold"
           weightMobile="semiBold"
-          component="p"
         >
           {value.name}
         </Typography>

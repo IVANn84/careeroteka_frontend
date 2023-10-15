@@ -15,11 +15,11 @@ export default function Button({
 }) {
   return isDisplayed && (
     <button
-      type="button"
       className={`${classes.button} ${className || ''}`}
-      title={title}
       disabled={isDisabled}
       onClick={onClick}
+      title={title}
+      type="button"
     >
       <Typography
         variant="B1"

@@ -1,10 +1,9 @@
 import { applySnapshot, flow, getParent } from 'mobx-state-tree';
-import { axiosWithConverter } from 'ApiDir/axiosWithConverter';
 
 import { objectDeepMerge } from 'Util/objectDeepMerge';
-
-import OnboardingApi from 'Api/onboarding';
 import { debounce } from 'Util/debounce';
+import { axiosWithConverter } from 'ApiDir/axiosWithConverter';
+import OnboardingApi from 'Api/onboarding';
 
 const debouncedFetchAreas = debounce(self => getParent(self).areasStore.fetchAreas(), 300);
 

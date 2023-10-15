@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 
 import { useStoreLayoutComponent } from 'Component/Layout/stores';
+
 import DefaultLayout from './components/DefaultLayout';
 
 function Layout(props) {

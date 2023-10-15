@@ -1,9 +1,9 @@
 import React from 'react';
 
 import { useStoreProfessionPage } from 'Page/Profession/stores';
-
-import Block from 'Component/Block';
 import Typography from 'Component/Typography';
+import Block from 'Component/Block';
+
 import BlocksSkeleton from './components/BlocksSkeleton';
 
 export default function Skills({
@@ -16,10 +16,10 @@ export default function Skills({
   return (
     <Block>
       <Typography
+        className={classes.header}
+        component="h2"
         variant="H2"
         variantMobile="H3"
-        component="h2"
-        className={classes.header}
       >
         Навыки
       </Typography>
@@ -27,13 +27,13 @@ export default function Skills({
         <BlocksSkeleton isDisplayed={entityStore.isLoadingSkills}>
           {entityStore.entity?.skills?.map(skill => (
             <Block
+              borderRadius="16px"
+              borderRadiusMobile="16px"
+              className={classes.skill}
               key={skill.id}
               mode="dark"
               padding="12px"
               paddingMobile="12px"
-              borderRadius="16px"
-              borderRadiusMobile="16px"
-              className={classes.skill}
             >
               <Typography
                 variant="B1"

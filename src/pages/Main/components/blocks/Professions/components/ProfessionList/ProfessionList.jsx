@@ -1,12 +1,12 @@
+import { Link } from 'react-router-dom';
+import InfiniteScroll from 'react-infinite-scroll-component';
 import React from 'react';
 import accounting from 'accounting-big';
-import InfiniteScroll from 'react-infinite-scroll-component';
-import { Link } from 'react-router-dom';
 
-import { useStoreMainPage } from 'Page/Main/stores';
 import { getNoun } from 'Util/getNoun';
-
+import { useStoreMainPage } from 'Page/Main/stores';
 import Typography from 'Component/Typography';
+
 import ListSkeleton from './components/ListSkeleton';
 
 export default function ProfessionList({
@@ -36,9 +36,9 @@ export default function ProfessionList({
           <InfiniteScroll
             className={classes.infiniteScroll}
             dataLength={professionsStore.values.length}
-            next={() => professionsStore.fetchProfessions(true)}
             hasMore={!professionsStore.isLoading && !!professionsStore.nextPage}
             loader={null}
+            next={() => professionsStore.fetchProfessions(true)}
             scrollThreshold="600px"
           >
             <div className={classes.professionsContainer}>
@@ -52,18 +52,18 @@ export default function ProfessionList({
                       countDirections,
                     }) => (
                       <Link
-                        key={id}
-                        to={`/professions/${id}`}
-                        tabIndex={0}
                         className={classes.professionItem}
+                        key={id}
+                        tabIndex={0}
+                        to={`/professions/${id}`}
                       >
                         <div className={classes.professionTitle}>
                           <Typography
+                            component="p"
                             variant="B1"
                             variantMobile="B1"
                             weight="semiBold"
                             weightMobile="semiBold"
-                            component="p"
                           >
                             {name}
                           </Typography>
@@ -77,10 +77,10 @@ export default function ProfessionList({
                           </Typography>
                         </div>
                         <Typography
-                          variant="H5"
-                          variantMobile="H5"
                           className={classes.professionMinSalary}
                           component="p"
+                          variant="H5"
+                          variantMobile="H5"
                         >
                           от
                           {' '}

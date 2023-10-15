@@ -1,4 +1,5 @@
 import { getRandomInt } from 'Util/getRandomInt';
+
 import { timeout, wrapAnswer } from '../mockUtils';
 
 export default {

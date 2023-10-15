@@ -1,9 +1,9 @@
 import { types } from 'mobx-state-tree';
 
-import { areasStoreMainPage, AreasStoreModel } from '../areas';
-import { fieldsStoreMainPage, FieldsStoreModel } from '../fields';
-import { professionsStoreMainPage, ProfessionsStoreModel } from '../professions';
 import actions from './actions';
+import { ProfessionsStoreModel, professionsStoreMainPage } from '../professions';
+import { FieldsStoreModel, fieldsStoreMainPage } from '../fields';
+import { AreasStoreModel, areasStoreMainPage } from '../areas';
 
 export const RootStoreModel = types
   .model('Root', {

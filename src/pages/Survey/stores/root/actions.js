@@ -1,8 +1,7 @@
 import { applySnapshot, flow, getSnapshot } from 'mobx-state-tree';
 
-import SurveyApi from 'Api/survey';
-
 import { rootStoreLayoutComponent } from 'Component/Layout/stores/root';
+import SurveyApi from 'Api/survey';
 
 let initialState = {};
 

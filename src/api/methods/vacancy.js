@@ -1,16 +1,15 @@
-import { axiosWithConverter } from '../axiosWithConverter';
-
 import Format from '../intercepters/format';
+import { axiosWithConverter } from '../axiosWithConverter';
 
 class VacancyApi {
   @Format
-  FetchList(params) {
-    return axiosWithConverter.get('/api/v1/vacancy/', { params });
+  FetchById(id) {
+    return axiosWithConverter.get(`/api/v1/vacancy/${id}/`);
   }
 
   @Format
-  FetchById(id) {
-    return axiosWithConverter.get(`/api/v1/vacancy/${id}/`);
+  FetchList(params) {
+    return axiosWithConverter.get('/api/v1/vacancy/', { params });
   }
 }
 

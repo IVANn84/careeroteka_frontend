@@ -1,22 +1,22 @@
-import React from 'react';
 import ContentLoader from 'react-content-loader';
+import React from 'react';
 
 function BlockSkeleton() {
   return (
     <ContentLoader
-      speed={2}
-      width={200}
-      height={50}
       backgroundColor="#f3f3f3"
       foregroundColor="#ecebeb"
+      height={50}
+      speed={2}
+      width={200}
     >
       <rect
-        x="0"
-        y="0"
+        height={50}
         rx="8"
         ry="8"
         width={200}
-        height={50}
+        x="0"
+        y="0"
       />
     </ContentLoader>
   );

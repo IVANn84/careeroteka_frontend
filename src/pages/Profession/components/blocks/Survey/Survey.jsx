@@ -1,11 +1,11 @@
-import React from 'react';
 import { useHistory } from 'react-router-dom';
+import React from 'react';
+import surveyImage from 'Image/survey-phone.svg';
 
 import { useStoreProfessionPage } from 'Page/Profession/stores';
-import Block from 'Component/Block';
-import Button from 'Component/Button';
 import Typography from 'Component/Typography';
-import surveyImage from 'Image/survey-phone.svg';
+import Button from 'Component/Button';
+import Block from 'Component/Block';
 
 export default function Survey({
   classes,
@@ -21,14 +21,14 @@ export default function Survey({
     <>
       <span ref={ref} />
       <Block
-        mode="dark"
         className={classes.container}
+        mode="dark"
       >
         <div className={classes.about}>
           <Typography
+            component="h2"
             variant="H2"
             variantMobile="H3"
-            component="h2"
           >
             Принять участие в опросе
           </Typography>
@@ -56,10 +56,10 @@ export default function Survey({
           </Typography>
           <div className={classes.actions}>
             <Button
-              mode="dark"
-              variant="filled"
               isDisabled={entityStore.isLoading}
+              mode="dark"
               onClick={gotoSurvey}
+              variant="filled"
             >
               Пройти опрос
             </Button>
@@ -67,8 +67,8 @@ export default function Survey({
         </div>
         <div className={classes.image}>
           <img
-            src={surveyImage}
             alt="Опрос"
+            src={surveyImage}
           />
         </div>
       </Block>

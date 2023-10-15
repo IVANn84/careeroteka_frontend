@@ -1,13 +1,14 @@
-import React, { Suspense } from 'react';
-import { ThemeProvider } from 'react-jss';
 import {
-  Switch, Route, Redirect, BrowserRouter,
+  BrowserRouter, Redirect, Route, Switch,
 } from 'react-router-dom';
+import { ThemeProvider } from 'react-jss';
+import React, { Suspense } from 'react';
 
-import Layout from 'Component/Layout/index.jsx';
 import { PageSkeleton } from 'Component/Skeleton';
 import ScrollToTop from 'Component/ScrollToTop';
+import Layout from 'Component/Layout/index.jsx';
 import ErrorBoundary from 'Component/ErrorBoundary';
+
 import Theme from './themes/default';
 
 const Main = React.lazy(() => import('Page/Main'));
@@ -40,28 +41,22 @@ function App() {
               <Suspense fallback={<PageSkeleton />}>
                 <ScrollToTop>
                   <Switch>
-                    <Route
-                      path="/"
-                      exact
-                      component={Main}
-                    />
-                    <Route path="/survey" component={Survey} />
-                    <Route path="/vacancies" exact component={Vacancies} />
-                    <Route
-                      path="/vacancies/:id(\d+)"
-                      component={Vacancy}
-                    />
-                    <Route
-                      path="/professions/:id(\d+)"
-                      component={Profession}
-                    />
-                    {!isAuth && <Route path="/signup" component={Register} />}
-                    {!isAuth && <Route path="/login" component={Login} />}
+                    <Route component={Main} exact path="/" />
+                    <Route component={Survey} path="/survey" />
+                    <Route component={Vacancies} exact path="/vacancies" />
+                    <Route component={Vacancy} path="/vacancies/:id(\d+)" />
+                    <Route component={Profession} path="/professions/:id(\d+)" />
+                    {!isAuth && (
+                      <Route component={Register} path="/signup" />
+                    )}
+                    {!isAuth && (
+                      <Route component={Login} path="/login" />
+                    )}
                     {isAuth && !currentUser?.isOnboardingDone && (
-                      <Route path="/onboarding" component={Onboarding} />
+                      <Route component={Onboarding} path="/onboarding" />
                     )}
                     {isAuth && !currentUser?.isEmailConfirmed && (
-                      <Route path="/verify-email" component={VerifyEmail} />
+                      <Route component={VerifyEmail} path="/verify-email" />
                     )}
                     <Redirect from="*" push to="/" />
                   </Switch>

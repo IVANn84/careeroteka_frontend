@@ -1,7 +1,8 @@
-import React from 'react';
 import { NavLink } from 'react-router-dom';
+import React from 'react';
 
 import { useStoreLayoutComponent } from 'Component/Layout/stores';
+
 import RightHeaderNavigation from './components/RightHeaderNavigation';
 import LeftHeaderNavigation from './components/LeftHeaderNavigation';
 
@@ -17,8 +18,8 @@ export default function Header({
       <div className={classes.leftSideContainer}>
         <NavLink
           className={classes.title}
-          to="/"
           exact
+          to="/"
         >
           careeroteka
         </NavLink>

@@ -1,10 +1,10 @@
 import React, { useRef } from 'react';
 import { getSnapshot } from 'mobx-state-tree';
 
+import { useStoreVacancyPage } from 'Page/Vacancy/stores';
+import Vacancy from 'Page/Vacancies/components/blocks/VacanciesList/components/Vacancy';
 import { useSlider } from 'Hook/useSlider';
 
-import Vacancy from 'Page/Vacancies/components/blocks/VacanciesList/components/Vacancy';
-import { useStoreVacancyPage } from 'Page/Vacancy/stores';
 import ListSkeleton from './components/ListSkeleton';
 
 export default function VacanciesSlider({
@@ -25,8 +25,8 @@ export default function VacanciesSlider({
 
   return (
     <div
-      ref={$slider}
       className={classes.slider}
+      ref={$slider}
     >
       <ListSkeleton isDisplayed={vacanciesStore.isLoading}>
         {

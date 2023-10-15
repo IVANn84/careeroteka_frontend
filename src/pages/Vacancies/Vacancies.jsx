@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
 
 import { useStoreVacanciesPage } from 'Page/Vacancies/stores';
-
 import Typography from 'Component/Typography';
 
-import VacanciesFilters from './components/blocks/VacanciesFilters';
 import VacanciesList from './components/blocks/VacanciesList';
+import VacanciesFilters from './components/blocks/VacanciesFilters';
 
 export default function Vacancies({
   classes,
@@ -33,9 +32,9 @@ export default function Vacancies({
     <div>
       <Typography
         className={classes.title}
+        component="h1"
         variant="H1"
         variantMobile="H1"
-        component="h1"
       >
         Вакансии
       </Typography>

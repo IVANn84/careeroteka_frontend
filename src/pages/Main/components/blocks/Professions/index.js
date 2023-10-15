@@ -1,5 +1,5 @@
-import { forwardRef } from 'react';
 import withStyle from 'react-jss';
+import { forwardRef } from 'react';
 import { observer } from 'mobx-react-lite';
 
 import Professions from './Professions.jsx';

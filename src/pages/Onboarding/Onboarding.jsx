@@ -1,10 +1,9 @@
-import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import React, { useEffect } from 'react';
 
 import { useStoreOnboardingPage } from 'Page/Onboarding/stores';
-import { useStoreLayoutComponent } from 'Component/Layout/stores';
-
 import { PageSkeleton } from 'Component/Skeleton';
+import { useStoreLayoutComponent } from 'Component/Layout/stores';
 
 import Step from './components/blocks/Step';
 

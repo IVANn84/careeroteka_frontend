@@ -3,9 +3,9 @@ import React, { useId, useRef, useState } from 'react';
 import mime from 'mime-types';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 
+import { useModal } from 'Hook/useModal';
 import Typography from 'Component/Typography';
 
-import { useModal } from 'Hook/useModal';
 import ConfirmRemoveModal from './components/modals/ConfirmRemove';
 
 export default function FileInput({
@@ -106,21 +106,21 @@ export default function FileInput({
               onSubmit={event => event.preventDefault()}
             >
               <input
-                ref={inputRef}
-                type="file"
+                accept={accept}
                 className={classes.input}
                 id={inputId}
                 multiple={multiple}
-                accept={accept}
                 onChange={handleChange}
+                ref={inputRef}
+                type="file"
               />
               <label
-                htmlFor={inputId}
                 className={`${classes.label} ${dragActive
                   ? classes.dragActive
                   : ''} ${typeError || error
                   ? classes.labelError
                   : ''}`}
+                htmlFor={inputId}
               >
                 <Typography
                   variant="B2"
@@ -146,10 +146,10 @@ export default function FileInput({
               />
             )}
             <Typography
-              variant="B2"
-              variantMobile="B2"
               className={classes.button}
               onClick={onButtonClick}
+              variant="B2"
+              variantMobile="B2"
             >
               {buttonText}
             </Typography>
@@ -159,9 +159,9 @@ export default function FileInput({
           <>
             <div className={classes.valueContainer}>
               <Typography
+                onClick={onDownload}
                 variant="B2"
                 variantMobile="B2"
-                onClick={onDownload}
               >
                 {value.name}
               </Typography>

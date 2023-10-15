@@ -1,9 +1,8 @@
 import React from 'react';
 
-import Button from 'Component/Button';
-import Typography from 'Component/Typography';
-
 import { useStoreSurveyPage } from 'Page/Survey/stores';
+import Typography from 'Component/Typography';
+import Button from 'Component/Button';
 
 export default function Step0({
   classes,
@@ -16,9 +15,9 @@ export default function Step0({
     <div className={classes.container}>
       <Typography
         className={`${classes.row} ${classes.center}`}
+        component="h1"
         variant="H1"
         variantMobile="H1"
-        component="h1"
       >
         Пройдите опрос и помогите нам стать лучше
       </Typography>
@@ -58,8 +57,8 @@ export default function Step0({
       </Typography>
       <Button
         className={classes.button}
-        onClick={() => setStep(1)}
         mode="dark"
+        onClick={() => setStep(1)}
       >
         Продолжить
       </Button>

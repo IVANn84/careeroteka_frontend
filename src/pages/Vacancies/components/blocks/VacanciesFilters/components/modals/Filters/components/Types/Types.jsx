@@ -2,7 +2,6 @@ import React from 'react';
 import accounting from 'accounting-big';
 
 import { useStoreVacanciesPage } from 'Page/Vacancies/stores';
-
 import Typography from 'Component/Typography';
 import Divider from 'Component/Divider';
 
@@ -42,49 +41,49 @@ export default function Types({
   return (
     <>
       <Typography
+        className={classes.title}
+        component="p"
         variant="H4"
         variantMobile="H4"
-        component="p"
-        className={classes.title}
       >
         Тип предложения
       </Typography>
       <Typography
+        className={classes.description}
+        component="p"
         variant="B1"
         variantMobile="B2"
-        component="p"
-        className={classes.description}
       >
         Выберите, какой вариант искать. Мы показываем цену за месяц работы.
       </Typography>
       <div className={classes.variants}>
         {types.map(type => (
           <button
-            key={type.id}
-            type="button"
             className={fieldsStore.typeVacancy === type.id ? classes.selectedVariant : ''}
+            key={type.id}
             onClick={() => fieldsStore.setTypeVacancy(type.id)}
+            type="button"
           >
             <Typography
+              component="p"
               variant="B2"
               variantMobile="B2"
               weight="semiBold"
               weightMobile="semiBold"
-              component="p"
             >
               {type.name}
             </Typography>
             <Typography
+              component="p"
               variant="B2"
               variantMobile="B2"
-              component="p"
             >
               {`${formatMoney(type.salary)} ₽`}
             </Typography>
             <Typography
+              component="p"
               variant="B2"
               variantMobile="B2"
-              component="p"
             >
               в среднем
             </Typography>

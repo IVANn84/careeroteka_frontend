@@ -1,8 +1,8 @@
 import { types } from 'mobx-state-tree';
 
-import { entityStoreVacancyPage, EntityStoreModel } from '../entity';
-import { vacanciesStoreVacancyPage, VacanciesStoreModel } from '../vacancies';
 import actions from './actions';
+import { VacanciesStoreModel, vacanciesStoreVacancyPage } from '../vacancies';
+import { EntityStoreModel, entityStoreVacancyPage } from '../entity';
 
 export const RootStore = types
   .model('Root', {

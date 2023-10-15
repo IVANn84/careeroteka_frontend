@@ -1,5 +1,3 @@
-/* eslint-disable import/no-named-as-default-member */
-/* eslint-disable import/no-named-as-default */
 import { applySnapshot, flow, getSnapshot } from 'mobx-state-tree';
 
 import UserApi from 'Api/user';

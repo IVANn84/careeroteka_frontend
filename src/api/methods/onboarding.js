@@ -1,17 +1,10 @@
 import CheckToken from 'ApiDir/intercepters/checkToken';
+
+import RequireAuth from '../intercepters/requireAuth';
+import Format from '../intercepters/format';
 import { axiosWithConverter } from '../axiosWithConverter';
 
-import Format from '../intercepters/format';
-import RequireAuth from '../intercepters/requireAuth';
-
 class OnboardingApi {
-  @RequireAuth
-  @CheckToken
-  @Format
-  SaveStep(step, params) {
-    return axiosWithConverter.post(`/api/v1/onboarding/${step}/`, params);
-  }
-
   @RequireAuth
   @CheckToken
   @Format
@@ -31,6 +24,13 @@ class OnboardingApi {
   @Format
   SaveOnboarding(params) {
     return axiosWithConverter.put('/api/v1/onboarding/finally_step/', params);
+  }
+
+  @RequireAuth
+  @CheckToken
+  @Format
+  SaveStep(step, params) {
+    return axiosWithConverter.post(`/api/v1/onboarding/${step}/`, params);
   }
 }
 

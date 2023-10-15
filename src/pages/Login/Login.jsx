@@ -1,14 +1,11 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useEffect } from 'react';
 import { useHistory } from 'react-router';
+import React, { useEffect } from 'react';
 
+import { onEnter } from 'Util/onEnter';
 import { useStoreLoginPage } from 'Page/Login/stores';
-
+import Typography from 'Component/Typography';
 import Input from 'Component/Input';
 import Button from 'Component/Button';
-import Typography from 'Component/Typography';
-// import { onEnter } from 'Util/onEnter';
 
 export default function Login({
   classes,
@@ -47,39 +44,39 @@ export default function Login({
     <div className={classes.container}>
       <Typography
         className={classes.title}
+        component="h1"
         variant="H1"
         variantMobile="H1"
-        component="h1"
       >
         Войти в сервис
       </Typography>
       <div className={classes.inputs}>
         <Input
-          type="text"
-          placeholder="Почта"
-          value={fieldsStore.email}
+          isClearable
+          isDisabled={isLoading}
           isRequired
           onChange={fieldsStore.setEmail}
-          isDisabled={isLoading}
           onSubmit={onLogin}
-          isClearable
+          placeholder="Почта"
+          type="text"
+          value={fieldsStore.email}
         />
         <Input
-          type="password"
-          placeholder="Пароль"
-          value={fieldsStore.password}
+          error={error}
+          isClearable
+          isDisabled={isLoading}
           isRequired
           onChange={fieldsStore.setPassword}
-          isDisabled={isLoading}
-          error={error}
           onSubmit={onLogin}
-          isClearable
+          placeholder="Пароль"
+          type="password"
+          value={fieldsStore.password}
         />
       </div>
       <Button
         className={classes.button}
-        mode="primary"
         isDisabled={isLoading || !fieldsStore.email || !fieldsStore.password}
+        mode="primary"
         onClick={onLogin}
       >
         Продолжить
@@ -87,11 +84,11 @@ export default function Login({
       <div className={classes.links}>
         <Typography
           className={classes.link}
+          component="p"
+          onClick={gotoRecovery}
+          tabIndex={0}
           variant="B2"
           variantMobile="B2"
-          component="p"
-          tabIndex={0}
-          onClick={gotoRecovery}
         >
           Забыли пароль?
         </Typography>
@@ -105,6 +102,9 @@ export default function Login({
           <span
             className={classes.link}
             onClick={gotoRegistration}
+            onKeyDown={onEnter(gotoRegistration)}
+            role="button"
+            tabIndex={0}
           >
             Зарегистрируйтесь
           </span>

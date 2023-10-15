@@ -1,13 +1,12 @@
 import React from 'react';
 import accounting from 'accounting-big';
 
-import { useStoreProfessionPage } from 'Page/Profession/stores';
-
 import { getCountDecimal } from 'Util/getCountDecimal';
-
+import { useStoreProfessionPage } from 'Page/Profession/stores';
+import Typography from 'Component/Typography';
 import Block from 'Component/Block';
 import BarChart from 'Component/BarChart';
-import Typography from 'Component/Typography';
+
 import BarChartSkeleton from './components/BarChartSkeleton';
 
 export default function SalaryInCapital({
@@ -46,25 +45,25 @@ export default function SalaryInCapital({
 
   return (
     <Block
-      isSlim
       className={classes.container}
+      isSlim
     >
       <div className={classes.header}>
         <Typography
+          component="h2"
           variant="H3"
           variantMobile="H5"
-          component="h2"
         >
           Зарплата в столице
         </Typography>
         {!entityStore.isLoadingStatistic && (
         <Typography
-          variant="H3"
-          variantMobile="B1"
-          weightMobile="semiBold"
           className={entityStore.entity?.statistic?.percentInCapital < 0
             ? classes.negative
             : classes.positive}
+          variant="H3"
+          variantMobile="B1"
+          weightMobile="semiBold"
         >
           {formatMoney(entityStore.entity?.statistic?.percentInCapital)}
         </Typography>

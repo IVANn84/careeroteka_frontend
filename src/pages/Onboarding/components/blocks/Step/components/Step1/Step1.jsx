@@ -1,11 +1,10 @@
 import React, { useEffect, useMemo } from 'react';
 import { getSnapshot } from 'mobx-state-tree';
 
-import Button from 'Component/Button';
+import { useStoreOnboardingPage } from 'Page/Onboarding/stores';
 import Typography from 'Component/Typography';
 import Input from 'Component/Input';
-
-import { useStoreOnboardingPage } from 'Page/Onboarding/stores';
+import Button from 'Component/Button';
 
 export default function Step1({
   classes,
@@ -30,9 +29,9 @@ export default function Step1({
         <>
           <p>{city.name}</p>
           <Typography
+            className={classes.optionAddInfo}
             variant="B2"
             variantMobile="B2"
-            className={classes.optionAddInfo}
           >
             {city.region}
           </Typography>
@@ -48,78 +47,78 @@ export default function Step1({
       <div className={classes.fields}>
         <Typography
           className={classes.title}
+          component="h1"
           variant="H1"
           variantMobile="H1"
-          component="h1"
         >
           Расскажите о себе
         </Typography>
         <div className={classes.inputs}>
           <Input
+            error={stepsStore.errors.step_1.firstName}
+            hasAutoFocus
+            isRequired
+            onChange={value => stepsStore.setStepData(1, 'firstName', value)}
+            placeholder="Введите ваше имя"
             type="text"
             value={stepsStore.stepsData[1].firstName}
-            placeholder="Введите ваше имя"
-            isRequired
-            hasAutoFocus
-            error={stepsStore.errors.step_1.firstName}
-            onChange={value => stepsStore.setStepData(1, 'firstName', value)}
           />
           <Input
+            error={stepsStore.errors.step_1.name}
+            isRequired
+            onChange={value => stepsStore.setStepData(1, 'lastName', value)}
+            placeholder="Введите вашу фамилию"
             type="text"
             value={stepsStore.stepsData[1].lastName}
-            placeholder="Введите вашу фамилию"
-            isRequired
-            error={stepsStore.errors.step_1.name}
-            onChange={value => stepsStore.setStepData(1, 'lastName', value)}
           />
           <Input
-            type="text"
-            value={stepsStore.stepsData[1].city}
-            placeholder="Введите ваш город"
-            isRequired
             error={stepsStore.errors.step_1.city}
             hasHint
-            hintOptions={cityOptions}
             hintIsLoading={citiesStore.isLoading}
+            hintOptions={cityOptions}
             hintPlaceholder="У нас еще нет студентов отсюда. Мы запомним этот город"
-            onHintSelect={({ name }) => stepsStore.setStepData(1, 'city', name)}
+            isRequired
             onChange={value => stepsStore.setStepData(1, 'city', value)}
+            onHintSelect={({ name }) => stepsStore.setStepData(1, 'city', name)}
+            placeholder="Введите ваш город"
+            type="text"
+            value={stepsStore.stepsData[1].city}
           />
           <Input
-            type="text"
             error={stepsStore.errors.step_1.telegramUsername}
-            value={stepsStore.stepsData[1].telegramUsername}
-            placeholder="Telegram"
             isRequired
             onChange={value => stepsStore.setStepData(1, 'telegramUsername', value)}
+            placeholder="Telegram"
+            type="text"
+            value={stepsStore.stepsData[1].telegramUsername}
           />
         </div>
       </div>
       <div className={classes.resumeContainer}>
         <Typography
           className={classes.resumeTitle}
+          component="h2"
           variant="H2"
           variantMobile="H2"
-          component="h2"
         >
           Загрузите свое резюме
         </Typography>
         <Typography
           className={classes.resumeDescription}
+          component="p"
           variant="B1"
           variantMobile="B2"
-          component="p"
         >
           Это необязательно, но если вы планируете работать с ментором,
           мы рекомендуем загрузить резюме
         </Typography>
         <Input
-          type="file"
           accept=".pdf,.doc,.docx"
           buttonText="Или загрузите резюме с вашего устройства"
-          isClearable
           error={stepsStore.errors.step_1.resume}
+          isClearable
           onChange={value => stepsStore.setStepData(1, 'resume', value)}
+          type="file"
           value={stepsStore.stepsData[1].resume}
         >
           <p>Перетащите файл резюме сюда</p>
@@ -129,9 +128,9 @@ export default function Step1({
       <div className={classes.actions}>
         <Button
           className={classes.button}
-          onClick={() => setStep(2)}
           isDisabled={!stepsStore.isStepValid(1)}
           mode="dark"
+          onClick={() => setStep(2)}
         >
           Все круто
         </Button>

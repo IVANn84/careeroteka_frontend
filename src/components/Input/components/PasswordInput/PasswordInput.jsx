@@ -1,6 +1,7 @@
 /* eslint-disable react/no-danger */
 import React, { useMemo, useRef, useState } from 'react';
-import { XMarkIcon, EyeIcon, EyeSlashIcon } from '@heroicons/react/24/solid';
+import { EyeIcon, EyeSlashIcon, XMarkIcon } from '@heroicons/react/24/solid';
+
 import { onEnter } from 'Util/onEnter';
 
 /**
@@ -97,17 +98,17 @@ export default function PasswordInput({
       <div className={classes.wrapper}>
         <div className={classes.input}>
           <input
-            ref={$input}
-            type={isPasswordVisible ? 'text' : 'password'}
-            spellCheck="false"
-            autoCorrect="off"
             autoComplete="new-password"
+            autoCorrect="off"
             disabled={isDisabled}
-            value={normalizedValue}
-            onKeyDown={submit}
-            onChange={change}
             maxLength={maxLength}
             onBlur={onBlur}
+            onChange={change}
+            onKeyDown={submit}
+            ref={$input}
+            spellCheck="false"
+            type={isPasswordVisible ? 'text' : 'password'}
+            value={normalizedValue}
           />
           {placeholder && !isPlaceholderAtTop && (
             <span className={classes.placeholder}>{placeholder}</span>
@@ -116,26 +117,26 @@ export default function PasswordInput({
         <div className={classes.actions}>
           {isClearable && !isDisabled && value && (
             <XMarkIcon
-              tabIndex={0}
-              onKeyDown={onEnter(clear)}
               onClick={clear}
+              onKeyDown={onEnter(clear)}
+              tabIndex={0}
             />
           )}
           {isPasswordVisible
             ? (
               <EyeSlashIcon
+                onClick={togglePasswordVisibility}
+                onKeyDown={onEnter(togglePasswordVisibility)}
                 ref={$eyeSlashButton}
                 tabIndex={0}
-                onKeyDown={onEnter(togglePasswordVisibility)}
-                onClick={togglePasswordVisibility}
               />
             )
             : (
               <EyeIcon
+                onClick={togglePasswordVisibility}
+                onKeyDown={onEnter(togglePasswordVisibility)}
                 ref={$eyeButton}
                 tabIndex={0}
-                onKeyDown={onEnter(togglePasswordVisibility)}
-                onClick={togglePasswordVisibility}
               />
             )}
         </div>

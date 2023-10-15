@@ -18,18 +18,18 @@ function Review({
     <div className={classes.container}>
       <div className={classes.info}>
         <Typography
+          className={classes.title}
           variant="B1"
           variantMobile="B2"
           weight="semiBold"
           weightMobile="semiBold"
-          className={classes.title}
         >
           {name}
         </Typography>
         <Typography
+          className={classes.description}
           variant="B2"
           variantMobile="B2"
-          className={classes.description}
         >
           {description}
         </Typography>

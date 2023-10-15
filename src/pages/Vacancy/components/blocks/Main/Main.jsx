@@ -2,8 +2,9 @@ import React from 'react';
 import accounting from 'accounting-big';
 
 import { useStoreVacancyPage } from 'Page/Vacancy/stores';
-import Block from 'Component/Block';
 import Typography from 'Component/Typography';
+import Block from 'Component/Block';
+
 import TextSkeleton from './components/TextSkeleton';
 import BlocksSkeleton from './components/BlocksSkeleton';
 
@@ -42,40 +43,40 @@ export default function Main({
   return (
     <Block>
       <Typography
+        component="p"
         variant="B1"
         variantMobile="B2"
-        component="p"
       >
         <TextSkeleton
-          isDisplayed={entityStore.isLoading}
           height={54}
+          isDisplayed={entityStore.isLoading}
         >
           {entityStore.entity?.company}
         </TextSkeleton>
       </Typography>
       <Typography
+        className={classes.name}
+        component="h1"
         variant="H1"
         variantMobile="H1"
-        component="h1"
-        className={classes.name}
       >
         <TextSkeleton
-          isDisplayed={entityStore.isLoading}
           height={54}
+          isDisplayed={entityStore.isLoading}
         >
           {entityStore.entity?.name}
         </TextSkeleton>
       </Typography>
       {salary && (
         <Typography
+          className={classes.salary}
+          component="p"
           variant="H5"
           variantMobile="H5"
-          component="p"
-          className={classes.salary}
         >
           <TextSkeleton
-            isDisplayed={entityStore.isLoading}
             height={30}
+            isDisplayed={entityStore.isLoading}
           >
             {`${salaryString}${salary.currency.code}`}
           </TextSkeleton>
@@ -85,12 +86,12 @@ export default function Main({
         <BlocksSkeleton isDisplayed={entityStore.isLoading}>
           {entityStore.tags.map(tag => (
             <Block
+              borderRadius="8px"
+              borderRadiusMobile="8px"
               key={tag}
               mode="dark"
               padding="8px"
               paddingMobile="8px"
-              borderRadius="8px"
-              borderRadiusMobile="8px"
             >
               <Typography
                 variant="B2"

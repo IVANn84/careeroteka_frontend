@@ -1,8 +1,8 @@
 import React from 'react';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 
-import Typography from 'Component/Typography';
 import { onEnter } from 'Util/onEnter';
+import Typography from 'Component/Typography';
 
 export default function Skill({
   skillName,
@@ -14,11 +14,11 @@ export default function Skill({
 }) {
   return (
     <div
-      role="button"
       className={classes.container}
-      tabIndex={0}
-      onKeyDown={onEnter(onSelect)}
       onClick={onSelect}
+      onKeyDown={onEnter(onSelect)}
+      role="button"
+      tabIndex={0}
     >
       <Typography
         className={classes.title}
@@ -30,11 +30,11 @@ export default function Skill({
       {removeSkill && (
         <XMarkIcon
           className={classes.removeButton}
-          width={25}
           height={25}
-          tabIndex={0}
-          onKeyDown={onEnter(removeSkill)}
           onClick={removeSkill}
+          onKeyDown={onEnter(removeSkill)}
+          tabIndex={0}
+          width={25}
         />
       )}
     </div>

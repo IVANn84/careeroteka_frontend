@@ -1,8 +1,8 @@
 import { types } from 'mobx-state-tree';
 
-import { filtersModalFieldsStoreVacanciesPage, FiltersModalFieldsStoreModel } from '../fields';
-import { filtersModalVacanciesStoreVacanciesPage, FiltersModalVacanciesStoreModel } from '../vacancies';
 import actions from './actions';
+import { FiltersModalVacanciesStoreModel, filtersModalVacanciesStoreVacanciesPage } from '../vacancies';
+import { FiltersModalFieldsStoreModel, filtersModalFieldsStoreVacanciesPage } from '../fields';
 
 export const RootStoreFiltersModalModel = types
   .model('Root', {

@@ -2,14 +2,13 @@ import React from 'react';
 import { AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline';
 
 import { useStoreVacanciesPage } from 'Page/Vacancies/stores';
-
 import { useModal } from 'Hook/useModal';
-
 import Input from 'Component/Input';
-import Button from 'Component/Button';
 import Dropdown from 'Component/Dropdown';
-import Tabs from './components/Tabs';
+import Button from 'Component/Button';
+
 import FiltersModal from './components/modals/Filters';
+import Tabs from './components/Tabs';
 
 export default function VacanciesFilters({
   classes,
@@ -37,33 +36,33 @@ export default function VacanciesFilters({
         <div className={classes.filtersContainer}>
           <Input
             className={classes.searchButton}
-            type="text"
-            placeholder="Поиск вакансии"
-            value={fieldsStore.searchVacancy}
-            onChange={fieldsStore.setSearchVacancy}
-            onSubmit={() => vacanciesStore.fetchVacancies(false)}
-            onClear={() => vacanciesStore.fetchVacancies(false)}
-            isDisabled={vacanciesStore.isLoading}
             isClearable
+            isDisabled={vacanciesStore.isLoading}
             isSearchable
+            onChange={fieldsStore.setSearchVacancy}
+            onClear={() => vacanciesStore.fetchVacancies(false)}
+            onSubmit={() => vacanciesStore.fetchVacancies(false)}
+            placeholder="Поиск вакансии"
+            type="text"
+            value={fieldsStore.searchVacancy}
           />
           <Dropdown
             className={classes.gradesDropdown}
-            mode="light"
-            placeholder="Выберите грейд"
-            options={gradesStore.values}
+            isClearable
             isDisabled={gradesStore.isLoading || vacanciesStore.isLoading}
+            mode="light"
+            onSelect={fieldsStore.setGrade}
+            options={gradesStore.values}
+            placeholder="Выберите грейд"
             selectedId={fieldsStore.gradeId}
             selectedValue={fieldsStore.gradeName}
-            isClearable
-            onSelect={fieldsStore.setGrade}
           />
         </div>
         <Button
-          variant="outlined"
-          mode="dark"
           isDisabled={vacanciesStore.isLoading}
+          mode="dark"
           onClick={openFiltersModal}
+          variant="outlined"
         >
           <span className={classes.filtersButtonContent}>
             <AdjustmentsHorizontalIcon width={24} />

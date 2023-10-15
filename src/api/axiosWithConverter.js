@@ -1,5 +1,5 @@
-import axios from 'axios';
 import applyCaseMiddleware from 'axios-case-converter';
+import axios from 'axios';
 
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFToken';

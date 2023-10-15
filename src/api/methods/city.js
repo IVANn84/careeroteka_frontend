@@ -1,6 +1,5 @@
-import { axiosWithConverter } from '../axiosWithConverter';
-
 import Format from '../intercepters/format';
+import { axiosWithConverter } from '../axiosWithConverter';
 
 class CityApi {
   /**

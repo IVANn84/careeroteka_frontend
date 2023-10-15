@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
 import { useLocation } from 'react-router';
+import { useEffect } from 'react';
 
 // Прокручивание страницы до верха при рендере
 function ScrollToTop({ children }) {

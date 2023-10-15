@@ -1,13 +1,12 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import React, { useEffect } from 'react';
-import { useStoreRegisterPage } from 'Page/Register/stores';
 import { useHistory } from 'react-router';
+import React, { useEffect } from 'react';
 
 import { onEnter } from 'Util/onEnter';
-
+import { useStoreRegisterPage } from 'Page/Register/stores';
+import Typography from 'Component/Typography';
 import Input from 'Component/Input';
 import Button from 'Component/Button';
-import Typography from 'Component/Typography';
 
 export default function Register({ classes }) {
   const history = useHistory();
@@ -28,50 +27,50 @@ export default function Register({ classes }) {
     <div className={classes.container}>
       <Typography
         className={classes.title}
+        component="h1"
         variant="H1"
         variantMobile="H1"
-        component="h1"
       >
         Ускорьте свой рост уже сегодня
       </Typography>
       <form className={classes.inputs}>
         <Input
-          name="email"
-          type="text"
-          placeholder="Введите почту"
-          value={fieldsStore.email}
-          onChange={fieldsStore.setEmail}
           error={errors.email}
+          name="email"
+          onChange={fieldsStore.setEmail}
+          placeholder="Введите почту"
+          type="text"
+          value={fieldsStore.email}
         />
 
         <Input
-          name="password"
-          type="password"
-          placeholder="Введите пароль"
-          value={fieldsStore.password}
-          onChange={fieldsStore.setPassword}
           error={errors.password}
+          name="password"
+          onChange={fieldsStore.setPassword}
+          placeholder="Введите пароль"
+          type="password"
+          value={fieldsStore.password}
         />
 
         <Input
-          name="confirmPassword"
-          type="password"
-          placeholder="Повторите пароль"
-          value={fieldsStore.confirmPassword}
-          onChange={fieldsStore.setConfirmPassword}
           error={errors.confirmPassword}
+          name="confirmPassword"
+          onChange={fieldsStore.setConfirmPassword}
+          placeholder="Повторите пароль"
+          type="password"
+          value={fieldsStore.confirmPassword}
         />
       </form>
       <Button
         className={classes.button}
-        mode="primary"
-        onClick={() => signup(gotoLogin)}
         isDisabled={
           isLoading
           || !fieldsStore.email
           || !fieldsStore.password
           || !fieldsStore.confirmPassword
         }
+        mode="primary"
+        onClick={() => signup(gotoLogin)}
       >
         Продолжить
       </Button>

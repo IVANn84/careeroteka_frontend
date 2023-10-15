@@ -2,10 +2,10 @@ import React from 'react';
 import accounting from 'accounting-big';
 
 import { useStoreVacanciesPage } from 'Page/Vacancies/stores';
-
 import Typography from 'Component/Typography';
-import Divider from 'Component/Divider';
 import Input from 'Component/Input';
+import Divider from 'Component/Divider';
+
 import SalaryChart from './components/SalaryChart';
 
 export default function Salary({
@@ -26,18 +26,18 @@ export default function Salary({
   return (
     <>
       <Typography
+        className={classes.title}
+        component="p"
         variant="H4"
         variantMobile="H4"
-        component="p"
-        className={classes.title}
       >
         Зарплата
       </Typography>
       <Typography
+        className={classes.description}
+        component="p"
         variant="B1"
         variantMobile="B2"
-        component="p"
-        className={classes.description}
       >
         Средняя зарплата в предложениях
         {' '}
@@ -56,20 +56,20 @@ export default function Salary({
       <SalaryChart />
       <div className={classes.inputs}>
         <Input
-          type="money"
-          precision={0}
-          placeholder="Минимальная з/п, ₽"
           isPlaceholderAtTop
-          value={fieldsStore.minSalary}
           onChange={fieldsStore.setMinSalary}
+          placeholder="Минимальная з/п, ₽"
+          precision={0}
+          type="money"
+          value={fieldsStore.minSalary}
         />
         <Input
-          type="money"
-          precision={0}
-          placeholder="Максимальная з/п, ₽"
           isPlaceholderAtTop
-          value={fieldsStore.maxSalary}
           onChange={fieldsStore.setMaxSalary}
+          placeholder="Максимальная з/п, ₽"
+          precision={0}
+          type="money"
+          value={fieldsStore.maxSalary}
         />
       </div>
       <Divider />

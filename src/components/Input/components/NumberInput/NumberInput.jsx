@@ -1,6 +1,7 @@
 /* eslint-disable react/no-danger */
 import React, { useRef } from 'react';
 import { MagnifyingGlassIcon, XMarkIcon } from '@heroicons/react/24/solid';
+
 import { onEnter } from 'Util/onEnter';
 
 /**
@@ -101,16 +102,16 @@ export default function NumberInput({
       <div className={classes.wrapper}>
         <div className={classes.input}>
           <input
-            ref={$input}
-            type="text"
-            spellCheck="false"
-            autoCorrect="off"
             autoComplete="off"
+            autoCorrect="off"
             disabled={isDisabled}
-            value={toNumber(value)}
-            onKeyDown={submit}
-            onChange={change}
             maxLength={maxLength}
+            onChange={change}
+            onKeyDown={submit}
+            ref={$input}
+            spellCheck="false"
+            type="text"
+            value={toNumber(value)}
           />
           {placeholder && !isPlaceholderAtTop && (
             <span className={classes.placeholder}>{placeholder}</span>
@@ -119,16 +120,16 @@ export default function NumberInput({
         <div className={classes.actions}>
           {isClearable && !isDisabled && value && (
             <XMarkIcon
-              tabIndex={0}
-              onKeyDown={onEnter(clear)}
               onClick={clear}
+              onKeyDown={onEnter(clear)}
+              tabIndex={0}
             />
           )}
           {isSearchable && (
             <MagnifyingGlassIcon
-              tabIndex={0}
-              onKeyDown={onEnter(search)}
               onClick={search}
+              onKeyDown={onEnter(search)}
+              tabIndex={0}
             />
           )}
         </div>

@@ -1,10 +1,10 @@
+import { Code } from 'react-content-loader';
 import React from 'react';
 
 import { useStoreProfessionPage } from 'Page/Profession/stores';
-import Block from 'Component/Block';
-import LinkDropdown from 'Component/LinkDropdown';
 import Typography from 'Component/Typography';
-import { Code } from 'react-content-loader';
+import LinkDropdown from 'Component/LinkDropdown';
+import Block from 'Component/Block';
 
 export default function Description({
   classes,
@@ -15,13 +15,13 @@ export default function Description({
 
   return (
     <Block
-      isSlim
       className={classes.container}
+      isSlim
     >
       <Typography
+        component="h2"
         variant="H2"
         variantMobile="H3"
-        component="h2"
       >
         Чем занимается?
       </Typography>

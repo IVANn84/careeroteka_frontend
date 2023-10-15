@@ -1,6 +1,7 @@
 import { types } from 'mobx-state-tree';
 
-import { fieldsStoreRegisterPage, FieldsStoreModel } from 'Page/Register/stores/fields';
+import { FieldsStoreModel, fieldsStoreRegisterPage } from 'Page/Register/stores/fields';
+
 import actions from './actions';
 
 const ErrorsModel = types

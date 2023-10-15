@@ -1,4 +1,5 @@
 import { flow, getParent } from 'mobx-state-tree';
+
 import VacanciesApi from 'Mock/vacancy';
 
 export default self => ({

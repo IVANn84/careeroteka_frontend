@@ -1,8 +1,9 @@
 import React from 'react';
 
-import Button from 'Component/Button';
-import Typography from 'Component/Typography';
 import { useStoreSurveyPage } from 'Page/Survey/stores';
+import Typography from 'Component/Typography';
+import Button from 'Component/Button';
+
 import Review from './components/Review';
 
 export default function Step4({
@@ -19,16 +20,16 @@ export default function Step4({
       <div className={classes.fields}>
         <div className={classes.header}>
           <Typography
+            component="h1"
             variant="H1"
             variantMobile="H1"
-            component="h1"
           >
             Зарплата и оценка профессии
           </Typography>
           <Typography
+            component="p"
             variant="B1"
             variantMobile="B2"
-            component="p"
           >
             Это поможет пользователям легче выбирать профессию для старта
             карьеры или смены направления.
@@ -39,11 +40,11 @@ export default function Step4({
             id, name, description, value,
           }) => (
             <Review
+              description={description}
               key={id}
               name={name}
-              description={description}
-              value={value}
               onRate={selectedValue => stepsStore.rateReviewType(id, selectedValue)}
+              value={value}
             />
           ))}
         </div>
@@ -51,17 +52,17 @@ export default function Step4({
       <div className={classes.actions}>
         <Button
           className={classes.button}
-          variant="outlined"
-          onClick={() => setStep(3)}
           mode="dark"
+          onClick={() => setStep(3)}
+          variant="outlined"
         >
           Назад
         </Button>
         <Button
           className={classes.button}
-          onClick={completeSurvey}
           isDisabled={!stepsStore.isStepValid(4)}
           mode="dark"
+          onClick={completeSurvey}
         >
           Завершить
         </Button>

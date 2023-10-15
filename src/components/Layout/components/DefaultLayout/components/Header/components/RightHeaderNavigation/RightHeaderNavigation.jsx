@@ -1,11 +1,10 @@
-import React from 'react';
 import { useHistory } from 'react-router-dom';
+import React from 'react';
 
-import { useStoreLayoutComponent } from 'Component/Layout/stores';
-
-import Typography from 'Component/Typography';
-import { useRedirectToLogin } from 'Hook/useRedirectToLogin';
 import { onEnter } from 'Util/onEnter';
+import { useRedirectToLogin } from 'Hook/useRedirectToLogin';
+import Typography from 'Component/Typography';
+import { useStoreLayoutComponent } from 'Component/Layout/stores';
 
 export default function RightHeaderNavigation({
   classes,
@@ -30,11 +29,11 @@ export default function RightHeaderNavigation({
     ? (
       <div className={classes.container}>
         <Typography
+          onClick={onLogout}
+          onKeyDown={onEnter(onLogout)}
+          tabIndex={0}
           variant="B1"
           variantMobile="B2"
-          tabIndex={0}
-          onKeyDown={onEnter(onLogout)}
-          onClick={onLogout}
         >
           Выйти
         </Typography>
@@ -43,11 +42,11 @@ export default function RightHeaderNavigation({
     : (
       <div className={classes.container}>
         <Typography
+          onClick={gotoLogin}
+          onKeyDown={onEnter(gotoLogin)}
+          tabIndex={0}
           variant="B1"
           variantMobile="B2"
-          tabIndex={0}
-          onKeyDown={onEnter(gotoLogin)}
-          onClick={gotoLogin}
         >
           Войти
         </Typography>

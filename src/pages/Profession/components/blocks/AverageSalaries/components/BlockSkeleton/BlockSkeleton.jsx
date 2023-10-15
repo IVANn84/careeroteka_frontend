@@ -1,5 +1,5 @@
-import React from 'react';
 import ContentLoader from 'react-content-loader';
+import React from 'react';
 
 function BlockSkeleton({
   children,
@@ -8,19 +8,19 @@ function BlockSkeleton({
   return isDisplayed
     ? (
       <ContentLoader
-        speed={2}
-        width="100%"
-        height={100}
         backgroundColor="#f3f3f3"
         foregroundColor="#ecebeb"
+        height={100}
+        speed={2}
+        width="100%"
       >
         <rect
-          x="0"
-          y="0"
+          height={100}
           rx="16"
           ry="16"
           width="100%"
-          height={100}
+          x="0"
+          y="0"
         />
       </ContentLoader>
     )

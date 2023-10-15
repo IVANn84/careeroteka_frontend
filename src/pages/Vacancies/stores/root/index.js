@@ -1,10 +1,10 @@
 import { types } from 'mobx-state-tree';
 
-import { fieldsStoreVacanciesPage, FieldsStoreModel } from '../fields';
-import { vacanciesStoreMainPage, VacanciesStoreModel } from '../vacancies';
-import { gradesStoreVacanciesPage, GradesStoreModel } from '../grades';
-import { rootStoreFiltersModalVacanciesPage, RootStoreFiltersModalModel } from '../FiltersModal/root';
 import actions from './actions';
+import { VacanciesStoreModel, vacanciesStoreMainPage } from '../vacancies';
+import { GradesStoreModel, gradesStoreVacanciesPage } from '../grades';
+import { FieldsStoreModel, fieldsStoreVacanciesPage } from '../fields';
+import { RootStoreFiltersModalModel, rootStoreFiltersModalVacanciesPage } from '../FiltersModal/root';
 
 export const RootStoreModel = types
   .model('Root', {

@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 
+import { useStoreVacanciesPage } from 'Page/Vacancies/stores';
 import Modal from 'Component/Modal';
 import Button from 'Component/Button';
 
-import { useStoreVacanciesPage } from 'Page/Vacancies/stores';
-import Types from './components/Types';
 import WordsSearch from './components/WordsSearch';
+import Types from './components/Types';
 import Salary from './components/Salary';
-import Grades from './components/Grades';
 import Other from './components/Other';
+import Grades from './components/Grades';
 import Characteristics from './components/Characteristics';
 
 export default function Filters({
@@ -33,9 +33,9 @@ export default function Filters({
 
   return (
     <Modal.Modal
+      className={classes.container}
       isDisplayed={isDisplay}
       onClose={onDecline}
-      className={classes.container}
     >
       <Modal.Header onDecline={onDecline}>
         Фильтры
@@ -50,9 +50,9 @@ export default function Filters({
       </Modal.Content>
       <Modal.Footer className={classes.footer}>
         <Button
-          variant="outlined"
           mode="dark"
           onClick={fieldsStore.reset}
+          variant="outlined"
         >
           Сбросить фильтры
         </Button>

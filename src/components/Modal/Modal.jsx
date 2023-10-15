@@ -67,10 +67,10 @@ export default function Modal({
     // eslint-disable-next-line max-len
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions
     <div
-      role="complementary"
-      ref={$modal}
       className={classes.cloak}
       onClick={onClickCloak}
+      ref={$modal}
+      role="complementary"
       style={{ opacity }}
     >
       <div className={`${classes.container} ${className || ''}`}>

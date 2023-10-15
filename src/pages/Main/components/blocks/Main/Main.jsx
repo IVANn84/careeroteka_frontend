@@ -1,9 +1,9 @@
-import React from 'react';
 import { useHistory } from 'react-router-dom';
-
-import Button from 'Component/Button';
-import Typography from 'Component/Typography';
+import React from 'react';
 import mainHeaderImage from 'Image/main-header.png';
+
+import Typography from 'Component/Typography';
+import Button from 'Component/Button';
 
 export default function Main({
   $professions,
@@ -23,9 +23,9 @@ export default function Main({
     <div className={classes.container}>
       <div className={classes.about}>
         <Typography
+          component="h1"
           variant="H1"
           variantMobile="H1"
-          component="h1"
         >
           Вики профессий
         </Typography>
@@ -40,8 +40,8 @@ export default function Main({
             Найти профессию
           </Button>
           <Button
-            variant="outlined"
             onClick={gotoCreatePlan}
+            variant="outlined"
           >
             Создать план обучения
           </Button>
@@ -49,8 +49,8 @@ export default function Main({
       </div>
       <div className={classes.image}>
         <img
-          src={mainHeaderImage}
           alt="Главная"
+          src={mainHeaderImage}
         />
       </div>
     </div>
