@@ -26,7 +26,8 @@ export default function Grade({
   useEffect(() => {
     setPopupRight($popup.current?.getBoundingClientRect().right);
     setContainerRight($container.current?.getBoundingClientRect().right);
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [$popup, $container, window.screen.width]);
 
   return (
     <div

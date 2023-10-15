@@ -300,6 +300,7 @@ export default {
   customScrollbar: {
     '&::-webkit-scrollbar': {
       height: 12,
+      width: 12,
     },
     '&::-webkit-scrollbar-track': {
       backgroundColor: '#CBCBCB',

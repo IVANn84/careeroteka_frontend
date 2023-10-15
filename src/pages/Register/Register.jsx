@@ -2,8 +2,6 @@
 import React, { useEffect } from 'react';
 import { useStoreRegisterPage } from 'Page/Register/stores';
 import { useHistory } from 'react-router';
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
 
 import { onEnter } from 'Util/onEnter';
 
@@ -15,51 +13,14 @@ export default function Register({ classes }) {
   const history = useHistory();
 
   const {
-    isLoading, signup, reset, fieldsStore,
+    isLoading,
+    errors,
+    fieldsStore,
+    signup,
+    reset,
   } = useStoreRegisterPage();
 
-  const validationSchema = Yup.object({
-    email: Yup.string()
-      .required('Email обязателен')
-      .matches(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i, 'Неверный формат email'),
-    password: Yup.string()
-      .required('Пароль обязателен')
-      .min(6, 'Пароль должен содержать не менее 6 символов'),
-    confirmPassword: Yup.string()
-      .required('Введите повторный пароль')
-      .oneOf([Yup.ref('password'), null], 'Пароли должны совпадать'),
-  });
-
-  const initialValues = {
-    email: fieldsStore.email,
-    password: fieldsStore.password,
-    confirmPassword: fieldsStore.confirmPassword,
-  };
-
-  const formik = useFormik({
-    initialValues,
-    validationSchema,
-  });
-
   useEffect(() => reset, [reset]);
-
-  useEffect(() => {
-    if (fieldsStore.email !== formik.values.email) {
-      fieldsStore.setEmail(formik.values.email);
-    }
-    if (fieldsStore.password !== formik.values.password) {
-      fieldsStore.setPassword(formik.values.password);
-    }
-    if (fieldsStore.confirmPassword !== formik.values.confirmPassword) {
-      fieldsStore.repeatPassword(formik.values.confirmPassword);
-    }
-  }, [
-    fieldsStore,
-    reset,
-    formik.values.email,
-    formik.values.password,
-    formik.values.confirmPassword,
-  ]);
 
   const gotoLogin = () => history.push('/login');
 
@@ -78,30 +39,27 @@ export default function Register({ classes }) {
           name="email"
           type="text"
           placeholder="Введите почту"
-          value={formik.values.email}
-          onChange={formik.handleChange('email')}
-          onBlur={formik.handleBlur('email')}
-          error={formik.touched.email && formik.errors.email}
+          value={fieldsStore.email}
+          onChange={fieldsStore.setEmail}
+          error={errors.email}
         />
 
         <Input
           name="password"
           type="password"
           placeholder="Введите пароль"
-          value={formik.values.password}
-          onChange={formik.handleChange('password')}
-          onBlur={formik.handleBlur('password')}
-          error={formik.touched.password && formik.errors.password}
+          value={fieldsStore.password}
+          onChange={fieldsStore.setPassword}
+          error={errors.password}
         />
 
         <Input
           name="confirmPassword"
           type="password"
           placeholder="Повторите пароль"
-          value={formik.values.confirmPassword}
-          onChange={formik.handleChange('confirmPassword')}
-          onBlur={formik.handleBlur('confirmPassword')}
-          error={formik.touched.confirmPassword && formik.errors.confirmPassword}
+          value={fieldsStore.confirmPassword}
+          onChange={fieldsStore.setConfirmPassword}
+          error={errors.confirmPassword}
         />
       </form>
       <Button
@@ -109,11 +67,10 @@ export default function Register({ classes }) {
         mode="primary"
         onClick={() => signup(gotoLogin)}
         isDisabled={
-          !formik.values.email
-          || !formik.values.password
-          || !formik.values.confirmPassword
-          || !formik.isValid
-          || isLoading
+          isLoading
+          || !fieldsStore.email
+          || !fieldsStore.password
+          || !fieldsStore.confirmPassword
         }
       >
         Продолжить

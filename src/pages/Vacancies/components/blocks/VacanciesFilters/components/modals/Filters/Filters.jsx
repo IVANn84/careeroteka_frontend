@@ -9,6 +9,7 @@ import WordsSearch from './components/WordsSearch';
 import Salary from './components/Salary';
 import Grades from './components/Grades';
 import Other from './components/Other';
+import Characteristics from './components/Characteristics';
 
 export default function Filters({
   classes,
@@ -45,20 +46,21 @@ export default function Filters({
         <Salary />
         <Grades />
         <Other />
+        <Characteristics />
       </Modal.Content>
-      <Modal.Footer>
+      <Modal.Footer className={classes.footer}>
         <Button
           variant="outlined"
           mode="dark"
-          onClick={onDecline}
+          onClick={fieldsStore.reset}
         >
-          Отменить
+          Сбросить фильтры
         </Button>
         <Button
           mode="dark"
           onClick={onConfirm}
         >
-          Удалить
+          Показать 4 предложения
         </Button>
       </Modal.Footer>
     </Modal.Modal>

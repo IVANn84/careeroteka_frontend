@@ -49,7 +49,7 @@ export default function VacanciesFilters({
           />
           <Dropdown
             className={classes.gradesDropdown}
-            mode="primary"
+            mode="light"
             placeholder="Выберите грейд"
             options={gradesStore.values}
             isDisabled={gradesStore.isLoading || vacanciesStore.isLoading}

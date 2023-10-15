@@ -14,6 +14,9 @@ export const FiltersModalFieldsStoreModel = types
     gradesVacancy: types.optional(types.array(types.number), []),
     workFormats: types.optional(types.array(types.number), []),
     employmentFormats: types.optional(types.array(types.number), []),
+    employabilityFormats: types.optional(types.array(types.number), []),
+    companySizes: types.optional(types.array(types.number), []),
+    characteristics: types.optional(types.array(types.number), []),
   })
   .actions(actions);
 

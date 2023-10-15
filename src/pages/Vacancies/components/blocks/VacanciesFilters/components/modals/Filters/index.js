@@ -4,7 +4,7 @@ import { withIsDisplay } from 'Hoc/withIsDisplay';
 
 import Filters from './Filters.jsx';
 
-const style = {
+const style = ({ customScrollbar }) => ({
   container: {
     display: 'flex',
     flexDirection: 'column',
@@ -15,7 +15,12 @@ const style = {
     paddingTop: 36,
     paddingBottom: 36,
     overflowY: 'scroll',
+    ...customScrollbar,
   },
-};
+  footer: {
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+});
 
 export default withIsDisplay(withStyle(style)(Filters));

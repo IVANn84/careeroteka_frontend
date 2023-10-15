@@ -1,6 +1,16 @@
-import { getParent } from 'mobx-state-tree';
+import { applySnapshot, getParent, getSnapshot } from 'mobx-state-tree';
+
+let initialState = {};
 
 export default self => ({
+  afterCreate() {
+    initialState = getSnapshot(self);
+  },
+
+  reset() {
+    applySnapshot(self, initialState);
+  },
+
   setTypeVacancy(value) {
     self.typeVacancy = value;
   },
@@ -70,6 +80,30 @@ export default self => ({
       self.employmentFormats = self.employmentFormats.filter(item => item !== value);
     } else {
       self.employmentFormats.push(value);
+    }
+  },
+
+  setEmployabilityFormats(value) {
+    if (self.employabilityFormats.includes(value)) {
+      self.employabilityFormats = self.employabilityFormats.filter(item => item !== value);
+    } else {
+      self.employabilityFormats.push(value);
+    }
+  },
+
+  setCompanySizes(value) {
+    if (self.companySizes.includes(value)) {
+      self.companySizes = self.companySizes.filter(item => item !== value);
+    } else {
+      self.companySizes.push(value);
+    }
+  },
+
+  setCharacteristics(value) {
+    if (self.characteristics.includes(value)) {
+      self.characteristics = self.characteristics.filter(item => item !== value);
+    } else {
+      self.characteristics.push(value);
     }
   },
 });

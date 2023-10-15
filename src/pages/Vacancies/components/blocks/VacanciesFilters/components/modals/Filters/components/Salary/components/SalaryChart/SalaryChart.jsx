@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useMemo } from 'react';
 
 import { useStoreVacanciesPage } from 'Page/Vacancies/stores';
 import { stepBar } from 'Page/Vacancies/stores/FiltersModal/vacancies/views';
@@ -6,6 +6,8 @@ import { stepBar } from 'Page/Vacancies/stores/FiltersModal/vacancies/views';
 import BarChart from 'Component/BarChart';
 import MultiRangeSlider from 'Component/MultiRangeSlider';
 import { getNoun } from 'Util/getNoun';
+import { getSnapshot } from 'mobx-state-tree';
+import { throttle } from 'Util/throttle';
 
 const options = {
   maintainAspectRatio: false,
@@ -82,18 +84,31 @@ export default function SalaryChart({
     },
   } = useStoreVacanciesPage();
 
-  const { maxSalary } = vacanciesStore;
+  const { maxSalary, vacancyList } = vacanciesStore;
 
-  const onChangeMinMax = ({ min: minValue, max: maxValue }) => {
+  const vacancyListDataChart = useMemo(() => ({
+    labels: vacancyList.map(({ salary }) => salary),
+    datasets: [
+      {
+        data: vacancyList.map(({ count }) => count),
+        categoryPercentage: 1,
+        backgroundColor: '#86B0F8',
+      },
+    ],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }), [getSnapshot(vacancyList)]);
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const onChangeMinMax = useCallback(throttle(({ min: minValue, max: maxValue }) => {
     fieldsStore.setMinSalary(minValue);
     fieldsStore.setMaxSalary(maxValue);
-  };
+  }, 10), []);
 
   return (
     <div className={classes.container}>
       <div className={classes.chart}>
         <BarChart
-          data={vacanciesStore.vacancyListDataChart}
+          data={vacancyListDataChart}
           options={options}
         />
       </div>

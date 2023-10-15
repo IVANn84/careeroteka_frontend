@@ -45,7 +45,7 @@ export default self => ({
   },
 
   get maxSalary() {
-    const max = Math.max(...self.vacancyList);
+    const max = Math.max(...self.vacancyList.map(vacancy => vacancy.salary));
     return max > 500000
       ? max
       : 500000;

@@ -3,16 +3,16 @@ import { getParent } from 'mobx-state-tree';
 export default self => ({
   setEmail(value) {
     self.email = value;
-    getParent(self).setError(null);
+    getParent(self).setErrors('email', null);
   },
 
   setPassword(value) {
     self.password = value;
-    getParent(self).setError(null);
+    getParent(self).setErrors('password', null);
   },
 
-  repeatPassword(value) {
+  setConfirmPassword(value) {
     self.confirmPassword = value;
-    getParent(self).setError(null);
+    getParent(self).setErrors('confirmPassword', null);
   },
 });
