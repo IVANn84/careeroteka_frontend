@@ -1,10 +1,15 @@
 import React from 'react';
+import { AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline';
 
 import { useStoreVacanciesPage } from 'Page/Vacancies/stores';
 
+import { useModal } from 'Hook/useModal';
+
 import Input from 'Component/Input';
+import Button from 'Component/Button';
 import Dropdown from 'Component/Dropdown';
 import Tabs from './components/Tabs';
+import FiltersModal from './components/modals/Filters';
 
 export default function VacanciesFilters({
   classes,
@@ -14,6 +19,16 @@ export default function VacanciesFilters({
     fieldsStore,
     gradesStore,
   } = useStoreVacanciesPage();
+
+  const {
+    isOpen: isFiltersModalOpen,
+    open: openFiltersModal,
+    close: closeFiltersModal,
+  } = useModal();
+
+  const onApplyFilters = () => {
+    closeFiltersModal();
+  };
 
   return (
     <div className={classes.container}>
@@ -44,6 +59,22 @@ export default function VacanciesFilters({
             onSelect={fieldsStore.setGrade}
           />
         </div>
+        <Button
+          variant="outlined"
+          mode="dark"
+          isDisabled={vacanciesStore.isLoading}
+          onClick={openFiltersModal}
+        >
+          <span className={classes.filtersButtonContent}>
+            <AdjustmentsHorizontalIcon width={24} />
+            Фильтры
+          </span>
+        </Button>
+        <FiltersModal
+          isDisplay={isFiltersModalOpen}
+          onConfirm={onApplyFilters}
+          onDecline={closeFiltersModal}
+        />
       </div>
     </div>
   );
