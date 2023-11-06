@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline';
 
 import { useStoreVacanciesPage } from 'Page/Vacancies/stores';
@@ -10,13 +10,33 @@ import Button from 'Component/Button';
 import FiltersModal from './components/modals/Filters';
 import Tabs from './components/Tabs';
 
+const grades = [
+  {
+    id: 'no_experience',
+    name: 'Intern',
+  },
+  {
+    id: 'from_one_to_three',
+    name: 'Junior',
+  },
+  {
+    id: 'from_three_to_six',
+    name: 'Middle',
+  },
+  {
+    id: 'more_then_six',
+    name: 'Senior',
+  },
+];
+
 export default function VacanciesFilters({
   classes,
 }) {
   const {
+    filtersModalStore: {
+      fieldsStore,
+    },
     vacanciesStore,
-    fieldsStore,
-    gradesStore,
   } = useStoreVacanciesPage();
 
   const {
@@ -25,9 +45,15 @@ export default function VacanciesFilters({
     close: closeFiltersModal,
   } = useModal();
 
-  const onApplyFilters = () => {
+  const onApplyFilters = useCallback(() => {
+    vacanciesStore.fetchVacancies();
     closeFiltersModal();
-  };
+  }, [closeFiltersModal, vacanciesStore]);
+
+  const onFilterChanged = useCallback(fn => value => {
+    fn(value);
+    vacanciesStore.fetchVacancies();
+  }, [vacanciesStore]);
 
   return (
     <div className={classes.container}>
@@ -39,23 +65,23 @@ export default function VacanciesFilters({
             isClearable
             isDisabled={vacanciesStore.isLoading}
             isSearchable
-            onChange={fieldsStore.setSearchVacancy}
+            onChange={fieldsStore.setSearchValues}
             onClear={() => vacanciesStore.fetchVacancies(false)}
             onSubmit={() => vacanciesStore.fetchVacancies(false)}
             placeholder="Поиск вакансии"
             type="text"
-            value={fieldsStore.searchVacancy}
+            value={fieldsStore.searchValues}
           />
           <Dropdown
+            checkIsSelected={({ id }) => fieldsStore.experience.includes(id)}
             className={classes.gradesDropdown}
             isClearable
-            isDisabled={gradesStore.isLoading || vacanciesStore.isLoading}
+            isDisabled={vacanciesStore.isLoading}
             mode="light"
-            onSelect={fieldsStore.setGrade}
-            options={gradesStore.values}
+            onSelect={onFilterChanged(value => fieldsStore.setExperience(value?.id))}
+            options={grades}
             placeholder="Выберите грейд"
-            selectedId={fieldsStore.gradeId}
-            selectedValue={fieldsStore.gradeName}
+            selectedValue={grades.filter(({ id }) => fieldsStore.experience.includes(id)).map(({ name }) => name).join(', ')}
           />
         </div>
         <Button

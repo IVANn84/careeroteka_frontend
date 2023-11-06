@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 
 import { useStoreVacanciesPage } from 'Page/Vacancies/stores';
 import Modal from 'Component/Modal';
@@ -9,7 +9,7 @@ import Types from './components/Types';
 import Salary from './components/Salary';
 import Other from './components/Other';
 import Grades from './components/Grades';
-import Characteristics from './components/Characteristics';
+// import Characteristics from './components/Characteristics';
 
 export default function Filters({
   classes,
@@ -19,17 +19,20 @@ export default function Filters({
   onConfirm,
 }) {
   const {
-    filtersModalStore,
     filtersModalStore: {
       vacanciesStore,
       fieldsStore,
     },
   } = useStoreVacanciesPage();
 
+  const onReset = useCallback(() => {
+    fieldsStore.reset();
+    onDecline();
+  }, [fieldsStore, onDecline]);
+
   useEffect(() => {
     vacanciesStore.fetchVacancyList();
-    return filtersModalStore.reset;
-  }, [isDisplay, fieldsStore, filtersModalStore.reset, vacanciesStore]);
+  }, [isDisplay, fieldsStore, vacanciesStore]);
 
   return (
     <Modal.Modal
@@ -46,12 +49,12 @@ export default function Filters({
         <Salary />
         <Grades />
         <Other />
-        <Characteristics />
+        {/* <Characteristics /> */}
       </Modal.Content>
       <Modal.Footer className={classes.footer}>
         <Button
           mode="dark"
-          onClick={fieldsStore.reset}
+          onClick={onReset}
           variant="outlined"
         >
           Сбросить фильтры
@@ -60,7 +63,7 @@ export default function Filters({
           mode="dark"
           onClick={onConfirm}
         >
-          Показать 4 предложения
+          Показать предложения
         </Button>
       </Modal.Footer>
     </Modal.Modal>

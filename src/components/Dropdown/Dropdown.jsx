@@ -18,6 +18,7 @@ export default function Dropdown({
   isClearable = false,
   isSearchable,
   isDisplayed = true,
+  isCloseOnSelect = true,
   isRequired,
   placeholder,
   mode = 'light',
@@ -77,6 +78,7 @@ export default function Dropdown({
       {!isDisabled && (
         <Menu
           checkIsSelected={checkIsSelected}
+          isCloseOnSelect={isCloseOnSelect}
           isLoading={isLoading}
           isOpen={isOpen}
           isReversedY={isReversedY}

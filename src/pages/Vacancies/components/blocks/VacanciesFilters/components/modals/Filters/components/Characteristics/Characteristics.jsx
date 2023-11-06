@@ -35,8 +35,8 @@ export default function Characteristics({
       <div className={classes.container}>
         <div className={classes.variants}>
           <Checkbox
-            isSelected={fieldsStore.characteristics.includes(1)}
-            onClick={() => fieldsStore.setCharacteristics(1)}
+            isSelected={fieldsStore.isRelocationRequired}
+            onClick={fieldsStore.toggleIsRelocationRequired}
             title={(
               <span className={classes.checkboxDescription}>
                 <p>Предложения с релокацией</p>
@@ -45,8 +45,8 @@ export default function Characteristics({
             )}
           />
           <Checkbox
-            isSelected={fieldsStore.characteristics.includes(2)}
-            onClick={() => fieldsStore.setCharacteristics(2)}
+            // isSelected={fieldsStore.}
+            // onClick={fieldsStore.}
             title={(
               <span className={classes.checkboxDescription}>
                 <p>Предложения с тестовым</p>
@@ -57,8 +57,8 @@ export default function Characteristics({
         </div>
         <div className={classes.variants}>
           <Checkbox
-            isSelected={fieldsStore.characteristics.includes(3)}
-            onClick={() => fieldsStore.setCharacteristics(3)}
+            // isSelected={fieldsStore.}
+            // onClick={fieldsStore.}
             title={(
               <span className={classes.checkboxDescription}>
                 <p>Предложения без оплаты</p>
@@ -67,8 +67,8 @@ export default function Characteristics({
             )}
           />
           <Checkbox
-            isSelected={fieldsStore.characteristics.includes(4)}
-            onClick={() => fieldsStore.setCharacteristics(4)}
+            isSelected={fieldsStore.hasInsurance}
+            onClick={fieldsStore.toggleHasInsurance}
             title={(
               <span className={classes.checkboxDescription}>
                 <p>Наличие ДМС</p>

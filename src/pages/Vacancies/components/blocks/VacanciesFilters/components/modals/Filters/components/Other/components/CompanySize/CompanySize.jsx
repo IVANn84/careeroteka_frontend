@@ -6,24 +6,20 @@ import Typography from 'Component/Typography';
 
 const variants = [
   {
-    id: 1,
+    value: 'startup',
     name: 'Стартап',
   },
   {
-    id: 2,
-    name: 'Малая',
-  },
-  {
-    id: 3,
+    value: 'medium',
     name: 'Средняя',
   },
   {
-    id: 4,
+    value: 'corporation',
     name: 'Корпорация',
   },
 ];
 
-export default function CompanySizes({
+export default function CompanySize({
   classes,
 }) {
   const {
@@ -32,7 +28,7 @@ export default function CompanySizes({
     },
   } = useStoreVacanciesPage();
 
-  const onClick = id => fieldsStore.setCompanySizes(id);
+  const onClick = value => fieldsStore.setCompanySize(value);
 
   return (
     <>
@@ -47,12 +43,12 @@ export default function CompanySizes({
       <div className={classes.variants}>
         {variants.map(variant => (
           <Typography
-            className={`${classes.variant} ${fieldsStore.companySizes.includes(variant.id)
+            className={`${classes.variant} ${fieldsStore.companySize.includes(variant.value)
               ? classes.selected
               : ''}`}
-            key={variant.id}
-            onClick={() => onClick(variant.id)}
-            onKeyDown={onEnter(() => onClick(variant.id))}
+            key={variant.value}
+            onClick={() => onClick(variant.value)}
+            onKeyDown={onEnter(() => onClick(variant.value))}
             role="button"
             tabIndex={0}
             variant="B1"

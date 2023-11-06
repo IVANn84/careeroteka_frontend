@@ -35,6 +35,7 @@ const style = ({ customScrollbar }) => ({
   },
   loading: {
     '& > div': {
+      cursor: 'auto',
       opacity: 0.7,
 
       '&:hover, &:focus-visible': {

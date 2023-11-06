@@ -48,6 +48,7 @@ Component.propTypes = {
   // Проверка, выбран ли элемент (если нужна логика, отличная от сравнения id)
   checkIsSelected: PropTypes.func,
   isDisabled: PropTypes.bool,
+  isCloseOnSelect: PropTypes.bool,
   isLoading: PropTypes.bool,
   isSearchable: PropTypes.bool,
   isClearable: PropTypes.bool,

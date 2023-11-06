@@ -8,25 +8,25 @@ import Grade from './components/Grade';
 
 const grades = [
   {
-    id: 1,
+    value: 'no_experience',
     name: 'Intern',
     color: '#DD657B',
     description: 'Начинающий специалист, решающий простые и зачастую рутинные задачи, под кураторством более опытного специалиста',
   },
   {
-    id: 2,
+    value: 'from_one_to_three',
     name: 'Junior',
     color: '#F3CA46',
     description: 'Начинающий специалист, решающий простые и зачастую рутинные задачи, под кураторством более опытного специалиста',
   },
   {
-    id: 3,
+    value: 'from_three_to_six',
     name: 'Middle',
     color: '#7ADA2E',
     description: 'Начинающий специалист, решающий простые и зачастую рутинные задачи, под кураторством более опытного специалиста',
   },
   {
-    id: 4,
+    value: 'more_then_six',
     name: 'Senior',
     color: '#4861AB',
     description: 'Начинающий специалист, решающий простые и зачастую рутинные задачи, под кураторством более опытного специалиста',
@@ -44,7 +44,7 @@ export default function Grades({
 
   const $container = useRef();
 
-  const onClick = id => fieldsStore.setGradesVacancy(id);
+  const onClick = value => fieldsStore.setExperience(value);
 
   return (
     <>
@@ -68,7 +68,7 @@ export default function Grades({
         {grades.map(grade => (
           <Grade
             $container={$container}
-            key={grade.id}
+            key={grade.value}
             onClick={onClick}
             value={grade}
           />

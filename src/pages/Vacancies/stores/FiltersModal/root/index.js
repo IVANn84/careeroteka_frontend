@@ -6,6 +6,7 @@ import { FiltersModalFieldsStoreModel, filtersModalFieldsStoreVacanciesPage } fr
 
 export const RootStoreFiltersModalModel = types
   .model('Root', {
+    isFiltersChanged: types.optional(types.boolean, false),
     fieldsStore: types.maybe(FiltersModalFieldsStoreModel),
     vacanciesStore: types.maybe(FiltersModalVacanciesStoreModel),
   })

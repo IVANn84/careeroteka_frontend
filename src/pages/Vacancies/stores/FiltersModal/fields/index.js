@@ -5,18 +5,21 @@ import actions from './actions';
 export const FiltersModalFieldsStoreModel = types
   .model('Fields', {
     typeVacancy: types.optional(types.number, 1),
-    searchWords: types.maybeNull(types.string),
-    searchAt: types.optional(types.array(types.number), []),
-    excludeWords: types.maybeNull(types.string),
-    excludeAt: types.optional(types.array(types.number), []),
+    searchValues: types.maybeNull(types.string),
+    searchBy: types.optional(types.array(types.string), []),
+    excludeValues: types.maybeNull(types.string),
+    excludeBy: types.optional(types.array(types.string), []),
     minSalary: types.optional(types.number, 0),
     maxSalary: types.maybeNull(types.number),
-    gradesVacancy: types.optional(types.array(types.number), []),
-    workFormats: types.optional(types.array(types.number), []),
-    employmentFormats: types.optional(types.array(types.number), []),
-    employabilityFormats: types.optional(types.array(types.number), []),
-    companySizes: types.optional(types.array(types.number), []),
-    characteristics: types.optional(types.array(types.number), []),
+    experience: types.optional(types.array(types.string), []),
+    workFormat: types.optional(types.array(types.string), []),
+    employmentFormat: types.optional(types.array(types.string), []),
+    contractType: types.optional(types.array(types.string), []),
+    companySize: types.optional(types.array(types.string), []),
+    hasInsurance: types.maybeNull(types.boolean),
+    isAccredited: types.maybeNull(types.boolean),
+    isRelocationRequired: types.maybeNull(types.boolean),
+    source: types.maybeNull(types.string),
   })
   .actions(actions);
 

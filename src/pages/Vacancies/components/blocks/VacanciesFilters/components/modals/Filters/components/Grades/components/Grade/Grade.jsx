@@ -25,14 +25,13 @@ export default function Grade({
   useEffect(() => {
     setPopupRight($popup.current?.getBoundingClientRect().right);
     setContainerRight($container.current?.getBoundingClientRect().right);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [$popup, $container, window.screen.width]);
+  }, [$popup, $container]);
 
   return (
     <div
       className={classes.container}
-      onClick={() => onClick(value.id)}
-      onKeyDown={onEnter(() => onClick(value.id))}
+      onClick={() => onClick(value.value)}
+      onKeyDown={onEnter(() => onClick(value.value))}
       role="button"
       tabIndex={0}
     >
@@ -69,7 +68,7 @@ export default function Grade({
         >
           {value.name}
         </Typography>
-        {fieldsStore.gradesVacancy.includes(value.id) && (
+        {fieldsStore.experience.includes(value.value) && (
         <div className={classes.check}>
           <CheckIcon />
         </div>

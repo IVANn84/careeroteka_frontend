@@ -1,22 +1,22 @@
 import React from 'react';
 
-import Divider from 'Component/Divider';
+// import Divider from 'Component/Divider';
 
-import WorkFormats from './components/WorkFormats';
-import EmploymentFormats from './components/EmploymentFormats';
-import EmployabilityFormats from './components/EmployabilityFormats';
-import CompanySizes from './components/CompanySizes';
+import WorkFormat from './components/WorkFormat';
+import EmploymentFormats from './components/EmploymentFormat';
+import EmployabilityFormats from './components/ContractType';
+import CompanySizes from './components/CompanySize';
 
 export default function Other({
   classes,
 }) {
   return (
     <div className={classes.container}>
-      <WorkFormats />
+      <WorkFormat />
       <EmploymentFormats />
       <EmployabilityFormats />
       <CompanySizes />
-      <Divider />
+      {/* <Divider /> */}
     </div>
   );
 }

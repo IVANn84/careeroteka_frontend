@@ -10,4 +10,8 @@ export default self => ({
   reset() {
     applySnapshot(self, initialState);
   },
+
+  setIsFiltersChanged(value) {
+    self.isFiltersChanged = value;
+  },
 });

@@ -37,10 +37,10 @@ export default function WordsSearch({
           </Typography>
           <Input
             isClearable
-            onChange={fieldsStore.setSearchWords}
+            onChange={fieldsStore.setSearchValues}
             placeholder="Веб-дизайн, интерфейсы"
             type="text"
-            value={fieldsStore.searchWords}
+            value={fieldsStore.searchValues}
           />
           <Typography
             className={classes.descriptionAt}
@@ -54,18 +54,18 @@ export default function WordsSearch({
           </Typography>
           <div className={classes.variants}>
             <Checkbox
-              isSelected={fieldsStore.searchAt.includes(1)}
-              onClick={() => fieldsStore.setSearchAt(1)}
+              isSelected={fieldsStore.searchBy.includes('by_name')}
+              onClick={() => fieldsStore.setSearchBy('by_name')}
               title="В названии предложения"
             />
             <Checkbox
-              isSelected={fieldsStore.searchAt.includes(2)}
-              onClick={() => fieldsStore.setSearchAt(2)}
+              isSelected={fieldsStore.searchBy.includes('by_description')}
+              onClick={() => fieldsStore.setSearchBy('by_description')}
               title="В описании предложения"
             />
             <Checkbox
-              isSelected={fieldsStore.searchAt.includes(3)}
-              onClick={() => fieldsStore.setSearchAt(3)}
+              isSelected={fieldsStore.searchBy.includes('by_company_name')}
+              onClick={() => fieldsStore.setSearchBy('by_company_name')}
               title="В названии компании"
             />
           </div>
@@ -81,10 +81,10 @@ export default function WordsSearch({
           </Typography>
           <Input
             isClearable
-            onChange={fieldsStore.setExcludeWords}
+            onChange={fieldsStore.setExcludeValues}
             placeholder="Веб-дизайн, интерфейсы"
             type="text"
-            value={fieldsStore.excludeWords}
+            value={fieldsStore.excludeValues}
           />
           <Typography
             className={classes.descriptionAt}
@@ -98,18 +98,18 @@ export default function WordsSearch({
           </Typography>
           <div className={classes.variants}>
             <Checkbox
-              isSelected={fieldsStore.excludeAt.includes(1)}
-              onClick={() => fieldsStore.setExcludeAt(1)}
+              isSelected={fieldsStore.excludeBy.includes('by_name')}
+              onClick={() => fieldsStore.setExcludeBy('by_name')}
               title="В названии предложения"
             />
             <Checkbox
-              isSelected={fieldsStore.excludeAt.includes(2)}
-              onClick={() => fieldsStore.setExcludeAt(2)}
+              isSelected={fieldsStore.excludeBy.includes('by_description')}
+              onClick={() => fieldsStore.setExcludeBy('by_description')}
               title="В описании предложения"
             />
             <Checkbox
-              isSelected={fieldsStore.excludeAt.includes(3)}
-              onClick={() => fieldsStore.setExcludeAt(3)}
+              isSelected={fieldsStore.excludeBy.includes('by_company_name')}
+              onClick={() => fieldsStore.setExcludeBy('by_company_name')}
               title="В названии компании"
             />
           </div>

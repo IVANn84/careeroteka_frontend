@@ -1,7 +1,7 @@
 import withStyle from 'react-jss';
 import { observer } from 'mobx-react-lite';
 
-import CompanySizes from './CompanySizes.jsx';
+import ContractType from './ContractType.jsx';
 
 const style = ({ font }) => ({
   title: {
@@ -28,4 +28,4 @@ const style = ({ font }) => ({
   },
 });
 
-export default withStyle(style)(observer(CompanySizes));
+export default withStyle(style)(observer(ContractType));

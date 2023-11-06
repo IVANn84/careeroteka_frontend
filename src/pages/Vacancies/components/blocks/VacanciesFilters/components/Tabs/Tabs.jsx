@@ -5,86 +5,157 @@ import { useStoreVacanciesPage } from 'Page/Vacancies/stores';
 import Typography from 'Component/Typography';
 import Icon from 'Component/Icon';
 
-const types = [
-  {
-    id: 1,
-    icon: 'searchPeopleInside',
-    name: 'Все вакансии',
-  },
-  {
-    id: 2,
-    icon: 'companyHouse',
-    name: 'Корпорации',
-  },
-  {
-    id: 3,
-    icon: 'rocket',
-    name: 'Стартапы',
-  },
-  {
-    id: 4,
-    icon: 'techScience',
-    name: 'Ed-tech Job',
-  },
-  {
-    id: 5,
-    icon: 'remote',
-    name: 'Удалёнка',
-  },
-  {
-    id: 6,
-    icon: 'cookie',
-    name: 'ДМС',
-  },
-  {
-    id: 7,
-    icon: 'worldBag',
-    name: 'Релокация',
-  },
-];
-
 export default function Tabs({
   classes,
 }) {
   const {
+    filtersModalStore,
+    filtersModalStore: {
+      fieldsStore,
+    },
     vacanciesStore,
-    fieldsStore,
   } = useStoreVacanciesPage();
 
-  const onClick = id => {
+  const onTabClick = fn => () => {
     if (!vacanciesStore.isLoading) {
-      fieldsStore.setTypeVacancy(id);
+      fn();
+      vacanciesStore.fetchVacancies();
     }
   };
 
   return (
     <div className={`${classes.container} ${vacanciesStore.isLoading ? classes.loading : ''}`}>
-      {
-        types.map(type => (
-          <div
-            className={fieldsStore.typeVacancy === type.id
-              ? classes.selectedTab
-              : ''}
-            key={type.id}
-            onClick={() => onClick(type.id)}
-            onKeyDown={onEnter(() => onClick(type.id))}
-            role="button"
-            tabIndex={0}
-          >
-            <Icon
-              height={48}
-              name={type.icon}
-              width={48}
-            />
-            <Typography
-              variant="B2"
-              variantMobile="B2"
-            >
-              {type.name}
-            </Typography>
-          </div>
-        ))
-      }
+      <div
+        className={!filtersModalStore.isFiltersChanged
+          ? classes.selectedTab
+          : ''}
+        onClick={() => !vacanciesStore.isLoading && fieldsStore.reset()}
+        onKeyDown={onEnter(() => !vacanciesStore.isLoading && fieldsStore.reset())}
+        role="button"
+        tabIndex={0}
+      >
+        <Icon
+          height={48}
+          name="searchPeopleInside"
+          width={48}
+        />
+        <Typography
+          variant="B2"
+          variantMobile="B2"
+        >
+          Все вакансии
+        </Typography>
+      </div>
+
+      <div
+        className={fieldsStore.companySize.includes('corporation')
+          ? classes.selectedTab
+          : ''}
+        onClick={onTabClick(() => fieldsStore.setCompanySize('corporation'))}
+        onKeyDown={onEnter(onTabClick(() => fieldsStore.setCompanySize('corporation')))}
+        role="button"
+        tabIndex={0}
+      >
+        <Icon
+          height={48}
+          name="companyHouse"
+          width={48}
+        />
+        <Typography
+          variant="B2"
+          variantMobile="B2"
+        >
+          Корпорации
+        </Typography>
+      </div>
+
+      <div
+        className={fieldsStore.companySize.includes('startup')
+          ? classes.selectedTab
+          : ''}
+        onClick={onTabClick(() => fieldsStore.setCompanySize('startup'))}
+        onKeyDown={onEnter(onTabClick(() => fieldsStore.setCompanySize('startup')))}
+        role="button"
+        tabIndex={0}
+      >
+        <Icon
+          height={48}
+          name="rocket"
+          width={48}
+        />
+        <Typography
+          variant="B2"
+          variantMobile="B2"
+        >
+          Стартапы
+        </Typography>
+      </div>
+
+      <div
+        className={fieldsStore.workFormat.includes('remote')
+          ? classes.selectedTab
+          : ''}
+        onClick={onTabClick(() => fieldsStore.setWorkFormat('remote'))}
+        onKeyDown={onEnter(onTabClick(() => fieldsStore.setWorkFormat('remote')))}
+        role="button"
+        tabIndex={0}
+      >
+        <Icon
+          height={48}
+          name="remote"
+          width={48}
+        />
+        <Typography
+          variant="B2"
+          variantMobile="B2"
+        >
+          Удаленка
+        </Typography>
+      </div>
+
+      {/* <div */}
+      {/*  className={fieldsStore.hasInsurance */}
+      {/*    ? classes.selectedTab */}
+      {/*    : ''} */}
+      {/*  onClick={onTabClick(fieldsStore.toggleHasInsurance)} */}
+      {/*  onKeyDown={onEnter(onTabClick(fieldsStore.toggleHasInsurance))} */}
+      {/*  role="button" */}
+      {/*  tabIndex={0} */}
+      {/* > */}
+      {/*  <Icon */}
+      {/*    height={48} */}
+      {/*    name="cookie" */}
+      {/*    width={48} */}
+      {/*  /> */}
+      {/*  <Typography */}
+      {/*    variant="B2" */}
+      {/*    variantMobile="B2" */}
+      {/*  > */}
+      {/*    ДМС */}
+      {/*  </Typography> */}
+      {/* </div> */}
+
+      {/* <div */}
+      {/*  className={fieldsStore.isRelocationRequired */}
+      {/*    ? classes.selectedTab */}
+      {/*    : ''} */}
+      {/*  onClick={onTabClick(fieldsStore.toggleIsRelocationRequired)} */}
+      {/*  onKeyDown={onEnter(onTabClick(fieldsStore.toggleIsRelocationRequired))} */}
+      {/*  role="button" */}
+      {/*  tabIndex={0} */}
+      {/* > */}
+      {/*  <Icon */}
+      {/*    height={48} */}
+      {/*    name="worldBag" */}
+      {/*    width={48} */}
+      {/*  /> */}
+      {/*  <Typography */}
+      {/*    variant="B2" */}
+      {/*    variantMobile="B2" */}
+      {/*  > */}
+      {/*    Релокация */}
+      {/*  </Typography> */}
+      {/* </div> */}
     </div>
   );
 }

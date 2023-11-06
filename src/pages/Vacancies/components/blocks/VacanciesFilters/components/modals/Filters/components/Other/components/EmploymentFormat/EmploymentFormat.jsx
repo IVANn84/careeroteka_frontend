@@ -6,28 +6,24 @@ import Typography from 'Component/Typography';
 
 const variants = [
   {
-    id: 1,
-    name: 'Трудовой',
+    value: 'full_time',
+    name: 'Полная',
   },
   {
-    id: 2,
-    name: 'ИП',
+    value: 'part_time',
+    name: 'Частичная',
   },
   {
-    id: 3,
-    name: 'Самозанятость',
+    value: 'freelance',
+    name: 'Фриланс',
   },
   {
-    id: 4,
-    name: 'ГПХ',
-  },
-  {
-    id: 5,
-    name: 'Контракт',
+    value: 'probation',
+    name: 'Стажировка',
   },
 ];
 
-export default function EmployabilityFormats({
+export default function EmploymentFormat({
   classes,
 }) {
   const {
@@ -36,7 +32,7 @@ export default function EmployabilityFormats({
     },
   } = useStoreVacanciesPage();
 
-  const onClick = id => fieldsStore.setEmployabilityFormats(id);
+  const onClick = value => fieldsStore.setEmploymentFormat(value);
 
   return (
     <>
@@ -46,17 +42,17 @@ export default function EmployabilityFormats({
         variant="H4"
         variantMobile="H4"
       >
-        Формат трудоустройства
+        Формат занятости
       </Typography>
       <div className={classes.variants}>
         {variants.map(variant => (
           <Typography
-            className={`${classes.variant} ${fieldsStore.employabilityFormats.includes(variant.id)
+            className={`${classes.variant} ${fieldsStore.employmentFormat.includes(variant.value)
               ? classes.selected
               : ''}`}
-            key={variant.id}
-            onClick={() => onClick(variant.id)}
-            onKeyDown={onEnter(() => onClick(variant.id))}
+            key={variant.value}
+            onClick={() => onClick(variant.value)}
+            onKeyDown={onEnter(() => onClick(variant.value))}
             role="button"
             tabIndex={0}
             variant="B1"

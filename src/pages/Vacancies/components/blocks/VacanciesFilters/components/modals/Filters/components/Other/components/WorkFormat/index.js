@@ -1,7 +1,7 @@
 import withStyle from 'react-jss';
 import { observer } from 'mobx-react-lite';
 
-import EmploymentFormats from './EmploymentFormats.jsx';
+import WorkFormat from './WorkFormat.jsx';
 
 const style = ({ font }) => ({
   title: {
@@ -28,4 +28,4 @@ const style = ({ font }) => ({
   },
 });
 
-export default withStyle(style)(observer(EmploymentFormats));
+export default withStyle(style)(observer(WorkFormat));

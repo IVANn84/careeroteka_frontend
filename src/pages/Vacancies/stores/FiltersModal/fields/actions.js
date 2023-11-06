@@ -9,33 +9,38 @@ export default self => ({
 
   reset() {
     applySnapshot(self, initialState);
+    getParent(self).setIsFiltersChanged(false);
+    getParent(getParent(self)).vacanciesStore.fetchVacancies();
   },
 
   setTypeVacancy(value) {
     self.typeVacancy = value;
+    getParent(self).setIsFiltersChanged(true);
   },
 
-  setSearchWords(value) {
-    self.searchWords = value;
+  setSearchValues(value) {
+    self.searchValues = value;
+    getParent(self).setIsFiltersChanged(true);
   },
 
-  setSearchAt(value) {
-    if (self.searchAt.includes(value)) {
-      self.searchAt = self.searchAt.filter(item => item !== value);
+  setSearchBy(value) {
+    if (self.searchBy.includes(value)) {
+      self.searchBy = self.searchBy.filter(item => item !== value);
     } else {
-      self.searchAt.push(value);
+      self.searchBy.push(value);
     }
   },
 
-  setExcludeWords(value) {
-    self.excludeWords = value;
+  setExcludeValues(value) {
+    self.excludeValues = value;
+    getParent(self).setIsFiltersChanged(true);
   },
 
-  setExcludeAt(value) {
-    if (self.excludeAt.some(item => item === value)) {
-      self.excludeAt = self.excludeAt.filter(item => item !== value);
+  setExcludeBy(value) {
+    if (self.excludeBy.some(item => item === value)) {
+      self.excludeBy = self.excludeBy.filter(item => item !== value);
     } else {
-      self.excludeAt.push(value);
+      self.excludeBy.push(value);
     }
   },
 
@@ -45,6 +50,7 @@ export default self => ({
     } else {
       self.minSalary = value;
     }
+    getParent(self).setIsFiltersChanged(true);
   },
 
   setMaxSalary(value) {
@@ -57,53 +63,68 @@ export default self => ({
     } else {
       self.maxSalary = value;
     }
+    getParent(self).setIsFiltersChanged(true);
   },
 
-  setGradesVacancy(value) {
-    if (self.gradesVacancy.includes(value)) {
-      self.gradesVacancy = self.gradesVacancy.filter(item => item !== value);
+  setExperience(value) {
+    if (!value) {
+      self.experience = [];
+    } else if (self.experience.includes(value)) {
+      self.experience = self.experience.filter(item => item !== value);
     } else {
-      self.gradesVacancy.push(value);
+      self.experience.push(value);
     }
+    getParent(self).setIsFiltersChanged(true);
   },
 
-  setWorkFormats(value) {
-    if (self.workFormats.includes(value)) {
-      self.workFormats = self.workFormats.filter(item => item !== value);
+  setWorkFormat(value) {
+    if (self.workFormat.includes(value)) {
+      self.workFormat = self.workFormat.filter(item => item !== value);
     } else {
-      self.workFormats.push(value);
+      self.workFormat.push(value);
     }
+    getParent(self).setIsFiltersChanged(true);
   },
 
-  setEmploymentFormats(value) {
-    if (self.employmentFormats.includes(value)) {
-      self.employmentFormats = self.employmentFormats.filter(item => item !== value);
+  setEmploymentFormat(value) {
+    if (self.employmentFormat.includes(value)) {
+      self.employmentFormat = self.employmentFormat.filter(item => item !== value);
     } else {
-      self.employmentFormats.push(value);
+      self.employmentFormat.push(value);
     }
+    getParent(self).setIsFiltersChanged(true);
   },
 
-  setEmployabilityFormats(value) {
-    if (self.employabilityFormats.includes(value)) {
-      self.employabilityFormats = self.employabilityFormats.filter(item => item !== value);
+  setContractType(value) {
+    if (self.contractType.includes(value)) {
+      self.contractType = self.contractType.filter(item => item !== value);
     } else {
-      self.employabilityFormats.push(value);
+      self.contractType.push(value);
     }
+    getParent(self).setIsFiltersChanged(true);
   },
 
-  setCompanySizes(value) {
-    if (self.companySizes.includes(value)) {
-      self.companySizes = self.companySizes.filter(item => item !== value);
+  setCompanySize(value) {
+    if (self.companySize.includes(value)) {
+      self.companySize = self.companySize.filter(item => item !== value);
     } else {
-      self.companySizes.push(value);
+      self.companySize.push(value);
     }
+    getParent(self).setIsFiltersChanged(true);
   },
 
-  setCharacteristics(value) {
-    if (self.characteristics.includes(value)) {
-      self.characteristics = self.characteristics.filter(item => item !== value);
-    } else {
-      self.characteristics.push(value);
-    }
+  toggleHasInsurance() {
+    self.hasInsurance = !self.hasInsurance;
+    getParent(self).setIsFiltersChanged(true);
+  },
+
+  toggleIsRelocationRequired() {
+    self.isRelocationRequired = !self.isRelocationRequired;
+    getParent(self).setIsFiltersChanged(true);
+  },
+
+  toggleIsAccredited() {
+    self.isAccredited = !self.isAccredited;
+    getParent(self).setIsFiltersChanged(true);
   },
 });

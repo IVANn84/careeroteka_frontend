@@ -15,7 +15,7 @@ export default function Menu({
   isOpen,
   isLoading,
   isSearchable,
-  closeOnSelect = true,
+  isCloseOnSelect = true,
   mode,
 
   onSelect,
@@ -45,7 +45,7 @@ export default function Menu({
 
   const optionClick = option => {
     onSelect?.(option);
-    if (closeOnSelect) {
+    if (isCloseOnSelect) {
       toggle();
     }
   };

@@ -10,23 +10,23 @@ export default function Vacancies({
   classes,
 }) {
   const {
+    filtersModalStore: {
+      fieldsStore,
+    },
     vacanciesStore,
-    gradesStore,
-    fieldsStore,
     reset,
   } = useStoreVacanciesPage();
 
   useEffect(() => {
     vacanciesStore.fetchVacancies();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [fieldsStore.typeVacancy, fieldsStore.gradeId]);
+  }, [fieldsStore]);
 
-  useEffect(() => {
-    gradesStore.fetchGrades();
-
-    return reset;
+  useEffect(
+    () => reset,
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    [],
+  );
 
   return (
     <div>
