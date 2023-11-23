@@ -7,17 +7,17 @@ import Divider from 'Component/Divider';
 
 const types = [
   {
-    id: 1,
+    value: 'vacancy',
     name: 'Вакансия',
     salary: 200000,
   },
   {
-    id: 2,
+    value: 'intership',
     name: 'Стажировка',
     salary: 20000,
   },
   {
-    id: 3,
+    value: 'freelance',
     name: 'Фриланс',
     salary: 100000,
   },
@@ -59,9 +59,9 @@ export default function Types({
       <div className={classes.variants}>
         {types.map(type => (
           <button
-            className={fieldsStore.typeVacancy === type.id ? classes.selectedVariant : ''}
-            key={type.id}
-            onClick={() => fieldsStore.setTypeVacancy(type.id)}
+            className={fieldsStore.typeVacancy === type.value ? classes.selectedVariant : ''}
+            key={type.value}
+            onClick={() => fieldsStore.setTypeVacancy(type.value)}
             type="button"
           >
             <Typography
