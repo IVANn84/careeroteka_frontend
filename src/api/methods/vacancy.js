@@ -11,6 +11,11 @@ class VacancyApi {
   FetchList(params) {
     return axiosWithConverter.get('/api/v1/vacancy/', { params });
   }
+
+  @Format
+  FetchSalaryCostsByFilter() {
+    return axiosWithConverter.get('/api/v1/vacancy/salary/diagram/');
+  }
 }
 
 export default new VacancyApi();

@@ -1,6 +1,6 @@
 import { flow, getParent } from 'mobx-state-tree';
 
-import VacanciesApi from 'Mock/vacancy';
+import VacanciesApi from 'Api/vacancy';
 
 export default self => ({
   setIsLoading(value) {
@@ -13,9 +13,8 @@ export default self => ({
 
   fetchVacancyList: flow(function* () {
     self.setIsLoading(true);
-    const filters = getParent(self).fieldsStore;
 
-    const { data, errors } = yield VacanciesApi.FetchSalaryCostsByFilter(filters);
+    const { data, errors } = yield VacanciesApi.FetchSalaryCostsByFilter();
 
     if (errors) {
     // TODO: сделать нормальную обработку ошибок
@@ -23,7 +22,9 @@ export default self => ({
       self.setVacancyList(data);
     }
 
-    getParent(self).fieldsStore.setMaxSalary(self.maxSalary);
+    if (!getParent(self).fieldsStore.maxSalary) {
+      getParent(self).fieldsStore.setMaxSalary(self.maxSalary);
+    }
 
     self.setIsLoading(false);
   }),
