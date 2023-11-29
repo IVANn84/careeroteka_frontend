@@ -1,8 +1,8 @@
 import React, { useRef } from 'react';
 import { ArrowRightIcon } from '@heroicons/react/24/solid';
 
-import ArticlesSlider from 'Component/ArticlesSlider';
 import Typography from 'Component/Typography';
+import ArticlesSlider from 'Component/ArticlesSlider';
 
 export default function Articles({
   classes,
@@ -13,9 +13,9 @@ export default function Articles({
     <div>
       <div className={classes.header}>
         <Typography
+          component="h2"
           variant="H2"
           variantMobile="H3"
-          component="h2"
         >
           Полезные статьи
         </Typography>

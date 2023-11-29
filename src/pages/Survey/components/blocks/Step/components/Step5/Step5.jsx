@@ -1,11 +1,10 @@
-import React from 'react';
 import { useHistory } from 'react-router';
+import React from 'react';
 
-import Button from 'Component/Button';
-import Typography from 'Component/Typography';
-
-import { useStoreLayoutComponent } from 'Component/Layout/stores';
 import { useRedirectToLogin } from 'Hook/useRedirectToLogin';
+import Typography from 'Component/Typography';
+import { useStoreLayoutComponent } from 'Component/Layout/stores';
+import Button from 'Component/Button';
 
 export default function Step5({
   classes,
@@ -30,9 +29,9 @@ export default function Step5({
     <div className={classes.container}>
       <Typography
         className={`${classes.row} ${classes.center}`}
+        component="h1"
         variant="H1"
         variantMobile="H1"
-        component="h1"
       >
         Спасибо, теперь мы знаем о таких специалистах немного больше!
       </Typography>
@@ -47,15 +46,15 @@ export default function Step5({
       </Typography>
       <div className={classes.buttons}>
         <Button
+          mode="dark"
           onClick={gotoMain}
           variant="outlined"
-          mode="dark"
         >
           Вернуться в Вики
         </Button>
         <Button
-          onClick={gotoCreatePlan}
           mode="dark"
+          onClick={gotoCreatePlan}
         >
           Создать учебный план
         </Button>

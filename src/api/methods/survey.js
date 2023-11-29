@@ -1,22 +1,22 @@
-import { axiosWithConverter } from '../axiosWithConverter';
-
-import Format from '../intercepters/format';
 import RequireAuth from '../intercepters/requireAuth';
+import Format from '../intercepters/format';
 import CheckToken from '../intercepters/checkToken';
+import { axiosWithConverter } from '../axiosWithConverter';
 
 class SurveyApi {
   @RequireAuth
   @CheckToken
   @Format
-  SaveStep(surveyId, step, params) {
-    return axiosWithConverter.post(`/api/v1/survey/${surveyId}/${step}/`, params);
-  }
-
-  @RequireAuth
-  @CheckToken
-  @Format
   EditStep(surveyId, step, params) {
     return axiosWithConverter.put(`/api/v1/survey/${surveyId}/${step}/`, params);
+  }
+
+  /**
+   * @param {{search: string?}} params
+   */
+  @Format
+  FetchSkillList(params) {
+    return axiosWithConverter.get('/api/v1/survey_skills/', { params });
   }
 
   @RequireAuth
@@ -29,8 +29,8 @@ class SurveyApi {
   @RequireAuth
   @CheckToken
   @Format
-  SaveSurveyAuth(surveyId, data) {
-    return axiosWithConverter.put(`/api/v1/survey/${surveyId}/authorized_user/`, data);
+  SaveStep(surveyId, step, params) {
+    return axiosWithConverter.post(`/api/v1/survey/${surveyId}/${step}/`, params);
   }
 
   @Format
@@ -38,12 +38,11 @@ class SurveyApi {
     return axiosWithConverter.post(`/api/v1/survey/${surveyId}/anonim/`, data);
   }
 
-  /**
-   * @param {{search: string?}} params
-   */
+  @RequireAuth
+  @CheckToken
   @Format
-  FetchSkillList(params) {
-    return axiosWithConverter.get('/api/v1/survey_skills/', { params });
+  SaveSurveyAuth(surveyId, data) {
+    return axiosWithConverter.put(`/api/v1/survey/${surveyId}/authorized_user/`, data);
   }
 }
 

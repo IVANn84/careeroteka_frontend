@@ -1,10 +1,9 @@
 import React from 'react';
 
-import Button from 'Component/Button';
+import { useStoreOnboardingPage } from 'Page/Onboarding/stores';
 import Typography from 'Component/Typography';
 import Input from 'Component/Input';
-
-import { useStoreOnboardingPage } from 'Page/Onboarding/stores';
+import Button from 'Component/Button';
 
 export default function Step3({
   classes,
@@ -20,17 +19,17 @@ export default function Step3({
       <div className={classes.fields}>
         <div className={classes.header}>
           <Typography
+            component="h1"
             variant="H1"
             variantMobile="H1"
-            component="h1"
           >
             Какой вопрос или ситуацию вы хотели бы
             обсудить с ментором?
           </Typography>
           <Typography
+            component="p"
             variant="B1"
             variantMobile="B2"
-            component="p"
           >
             Это поле не обязательно для заполнения, но если вы планируете работать с ментором,
             оно поможет эксперту проработать ваш вопрос или кейс.
@@ -38,26 +37,26 @@ export default function Step3({
         </div>
         <Input
           className={classes.input}
-          type="textarea"
           isClearable
-          value={stepsStore.stepsData[3].name}
-          placeholder="Например: Мне нужна помощь с созданием маркетинговой стратегии"
           onChange={stepsStore.setQuestion}
+          placeholder="Например: Мне нужна помощь с созданием маркетинговой стратегии"
+          type="textarea"
+          value={stepsStore.stepsData[3].name}
         />
       </div>
       <div className={classes.actions}>
         <Button
           className={classes.button}
-          variant="outlined"
-          onClick={() => setStep(2)}
           mode="dark"
+          onClick={() => setStep(2)}
+          variant="outlined"
         >
           Назад
         </Button>
         <Button
           className={classes.button}
-          onClick={completeOnboarding}
           mode="dark"
+          onClick={completeOnboarding}
         >
           {stepsStore.stepsData[3].name
             ? 'Продолжить'

@@ -1,8 +1,9 @@
 import React from 'react';
 
 import { useStoreOnboardingPage } from 'Page/Onboarding/stores';
-import Area from './components/Area';
+
 import BlocksSkeleton from './components/BlocksSkeleton';
+import Area from './components/Area';
 
 export default function AreaList({
   classes,
@@ -23,8 +24,8 @@ export default function AreaList({
       <BlocksSkeleton isDisplayed={areasStore.isLoading}>
         {areasStore.filteredAreas.map(({ id, name }) => (
           <Area
-            key={id}
             areaName={name}
+            key={id}
             onSelect={() => stepsStore.setArea({ id, name })}
           />
         ))}

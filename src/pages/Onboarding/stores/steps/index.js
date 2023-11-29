@@ -1,7 +1,7 @@
 import { types } from 'mobx-state-tree';
 
-import actions from './actions';
 import views from './views';
+import actions from './actions';
 
 export const SupportDataModel = types.model('SupportData', {
   areaSearch: types.maybeNull(types.string),

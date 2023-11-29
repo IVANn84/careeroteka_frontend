@@ -47,29 +47,29 @@ export default function MultiRangeSlider({
   return (
     <div className={`${classes.container} ${className || ''}`}>
       <input
-        type="range"
-        min={minRange}
+        className={classes.thumbLeft}
         max={maxRange}
-        value={minValue || 0}
-        step={step}
+        min={minRange}
         onChange={onChangeLeft}
         onKeyDown={preventArrow}
-        className={classes.thumbLeft}
+        step={step}
+        type="range"
+        value={minValue || 0}
       />
       <input
-        type="range"
-        min={minRange}
+        className={classes.thumbRight}
         max={maxRange}
-        value={maxValue || 0}
-        step={step}
+        min={minRange}
         onChange={onChangeRight}
         onKeyDown={preventArrow}
-        className={classes.thumbRight}
+        step={step}
+        type="range"
+        value={maxValue || 0}
       />
 
       <div className={classes.slider}>
         <div className={classes.sliderTrack} />
-        <div ref={range} className={classes.sliderRange} />
+        <div className={classes.sliderRange} ref={range} />
       </div>
     </div>
   );

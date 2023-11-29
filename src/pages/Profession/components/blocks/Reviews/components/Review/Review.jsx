@@ -1,7 +1,7 @@
 import React from 'react';
+import accounting from 'accounting-big';
 import { StarIcon as FilledStar } from '@heroicons/react/24/solid';
 import { StarIcon as EmptyStar } from '@heroicons/react/24/outline';
-import accounting from 'accounting-big';
 
 import Typography from 'Component/Typography';
 
@@ -18,9 +18,9 @@ function Review({
   return (
     <>
       <Typography
+        className={classes.rateTitle}
         variant="B1"
         variantMobile="B2"
-        className={classes.rateTitle}
       >
         {name}
       </Typography>

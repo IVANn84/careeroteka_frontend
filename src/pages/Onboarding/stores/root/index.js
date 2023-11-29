@@ -1,10 +1,9 @@
 import { types } from 'mobx-state-tree';
 
 import actions from './actions';
-
-import { stepsStoreOnboardingPage, StepsStoreModel } from '../steps';
-import { citiesStoreOnboardingPage, CitiesStoreModel } from '../cities';
-import { areasStoreOnboardingPage, AreasStoreModel } from '../areas';
+import { StepsStoreModel, stepsStoreOnboardingPage } from '../steps';
+import { CitiesStoreModel, citiesStoreOnboardingPage } from '../cities';
+import { AreasStoreModel, areasStoreOnboardingPage } from '../areas';
 
 export const RootStore = types
   .model('Root', {

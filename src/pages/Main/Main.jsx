@@ -2,9 +2,9 @@ import React, { useEffect, useRef } from 'react';
 
 import { useStoreMainPage } from 'Page/Main/stores';
 
+import Professions from './components/blocks/Professions';
 import MainBlock from './components/blocks/Main';
 import Articles from './components/blocks/Articles';
-import Professions from './components/blocks/Professions';
 
 export default function Main({
   classes,

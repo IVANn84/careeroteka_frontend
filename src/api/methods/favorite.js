@@ -1,17 +1,10 @@
 import CheckToken from 'ApiDir/intercepters/checkToken';
+
+import RequireAuth from '../intercepters/requireAuth';
+import Format from '../intercepters/format';
 import { axiosWithConverter } from '../axiosWithConverter';
 
-import Format from '../intercepters/format';
-import RequireAuth from '../intercepters/requireAuth';
-
 class FavoriteApi {
-  @RequireAuth
-  @CheckToken
-  @Format
-  FetchList() {
-    return axiosWithConverter.get('/api/v1/favorite/');
-  }
-
   @RequireAuth
   @CheckToken
   @Format
@@ -24,6 +17,13 @@ class FavoriteApi {
   @Format
   Delete(id) {
     return axiosWithConverter.delete(`/api/v1/favorite/${id}/`);
+  }
+
+  @RequireAuth
+  @CheckToken
+  @Format
+  FetchList() {
+    return axiosWithConverter.get('/api/v1/favorite/');
   }
 }
 

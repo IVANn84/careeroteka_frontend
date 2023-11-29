@@ -2,10 +2,10 @@ import React from 'react';
 import accounting from 'accounting-big';
 
 import { useStoreProfessionPage } from 'Page/Profession/stores';
-
-import Block from 'Component/Block';
-import Typography from 'Component/Typography';
 import { useDevice } from 'Hook/useDevice';
+import Typography from 'Component/Typography';
+import Block from 'Component/Block';
+
 import BlockSkeleton from './components/BlockSkeleton';
 
 export default function AverageSalaries({
@@ -25,29 +25,29 @@ export default function AverageSalaries({
 
   return (
     <Block
-      isSlim
       className={classes.container}
+      isSlim
     >
       <Typography
+        component="h2"
         variant="H2"
         variantMobile="H3"
-        component="h2"
       >
         Средняя зарплата
       </Typography>
       <div className={classes.containerSalaries}>
         <BlockSkeleton isDisplayed={entityStore.isLoadingSalaries}>
           <Block
+            borderRadius="16px"
+            borderRadiusMobile="16px"
             mode="dark"
             padding="20px 24px"
             paddingMobile="20px 24px"
-            borderRadius="16px"
-            borderRadiusMobile="16px"
           >
             <Typography
+              component="h3"
               variant="B1"
               variantMobile="B1"
-              component="h3"
             >
               В регионах
             </Typography>
@@ -68,16 +68,16 @@ export default function AverageSalaries({
         </BlockSkeleton>
         <BlockSkeleton isDisplayed={entityStore.isLoadingSalaries}>
           <Block
+            borderRadius="16px"
+            borderRadiusMobile="16px"
             mode="dark"
             padding="20px 24px"
             paddingMobile="20px 24px"
-            borderRadius="16px"
-            borderRadiusMobile="16px"
           >
             <Typography
+              component="h3"
               variant="B1"
               variantMobile="B1"
-              component="h3"
             >
               В столице
             </Typography>

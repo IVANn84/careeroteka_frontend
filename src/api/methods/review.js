@@ -1,7 +1,6 @@
-import { axiosWithConverter } from '../axiosWithConverter';
-
-import Format from '../intercepters/format';
 import Static from '../intercepters/static';
+import Format from '../intercepters/format';
+import { axiosWithConverter } from '../axiosWithConverter';
 
 class ReviewApi {
   /**

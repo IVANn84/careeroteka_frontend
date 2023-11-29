@@ -2,9 +2,9 @@ import React from 'react';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 
 import { useStoreVacancyPage } from 'Page/Vacancy/stores';
-import Block from 'Component/Block';
 import Typography from 'Component/Typography';
 import Button from 'Component/Button';
+import Block from 'Component/Block';
 
 export default function Response({
   classes,
@@ -17,13 +17,13 @@ export default function Response({
 
   return (
     <Block
-      isSlim
       className={classes.container}
+      isSlim
     >
       <Typography
+        component="h3"
         variant="H3"
         variantMobile="H3"
-        component="h3"
       >
         Отклик
       </Typography>
@@ -51,9 +51,9 @@ export default function Response({
                     {name}
                   </Typography>
                   <Typography
+                    component="p"
                     variant="B1"
                     variantMobile="B2"
-                    component="p"
                   >
                     {type}
                     :
@@ -68,8 +68,8 @@ export default function Response({
           )
           : !!entityStore.entity?.contacts.length && (
             <Button
-              mode="dark"
               isDisabled={entityStore.isLoading}
+              mode="dark"
               onClick={() => setIsShowContacts(true)}
             >
               Показать контакты

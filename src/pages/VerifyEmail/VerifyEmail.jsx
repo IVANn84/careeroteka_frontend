@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
-import EmailApi from 'Api/email';
-
-import Typography from 'Component/Typography';
 import { onEnter } from 'Util/onEnter';
+import Typography from 'Component/Typography';
+import EmailApi from 'Api/email';
 
 export default function VerifyEmail({
   classes,
@@ -45,9 +44,9 @@ export default function VerifyEmail({
     <div className={classes.container}>
       <Typography
         className={`${classes.row} ${classes.center}`}
+        component="h1"
         variant="H1"
         variantMobile="H1"
-        component="h1"
       >
         Подтвердите свою почту
       </Typography>
@@ -67,12 +66,12 @@ export default function VerifyEmail({
         Не получили сообщения?
         {' '}
         <span
-          role="button"
-          className={`${classes.link} ${!isCanClick ? classes.disabledLink : ''}`}
           aria-disabled={!isCanClick}
-          tabIndex={0}
-          onKeyDown={onEnter(sendVerifyToEmail)}
+          className={`${classes.link} ${!isCanClick ? classes.disabledLink : ''}`}
           onClick={sendVerifyToEmail}
+          onKeyDown={onEnter(sendVerifyToEmail)}
+          role="button"
+          tabIndex={0}
         >
           Попробуйте повторить отправку
           {' '}

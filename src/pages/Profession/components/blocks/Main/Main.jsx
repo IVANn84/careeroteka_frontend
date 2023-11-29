@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { useDevice } from 'Hook/useDevice';
-
 import { useStoreProfessionPage } from 'Page/Profession/stores';
-import Block from 'Component/Block';
-import Button from 'Component/Button';
+import { useDevice } from 'Hook/useDevice';
 import Typography from 'Component/Typography';
+import Button from 'Component/Button';
+import Block from 'Component/Block';
+
 import TextSkeleton from './components/TextSkeleton';
 import ImageSkeleton from './components/ImageSkeleton';
 
@@ -36,13 +36,13 @@ export default function Main({
     >
       <div className={classes.about}>
         <Typography
+          component="h1"
           variant="H1"
           variantMobile="H1"
-          component="h1"
         >
           <TextSkeleton
-            isDisplayed={entityStore.isLoading}
             height={54}
+            isDisplayed={entityStore.isLoading}
           >
             {entityStore.entity?.name}
           </TextSkeleton>
@@ -52,18 +52,18 @@ export default function Main({
           variantMobile="B1"
         >
           <TextSkeleton
-            isDisplayed={entityStore.isLoading}
             height={24}
+            isDisplayed={entityStore.isLoading}
           >
             {entityStore.entity?.areas.join(', ').toLowerCase()}
           </TextSkeleton>
         </Typography>
         <div className={classes.actions}>
           <Button
-            mode={(!entityStore.isLoading && entityStore.entity?.color?.buttonColor) || 'dark'}
-            variant="outlined"
-            onClick={onClickTellAboutProfession}
             isDisplayed={!entityStore.isLoading}
+            mode={(!entityStore.isLoading && entityStore.entity?.color?.buttonColor) || 'dark'}
+            onClick={onClickTellAboutProfession}
+            variant="outlined"
           >
             Расскажите нам о профессии
           </Button>
@@ -73,8 +73,8 @@ export default function Main({
         <div className={classes.image}>
           <ImageSkeleton isDisplayed={entityStore.isLoading}>
             <img
-              src={entityStore.entity?.image}
               alt={entityStore.entity?.name}
+              src={entityStore.entity?.image}
             />
           </ImageSkeleton>
         </div>

@@ -1,11 +1,10 @@
 import React, { useEffect, useMemo } from 'react';
 import { getSnapshot } from 'mobx-state-tree';
 
-import Button from 'Component/Button';
+import { useStoreSurveyPage } from 'Page/Survey/stores';
 import Typography from 'Component/Typography';
 import Input from 'Component/Input';
-
-import { useStoreSurveyPage } from 'Page/Survey/stores';
+import Button from 'Component/Button';
 
 export default function Step1({
   classes,
@@ -30,9 +29,9 @@ export default function Step1({
         <>
           <p>{city.name}</p>
           <Typography
+            className={classes.optionAddInfo}
             variant="B2"
             variantMobile="B2"
-            className={classes.optionAddInfo}
           >
             {city.region}
           </Typography>
@@ -48,67 +47,67 @@ export default function Step1({
       <div className={classes.fields}>
         <Typography
           className={classes.title}
+          component="h1"
           variant="H1"
           variantMobile="H1"
-          component="h1"
         >
           Расскажите о себе
         </Typography>
         <div className={classes.inputs}>
           <Input
+            error={stepsStore.errors.step_1.name}
+            hasAutoFocus
+            isRequired
+            onChange={value => stepsStore.setStepData(1, 'name', value)}
+            placeholder="Введите ваше имя"
             type="text"
             value={stepsStore.stepsData[1].name}
-            placeholder="Введите ваше имя"
-            isRequired
-            hasAutoFocus
-            error={stepsStore.errors.step_1.name}
-            onChange={value => stepsStore.setStepData(1, 'name', value)}
           />
           <Input
-            type="text"
-            value={stepsStore.stepsData[1].city}
-            placeholder="Введите ваш город"
-            isRequired
             error={stepsStore.errors.step_1.city}
             hasHint
-            hintOptions={cityOptions}
             hintIsLoading={citiesStore.isLoading}
+            hintOptions={cityOptions}
             hintPlaceholder="У нас еще нет студентов отсюда. Мы запомним этот город"
-            onHintSelect={({ name }) => stepsStore.setStepData(1, 'city', name)}
+            isRequired
             onChange={value => stepsStore.setStepData(1, 'city', value)}
+            onHintSelect={({ name }) => stepsStore.setStepData(1, 'city', name)}
+            placeholder="Введите ваш город"
+            type="text"
+            value={stepsStore.stepsData[1].city}
           />
           <Input
+            error={stepsStore.errors.step_1.job}
+            isRequired
+            onChange={value => stepsStore.setStepData(1, 'job', value)}
+            placeholder="Введите ваше текущее место работы"
             type="text"
             value={stepsStore.stepsData[1].job}
-            isRequired
-            error={stepsStore.errors.step_1.job}
-            placeholder="Введите ваше текущее место работы"
-            onChange={value => stepsStore.setStepData(1, 'job', value)}
           />
           <Input
+            error={stepsStore.errors.step_1.position}
+            isRequired
+            onChange={value => stepsStore.setStepData(1, 'position', value)}
+            placeholder="Введите вашу должность"
             type="text"
             value={stepsStore.stepsData[1].position}
-            isRequired
-            error={stepsStore.errors.step_1.position}
-            placeholder="Введите вашу должность"
-            onChange={value => stepsStore.setStepData(1, 'position', value)}
           />
           <Input
-            type="text"
             error={stepsStore.errors.step_1.link}
-            value={stepsStore.stepsData[1].link}
-            placeholder="Введите ссылку на FB/LinkedIN"
-            onChange={value => stepsStore.setStepData(1, 'link', value)}
             isClearable
+            onChange={value => stepsStore.setStepData(1, 'link', value)}
+            placeholder="Введите ссылку на FB/LinkedIN"
+            type="text"
+            value={stepsStore.stepsData[1].link}
           />
         </div>
       </div>
       <div className={classes.actions}>
         <Button
           className={classes.button}
-          onClick={() => setStep(2)}
           isDisabled={!stepsStore.isStepValid(1)}
           mode="dark"
+          onClick={() => setStep(2)}
         >
           Продолжить
         </Button>

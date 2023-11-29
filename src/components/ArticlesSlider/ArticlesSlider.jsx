@@ -1,9 +1,8 @@
-import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
-
+import React, { useRef } from 'react';
 import relocationImage from 'Image/articles/relocation.svg';
-import aboutUsImage from 'Image/articles/about-us.svg';
 import buildCareerPlanImage from 'Image/articles/build-career-plan.svg';
+import aboutUsImage from 'Image/articles/about-us.svg';
 
 import { useSlider } from 'Hook/useSlider';
 
@@ -38,17 +37,17 @@ export default function ArticlesSlider({
 
   return (
     <div
-      ref={$slider}
       className={classes.slider}
+      ref={$slider}
     >
       {articleList
         .filter(({ id }) => id !== currentArticleId)
         .map(({ id, image }) => (
           <Link
             key={id}
-            to={`/article/${id}`}
-            target="_blank"
             style={{ backgroundImage: `url(${image})` }}
+            target="_blank"
+            to={`/article/${id}`}
           />
         ))}
     </div>

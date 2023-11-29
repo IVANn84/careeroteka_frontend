@@ -1,18 +1,16 @@
 import React, { useEffect, useRef } from 'react';
+import { getSnapshot } from 'mobx-state-tree';
 import { StarIcon as FilledStar } from '@heroicons/react/24/solid';
 import { StarIcon as EmptyStar, HeartIcon } from '@heroicons/react/24/outline';
-import { getSnapshot } from 'mobx-state-tree';
 
+import { onEnter } from 'Util/onEnter';
+import { useSlider } from 'Hook/useSlider';
+import { useRedirectToLogin } from 'Hook/useRedirectToLogin';
+import Typography from 'Component/Typography';
 import { useStoreLayoutComponent } from 'Component/Layout/stores';
 
-import { useSlider } from 'Hook/useSlider';
-
-import Typography from 'Component/Typography';
-import { useRedirectToLogin } from 'Hook/useRedirectToLogin';
-import { onEnter } from 'Util/onEnter';
-import ListSkeleton from './components/ListSkeleton';
-
 import { useStoreCoursesSliderComponent } from './stores';
+import ListSkeleton from './components/ListSkeleton';
 
 export default function CoursesSlider({
   buttonRightRef,
@@ -87,8 +85,8 @@ export default function CoursesSlider({
 
   return (
     <div
-      ref={$slider}
       className={classes.slider}
+      ref={$slider}
     >
       {isLoading
         ? (
@@ -105,10 +103,10 @@ export default function CoursesSlider({
           }) => (
             <div
               key={id}
+              onClick={() => onClickCourse(id)}
+              onKeyDown={onEnter(() => onClickCourse(id))}
               role="button"
               tabIndex={0}
-              onKeyDown={onEnter(() => onClickCourse(id))}
-              onClick={() => onClickCourse(id)}
             >
               <div className={classes.content}>
                 <HeartIcon
@@ -123,19 +121,19 @@ export default function CoursesSlider({
                 <div className={classes.info}>
                   <div>
                     <Typography
+                      className={classes.type}
                       variant="C1"
                       variantMobile="C1"
-                      className={classes.type}
                     >
                       {type}
                       ,
                       {company}
                     </Typography>
                     <Typography
+                      className={classes.name}
                       variant="B1"
                       variantMobile="B1"
                       weight="semiBold"
-                      className={classes.name}
                     >
                       {name}
                     </Typography>

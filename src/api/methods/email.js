@@ -1,8 +1,8 @@
 import CheckToken from 'ApiDir/intercepters/checkToken';
-import { axiosWithConverter } from '../axiosWithConverter';
 
-import Format from '../intercepters/format';
 import RequireAuth from '../intercepters/requireAuth';
+import Format from '../intercepters/format';
+import { axiosWithConverter } from '../axiosWithConverter';
 
 class EmailApi {
   @RequireAuth

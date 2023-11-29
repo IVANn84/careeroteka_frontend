@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Typography from 'Component/Typography';
 import { onEnter } from 'Util/onEnter';
+import Typography from 'Component/Typography';
 
 export default function Option({
   value,
@@ -12,11 +12,11 @@ export default function Option({
 }) {
   return (
     <div
-      role="button"
       className={classes.container}
-      tabIndex={0}
-      onKeyDown={onEnter(onSelect)}
       onClick={onSelect}
+      onKeyDown={onEnter(onSelect)}
+      role="button"
+      tabIndex={0}
     >
       <Typography
         variant="B1"

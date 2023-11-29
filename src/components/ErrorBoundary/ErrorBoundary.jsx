@@ -22,10 +22,10 @@ class ErrorBoundary extends React.Component {
     if (state.error) {
       return (
         <Typography
-          variant="B1"
-          variantMobile="B1"
           className={props.className || ''}
           style={props.style || ''}
+          variant="B1"
+          variantMobile="B1"
         >
           Произошла ошибка
         </Typography>

@@ -1,4 +1,5 @@
 import React, { Children, useState } from 'react';
+
 import { onEnter } from 'Util/onEnter';
 
 export default function Spoiler({
@@ -22,11 +23,11 @@ export default function Spoiler({
         {showNextButton && length > limit
           ? (
             <div
-              role="button"
               className={classes.container}
-              tabIndex={0}
-              onKeyDown={onEnter(click)}
               onClick={click}
+              onKeyDown={onEnter(click)}
+              role="button"
+              tabIndex={0}
             >
               И еще
               {' '}

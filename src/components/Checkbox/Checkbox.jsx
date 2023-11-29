@@ -16,11 +16,11 @@ function Checkbox({
     <div className={`${classes.container} ${className || ''}`}>
       <label htmlFor={id}>
         <input
-          id={id}
-          type="checkbox"
           checked={isSelected}
           disabled={isDisabled}
+          id={id}
           onChange={() => onClick(!isSelected)}
+          type="checkbox"
         />
         <Typography
           variant="B1"

@@ -1,6 +1,7 @@
 /* eslint-disable react/no-danger */
 import React, { useMemo, useRef } from 'react';
 import { XMarkIcon } from '@heroicons/react/24/solid';
+
 import { onEnter } from 'Util/onEnter';
 
 /**
@@ -72,8 +73,8 @@ export default function TextArea({
 
   return (
     <div
-      ref={$container}
       className={`${classes.container} ${className || ''}`}
+      ref={$container}
     >
       {placeholder && isPlaceholderAtTop && (
         <p className={classes.placeholderAtTop}>{placeholder}</p>
@@ -81,14 +82,14 @@ export default function TextArea({
       <div className={classes.wrapper}>
         <div className={classes.textarea}>
           <textarea
+            autoComplete="off"
+            autoCorrect="off"
+            disabled={isDisabled}
+            maxLength={maxLength}
+            onChange={change}
             ref={$input}
             spellCheck="false"
-            autoCorrect="off"
-            autoComplete="off"
-            disabled={isDisabled}
             value={normalizedValue}
-            onChange={change}
-            maxLength={maxLength}
           />
           {placeholder && !isPlaceholderAtTop && (
             <span className={classes.placeholder}>{placeholder}</span>
@@ -97,9 +98,9 @@ export default function TextArea({
         <div className={classes.actions}>
           {isClearable && !isDisabled && value && (
             <XMarkIcon
-              tabIndex={0}
-              onKeyDown={onEnter(clear)}
               onClick={clear}
+              onKeyDown={onEnter(clear)}
+              tabIndex={0}
             />
           )}
         </div>

@@ -1,10 +1,10 @@
-import React from 'react';
 import { NavLink } from 'react-router-dom';
+import React from 'react';
 import moment from 'moment';
 
+import Typography from 'Component/Typography';
 import Icon from 'Component/Icon';
 import ExternalLink from 'Component/ExternalLink';
-import Typography from 'Component/Typography';
 
 export default function Footer({
   classes,
@@ -19,16 +19,16 @@ export default function Footer({
           <div className={classes.footerLinksDesktop}>
             <ExternalLink to="https://vk.com">
               <Icon
+                height={32}
                 name="vk"
                 width={32}
-                height={32}
               />
             </ExternalLink>
             <ExternalLink href="https://vk.com">
               <Icon
+                height={32}
                 name="telegram"
                 width={32}
-                height={32}
               />
             </ExternalLink>
           </div>
@@ -69,16 +69,16 @@ export default function Footer({
         </div>
         <div className={classes.copyrightMobile}>
           <Typography
+            component="div"
             variant="B1"
             variantMobile="B2"
-            component="div"
           >
             ООО «Careeroteka»
           </Typography>
           <Typography
+            component="div"
             variant="B1"
             variantMobile="B2"
-            component="div"
           >
             ©
             {' '}

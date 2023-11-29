@@ -1,16 +1,16 @@
 import React from 'react';
 
-import Freelance from './icons/Freelance.jsx';
-import Remote from './icons/Remote.jsx';
-import Telegram from './icons/Telegram.jsx';
-import Vk from './icons/Vk.jsx';
-import SearchPeopleInside from './icons/SearchPeopleInside.jsx';
-import CompanyHouse from './icons/CompanyHouse.jsx';
-import Rocket from './icons/Rocket.jsx';
-import TechScience from './icons/TechScience.jsx';
-import Cookie from './icons/Cookie.jsx';
 import WorldBag from './icons/WorldBag.jsx';
+import Vk from './icons/Vk.jsx';
+import Telegram from './icons/Telegram.jsx';
+import TechScience from './icons/TechScience.jsx';
+import SearchPeopleInside from './icons/SearchPeopleInside.jsx';
+import Rocket from './icons/Rocket.jsx';
+import Remote from './icons/Remote.jsx';
 import Graduate from './icons/Graduate.jsx';
+import Freelance from './icons/Freelance.jsx';
+import Cookie from './icons/Cookie.jsx';
+import CompanyHouse from './icons/CompanyHouse.jsx';
 
 // Иконка
 export default function Icon({
@@ -24,8 +24,8 @@ export default function Icon({
     case 'telegram':
       return (
         <Telegram
-          width={width}
           height={height}
+          width={width}
           {...props}
         />
       );
@@ -33,8 +33,8 @@ export default function Icon({
     case 'vk':
       return (
         <Vk
-          width={width}
           height={height}
+          width={width}
           {...props}
         />
       );
@@ -42,8 +42,8 @@ export default function Icon({
     case 'searchPeopleInside':
       return (
         <SearchPeopleInside
-          width={width}
           height={height}
+          width={width}
           {...props}
         />
       );
@@ -51,8 +51,8 @@ export default function Icon({
     case 'companyHouse':
       return (
         <CompanyHouse
-          width={width}
           height={height}
+          width={width}
           {...props}
         />
       );
@@ -60,8 +60,8 @@ export default function Icon({
     case 'rocket':
       return (
         <Rocket
-          width={width}
           height={height}
+          width={width}
           {...props}
         />
       );
@@ -69,8 +69,8 @@ export default function Icon({
     case 'techScience':
       return (
         <TechScience
-          width={width}
           height={height}
+          width={width}
           {...props}
         />
       );
@@ -78,8 +78,8 @@ export default function Icon({
     case 'freelance':
       return (
         <Freelance
-          width={width}
           height={height}
+          width={width}
           {...props}
         />
       );
@@ -87,8 +87,8 @@ export default function Icon({
     case 'remote':
       return (
         <Remote
-          width={width}
           height={height}
+          width={width}
           {...props}
         />
       );
@@ -96,8 +96,8 @@ export default function Icon({
     case 'cookie':
       return (
         <Cookie
-          width={width}
           height={height}
+          width={width}
           {...props}
         />
       );
@@ -105,8 +105,8 @@ export default function Icon({
     case 'worldBag':
       return (
         <WorldBag
-          width={width}
           height={height}
+          width={width}
           {...props}
         />
       );
@@ -114,8 +114,8 @@ export default function Icon({
     case 'graduate':
       return (
         <Graduate
-          width={width}
           height={height}
+          width={width}
           {...props}
         />
       );

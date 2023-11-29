@@ -1,21 +1,10 @@
-import { axiosWithConverter } from '../axiosWithConverter';
-
 import Format from '../intercepters/format';
+import { axiosWithConverter } from '../axiosWithConverter';
 
 class ProfessionApi {
   @Format
-  FetchList(params) {
-    return axiosWithConverter.get('/api/v1/professions/', { params });
-  }
-
-  @Format
   FetchById(id) {
     return axiosWithConverter.get(`/api/v1/professions/${id}/`);
-  }
-
-  @Format
-  FetchByIdSalaries(id) {
-    return axiosWithConverter.get(`/api/v1/professions/${id}/salaries/`);
   }
 
   @Format
@@ -26,6 +15,16 @@ class ProfessionApi {
   @Format
   FetchByIdDirections(id) {
     return axiosWithConverter.get(`/api/v1/professions/${id}/directions/`);
+  }
+
+  @Format
+  FetchByIdSalaries(id) {
+    return axiosWithConverter.get(`/api/v1/professions/${id}/salaries/`);
+  }
+
+  @Format
+  FetchList(params) {
+    return axiosWithConverter.get('/api/v1/professions/', { params });
   }
 }
 

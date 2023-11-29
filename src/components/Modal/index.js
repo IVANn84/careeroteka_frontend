@@ -1,10 +1,10 @@
 import withStyle from 'react-jss';
 import PropTypes from 'prop-types';
 
-import Modal from './Modal.jsx';
 import Header from './components/Header';
-import Content from './components/Content';
 import Footer from './components/Footer';
+import Content from './components/Content';
+import Modal from './Modal.jsx';
 
 const style = {
   container: {

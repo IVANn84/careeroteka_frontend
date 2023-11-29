@@ -1,7 +1,7 @@
 import { types } from 'mobx-state-tree';
 
-import actions from './actions';
 import views from './views';
+import actions from './actions';
 
 const ContactModel = types
   .model('Contact', {

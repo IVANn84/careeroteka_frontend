@@ -1,11 +1,11 @@
 import React from 'react';
 
-import NumberInput from './components/NumberInput';
 import TextInput from './components/TextInput';
-import MoneyInput from './components/MoneyInput';
-import PasswordInput from './components/PasswordInput';
-import FileInput from './components/FileInput';
 import TextArea from './components/TextArea';
+import PasswordInput from './components/PasswordInput';
+import NumberInput from './components/NumberInput';
+import MoneyInput from './components/MoneyInput';
+import FileInput from './components/FileInput';
 
 export default function Input(props) {
   const {

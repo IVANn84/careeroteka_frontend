@@ -1,12 +1,20 @@
 import { types } from 'mobx-state-tree';
 
-import { fieldsStoreRegisterPage, FieldsStoreModel } from 'Page/Register/stores/fields';
+import { FieldsStoreModel, fieldsStoreRegisterPage } from 'Page/Register/stores/fields';
+
 import actions from './actions';
+
+const ErrorsModel = types
+  .model('Errors', {
+    email: types.maybeNull(types.string),
+    password: types.maybeNull(types.string),
+    confirmPassword: types.maybeNull(types.string),
+  });
 
 export const RootStoreModel = types
   .model('Root', {
     isLoading: types.optional(types.boolean, false),
-    error: types.maybeNull(types.string),
+    errors: types.optional(ErrorsModel, {}),
     fieldsStore: types.maybe(FieldsStoreModel),
   })
   .actions(actions);

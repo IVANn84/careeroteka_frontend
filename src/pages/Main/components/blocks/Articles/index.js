@@ -1,4 +1,5 @@
 import withStyle from 'react-jss';
+
 import Articles from './Articles.jsx';
 
 const style = ({ iconButton }) => ({

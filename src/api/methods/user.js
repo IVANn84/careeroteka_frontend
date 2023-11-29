@@ -1,13 +1,13 @@
+import RequireAuth from '../intercepters/requireAuth';
+import Format from '../intercepters/format';
+import CheckToken from '../intercepters/checkToken';
 import { axiosWithConverter } from '../axiosWithConverter';
 
-import Format from '../intercepters/format';
-import RequireAuth from '../intercepters/requireAuth';
-import CheckToken from '../intercepters/checkToken';
-
 class UserApi {
+  @CheckToken
   @Format
-  Register(params) {
-    return axiosWithConverter.post('/api/v1/signup/', params);
+  FetchCurrent() {
+    return axiosWithConverter.get('/api/v1/user/current/');
   }
 
   @Format
@@ -22,10 +22,9 @@ class UserApi {
     return axiosWithConverter.get('/api/v1/logout/');
   }
 
-  @CheckToken
   @Format
-  FetchCurrent() {
-    return axiosWithConverter.get('/api/v1/user/current/');
+  Register(params) {
+    return axiosWithConverter.post('/api/v1/signup/', params);
   }
 }
 

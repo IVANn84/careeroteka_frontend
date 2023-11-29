@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 
-import Button from 'Component/Button';
+import { useStoreSurveyPage } from 'Page/Survey/stores';
 import Typography from 'Component/Typography';
 import Input from 'Component/Input';
-import { useStoreSurveyPage } from 'Page/Survey/stores';
+import Button from 'Component/Button';
+
 import SkillList from './components/SkillList';
 
 export default function Step3({
@@ -29,44 +30,44 @@ export default function Step3({
       <div className={classes.fields}>
         <div className={classes.header}>
           <Typography
+            component="h1"
             variant="H1"
             variantMobile="H1"
-            component="h1"
           >
             Расскажите о ваших навыках
           </Typography>
           <Typography
+            component="p"
             variant="B1"
             variantMobile="B2"
-            component="p"
           >
             Это поможет нам строить более эффективные программы обучения.
           </Typography>
         </div>
         <Input
           className={classes.skillSearchInput}
-          type="text"
           isClearable
-          value={stepsStore.supportData.skillSearch}
-          placeholder="Поиск по навыкам"
           onChange={stepsStore.setSupportSkillSearch}
+          placeholder="Поиск по навыкам"
+          type="text"
+          value={stepsStore.supportData.skillSearch}
         />
         <SkillList />
       </div>
       <div className={classes.actions}>
         <Button
           className={classes.button}
-          variant="outlined"
-          onClick={() => setStep(2)}
           mode="dark"
+          onClick={() => setStep(2)}
+          variant="outlined"
         >
           Назад
         </Button>
         <Button
           className={classes.button}
-          onClick={() => setStep(4)}
           isDisabled={!stepsStore.isStepValid(3)}
           mode="dark"
+          onClick={() => setStep(4)}
         >
           Продолжить
         </Button>

@@ -1,24 +1,24 @@
-import React from 'react';
 import ContentLoader from 'react-content-loader';
+import React from 'react';
 
 import { useDevice } from 'Hook/useDevice';
 
 function BlockSkeleton() {
   return (
     <ContentLoader
-      speed={2}
-      width="100%"
-      height={190}
       backgroundColor="#f3f3f3"
       foregroundColor="#ecebeb"
+      height={190}
+      speed={2}
+      width="100%"
     >
       <rect
-        x="0"
-        y="0"
+        height={190}
         rx="16"
         ry="16"
         width="100%"
-        height={190}
+        x="0"
+        y="0"
       />
     </ContentLoader>
   );

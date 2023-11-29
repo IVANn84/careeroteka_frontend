@@ -27,17 +27,30 @@ export default self => ({
     }
 
     const {
-      fieldsStore: {
-        searchVacancy,
-        gradeId,
-        typeVacancy,
+      filtersModalStore: {
+        fieldsStore,
       },
     } = getParent(self);
 
+    const filters = { ...fieldsStore };
+
+    if (!filters.searchValues) {
+      delete filters.searchValues;
+      delete filters.searchBy;
+    }
+    if (!filters.excludeValues) {
+      delete filters.excludeValues;
+      delete filters.excludeBy;
+    }
+
     const { data, errors } = yield VacanciesApi.FetchList({
-      search: searchVacancy,
-      gradeId,
-      typeVacancy,
+      ...filters,
+      searchValues: filters.searchValues
+        ? filters.searchValues.split(',')
+        : null,
+      excludeValues: filters.excludeValues
+        ? filters.excludeValues.split(',')
+        : null,
       page: isFetchNextPage
         ? self.nextPage
         : null,

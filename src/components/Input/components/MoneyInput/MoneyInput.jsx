@@ -2,8 +2,9 @@
 import React, { useRef, useState } from 'react';
 import accounting from 'accounting-big';
 import { MagnifyingGlassIcon, XMarkIcon } from '@heroicons/react/24/solid';
-import { correctToString } from 'Util/bigMath';
+
 import { onEnter } from 'Util/onEnter';
+import { correctToString } from 'Util/bigMath';
 
 /**
  * Денежный формат Input. Умеет подстраивать шаблон под нужное количество разрядов числа
@@ -248,15 +249,15 @@ export default function MoneyInput({
       <div className={classes.wrapper}>
         <div className={classes.input}>
           <input
-            ref={setSelectionToDOM}
-            type="text"
-            spellCheck="false"
-            autoCorrect="off"
             autoComplete="off"
+            autoCorrect="off"
             disabled={isDisabled}
-            value={formattedValue(value)}
-            onKeyDown={preventNumberShift}
             onChange={change}
+            onKeyDown={preventNumberShift}
+            ref={setSelectionToDOM}
+            spellCheck="false"
+            type="text"
+            value={formattedValue(value)}
           />
           {placeholder && !isPlaceholderAtTop && (
             <span className={classes.placeholder}>{placeholder}</span>
@@ -265,16 +266,16 @@ export default function MoneyInput({
         <div className={classes.actions}>
           {value !== null && isClearable && !isDisabled && (
             <XMarkIcon
-              tabIndex={0}
-              onKeyDown={onEnter(clear)}
               onClick={clear}
+              onKeyDown={onEnter(clear)}
+              tabIndex={0}
             />
           )}
           {isSearchable && (
             <MagnifyingGlassIcon
-              tabIndex={0}
-              onKeyDown={onEnter(search)}
               onClick={search}
+              onKeyDown={onEnter(search)}
+              tabIndex={0}
             />
           )}
         </div>

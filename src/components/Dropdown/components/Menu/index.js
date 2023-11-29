@@ -100,7 +100,7 @@ Component.propTypes = {
   isOpen: PropTypes.bool,
   isLoading: PropTypes.bool,
   isSearchable: PropTypes.bool,
-  closeOnSelect: PropTypes.bool,
+  isCloseOnSelect: PropTypes.bool,
   error: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.bool,

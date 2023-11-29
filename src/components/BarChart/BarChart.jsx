@@ -1,4 +1,6 @@
+import { Bar } from 'react-chartjs-2';
 import React, { useMemo } from 'react';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 import {
   BarElement,
   CategoryScale,
@@ -8,8 +10,6 @@ import {
   Title,
   Tooltip,
 } from 'chart.js';
-import ChartDataLabels from 'chartjs-plugin-datalabels';
-import { Bar } from 'react-chartjs-2';
 import accounting from 'accounting-big';
 
 import { objectDeepMerge } from 'Util/objectDeepMerge';

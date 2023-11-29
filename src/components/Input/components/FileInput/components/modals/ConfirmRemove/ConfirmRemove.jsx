@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Modal from 'Component/Modal';
 import Typography from 'Component/Typography';
+import Modal from 'Component/Modal';
 import Button from 'Component/Button';
 
 export default function ConfirmRemove({
@@ -27,9 +27,9 @@ export default function ConfirmRemove({
       </Modal.Content>
       <Modal.Footer>
         <Button
-          variant="outlined"
           mode="dark"
           onClick={onDecline}
+          variant="outlined"
         >
           Отменить
         </Button>

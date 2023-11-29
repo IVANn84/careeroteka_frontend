@@ -20,7 +20,7 @@ module.exports = merge(base, {
     },
     contentBase: false,
     compress: true,
-    host: '0.0.0.0',
+    host: 'localhost',
     port: port,
     overlay: {
       warnings: false,

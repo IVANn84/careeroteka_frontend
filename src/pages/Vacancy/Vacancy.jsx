@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 
 import { useStoreVacancyPage } from 'Page/Vacancy/stores';
-import Main from './components/blocks/Main';
-import Description from './components/blocks/Description';
+
 // import Vacancies from './components/blocks/Vacancies';
 import Response from './components/blocks/Response';
+import Main from './components/blocks/Main';
+import Description from './components/blocks/Description';
 
 // Добавляем в локальное хранилище посещенные вакансии
 const addVisitedVacancy = id => {

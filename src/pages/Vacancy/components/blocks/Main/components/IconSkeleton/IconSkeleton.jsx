@@ -1,5 +1,5 @@
-import React from 'react';
 import ContentLoader from 'react-content-loader';
+import React from 'react';
 
 function IconSkeleton({
   isDisplayed,
@@ -8,19 +8,19 @@ function IconSkeleton({
   return isDisplayed
     ? (
       <ContentLoader
-        speed={2}
-        width={70}
-        height={24}
         backgroundColor="#f3f3f3"
         foregroundColor="#ecebeb"
+        height={24}
+        speed={2}
+        width={70}
       >
         <rect
-          x="0"
-          y="0"
+          height={24}
           rx="0"
           ry="0"
           width={70}
-          height={24}
+          x="0"
+          y="0"
         />
       </ContentLoader>
     )

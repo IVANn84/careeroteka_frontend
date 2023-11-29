@@ -1,6 +1,6 @@
 import withStyle from 'react-jss';
-import { observer } from 'mobx-react-lite';
 import PropTypes from 'prop-types';
+import { observer } from 'mobx-react-lite';
 
 import DefaultLayout from './DefaultLayout.jsx';
 

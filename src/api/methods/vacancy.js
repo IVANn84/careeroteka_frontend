@@ -1,16 +1,25 @@
+import Format from '../intercepters/format';
 import { axiosWithConverter } from '../axiosWithConverter';
 
-import Format from '../intercepters/format';
-
 class VacancyApi {
+  @Format
+  FetchAverageSalary() {
+    return axiosWithConverter.get('/api/v1/vacancy/salary/avg/');
+  }
+
+  @Format
+  FetchById(id) {
+    return axiosWithConverter.get(`/api/v1/vacancy/${id}/`);
+  }
+
   @Format
   FetchList(params) {
     return axiosWithConverter.get('/api/v1/vacancy/', { params });
   }
 
   @Format
-  FetchById(id) {
-    return axiosWithConverter.get(`/api/v1/vacancy/${id}/`);
+  FetchSalaryCostsByFilter() {
+    return axiosWithConverter.get('/api/v1/vacancy/salary/diagram/');
   }
 }
 

@@ -1,11 +1,11 @@
-import React from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import React from 'react';
 
 import { useStoreVacanciesPage } from 'Page/Vacancies/stores';
-
 import Typography from 'Component/Typography';
-import ListSkeleton from './components/ListSkeleton';
+
 import Vacancy from './components/Vacancy';
+import ListSkeleton from './components/ListSkeleton';
 
 export default function VacanciesList({
   classes,
@@ -26,9 +26,9 @@ export default function VacanciesList({
           <InfiniteScroll
             className={classes.infiniteScroll}
             dataLength={vacanciesStore.values.length}
-            next={() => vacanciesStore.fetchVacancies(true)}
             hasMore={!vacanciesStore.isLoading && !!vacanciesStore.nextPage}
             loader={null}
+            next={() => vacanciesStore.fetchVacancies(true)}
             scrollThreshold="600px"
           >
             <div className={classes.vacanciesContainer}>

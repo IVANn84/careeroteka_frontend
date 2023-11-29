@@ -1,12 +1,12 @@
 /* eslint-disable react/jsx-filename-extension */
-import React from 'react';
 import { createRoot } from 'react-dom/client';
-import Jss from 'jss';
-import DefaultUnits from 'jss-plugin-default-unit';
+import React from 'react';
 import VendorPrefixer from 'jss-plugin-vendor-prefixer';
+import DefaultUnits from 'jss-plugin-default-unit';
+import Jss from 'jss';
 
-import '../public/index.css';
 import App from './App.jsx';
+import '../public/index.css';
 
 Jss.use(
   DefaultUnits(),

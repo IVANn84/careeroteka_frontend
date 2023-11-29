@@ -28,9 +28,9 @@ export default function Skill({
       {removeSkill && (
         <XMarkIcon
           className={classes.removeButton}
-          width={25}
           height={25}
           onClick={removeSkill}
+          width={25}
         />
       )}
     </div>

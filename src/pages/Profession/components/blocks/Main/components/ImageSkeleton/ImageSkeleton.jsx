@@ -1,5 +1,5 @@
-import React from 'react';
 import ContentLoader from 'react-content-loader';
+import React from 'react';
 
 import { useDevice } from 'Hook/useDevice';
 
@@ -12,19 +12,19 @@ function ImageSkeleton({
   return isDisplayed
     ? (
       <ContentLoader
-        speed={2}
-        width={deviceType === 'desktop' ? 620 : '100%'}
-        height={200}
         backgroundColor="#f3f3f3"
         foregroundColor="#ecebeb"
+        height={200}
+        speed={2}
+        width={deviceType === 'desktop' ? 620 : '100%'}
       >
         <rect
-          x="0"
-          y="0"
+          height={200}
           rx="0"
           ry="0"
           width={655}
-          height={200}
+          x="0"
+          y="0"
         />
       </ContentLoader>
     )

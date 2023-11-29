@@ -1,22 +1,22 @@
-import React from 'react';
 import ContentLoader from 'react-content-loader';
+import React from 'react';
 
 function ListItemSkeleton() {
   return (
     <ContentLoader
-      speed={2}
-      width={370}
-      height={190}
       backgroundColor="#f3f3f3"
       foregroundColor="#ecebeb"
+      height={190}
+      speed={2}
+      width={370}
     >
       <rect
-        x="0"
-        y="0"
+        height={190}
         rx="16"
         ry="16"
         width={370}
-        height={190}
+        x="0"
+        y="0"
       />
     </ContentLoader>
   );

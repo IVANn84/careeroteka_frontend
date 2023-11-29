@@ -1,10 +1,10 @@
 import { types } from 'mobx-state-tree';
 
-import { entityStoreProfessionPage, EntityStoreModel } from '../entity';
-import { fieldsStoreProfessionPage, FieldsStoreModel } from '../fields';
-import { directionsStoreProfessionPage, DirectionsStoreModel } from '../directions';
-import { gradesStoreProfessionPage, GradesStoreModel } from '../grades';
 import actions from './actions';
+import { GradesStoreModel, gradesStoreProfessionPage } from '../grades';
+import { FieldsStoreModel, fieldsStoreProfessionPage } from '../fields';
+import { EntityStoreModel, entityStoreProfessionPage } from '../entity';
+import { DirectionsStoreModel, directionsStoreProfessionPage } from '../directions';
 
 export const RootStore = types
   .model('Root', {

@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 
-import Button from 'Component/Button';
+import { useStoreSurveyPage } from 'Page/Survey/stores';
 import Typography from 'Component/Typography';
 import Input from 'Component/Input';
-import { useStoreSurveyPage } from 'Page/Survey/stores';
+import Button from 'Component/Button';
+
 import AreaList from './components/AreaList';
 
 export default function Step2({
@@ -29,16 +30,16 @@ export default function Step2({
       <div className={classes.fields}>
         <div className={classes.header}>
           <Typography
+            component="h1"
             variant="H1"
             variantMobile="H1"
-            component="h1"
           >
             Выбор направления
           </Typography>
           <Typography
+            component="p"
             variant="B1"
             variantMobile="B2"
-            component="p"
           >
             Мы зададим несколько вопросов, на основе которых будем обновлять информацию на странице
             профессии.
@@ -46,28 +47,28 @@ export default function Step2({
         </div>
         <Input
           className={classes.areaSearchInput}
-          type="text"
           isClearable
-          value={stepsStore.supportData.areaSearch}
-          placeholder="Поиск по направлению"
           onChange={stepsStore.setSupportAreaSearch}
+          placeholder="Поиск по направлению"
+          type="text"
+          value={stepsStore.supportData.areaSearch}
         />
         <AreaList />
       </div>
       <div className={classes.actions}>
         <Button
           className={classes.button}
-          variant="outlined"
-          onClick={() => setStep(1)}
           mode="dark"
+          onClick={() => setStep(1)}
+          variant="outlined"
         >
           Назад
         </Button>
         <Button
           className={classes.button}
-          onClick={() => setStep(3)}
           isDisabled={!stepsStore.isStepValid(2)}
           mode="dark"
+          onClick={() => setStep(3)}
         >
           Продолжить
         </Button>

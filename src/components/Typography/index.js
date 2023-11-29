@@ -1,5 +1,5 @@
-import { forwardRef } from 'react';
 import withStyle from 'react-jss';
+import { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
 import Typography from './Typography.jsx';

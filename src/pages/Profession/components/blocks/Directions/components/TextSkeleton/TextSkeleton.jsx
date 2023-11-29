@@ -1,5 +1,5 @@
-import React from 'react';
 import ContentLoader from 'react-content-loader';
+import React from 'react';
 
 function TextSkeleton({
   children,
@@ -8,19 +8,19 @@ function TextSkeleton({
   return isDisplayed
     ? (
       <ContentLoader
-        speed={2}
-        width="100%"
-        height={26}
         backgroundColor="#f3f3f3"
         foregroundColor="#ecebeb"
+        height={26}
+        speed={2}
+        width="100%"
       >
         <rect
-          x="0"
-          y="0"
+          height={26}
           rx="0"
           ry="0"
           width="100%"
-          height={26}
+          x="0"
+          y="0"
         />
       </ContentLoader>
     )

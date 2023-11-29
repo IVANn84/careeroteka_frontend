@@ -1,41 +1,40 @@
 import React, { useEffect } from 'react';
 
 import { useStoreVacanciesPage } from 'Page/Vacancies/stores';
-
 import Typography from 'Component/Typography';
 
-import VacanciesFilters from './components/blocks/VacanciesFilters';
 import VacanciesList from './components/blocks/VacanciesList';
+import VacanciesFilters from './components/blocks/VacanciesFilters';
 
 export default function Vacancies({
   classes,
 }) {
   const {
+    filtersModalStore: {
+      fieldsStore,
+    },
     vacanciesStore,
-    gradesStore,
-    fieldsStore,
     reset,
   } = useStoreVacanciesPage();
 
   useEffect(() => {
     vacanciesStore.fetchVacancies();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [fieldsStore.typeVacancy, fieldsStore.gradeId]);
+  }, [fieldsStore]);
 
-  useEffect(() => {
-    gradesStore.fetchGrades();
-
-    return reset;
+  useEffect(
+    () => reset,
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    [],
+  );
 
   return (
     <div>
       <Typography
         className={classes.title}
+        component="h1"
         variant="H1"
         variantMobile="H1"
-        component="h1"
       >
         Вакансии
       </Typography>

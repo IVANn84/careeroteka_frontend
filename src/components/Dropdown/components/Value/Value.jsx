@@ -1,8 +1,8 @@
 import React from 'react';
 import { ChevronDownIcon, XMarkIcon } from '@heroicons/react/24/solid';
 
-import Typography from 'Component/Typography';
 import { onEnter } from 'Util/onEnter';
+import Typography from 'Component/Typography';
 
 export default function Value({
   selectedValue,
@@ -29,11 +29,11 @@ export default function Value({
 
   return (
     <div
-      role="button"
       className={classes.container}
-      tabIndex={0}
-      onKeyDown={onEnter(onClick)}
       onClick={onClick}
+      onKeyDown={onEnter(onClick)}
+      role="button"
+      tabIndex={0}
     >
       <Typography
         variant="B1"
@@ -45,9 +45,9 @@ export default function Value({
       <div className={classes.actions}>
         {isClearable && !isDisabled && selectedValue && (
           <XMarkIcon
-            tabIndex={0}
-            onKeyDown={onEnter(clear)}
             onClick={clear}
+            onKeyDown={onEnter(clear)}
+            tabIndex={0}
           />
         )}
         <ChevronDownIcon className={classes.arrow} />

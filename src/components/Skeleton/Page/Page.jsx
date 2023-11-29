@@ -1,5 +1,5 @@
-import React from 'react';
 import ContentLoader from 'react-content-loader';
+import React from 'react';
 
 // Скелетон прелоадер страницы
 function Page({
@@ -10,40 +10,40 @@ function Page({
   return isDisplayed
     ? (
       <ContentLoader
-        speed={2}
-        height={650}
-        width="100%"
-        style={{ marginTop: 50 }}
         backgroundColor="#f3f3f3"
         foregroundColor="#ecebeb"
+        height={650}
+        speed={2}
+        style={{ marginTop: 50 }}
+        width="100%"
         {...props}
       >
-        <rect x="0" y="0" rx="5" ry="5" width="40%" height="20" />
-        <rect x="0" y="42" rx="5" ry="5" width="100%" height="200" />
-        <rect x="0" y="265" rx="5" ry="5" width="100%" height="10" />
-        <rect x="0" y="285" rx="5" ry="5" width="100%" height="10" />
-        <rect x="0" y="305" rx="5" ry="5" width="100%" height="10" />
-        <rect x="0" y="335" rx="5" ry="5" width="65%" height="10" />
-        <rect x="75%" y="335" rx="5" ry="5" width="10%" height="10" />
-        <rect x="0" y="355" rx="5" ry="5" width="65%" height="10" />
-        <rect x="75%" y="355" rx="5" ry="5" width="30%" height="10" />
-        <rect x="0" y="375" rx="5" ry="5" width="65%" height="10" />
-        <rect x="75%" y="375" rx="5" ry="5" width="30%" height="10" />
-        <rect x="0" y="395" rx="5" ry="5" width="65%" height="8" />
-        <rect x="75%" y="395" rx="5" ry="5" width="30%" height="8" />
-        <rect x="0" y="415" rx="5" ry="5" width="65%" height="8" />
-        <rect x="75%" y="415" rx="5" ry="5" width="30%" height="8" />
-        <rect x="0" y="445" rx="5" ry="5" width="65%" height="8" />
-        <rect x="75%" y="445" rx="5" ry="5" width="30%" height="8" />
-        <rect x="0" y="465" rx="5" ry="5" width="65%" height="8" />
-        <rect x="75%" y="465" rx="5" ry="5" width="30%" height="8" />
-        <rect x="0" y="485" rx="5" ry="5" width="65%" height="8" />
-        <rect x="75%" y="485" rx="5" ry="5" width="30%" height="8" />
-        <rect x="0" y="505" rx="5" ry="5" width="65%" height="8" />
-        <rect x="75%" y="505" rx="5" ry="5" width="30%" height="8" />
-        <rect x="0" y="525" rx="5" ry="5" width="65%" height="8" />
-        <rect x="75%" y="525" rx="5" ry="5" width="30%" height="8" />
-        <rect x="75%" y="550" rx="5" ry="5" width="10%" height="10" />
+        <rect height="20" rx="5" ry="5" width="40%" x="0" y="0" />
+        <rect height="200" rx="5" ry="5" width="100%" x="0" y="42" />
+        <rect height="10" rx="5" ry="5" width="100%" x="0" y="265" />
+        <rect height="10" rx="5" ry="5" width="100%" x="0" y="285" />
+        <rect height="10" rx="5" ry="5" width="100%" x="0" y="305" />
+        <rect height="10" rx="5" ry="5" width="65%" x="0" y="335" />
+        <rect height="10" rx="5" ry="5" width="10%" x="75%" y="335" />
+        <rect height="10" rx="5" ry="5" width="65%" x="0" y="355" />
+        <rect height="10" rx="5" ry="5" width="30%" x="75%" y="355" />
+        <rect height="10" rx="5" ry="5" width="65%" x="0" y="375" />
+        <rect height="10" rx="5" ry="5" width="30%" x="75%" y="375" />
+        <rect height="8" rx="5" ry="5" width="65%" x="0" y="395" />
+        <rect height="8" rx="5" ry="5" width="30%" x="75%" y="395" />
+        <rect height="8" rx="5" ry="5" width="65%" x="0" y="415" />
+        <rect height="8" rx="5" ry="5" width="30%" x="75%" y="415" />
+        <rect height="8" rx="5" ry="5" width="65%" x="0" y="445" />
+        <rect height="8" rx="5" ry="5" width="30%" x="75%" y="445" />
+        <rect height="8" rx="5" ry="5" width="65%" x="0" y="465" />
+        <rect height="8" rx="5" ry="5" width="30%" x="75%" y="465" />
+        <rect height="8" rx="5" ry="5" width="65%" x="0" y="485" />
+        <rect height="8" rx="5" ry="5" width="30%" x="75%" y="485" />
+        <rect height="8" rx="5" ry="5" width="65%" x="0" y="505" />
+        <rect height="8" rx="5" ry="5" width="30%" x="75%" y="505" />
+        <rect height="8" rx="5" ry="5" width="65%" x="0" y="525" />
+        <rect height="8" rx="5" ry="5" width="30%" x="75%" y="525" />
+        <rect height="10" rx="5" ry="5" width="10%" x="75%" y="550" />
         <circle cx="76.5%" cy="590" r="18" />
         <circle cx="80%" cy="590" r="18" />
         <circle cx="83.5%" cy="590" r="18" />

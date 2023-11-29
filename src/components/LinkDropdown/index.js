@@ -1,7 +1,7 @@
-import { memo } from 'react';
 import withStyle from 'react-jss';
-
+import { memo } from 'react';
 import PropTypes from 'prop-types';
+
 import LinkDropdown from './LinkDropdown.jsx';
 
 export const Style = ({ font }) => ({

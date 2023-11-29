@@ -2,12 +2,12 @@
 import React from 'react';
 
 import { useStoreProfessionPage } from 'Page/Profession/stores';
-
-import Block from 'Component/Block';
-import Typography from 'Component/Typography';
 import { useDevice } from 'Hook/useDevice';
-import BlocksSkeleton from './components/BlocksSkeleton';
+import Typography from 'Component/Typography';
+import Block from 'Component/Block';
+
 import Review from './components/Review';
+import BlocksSkeleton from './components/BlocksSkeleton';
 
 export default function Reviews({
   classes,
@@ -21,18 +21,18 @@ export default function Reviews({
   return (
     <Block>
       <Typography
+        className={classes.header}
+        component="h2"
         variant="H2"
         variantMobile="H3"
-        component="h2"
-        className={classes.header}
       >
         Оценка профессии
       </Typography>
       <Typography
+        className={classes.description}
+        component="p"
         variant="B1"
         variantMobile="B2"
-        component="p"
-        className={classes.description}
       >
         Посмотрите, как реальные специалисты
         {' '}
@@ -46,13 +46,13 @@ export default function Reviews({
             ? entityStore.reviewBlocks
             : [entityStore.entity?.reviews || []]).map((block, index) => (
               <Block
+                borderRadius="16px"
+                borderRadiusMobile="16px"
+                className={classes.rates}
                 key={index}
                 mode="dark"
                 padding="36px 19px"
                 paddingMobile="36px 19px"
-                borderRadius="16px"
-                borderRadiusMobile="16px"
-                className={classes.rates}
               >
                 {block.map(({ id, name, value }) => (
                   <Review

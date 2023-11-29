@@ -1,8 +1,7 @@
 import { applySnapshot, flow, getSnapshot } from 'mobx-state-tree';
 
-import FavoriteApi from 'Api/favorite';
-
 import { rootStoreLayoutComponent } from 'Component/Layout/stores/root';
+import FavoriteApi from 'Api/favorite';
 
 let initialState = {};
 

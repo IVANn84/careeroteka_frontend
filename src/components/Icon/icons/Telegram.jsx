@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Telegram(props) {
   return (
-    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <svg fill="none" height="32" viewBox="0 0 32 32" width="32" xmlns="http://www.w3.org/2000/svg" {...props}>
       <g clipPath="url(#clip0_1647_2907)">
         <path
           d="M16 0C7.16337 0 0 7.16337 0 16C0 24.8366 7.16337 32 16 32C24.8366 32 32 24.8366 32 16C32 7.16337 24.8366 0 16 0Z"
@@ -23,7 +23,7 @@ export default function Telegram(props) {
       </g>
       <defs>
         <clipPath id="clip0_1647_2907">
-          <rect width="32" height="32" fill="white" />
+          <rect fill="white" height="32" width="32" />
         </clipPath>
       </defs>
     </svg>
