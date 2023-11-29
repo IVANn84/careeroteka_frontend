@@ -22,6 +22,7 @@ export default function Filters({
     filtersModalStore: {
       vacanciesStore,
       fieldsStore,
+      averageSalaryStore,
     },
   } = useStoreVacanciesPage();
 
@@ -32,7 +33,8 @@ export default function Filters({
 
   useEffect(() => {
     vacanciesStore.fetchVacancyList();
-  }, [isDisplay, fieldsStore, vacanciesStore]);
+    averageSalaryStore.fetchAverageSalary();
+  }, [isDisplay, fieldsStore, vacanciesStore, averageSalaryStore]);
 
   return (
     <Modal.Modal

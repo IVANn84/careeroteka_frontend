@@ -9,17 +9,14 @@ const types = [
   {
     value: 'vacancy',
     name: 'Вакансия',
-    salary: 200000,
   },
   {
     value: 'intership',
     name: 'Стажировка',
-    salary: 20000,
   },
   {
     value: 'freelance',
     name: 'Фриланс',
-    salary: 100000,
   },
 ];
 
@@ -29,8 +26,11 @@ export default function Types({
   const {
     filtersModalStore: {
       fieldsStore,
+      averageSalaryStore,
     },
   } = useStoreVacanciesPage();
+
+  const { averageSalaryData, isLoading } = averageSalaryStore;
 
   const formatMoney = value => accounting.formatMoney(value, {
     symbol: '',
@@ -56,6 +56,7 @@ export default function Types({
       >
         Выберите, какой вариант искать. Мы показываем цену за месяц работы.
       </Typography>
+      {!isLoading && (
       <div className={classes.variants}>
         {types.map(type => (
           <button
@@ -78,7 +79,7 @@ export default function Types({
               variant="B2"
               variantMobile="B2"
             >
-              {`${formatMoney(type.salary)} ₽`}
+              {`${formatMoney(averageSalaryData[type.value])} ₽`}
             </Typography>
             <Typography
               component="p"
@@ -90,6 +91,7 @@ export default function Types({
           </button>
         ))}
       </div>
+      )}
       <Divider />
     </>
   );

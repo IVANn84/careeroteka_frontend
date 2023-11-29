@@ -3,6 +3,11 @@ import { axiosWithConverter } from '../axiosWithConverter';
 
 class VacancyApi {
   @Format
+  FetchAverageSalary() {
+    return axiosWithConverter.get('/api/v1/vacancy/salary/avg/');
+  }
+
+  @Format
   FetchById(id) {
     return axiosWithConverter.get(`/api/v1/vacancy/${id}/`);
   }
