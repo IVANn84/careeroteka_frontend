@@ -106,10 +106,11 @@ export default function VacanciesFilters({
           />
         </div>
         <Button
-          isDisabled={vacanciesStore.isLoading}
-          mode="dark"
-          onClick={openFiltersModal}
+          // isDisabled
+          mode="primary"
+          // onClick={openFiltersModal}
           variant="filled"
+
         >
           Поиск
         </Button>

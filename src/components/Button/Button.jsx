@@ -24,8 +24,8 @@ export default function Button({
       <Typography
         variant="B1"
         variantMobile="B2"
-        weight="semiBold"
-        weightMobile="semiBold"
+        weight="regular"
+        weightMobile="regular"
       >
         {children}
       </Typography>

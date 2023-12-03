@@ -10,7 +10,7 @@ export default {
   },
 
   background: {
-    dark: '#1A1C1F',
+    dark: '#000',
     light: '#FFF',
     secondary: '#F2F2F3',
   },
@@ -26,18 +26,26 @@ export default {
   button: {
     filled: {
       primary: {
+        border: {
+          default: colorAlternative,
+          hovered: colorAlternative,
+        },
         color: {
           default: '#FFF',
-          hovered: '#FFF',
+          hovered: colorAlternative,
           focused: '#FFF',
         },
         background: {
           default: colorAlternative,
-          hovered: '#2F74EA',
+          hovered: 'transparent',
           focused: '#226AE6',
         },
       },
       dark: {
+        border: {
+          default: '#000',
+          hovered: '#2F74EA',
+        },
         color: {
           default: '#FFF',
           hovered: '#FFF',
@@ -52,7 +60,10 @@ export default {
     },
     outlined: {
       light: {
-        border: '#FFF',
+        border: {
+          default: '#FFF',
+          hovered: '#000',
+        },
         color: {
           default: '#FFF',
           hovered: '#FFF',
@@ -60,12 +71,16 @@ export default {
         },
         background: {
           default: 'transparent',
-          hovered: '#1A1C1F',
+          hovered: '#000',
           focused: '#191A1B',
+          disabled: '#000',
         },
       },
       primary: {
-        border: colorAlternative,
+        border: {
+          default: colorAlternative,
+          hovered: colorAlternative,
+        },
         color: {
           default: colorAlternative,
           hovered: '#FFF',
@@ -78,7 +93,10 @@ export default {
         },
       },
       dark: {
-        border: '#000',
+        border: {
+          default: '#000',
+          hovered: '#000',
+        },
         color: {
           default: '#000',
           hovered: '#FFF',
@@ -86,7 +104,7 @@ export default {
         },
         background: {
           default: 'transparent',
-          hovered: '#1A1C1F',
+          hovered: '#000',
           focused: '#15181B',
         },
       },
