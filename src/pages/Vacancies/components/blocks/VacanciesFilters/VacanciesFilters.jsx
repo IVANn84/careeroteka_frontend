@@ -29,6 +29,17 @@ const grades = [
   },
 ];
 
+const source = [
+  {
+    id: 'Россия',
+    name: 'Россия',
+  },
+  {
+    id: 'Зарубеж',
+    name: 'Зарубеж',
+  },
+];
+
 export default function VacanciesFilters({
   classes,
 }) {
@@ -57,7 +68,6 @@ export default function VacanciesFilters({
 
   return (
     <div className={classes.container}>
-      <Tabs />
       <div className={classes.controls}>
         <div className={classes.filtersContainer}>
           <Input
@@ -68,7 +78,7 @@ export default function VacanciesFilters({
             onChange={fieldsStore.setSearchValues}
             onClear={() => vacanciesStore.fetchVacancies(false)}
             onSubmit={() => vacanciesStore.fetchVacancies(false)}
-            placeholder="Поиск вакансии"
+            placeholder="Профессия"
             type="text"
             value={fieldsStore.searchValues}
           />
@@ -83,7 +93,29 @@ export default function VacanciesFilters({
             placeholder="Выберите грейд"
             selectedValue={grades.filter(({ id }) => fieldsStore.experience.includes(id)).map(({ name }) => name).join(', ')}
           />
+          <Dropdown
+            // checkIsSelected={({ id }) => fieldsStore.experience.includes(id)}
+            className={classes.gradesDropdown}
+            isClearable
+            isDisabled={vacanciesStore.isLoading}
+            mode="light"
+            // onSelect={onFilterChanged(value => fieldsStore.setSource(value?.id))}
+            options={source}
+            placeholder="Где искать"
+            selectedValue={source.filter(({ id }) => fieldsStore.experience.includes(id)).map(({ name }) => name).join(', ')}
+          />
         </div>
+        <Button
+          isDisabled={vacanciesStore.isLoading}
+          mode="dark"
+          onClick={openFiltersModal}
+          variant="filled"
+        >
+          Поиск
+        </Button>
+      </div>
+      <div className={classes.tabs}>
+        <Tabs />
         <Button
           isDisabled={vacanciesStore.isLoading}
           mode="dark"

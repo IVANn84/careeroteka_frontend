@@ -3,13 +3,11 @@ import { observer } from 'mobx-react-lite';
 
 import Tabs from './Tabs.jsx';
 
-const style = ({ customScrollbar }) => ({
+const style = ({ customScrollbar, font }) => ({
   container: {
     whiteSpace: 'nowrap',
     overflowX: 'overlay',
     scrollbarWidth: 'none',
-    marginBottom: 25,
-    paddingBottom: 30,
     ...customScrollbar,
 
     '& > div': {
@@ -45,7 +43,7 @@ const style = ({ customScrollbar }) => ({
   },
 
   selectedTab: {
-    color: '#1A1C1F !important',
+    color: `${font.color.alternative} !important`,
   },
 });
 

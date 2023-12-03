@@ -13,6 +13,11 @@ export default self => ({
     getParent(getParent(self)).vacanciesStore.fetchVacancies();
   },
 
+  resetTabs() {
+    self.workFormat = [];
+    self.companySize = [];
+  },
+
   setTypeVacancy(value) {
     self.typeVacancy = value;
     getParent(self).setIsFiltersChanged(true);
@@ -86,6 +91,12 @@ export default self => ({
     getParent(self).setIsFiltersChanged(true);
   },
 
+  setWorkFormatForTabs(value) {
+    self.resetTabs();
+    self.workFormat.push(value);
+    getParent(self).setIsFiltersChanged(true);
+  },
+
   setEmploymentFormat(value) {
     if (self.employmentFormat.includes(value)) {
       self.employmentFormat = self.employmentFormat.filter(item => item !== value);
@@ -110,6 +121,12 @@ export default self => ({
     } else {
       self.companySize.push(value);
     }
+    getParent(self).setIsFiltersChanged(true);
+  },
+
+  setCompanySizeForTabs(value) {
+    self.resetTabs();
+    self.companySize.push(value);
     getParent(self).setIsFiltersChanged(true);
   },
 

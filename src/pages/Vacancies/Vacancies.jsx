@@ -36,7 +36,17 @@ export default function Vacancies({
         variant="H1"
         variantMobile="H1"
       >
-        Вакансии
+        Поиск классной
+        {' '}
+        <span className={classes.word}>стажировки</span>
+      </Typography>
+      <Typography
+        className={classes.subTitle}
+        component="p"
+        variant="B1"
+        variantMobile="B1"
+      >
+        Быстрый способ посмотреть все подходящие предложения на рынке
       </Typography>
       <VacanciesFilters />
       <VacanciesList />
