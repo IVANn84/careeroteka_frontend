@@ -8,7 +8,7 @@ const style = ({ customScrollbar }) => ({
   container: {
     display: 'flex',
     flexDirection: 'column',
-    width: '75vw',
+    width: '81vw',
     height: '100%',
   },
   content: {

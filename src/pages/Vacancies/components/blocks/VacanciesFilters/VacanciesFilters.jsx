@@ -63,12 +63,17 @@ export default function VacanciesFilters({
 
   const onFilterChanged = useCallback(fn => value => {
     fn(value);
-    vacanciesStore.fetchVacancies();
+    // vacanciesStore.fetchVacancies();
   }, [vacanciesStore]);
+
+  const onSubmit = e => {
+    e.preventDefault();
+    vacanciesStore.fetchVacancies();
+  };
 
   return (
     <div className={classes.container}>
-      <div className={classes.controls}>
+      <form className={classes.controls} onSubmit={onSubmit}>
         <div className={classes.filtersContainer}>
           <Input
             className={classes.searchButton}
@@ -106,20 +111,19 @@ export default function VacanciesFilters({
           />
         </div>
         <Button
-          // isDisabled
+          isDisabled={!fieldsStore.searchValues && !fieldsStore.experience.length}
           mode="primary"
-          // onClick={openFiltersModal}
+          type="submit"
           variant="filled"
-
         >
           Поиск
         </Button>
-      </div>
+      </form>
       <div className={classes.tabs}>
         <Tabs />
         <Button
           isDisabled={vacanciesStore.isLoading}
-          mode="dark"
+          mode="secondary"
           onClick={openFiltersModal}
           variant="outlined"
         >

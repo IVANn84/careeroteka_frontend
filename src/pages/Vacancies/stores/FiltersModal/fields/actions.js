@@ -16,6 +16,8 @@ export default self => ({
   resetTabs() {
     self.workFormat = [];
     self.companySize = [];
+    self.experience = [];
+    self.searchValues = null;
   },
 
   setTypeVacancy(value) {

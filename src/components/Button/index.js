@@ -11,7 +11,7 @@ const style = ({ button }) => ({
     minHeight: 32,
     cursor: ({ isDisabled }) => !isDisabled && 'pointer',
     transition: [['background', '.2s'], ['color', '.2s']],
-    padding: [[15, 19]],
+    padding: ({ mode = 'primary' }) => (mode !== 'secondary' && [[15, 19]]),
     textAlign: 'center',
     color: ({ variant = 'filled', mode = 'primary' }) => button[variant][mode].color.default,
     background: ({ variant = 'filled', mode = 'primary', isDisabled }) => (mode === 'light'
@@ -56,11 +56,12 @@ Component.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node.isRequired,
   variant: PropTypes.oneOf(['filled', 'outlined']),
-  mode: PropTypes.oneOf(['light', 'dark', 'primary']),
+  mode: PropTypes.oneOf(['light', 'dark', 'primary', 'secondary']),
   isDisabled: PropTypes.bool,
   isDisplayed: PropTypes.bool,
   // Описание кнопки при наведении
   title: PropTypes.string,
+  type: PropTypes.oneOf(['submit', 'button', 'reset']),
   onClick: PropTypes.func,
 };
 
@@ -69,6 +70,7 @@ Component.defaultProps = {
   mode: 'primary',
   isDisabled: false,
   isDisplayed: true,
+  type: 'button',
 };
 
 export default Component;

@@ -6,6 +6,7 @@ import Vacancy from './Vacancy.jsx';
 const style = {
   container: {
     '& > *:not(:last-child)': {
+      marginTop: 26,
       marginBottom: 36,
     },
   },

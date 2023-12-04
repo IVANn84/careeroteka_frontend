@@ -6,7 +6,8 @@ import Main from './Main.jsx';
 
 const style = {
   name: {
-    margin: [20, 0],
+    marginTop: 16,
+    marginBottom: 20,
   },
   salary: {
     marginBottom: 32,

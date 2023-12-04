@@ -108,6 +108,22 @@ export default {
           focused: '#15181B',
         },
       },
+      secondary: {
+        border: {
+          default: 'transparent',
+          hovered: 'transparent',
+        },
+        color: {
+          default: '#000',
+          hovered: '#000',
+          focused: '#000',
+        },
+        background: {
+          default: 'transparent',
+          hovered: '#transparent',
+          focused: '#transparent',
+        },
+      },
     },
   },
 
@@ -232,12 +248,12 @@ export default {
     padding: {
       desktop: {
         default: {
-          xAxis: 64,
-          yAxis: 64,
+          xAxis: 48,
+          yAxis: 36,
         },
         slim: {
-          xAxis: 40,
-          yAxis: 40,
+          xAxis: 24,
+          yAxis: 36,
         },
       },
       mobile: {
