@@ -36,7 +36,20 @@ export default function Vacancies({
         variant="H1"
         variantMobile="H1"
       >
-        Вакансии
+        Поиск классной
+        <div className={classes.flip}>
+          <div className={classes.word}>подработки</div>
+          <div className={classes.word}>работы</div>
+          <div className={classes.word}>стажировки</div>
+        </div>
+      </Typography>
+      <Typography
+        className={classes.subTitle}
+        component="p"
+        variant="B1"
+        variantMobile="B1"
+      >
+        Быстрый способ посмотреть все подходящие предложения на рынке
       </Typography>
       <VacanciesFilters />
       <VacanciesList />

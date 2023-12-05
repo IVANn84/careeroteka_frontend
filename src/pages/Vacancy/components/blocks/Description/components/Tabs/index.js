@@ -8,6 +8,7 @@ const style = ({ customScrollbar, font }) => ({
     whiteSpace: 'nowrap',
     overflowX: 'overlay',
     scrollbarWidth: 'none',
+    marginBottom: 34,
     ...customScrollbar,
 
     '& > div': {

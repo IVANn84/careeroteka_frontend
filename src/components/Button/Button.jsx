@@ -8,7 +8,7 @@ export default function Button({
   title,
   isDisabled = false,
   isDisplayed = true,
-
+  type,
   onClick,
 
   classes,
@@ -19,13 +19,13 @@ export default function Button({
       disabled={isDisabled}
       onClick={onClick}
       title={title}
-      type="button"
+      type={type} //eslint-disable-line
     >
       <Typography
         variant="B1"
         variantMobile="B2"
-        weight="semiBold"
-        weightMobile="semiBold"
+        weight="regular"
+        weightMobile="regular"
       >
         {children}
       </Typography>

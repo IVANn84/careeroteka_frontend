@@ -1,24 +1,21 @@
 import React from 'react';
-import { XMarkIcon } from '@heroicons/react/24/outline';
+import hh from 'Image/hh.png';
+import habr from 'Image/habr.png';
 
-import { useStoreVacancyPage } from 'Page/Vacancy/stores';
 import Typography from 'Component/Typography';
-import Button from 'Component/Button';
 import Block from 'Component/Block';
 
 export default function Response({
   classes,
 }) {
-  const [isShowContacts, setIsShowContacts] = React.useState(false);
-
-  const {
-    entityStore,
-  } = useStoreVacancyPage();
+  // const {
+  //   entityStore,
+  // } = useStoreVacancyPage();
 
   return (
     <Block
       className={classes.container}
-      isSlim
+      padding={[[36, 24]]}
     >
       <Typography
         component="h3"
@@ -27,55 +24,63 @@ export default function Response({
       >
         Отклик
       </Typography>
-      <Button
+      <Typography
+        component="p"
+        variant="B1"
+        variantMobile="B1"
+        weight="semiBold"
+        weightMobile="semiBold"
+      >
+        Смотрите эти вакансии на:
+      </Typography>
+      <ul>
+        <li className={classes.item}>
+          <img alt="habr" src={habr} />
+          <Typography
+            component="p"
+            variant="B1"
+            variantMobile="B1"
+          >
+            Хабр карьера
+          </Typography>
+        </li>
+        <li className={classes.item}>
+          <img alt="habr" src={hh} />
+          <Typography
+            component="p"
+            variant="B1"
+            variantMobile="B1"
+          >
+            hh.ru
+          </Typography>
+        </li>
+        <li className={classes.item}>
+          <img alt="habr" src={habr} />
+          <Typography
+            component="p"
+            variant="B1"
+            variantMobile="B1"
+          >
+            Хабр карьера
+          </Typography>
+        </li>
+        <li className={classes.item}>
+          <img alt="habr" src={hh} />
+          <Typography
+            component="p"
+            variant="B1"
+            variantMobile="B1"
+          >
+            hh.ru
+          </Typography>
+        </li>
+      </ul>
+      {/* <Button
         isDisabled={entityStore.isLoading}
         onClick={() => window.open(entityStore.entity?.link, '_blank')}
       >
         Перейти к вакансии
-      </Button>
-      {
-        isShowContacts
-          ? (
-            <div className={classes.contacts}>
-              <div>
-                <XMarkIcon onClick={() => setIsShowContacts(false)} />
-              </div>
-              {entityStore.entity?.contacts.map(({ name, type, data }) => (
-                <React.Fragment key={type}>
-                  <Typography
-                    variant="B1"
-                    variantMobile="B1"
-                    weight="semiBold"
-                    weightMobile="semiBold"
-                  >
-                    {name}
-                  </Typography>
-                  <Typography
-                    component="p"
-                    variant="B1"
-                    variantMobile="B2"
-                  >
-                    {type}
-                    :
-                    {' '}
-                    <span className={classes.contactValue}>
-                      {data}
-                    </span>
-                  </Typography>
-                </React.Fragment>
-              ))}
-            </div>
-          )
-          : !!entityStore.entity?.contacts.length && (
-            <Button
-              isDisabled={entityStore.isLoading}
-              mode="dark"
-              onClick={() => setIsShowContacts(true)}
-            >
-              Показать контакты
-            </Button>
-          )
-      }
+      </Button> */}
     </Block>
   );
 }

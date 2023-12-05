@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function CompanyHouse(props) {
   return (
-    <svg fill="none" stroke="currentColor" viewBox="4 4 40 40" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <svg fill="none" stroke="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" {...props}>
       <path d="M42.5 42H33M33 42H9.5M33 42V11M5 42H9.5M9.5 42V12C9.5 11.4477 9.94772 11 10.5 11H14M33 11V6C33 5.44772 32.5523 5 32 5H15C14.4477 5 14 5.44772 14 6V34.5M33 11H37.5C38.0523 11 38.5 11.4477 38.5 12V34.5" strokeLinecap="round" strokeWidth="1.5" />
       <path d="M20 41.5V36.5C20 35.9477 20.4477 35.5 21 35.5H26C26.5523 35.5 27 35.9477 27 36.5V41.5" strokeLinecap="round" strokeWidth="1.5" />
       <path d="M20 17C19.4477 17 19 17.4477 19 18V18.5C19 19.0523 19.4477 19.5 20 19.5H21C21.5523 19.5 22 19.0523 22 18.5V18C22 17.4477 21.5523 17 21 17H20Z" fill="currentColor" />

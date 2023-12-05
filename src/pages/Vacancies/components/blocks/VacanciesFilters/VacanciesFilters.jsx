@@ -29,6 +29,17 @@ const grades = [
   },
 ];
 
+const source = [
+  {
+    id: 'Россия',
+    name: 'Россия',
+  },
+  {
+    id: 'Зарубеж',
+    name: 'Зарубеж',
+  },
+];
+
 export default function VacanciesFilters({
   classes,
 }) {
@@ -52,13 +63,17 @@ export default function VacanciesFilters({
 
   const onFilterChanged = useCallback(fn => value => {
     fn(value);
-    vacanciesStore.fetchVacancies();
+    // vacanciesStore.fetchVacancies();
   }, [vacanciesStore]);
+
+  const onSubmit = e => {
+    e.preventDefault();
+    vacanciesStore.fetchVacancies();
+  };
 
   return (
     <div className={classes.container}>
-      <Tabs />
-      <div className={classes.controls}>
+      <form className={classes.controls} onSubmit={onSubmit}>
         <div className={classes.filtersContainer}>
           <Input
             className={classes.searchButton}
@@ -68,7 +83,7 @@ export default function VacanciesFilters({
             onChange={fieldsStore.setSearchValues}
             onClear={() => vacanciesStore.fetchVacancies(false)}
             onSubmit={() => vacanciesStore.fetchVacancies(false)}
-            placeholder="Поиск вакансии"
+            placeholder="Профессия"
             type="text"
             value={fieldsStore.searchValues}
           />
@@ -83,10 +98,32 @@ export default function VacanciesFilters({
             placeholder="Выберите грейд"
             selectedValue={grades.filter(({ id }) => fieldsStore.experience.includes(id)).map(({ name }) => name).join(', ')}
           />
+          <Dropdown
+            // checkIsSelected={({ id }) => fieldsStore.experience.includes(id)}
+            className={classes.gradesDropdown}
+            isClearable
+            isDisabled={vacanciesStore.isLoading}
+            mode="light"
+            // onSelect={onFilterChanged(value => fieldsStore.setSource(value?.id))}
+            options={source}
+            placeholder="Где искать"
+            selectedValue={source.filter(({ id }) => fieldsStore.experience.includes(id)).map(({ name }) => name).join(', ')}
+          />
         </div>
         <Button
+          isDisabled={!fieldsStore.searchValues && !fieldsStore.experience.length}
+          mode="primary"
+          type="submit"
+          variant="filled"
+        >
+          Поиск
+        </Button>
+      </form>
+      <div className={classes.tabs}>
+        <Tabs />
+        <Button
           isDisabled={vacanciesStore.isLoading}
-          mode="dark"
+          mode="secondary"
           onClick={openFiltersModal}
           variant="outlined"
         >

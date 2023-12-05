@@ -51,8 +51,8 @@ export default function Tabs({
         className={fieldsStore.companySize.includes('corporation')
           ? classes.selectedTab
           : ''}
-        onClick={onTabClick(() => fieldsStore.setCompanySize('corporation'))}
-        onKeyDown={onEnter(onTabClick(() => fieldsStore.setCompanySize('corporation')))}
+        onClick={onTabClick(() => fieldsStore.setCompanySizeForTabs('corporation'))}
+        onKeyDown={onEnter(onTabClick(() => fieldsStore.setCompanySizeForTabs('corporation')))}
         role="button"
         tabIndex={0}
       >
@@ -73,8 +73,8 @@ export default function Tabs({
         className={fieldsStore.companySize.includes('startup')
           ? classes.selectedTab
           : ''}
-        onClick={onTabClick(() => fieldsStore.setCompanySize('startup'))}
-        onKeyDown={onEnter(onTabClick(() => fieldsStore.setCompanySize('startup')))}
+        onClick={onTabClick(() => fieldsStore.setCompanySizeForTabs('startup'))}
+        onKeyDown={onEnter(onTabClick(() => fieldsStore.setCompanySizeForTabs('startup')))}
         role="button"
         tabIndex={0}
       >
@@ -95,8 +95,8 @@ export default function Tabs({
         className={fieldsStore.workFormat.includes('remote')
           ? classes.selectedTab
           : ''}
-        onClick={onTabClick(() => fieldsStore.setWorkFormat('remote'))}
-        onKeyDown={onEnter(onTabClick(() => fieldsStore.setWorkFormat('remote')))}
+        onClick={onTabClick(() => fieldsStore.setWorkFormatForTabs('remote'))}
+        onKeyDown={onEnter(onTabClick(() => fieldsStore.setWorkFormatForTabs('remote')))}
         role="button"
         tabIndex={0}
       >
@@ -113,7 +113,7 @@ export default function Tabs({
         </Typography>
       </div>
 
-      {/* <div */}
+      {/* <div
       {/*  className={fieldsStore.hasInsurance */}
       {/*    ? classes.selectedTab */}
       {/*    : ''} */}

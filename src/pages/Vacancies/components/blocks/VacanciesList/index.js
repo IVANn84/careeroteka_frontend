@@ -7,7 +7,6 @@ import VacanciesList from './VacanciesList.jsx';
 const style = {
   container: {
     position: 'relative',
-    marginTop: 50,
   },
   infiniteScroll: {
     padding: [30],

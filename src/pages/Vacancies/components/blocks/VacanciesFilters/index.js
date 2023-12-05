@@ -5,7 +5,8 @@ import VacanciesFilters from './VacanciesFilters.jsx';
 
 const style = {
   container: {
-    marginTop: 30,
+    marginTop: 36,
+    marginBottom: 80,
   },
   controls: {
     display: 'flex',
@@ -16,11 +17,17 @@ const style = {
     display: 'flex',
   },
   searchButton: {
-    minWidth: 470,
+    width: 370,
   },
   gradesDropdown: {
-    marginLeft: 16,
-    minWidth: 300,
+    marginLeft: 30,
+    width: 270,
+  },
+  tabs: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginTop: 48,
   },
   filtersButtonContent: {
     display: 'flex',

@@ -4,74 +4,30 @@ import { observer } from 'mobx-react-lite';
 
 import Response from './Response.jsx';
 
-const style = ({ font }) => ({
+const style = () => ({
   container: {
     display: 'flex',
     flexDirection: 'column',
-    width: 400,
+    width: 360,
     height: 'min-content',
 
     '& > h3': {
-      marginBottom: 24,
+      marginBottom: 20,
     },
 
-    '& button': {
-      width: '100%',
+    '& > p': {
+      marginBottom: 16,
     },
 
-    '& > *:not(:last-child)': {
-      marginBottom: 18,
-    },
-  },
-  urls: {
-    wordBreak: 'break-word',
-
-    '& > *:not(:last-child)': {
-      marginBottom: 18,
-    },
-
-    '& > div': {
-      display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-
-      '& > svg': {
-        cursor: 'pointer',
-        width: 24,
-      },
-    },
-
-    '& > a': {
-      display: 'flex',
-      alignItems: 'center',
-    },
-
-    '& img': {
-      width: 24,
-      height: 24,
-      marginRight: 6,
+    '& li:not(:last-child)': {
+      marginBottom: 20,
     },
   },
-  contacts: {
-    wordBreak: 'break-word',
 
-    '& > *:not(:last-child)': {
-      marginBottom: 18,
-    },
-
-    '& > div': {
-      display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-
-      '& > svg': {
-        cursor: 'pointer',
-        width: 24,
-      },
-    },
-  },
-  contactValue: {
-    color: font.color.alternative,
+  item: {
+    display: 'flex',
+    alignItems: 'center',
+    columnGap: 8,
   },
 
   '@media screen and (max-device-width: 576px)': {

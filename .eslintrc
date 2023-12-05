@@ -63,6 +63,7 @@
     "perfectionist/sort-maps": "off",
     "perfectionist/sort-object-types": "off",
     "perfectionist/sort-union-types": "off",
+    "no-nested-ternary": "off",
     "perfectionist/sort-imports": [
       "error",
       {
