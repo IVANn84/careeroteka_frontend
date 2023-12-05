@@ -15,7 +15,7 @@ export default function Response({
   return (
     <Block
       className={classes.container}
-      isSlim
+      padding={[[36, 24]]}
     >
       <Typography
         component="h3"

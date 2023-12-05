@@ -248,12 +248,12 @@ export default {
     padding: {
       desktop: {
         default: {
-          xAxis: 48,
-          yAxis: 36,
+          xAxis: 64,
+          yAxis: 64,
         },
         slim: {
-          xAxis: 24,
-          yAxis: 36,
+          xAxis: 40,
+          yAxis: 40,
         },
       },
       mobile: {

@@ -15,7 +15,7 @@ export default function Description({
   } = useStoreVacancyPage();
 
   return (
-    <Block className={classes.container}>
+    <Block className={classes.container} padding={[[36, 48]]}>
       <Tabs />
       <Typography
         variant="B1"

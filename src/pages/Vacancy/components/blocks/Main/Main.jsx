@@ -41,7 +41,7 @@ export default function Main({
   }
 
   return (
-    <Block>
+    <Block padding={[[36, 48]]}>
       <Typography
         component="p"
         variant="B1"
