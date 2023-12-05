@@ -5,19 +5,20 @@ import Vacancies from './Vacancies.jsx';
 
 const style = ({ font: { color } }) => ({
   '@keyframes show': {
-    '0%': { marginTop: -162 },
-    '5%': { marginTop: -108 },
-    '33%': { marginTop: -108 },
-    '38%': { marginTop: -54 },
-    '66%': { marginTop: -54 },
+    '0%': { marginTop: -186 },
+    '5%': { marginTop: -124 },
+    '33%': { marginTop: -124 },
+    '38%': { marginTop: -62 },
+    '66%': { marginTop: -62 },
     '71%': { marginTop: 0 },
     '99.99%': { marginTop: 0 },
-    '100%': { marginTop: -162 },
+    '100%': { marginTop: -186 },
   },
 
   title: {
     display: 'flex',
     justifyContent: 'center',
+    alignItems: 'center',
     columnGap: 8,
     marginBottom: 24,
     marginTop: 24,
@@ -36,6 +37,7 @@ const style = ({ font: { color } }) => ({
   word: {
     color: color.alternative,
     textAlign: 'left',
+    padding: 4,
   },
   subTitle: {
     textAlign: 'center',
