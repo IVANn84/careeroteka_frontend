@@ -60,7 +60,7 @@ export default function Types({
       <div className={classes.variants}>
         {types.map(type => (
           <button
-            className={fieldsStore.typeVacancy === type.value ? classes.selectedVariant : ''}
+            className={fieldsStore.type === type.value ? classes.selectedVariant : ''}
             key={type.value}
             onClick={() => fieldsStore.setTypeVacancy(type.value)}
             type="button"

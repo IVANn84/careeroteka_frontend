@@ -35,22 +35,22 @@ Component.propTypes = {
   padding: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.arrayOf(PropTypes.number),
+    PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)),
   ]),
   paddingMobile: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.arrayOf(PropTypes.number),
+    PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)),
   ]),
   borderRadius: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.arrayOf(PropTypes.number),
+    PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)),
   ]),
   borderRadiusMobile: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-    PropTypes.arrayOf(PropTypes.number),
+    PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)),
   ]),
 };
 
