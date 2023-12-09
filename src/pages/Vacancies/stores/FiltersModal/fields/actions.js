@@ -21,7 +21,7 @@ export default self => ({
   },
 
   setTypeVacancy(value) {
-    self.typeVacancy = value;
+    self.type = value;
     getParent(self).setIsFiltersChanged(true);
   },
 

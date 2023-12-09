@@ -5,9 +5,9 @@ import actions from './actions';
 
 const ContactModel = types
   .model('Contact', {
-    name: types.string,
-    type: types.string,
-    data: types.string,
+    name: types.maybeNull(types.string),
+    type: types.maybeNull(types.string),
+    data: types.maybeNull(types.string),
   });
 
 const SalaryModel = types.model('Salary', {
