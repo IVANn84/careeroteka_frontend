@@ -9,7 +9,7 @@ const style = ({ layout }) => ({
     display: 'flex',
     flexDirection: 'column',
     minHeight: '100vh',
-    padding: [30, layout.paddingX.desktop, 70, layout.paddingX.desktop],
+    padding: [28, layout.paddingX.desktop, 38, layout.paddingX.desktop],
   },
   contentContainer: {
     display: 'flex',
@@ -21,11 +21,11 @@ const style = ({ layout }) => ({
 
   '@media screen and (max-device-width: 576px)': {
     container: {
-      padding: [16, layout.paddingX.mobile, 100, layout.paddingX.mobile],
+      padding: [18, layout.paddingX.mobile, 32, layout.paddingX.mobile],
     },
 
     contentContainer: {
-      margin: [60, 0, 50, 0],
+      margin: [38, 0, 50, 0],
     },
   },
 });

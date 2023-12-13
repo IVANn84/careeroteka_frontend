@@ -15,13 +15,13 @@ const style = {
   },
   filtersContainer: {
     display: 'flex',
+    columnGap: 30,
   },
   searchButton: {
-    width: 370,
+    minWidth: 370,
   },
   gradesDropdown: {
-    marginLeft: 30,
-    width: 270,
+    minWidth: 270,
   },
   tabs: {
     display: 'flex',
@@ -29,24 +29,45 @@ const style = {
     alignItems: 'center',
     marginTop: 48,
   },
+  filterButton: {},
   filtersButtonContent: {
     display: 'flex',
     justifyContent: 'center',
 
     '& > svg': {
-      marginRight: 10,
+      marginRight: 8,
     },
   },
 
   '@media screen and (max-device-width: 576px)': {
-    header: {
-      marginBottom: 31,
+    container: {
+      display: 'flex',
+      flexDirection: 'column-reverse',
+      rowGap: 24,
+      marginTop: 24,
+      marginBottom: 24,
     },
     controls: {
+      display: 'block',
+    },
+    filtersContainer: {
       flexDirection: 'column',
+      rowGap: 14,
     },
     searchButton: {
-      width: '100%',
+      minWidth: 'auto',
+    },
+    gradesDropdown: {
+      minWidth: 'auto',
+    },
+    tabs: {
+      marginTop: 0,
+    },
+    filterButton: {
+      minWidth: 'auto',
+      position: 'absolute',
+      top: 22,
+      right: 0,
     },
   },
 };

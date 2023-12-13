@@ -5,7 +5,7 @@ export default {
   layout: {
     paddingX: {
       desktop: 135,
-      mobile: 17,
+      mobile: 16,
     },
   },
 

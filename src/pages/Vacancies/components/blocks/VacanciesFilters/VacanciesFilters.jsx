@@ -3,6 +3,7 @@ import { AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline';
 
 import { useStoreVacanciesPage } from 'Page/Vacancies/stores';
 import { useModal } from 'Hook/useModal';
+import { useDevice } from 'Hook/useDevice';
 import Input from 'Component/Input';
 import Dropdown from 'Component/Dropdown';
 import Button from 'Component/Button';
@@ -49,6 +50,7 @@ export default function VacanciesFilters({
     },
     vacanciesStore,
   } = useStoreVacanciesPage();
+  const device = useDevice();
 
   const {
     isOpen: isFiltersModalOpen,
@@ -110,26 +112,29 @@ export default function VacanciesFilters({
             selectedValue={source.filter(({ id }) => fieldsStore.experience.includes(id)).map(({ name }) => name).join(', ')}
           />
         </div>
-        <Button
-          isDisabled={!fieldsStore.searchValues && !fieldsStore.experience.length}
-          mode="primary"
-          type="submit"
-          variant="filled"
-        >
-          Поиск
-        </Button>
+        {device === 'desktop' && (
+          <Button
+            isDisabled={!fieldsStore.searchValues && !fieldsStore.experience.length}
+            mode="primary"
+            type="submit"
+            variant="filled"
+          >
+            Поиск
+          </Button>
+        )}
       </form>
       <div className={classes.tabs}>
         <Tabs />
         <Button
+          className={classes.filterButton}
           isDisabled={vacanciesStore.isLoading}
           mode="secondary"
           onClick={openFiltersModal}
           variant="outlined"
         >
           <span className={classes.filtersButtonContent}>
-            <AdjustmentsHorizontalIcon width={24} />
-            Фильтры
+            <AdjustmentsHorizontalIcon width={device === 'desktop' ? 18 : 28} />
+            {device === 'desktop' && 'Фильтры'}
           </span>
         </Button>
         <FiltersModal

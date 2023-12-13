@@ -1,9 +1,8 @@
 import React from 'react';
 
-import { onEnter } from 'Util/onEnter';
 import { useStoreVacanciesPage } from 'Page/Vacancies/stores';
-import Typography from 'Component/Typography';
-import Icon from 'Component/Icon';
+
+import Tab from './components';
 
 export default function Tabs({
   classes,
@@ -25,137 +24,48 @@ export default function Tabs({
 
   return (
     <div className={`${classes.container} ${vacanciesStore.isLoading ? classes.loading : ''}`}>
-      <div
-        className={!filtersModalStore.isFiltersChanged
-          ? classes.selectedTab
-          : ''}
+      <Tab
+        iconName="searchPeopleInside"
+        isActive={!filtersModalStore.isFiltersChanged}
         onClick={() => !vacanciesStore.isLoading && fieldsStore.reset()}
-        onKeyDown={onEnter(() => !vacanciesStore.isLoading && fieldsStore.reset())}
-        role="button"
-        tabIndex={0}
       >
-        <Icon
-          height={48}
-          name="searchPeopleInside"
-          width={48}
-        />
-        <Typography
-          variant="B2"
-          variantMobile="B2"
-        >
-          Все вакансии
-        </Typography>
-      </div>
-
-      <div
-        className={fieldsStore.companySize.includes('corporation')
-          ? classes.selectedTab
-          : ''}
+        Все вакансии
+      </Tab>
+      <Tab
+        iconName="companyHouse"
+        isActive={fieldsStore.companySize.includes('corporation')}
         onClick={onTabClick(() => fieldsStore.setCompanySizeForTabs('corporation'))}
-        onKeyDown={onEnter(onTabClick(() => fieldsStore.setCompanySizeForTabs('corporation')))}
-        role="button"
-        tabIndex={0}
       >
-        <Icon
-          height={48}
-          name="companyHouse"
-          width={48}
-        />
-        <Typography
-          variant="B2"
-          variantMobile="B2"
-        >
-          Корпорации
-        </Typography>
-      </div>
-
-      <div
-        className={fieldsStore.companySize.includes('startup')
-          ? classes.selectedTab
-          : ''}
+        Корпорации
+      </Tab>
+      <Tab
+        iconName="rocket"
+        isActive={fieldsStore.companySize.includes('startup')}
         onClick={onTabClick(() => fieldsStore.setCompanySizeForTabs('startup'))}
-        onKeyDown={onEnter(onTabClick(() => fieldsStore.setCompanySizeForTabs('startup')))}
-        role="button"
-        tabIndex={0}
       >
-        <Icon
-          height={48}
-          name="rocket"
-          width={48}
-        />
-        <Typography
-          variant="B2"
-          variantMobile="B2"
-        >
-          Стартапы
-        </Typography>
-      </div>
-
-      <div
-        className={fieldsStore.workFormat.includes('remote')
-          ? classes.selectedTab
-          : ''}
+        Стартапы
+      </Tab>
+      <Tab
+        iconName="remote"
+        isActive={fieldsStore.workFormat.includes('remote')}
         onClick={onTabClick(() => fieldsStore.setWorkFormatForTabs('remote'))}
-        onKeyDown={onEnter(onTabClick(() => fieldsStore.setWorkFormatForTabs('remote')))}
-        role="button"
-        tabIndex={0}
       >
-        <Icon
-          height={48}
-          name="remote"
-          width={48}
-        />
-        <Typography
-          variant="B2"
-          variantMobile="B2"
-        >
-          Удаленка
-        </Typography>
-      </div>
-
-      {/* <div
-      {/*  className={fieldsStore.hasInsurance */}
-      {/*    ? classes.selectedTab */}
-      {/*    : ''} */}
-      {/*  onClick={onTabClick(fieldsStore.toggleHasInsurance)} */}
-      {/*  onKeyDown={onEnter(onTabClick(fieldsStore.toggleHasInsurance))} */}
-      {/*  role="button" */}
-      {/*  tabIndex={0} */}
-      {/* > */}
-      {/*  <Icon */}
-      {/*    height={48} */}
-      {/*    name="cookie" */}
-      {/*    width={48} */}
-      {/*  /> */}
-      {/*  <Typography */}
-      {/*    variant="B2" */}
-      {/*    variantMobile="B2" */}
-      {/*  > */}
-      {/*    ДМС */}
-      {/*  </Typography> */}
-      {/* </div> */}
-
-      {/* <div */}
-      {/*  className={fieldsStore.isRelocationRequired */}
-      {/*    ? classes.selectedTab */}
-      {/*    : ''} */}
-      {/*  onClick={onTabClick(fieldsStore.toggleIsRelocationRequired)} */}
-      {/*  onKeyDown={onEnter(onTabClick(fieldsStore.toggleIsRelocationRequired))} */}
-      {/*  role="button" */}
-      {/*  tabIndex={0} */}
-      {/* > */}
-      {/*  <Icon */}
-      {/*    height={48} */}
-      {/*    name="worldBag" */}
-      {/*    width={48} */}
-      {/*  /> */}
-      {/*  <Typography */}
-      {/*    variant="B2" */}
-      {/*    variantMobile="B2" */}
-      {/*  > */}
-      {/*    Релокация */}
-      {/*  </Typography> */}
-      {/* </div> */}
+        Удаленка
+      </Tab>
+      {/* <Tab
+        iconName="cookie"
+        isActive={fieldsStore.hasInsurance}
+        onClick={onTabClick(fieldsStore.toggleHasInsurance)}
+      >
+        ДМС
+      </Tab>
+      <Tab
+        iconName="worldBag"
+        isActive={fieldsStore.isRelocationRequired}
+        onClick={onTabClick(fieldsStore.toggleIsRelocationRequired)}
+      >
+        Релокация
+      </Tab> */}
     </div>
   );
 }

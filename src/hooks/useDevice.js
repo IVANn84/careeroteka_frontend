@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 function getDeviceType() {
-  return window.innerWidth < 576
+  return window.innerWidth <= 576
     ? 'mobile'
     : 'desktop';
 }

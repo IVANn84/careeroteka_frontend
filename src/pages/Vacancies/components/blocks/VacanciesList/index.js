@@ -11,11 +11,12 @@ const style = {
   infiniteScroll: {
     padding: [30],
     margin: [-30],
+    marginBottom: -44,
   },
   vacanciesContainer: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(370px, 1fr))',
-    gridGap: '30px',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(288px, 1fr))',
+    gap: [[24, 30]],
     alignItems: 'start',
   },
 
@@ -23,6 +24,11 @@ const style = {
     infiniteScroll: {
       padding: 0,
       margin: 0,
+      overflow: 'visible !important',
+      marginBottom: -20,
+    },
+    vacanciesContainer: {
+      gap: 16,
     },
   },
 };

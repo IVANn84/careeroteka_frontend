@@ -9,11 +9,11 @@ const style = ({ font }) => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
-    padding: 20,
+    padding: [24, 20],
     borderRadius: 16,
     cursor: 'pointer',
     height: '100%',
-    minHeight: 190,
+    minHeight: 192,
     transition: 'transform .2s, box-shadow .2s',
     boxShadow: [[0, 8, 20, 2, 'rgba(0, 0, 0, .1)']],
     background: font.color.light,
@@ -68,6 +68,9 @@ const style = ({ font }) => ({
     rowGap: '8px',
   },
   check: {
+    width: 15,
+    height: 15,
+
     '& > svg': {
       width: 15,
       height: 15,
@@ -79,11 +82,19 @@ const style = ({ font }) => ({
   '@media screen and (max-device-width: 576px)': {
     container: {
       width: '100%',
+      minHeight: 177,
+      boxShadow: [[0, 4, 10, 2, 'rgba(0, 0, 0, .15)']],
 
       '&:hover, &:focus-visible': {
         transform: 'translateY(0)',
         boxShadow: 'none',
       },
+    },
+    company: {
+      marginBottom: 12,
+    },
+    name: {
+      marginBottom: 16,
     },
   },
 });
