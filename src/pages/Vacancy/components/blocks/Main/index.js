@@ -17,6 +17,16 @@ const style = {
     flexWrap: 'wrap',
     gap: '17px',
   },
+
+  '@media screen and (max-device-width: 576px)': {
+    name: {
+      marginTop: 12,
+      marginBottom: 16,
+    },
+    salary: {
+      marginBottom: 18,
+    },
+  },
 };
 
 export default memo(withStyle(style)(observer(Main)));

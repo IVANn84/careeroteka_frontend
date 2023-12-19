@@ -1,7 +1,6 @@
 import React from 'react';
 
-import Typography from 'Component/Typography';
-import Icon from 'Component/Icon';
+import Tab from 'Component/Tab';
 
 export default function Tabs({
   classes,
@@ -15,65 +14,27 @@ export default function Tabs({
 
   return (
     <div className={classes.container}>
-      <div
-        className={classes.selectedTab}
+      <Tab
+        iconName="searchPeopleInside"
+        // isActive={!filtersModalStore.isFiltersChanged}
         // onClick={() => ()}
-        // onKeyDown={onEnter(() => ())}
-        role="button"
-        tabIndex={0}
       >
-        <Icon
-          height={48}
-          name="searchPeopleInside"
-          width={48}
-        />
-        <Typography
-          variant="B2"
-          variantMobile="B2"
-        >
-          Вакансия
-        </Typography>
-      </div>
-
-      <div
-        // className={classes.selectedTab}
-        // onClick={onTabClick(() => ())}
-        // onKeyDown={onEnter(onTabClick(() => ()))}
-        role="button"
-        tabIndex={0}
+        Вакансия
+      </Tab>
+      <Tab
+        iconName="companyHouse"
+        // isActive={!filtersModalStore.isFiltersChanged}
+        // onClick={() => ()}
       >
-        <Icon
-          height={48}
-          name="companyHouse"
-          width={48}
-        />
-        <Typography
-          variant="B2"
-          variantMobile="B2"
-        >
-          Компания
-        </Typography>
-      </div>
-
-      <div
-        // className={classes.selectedTab}
-        // onClick={onTabClick(() => ())}
-        // onKeyDown={onEnter(onTabClick(() => ()))}
-        role="button"
-        tabIndex={0}
+        Компания
+      </Tab>
+      <Tab
+        iconName="rocket"
+        // isActive={!filtersModalStore.isFiltersChanged}
+        // onClick={() => ()}
       >
-        <Icon
-          height={48}
-          name="rocket"
-          width={48}
-        />
-        <Typography
-          variant="B2"
-          variantMobile="B2"
-        >
-          Контакты
-        </Typography>
-      </div>
+        Контакты
+      </Tab>
     </div>
   );
 }

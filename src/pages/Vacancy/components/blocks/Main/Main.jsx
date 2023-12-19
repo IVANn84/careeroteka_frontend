@@ -41,7 +41,7 @@ export default function Main({
   }
 
   return (
-    <Block padding={[[36, 48]]}>
+    <Block borderRadiusMobile={24} padding={[[36, 48]]} paddingMobile={[[24, 16]]}>
       <Typography
         component="p"
         variant="B1"
@@ -58,7 +58,7 @@ export default function Main({
         className={classes.name}
         component="h1"
         variant="H1"
-        variantMobile="H1"
+        variantMobile="H4"
       >
         <TextSkeleton
           height={54}
@@ -72,7 +72,8 @@ export default function Main({
           className={classes.salary}
           component="p"
           variant="H5"
-          variantMobile="H5"
+          variantMobile="B1"
+          weightMobile="semiBold"
         >
           <TextSkeleton
             height={30}

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useStoreVacanciesPage } from 'Page/Vacancies/stores';
 
-import Tab from './components';
+import Tab from 'Component/Tab';
 
 export default function Tabs({
   classes,

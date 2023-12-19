@@ -16,7 +16,6 @@ const style = ({ typography }) => ({
   },
 
   description: {
-    ...typography.variants.B1,
 
     '& > *:not(:last-child)': {
       display: 'block',

@@ -9,6 +9,10 @@ const style = {
       marginTop: 26,
       marginBottom: 36,
     },
+
+    '& > *:last-child': {
+      marginBottom: -38,
+    },
   },
 
   inlineBlocks: {
@@ -20,10 +24,21 @@ const style = {
   },
 
   '@media screen and (max-device-width: 576px)': {
+    container: {
+      '& > *:not(:last-child)': {
+        marginTop: 0,
+        marginBottom: 16,
+      },
+    },
     inlineBlocks: {
       display: 'grid',
       gridTemplateColumns: '1fr',
-      gridRowGap: 60,
+      gridRowGap: 16,
+
+      '& > *:not(:last-child)': {
+        marginRight: 0,
+        gridRow: 2,
+      },
     },
   },
 };

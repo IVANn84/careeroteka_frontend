@@ -15,7 +15,12 @@ export default function Description({
   } = useStoreVacancyPage();
 
   return (
-    <Block className={classes.container} padding={[[36, 48]]}>
+    <Block
+      borderRadiusMobile={24}
+      className={classes.container}
+      padding={[[36, 48]]}
+      paddingMobile={[[24, 16]]}
+    >
       <Tabs />
       <Typography
         variant="B1"

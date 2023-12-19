@@ -3,35 +3,20 @@ import { observer } from 'mobx-react-lite';
 
 import Tabs from './Tabs.jsx';
 
-const style = ({ customScrollbar, font }) => ({
+const style = {
   container: {
     whiteSpace: 'nowrap',
-    overflowX: 'overlay',
-    scrollbarWidth: 'none',
+    overflowX: 'scroll',
     marginBottom: 34,
-    ...customScrollbar,
+    '&::-webkit-scrollbar': {
+      display: 'none',
+    },
 
-    '& > div': {
-      display: 'inline-block',
-      color: '#6D7279',
-      cursor: 'pointer',
-      transition: 'opacity .2s',
-
-      '& > svg': {
-        display: 'block',
-        margin: 'auto',
-        marginBottom: 16,
-      },
-
-      '&:not(:first-child)': {
-        marginLeft: 36,
-      },
-
-      '&:hover, &:focus-visible': {
-        opacity: 0.8,
-      },
+    '& > div:not(:first-child)': {
+      marginLeft: 36,
     },
   },
+
   loading: {
     '& > div': {
       cursor: 'auto',
@@ -43,9 +28,14 @@ const style = ({ customScrollbar, font }) => ({
     },
   },
 
-  selectedTab: {
-    color: `${font.color.alternative} !important`,
+  '@media screen and (max-device-width: 576px)': {
+    container: {
+      marginBottom: 24,
+      '& > div:not(:first-child)': {
+        marginLeft: 16,
+      },
+    },
   },
-});
+};
 
 export default withStyle(style)(observer(Tabs));

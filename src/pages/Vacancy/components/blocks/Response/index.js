@@ -24,6 +24,8 @@ const style = () => ({
     },
   },
 
+  list: {},
+
   item: {
     display: 'flex',
     alignItems: 'center',
@@ -32,10 +34,27 @@ const style = () => ({
 
   '@media screen and (max-device-width: 576px)': {
     container: {
-      '& > h2': {
-        marginBottom: 18,
+      width: 'auto',
+
+      '& > h3': {
+        marginBottom: 14,
+      },
+
+      '& > p': {
+        marginBottom: 12,
+      },
+
+      '& li:not(:last-child)': {
+        marginBottom: 0,
       },
     },
+
+    list: {
+      display: 'flex',
+      alignItems: 'start',
+      columnGap: '12px',
+    },
+
   },
 });
 
