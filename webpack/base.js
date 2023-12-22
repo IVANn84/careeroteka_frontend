@@ -5,10 +5,22 @@ const RobotstxtPlugin = require('robotstxt-webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 
 const path = require('path');
+const fs = require("fs");
+
+const themesEntry = fs.readdirSync(path.join(__dirname, '..', 'src', 'themes')).reduce((acc, themePath) => {
+  const themeName = themePath.split('.')[0];
+  const themeFileName = themeName === 'default'
+    ? 'theme'
+    : `theme-${themeName}`;
+
+  acc[themeFileName] = './themes/' + themePath;
+  return acc;
+}, {});
 
 module.exports = ({
   context: path.join(__dirname, '..', 'src'),
   entry: {
+    ...themesEntry,
     index: './index.js',
     vendor: [
       'accounting-big',
@@ -60,7 +72,7 @@ module.exports = ({
   plugins: [
     new HtmlWebpackPlugin({
       template: '../public/index.html',
-      chunks: ['vendor', 'index'],
+      chunks: ['vendor', 'index', 'theme'],
     }),
     new FaviconsWebpackPlugin({
       logo: '../public/favicon.png',

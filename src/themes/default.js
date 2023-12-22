@@ -1,7 +1,7 @@
 export const colorNegative = '#DB0000';
 export const colorAlternative = '#367CF3';
 
-export default {
+window.theme = {
   layout: {
     paddingX: {
       desktop: 135,

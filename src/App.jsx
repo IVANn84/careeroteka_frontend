@@ -9,8 +9,6 @@ import ScrollToTop from 'Component/ScrollToTop';
 import Layout from 'Component/Layout/index.jsx';
 import ErrorBoundary from 'Component/ErrorBoundary';
 
-import Theme from './themes/default';
-
 const Main = React.lazy(() => import('Page/Main'));
 const Survey = React.lazy(() => import('Page/Survey'));
 const Login = React.lazy(() => import('Page/Login'));
@@ -23,7 +21,7 @@ const Vacancy = React.lazy(() => import('Page/Vacancy'));
 
 function App() {
   return (
-    <ThemeProvider theme={Theme}>
+    <ThemeProvider theme={window.theme}>
       <BrowserRouter>
         <Layout>
           {({
