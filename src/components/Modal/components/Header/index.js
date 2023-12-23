@@ -31,6 +31,13 @@ const style = {
       },
     },
   },
+
+  '@media screen and (max-device-width: 576px)': {
+    container: {
+      marginBottom: 32,
+      padding: [0, 16],
+    },
+  },
 };
 
 const Component = withStyle(style)(Header);

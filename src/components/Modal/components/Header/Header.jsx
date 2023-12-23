@@ -17,7 +17,7 @@ export default function Header({
       <div className={`${classes.container} ${className || ''}`}>
         <Typography
           variant="H2"
-          variantMobile="H2"
+          variantMobile="H5"
         >
           {children}
         </Typography>

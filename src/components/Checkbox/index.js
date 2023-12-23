@@ -10,7 +10,7 @@ const style = ({ checkbox }) => ({
 
     '& > label': {
       display: 'flex',
-      alignItems: 'baseline',
+      alignItems: 'center',
     },
 
     '& input': {

@@ -53,10 +53,12 @@ Component.propTypes = {
   weight: PropTypes.oneOf([
     'regular',
     'semiBold',
+    'medium',
   ]),
   weightMobile: PropTypes.oneOf([
     'regular',
     'semiBold',
+    'medium',
   ]),
 };
 

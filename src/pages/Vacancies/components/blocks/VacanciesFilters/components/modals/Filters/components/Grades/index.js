@@ -17,6 +17,16 @@ const style = {
     flexWrap: 'wrap',
     marginBottom: 36,
   },
+
+  '@media screen and (max-device-width: 576px)': {
+    title: {
+      marginTop: 28,
+      marginBottom: 8,
+    },
+    description: {
+      marginBottom: 12,
+    },
+  },
 };
 
 export default withStyle(style)(observer(Grades));

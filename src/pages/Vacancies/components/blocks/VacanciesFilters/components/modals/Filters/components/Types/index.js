@@ -45,6 +45,15 @@ const style = ({ font }) => ({
     borderBottom: 'none !important',
     padding: '25px 28px !important',
   },
+
+  '@media screen and (max-device-width: 576px)': {
+    title: {
+      marginBottom: 12,
+    },
+    variants: {
+      marginBottom: 28,
+    },
+  },
 });
 
 export default withStyle(style)(observer(Types));

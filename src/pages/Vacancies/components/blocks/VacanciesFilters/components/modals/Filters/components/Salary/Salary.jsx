@@ -2,6 +2,7 @@ import React from 'react';
 import accounting from 'accounting-big';
 
 import { useStoreVacanciesPage } from 'Page/Vacancies/stores';
+import { useDevice } from 'Hook/useDevice';
 import Typography from 'Component/Typography';
 import Input from 'Component/Input';
 import Divider from 'Component/Divider';
@@ -16,6 +17,7 @@ export default function Salary({
       fieldsStore,
     },
   } = useStoreVacanciesPage();
+  const device = useDevice();
 
   const formatMoney = value => accounting.formatMoney(value, {
     symbol: '',
@@ -29,7 +31,8 @@ export default function Salary({
         className={classes.title}
         component="p"
         variant="H4"
-        variantMobile="H4"
+        variantMobile="B1"
+        weightMobile="semiBold"
       >
         Зарплата
       </Typography>
@@ -45,7 +48,7 @@ export default function Salary({
           variant="B1"
           variantMobile="B2"
           weight="semiBold"
-          weightMobile="semiBold"
+          weightMobile="medium"
         >
           {formatMoney(300234)}
           {' '}
@@ -53,7 +56,7 @@ export default function Salary({
         </Typography>
         .
       </Typography>
-      <SalaryChart />
+      {device === 'desktop' && <SalaryChart />}
       <div className={classes.inputs}>
         <Input
           isPlaceholderAtTop
@@ -72,7 +75,7 @@ export default function Salary({
           value={fieldsStore.maxSalary}
         />
       </div>
-      <Divider />
+      {device === 'desktop' && <Divider />}
     </>
   );
 }

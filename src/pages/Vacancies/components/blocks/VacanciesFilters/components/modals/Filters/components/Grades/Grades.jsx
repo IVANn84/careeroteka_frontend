@@ -1,7 +1,9 @@
-import React, { useRef } from 'react';
+import React, { useCallback, useRef } from 'react';
 
 import { useStoreVacanciesPage } from 'Page/Vacancies/stores';
+import { useDevice } from 'Hook/useDevice';
 import Typography from 'Component/Typography';
+import Dropdown from 'Component/Dropdown';
 import Divider from 'Component/Divider';
 
 import Grade from './components/Grade';
@@ -39,12 +41,18 @@ export default function Grades({
   const {
     filtersModalStore: {
       fieldsStore,
+      vacanciesStore,
     },
   } = useStoreVacanciesPage();
+  const device = useDevice();
 
   const $container = useRef();
 
   const onClick = value => fieldsStore.setExperience(value);
+
+  const onFilterChanged = useCallback(fn => value => {
+    fn(value);
+  }, []);
 
   return (
     <>
@@ -52,7 +60,8 @@ export default function Grades({
         className={classes.title}
         component="p"
         variant="H4"
-        variantMobile="H4"
+        variantMobile="B1"
+        weightMobile="semiBold"
       >
         Грейд
       </Typography>
@@ -64,17 +73,32 @@ export default function Grades({
       >
         Выберите необходимый грейд:
       </Typography>
-      <div className={classes.variants} ref={$container}>
-        {grades.map(grade => (
-          <Grade
-            $container={$container}
-            key={grade.value}
-            onClick={onClick}
-            value={grade}
-          />
-        ))}
-      </div>
-      <Divider />
+      {device === 'desktop' ? (
+        <>
+          <div className={classes.variants} ref={$container}>
+            {grades.map(grade => (
+              <Grade
+                $container={$container}
+                key={grade.value}
+                onClick={onClick}
+                value={grade}
+              />
+            ))}
+          </div>
+          <Divider />
+        </>
+      ) : (
+        <Dropdown
+          checkIsSelected={({ value }) => fieldsStore.experience.includes(value)}
+          isClearable
+          isDisabled={vacanciesStore.isLoading}
+          mode="light"
+          onSelect={onFilterChanged(value => fieldsStore.setExperience(value?.value))}
+          options={grades}
+          placeholder="Выберите грейд"
+          selectedValue={grades.filter(({ value }) => fieldsStore.experience.includes(value)).map(({ name }) => name).join(', ')}
+        />
+      )}
     </>
   );
 }

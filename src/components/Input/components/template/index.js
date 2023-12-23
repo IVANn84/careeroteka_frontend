@@ -149,6 +149,11 @@ export const style = ({
       left: padding.mobile.xAxis,
     },
 
+    placeholderAtTop: {
+      fontSize: typography.variants.C1.fontSize,
+      lineHeight: typography.variants.C1.lineHeight,
+    },
+
     actions: {
       margin: [0, padding.mobile.xAxis, 0, 8],
     },

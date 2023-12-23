@@ -25,6 +25,19 @@ const style = {
     padding: [['5vh', '5vw']],
     transition: 'opacity .2s ease-in-out',
   },
+
+  '@media screen and (max-device-width: 576px)': {
+    container: {
+      padding: [24, 0],
+      borderRadius: 24,
+      borderBottomLeftRadius: 0,
+      borderBottomRightRadius: 0,
+
+    },
+    cloak: {
+      padding: [[157, 0, 0, 0]],
+    },
+  },
 };
 
 const ModalComponent = withStyle(style)(Modal);

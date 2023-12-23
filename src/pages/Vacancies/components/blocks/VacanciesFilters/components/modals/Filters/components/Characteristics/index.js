@@ -6,7 +6,7 @@ import Characteristics from './Characteristics.jsx';
 const style = ({ typography }) => ({
   title: {
     marginTop: 36,
-    marginBottom: 32,
+    marginBottom: 16,
   },
   description: {
     marginBottom: 28,
@@ -21,11 +21,45 @@ const style = ({ typography }) => ({
     '& > *:not(:first-child)': {
       marginTop: 38,
     },
+    '& label': {
+      alignItems: 'start',
+
+      '& > input': {
+        marginTop: 6,
+      },
+    },
   },
   checkboxDescription: {
     '& > p': {
       marginBottom: 8,
       fontWeight: typography.fontWeight.semiBold,
+    },
+  },
+
+  '@media screen and (max-device-width: 576px)': {
+    title: {
+      marginTop: 28,
+      marginBottom: 18,
+    },
+    container: {
+      gridTemplateColumns: '1fr',
+      gap: '18px',
+      marginBottom: 12,
+    },
+    variants: {
+      '& > *:not(:first-child)': {
+        marginTop: 18,
+      },
+
+      '& label input': {
+        marginTop: 3,
+      },
+    },
+    checkboxDescription: {
+      '& > p': {
+        marginBottom: 6,
+        fontWeight: typography.fontWeight.medium,
+      },
     },
   },
 });

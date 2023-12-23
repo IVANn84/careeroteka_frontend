@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { useStoreVacanciesPage } from 'Page/Vacancies/stores';
+import { useDevice } from 'Hook/useDevice';
 import Typography from 'Component/Typography';
 import Input from 'Component/Input';
 import Divider from 'Component/Divider';
@@ -14,6 +15,7 @@ export default function WordsSearch({
       fieldsStore,
     },
   } = useStoreVacanciesPage();
+  const device = useDevice();
 
   return (
     <>
@@ -21,7 +23,8 @@ export default function WordsSearch({
         className={classes.title}
         component="p"
         variant="H4"
-        variantMobile="H4"
+        variantMobile="B1"
+        weightMobile="semiBold"
       >
         Поиск по словам
       </Typography>
@@ -32,6 +35,7 @@ export default function WordsSearch({
             component="p"
             variant="B1"
             variantMobile="B2"
+            weightMobile="medium"
           >
             Найти предложения со словами:
           </Typography>
@@ -47,8 +51,7 @@ export default function WordsSearch({
             component="p"
             variant="B1"
             variantMobile="B2"
-            weight="semiBold"
-            weightMobile="semiBold"
+            weightMobile="medium"
           >
             Искать только:
           </Typography>
@@ -76,6 +79,7 @@ export default function WordsSearch({
             component="p"
             variant="B1"
             variantMobile="B2"
+            weightMobile="medium"
           >
             Исключить предложения со словами:
           </Typography>
@@ -92,7 +96,7 @@ export default function WordsSearch({
             variant="B1"
             variantMobile="B2"
             weight="semiBold"
-            weightMobile="semiBold"
+            weightMobile="medium"
           >
             Исключить только:
           </Typography>
@@ -115,7 +119,7 @@ export default function WordsSearch({
           </div>
         </div>
       </div>
-      <Divider />
+      {device === 'desktop' && <Divider />}
     </>
   );
 }

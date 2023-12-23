@@ -26,6 +26,13 @@ const style = ({ font }) => ({
     background: font.color.alternative,
     padding: 13,
   },
+
+  '@media screen and (max-device-width: 576px)': {
+    title: {
+      marginTop: 28,
+      marginBottom: 12,
+    },
+  },
 });
 
 export default withStyle(style)(observer(CompanySize));

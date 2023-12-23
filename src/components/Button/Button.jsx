@@ -23,7 +23,7 @@ export default function Button({
     >
       <Typography
         variant="B1"
-        variantMobile="B2"
+        variantMobile="B1"
         weight="regular"
         weightMobile="regular"
       >

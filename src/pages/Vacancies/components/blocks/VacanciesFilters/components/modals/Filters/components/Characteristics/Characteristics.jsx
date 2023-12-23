@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { useStoreVacanciesPage } from 'Page/Vacancies/stores';
+import { useDevice } from 'Hook/useDevice';
 import Typography from 'Component/Typography';
 import Divider from 'Component/Divider';
 import Checkbox from 'Component/Checkbox';
@@ -13,6 +14,7 @@ export default function Characteristics({
       fieldsStore,
     },
   } = useStoreVacanciesPage();
+  const device = useDevice();
 
   return (
     <>
@@ -20,18 +22,21 @@ export default function Characteristics({
         className={classes.title}
         component="p"
         variant="H4"
-        variantMobile="H4"
+        variantMobile="B1"
+        weightMobile="semiBold"
       >
         Характеристики
       </Typography>
-      <Typography
-        className={classes.description}
-        component="p"
-        variant="B1"
-        variantMobile="B2"
-      >
-        Дополнительные факторы для выбора работы
-      </Typography>
+      {device === 'desktop' && (
+        <Typography
+          className={classes.description}
+          component="p"
+          variant="B1"
+          variantMobile="B2"
+        >
+          Дополнительные факторы для выбора работы
+        </Typography>
+      )}
       <div className={classes.container}>
         <div className={classes.variants}>
           <Checkbox
@@ -78,7 +83,7 @@ export default function Characteristics({
           />
         </div>
       </div>
-      <Divider />
+      {device === 'desktop' && <Divider />}
     </>
   );
 }

@@ -85,7 +85,9 @@ export default self => ({
   },
 
   setWorkFormat(value) {
-    if (self.workFormat.includes(value)) {
+    if (!value) {
+      self.workFormat = [];
+    } else if (self.workFormat.includes(value)) {
       self.workFormat = self.workFormat.filter(item => item !== value);
     } else {
       self.workFormat.push(value);
@@ -100,7 +102,9 @@ export default self => ({
   },
 
   setEmploymentFormat(value) {
-    if (self.employmentFormat.includes(value)) {
+    if (!value) {
+      self.employmentFormat = [];
+    } else if (self.employmentFormat.includes(value)) {
       self.employmentFormat = self.employmentFormat.filter(item => item !== value);
     } else {
       self.employmentFormat.push(value);
@@ -109,7 +113,9 @@ export default self => ({
   },
 
   setContractType(value) {
-    if (self.contractType.includes(value)) {
+    if (!value) {
+      self.contractType = [];
+    } else if (self.contractType.includes(value)) {
       self.contractType = self.contractType.filter(item => item !== value);
     } else {
       self.contractType.push(value);
@@ -118,7 +124,9 @@ export default self => ({
   },
 
   setCompanySize(value) {
-    if (self.companySize.includes(value)) {
+    if (!value) {
+      self.companySize = [];
+    } else if (self.companySize.includes(value)) {
       self.companySize = self.companySize.filter(item => item !== value);
     } else {
       self.companySize.push(value);
