@@ -6,11 +6,11 @@ import Footer from './components/Footer';
 import Content from './components/Content';
 import Modal from './Modal.jsx';
 
-const style = {
+const style = ({ background }) => ({
   container: {
     padding: 48,
     borderRadius: 16,
-    background: '#FFF',
+    background: background.primary,
     margin: [0, 'auto'],
   },
   cloak: {
@@ -38,7 +38,7 @@ const style = {
       padding: [[157, 0, 0, 0]],
     },
   },
-};
+});
 
 const ModalComponent = withStyle(style)(Modal);
 

@@ -87,8 +87,8 @@ export const style = ({
     },
   },
   placeholderAtTop: {
-    fontSize: typography.variants.B1.fontSize,
-    lineHeight: typography.variants.B1.lineHeight,
+    fontSize: ({ type }) => (type === 'money' ? typography.variants.B2.fontSize : typography.variants.B1.fontSize),
+    lineHeight: ({ type }) => (type === 'money' ? typography.variants.B2.lineHeight : typography.variants.B1.lineHeight),
     userSelect: 'none',
     color: placeholder.default,
     marginBottom: 8,

@@ -4,12 +4,14 @@ import { observer } from 'mobx-react-lite';
 
 import DefaultLayout from './DefaultLayout.jsx';
 
-const style = ({ layout }) => ({
+const style = ({ layout, background, font }) => ({
   container: {
     display: 'flex',
     flexDirection: 'column',
     minHeight: '100vh',
     padding: [28, layout.paddingX.desktop, 38, layout.paddingX.desktop],
+    backgroundColor: background.primary,
+    color: font.color.regular,
   },
   contentContainer: {
     display: 'flex',

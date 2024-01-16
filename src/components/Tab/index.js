@@ -6,7 +6,7 @@ import Tab from './Tab.jsx';
 const style = ({ font }) => ({
   tab: {
     display: 'inline-block',
-    color: '#6D7279',
+    color: font.color.secondary,
     cursor: 'pointer',
     transition: 'opacity .2s',
     textAlign: 'center',
@@ -22,7 +22,7 @@ const style = ({ font }) => ({
     },
   },
   selectedTab: {
-    color: `${font.color.alternative}`,
+    color: font.color.alternative,
   },
 
   '@media screen and (max-device-width: 576px)': {

@@ -4,7 +4,7 @@ import { observer } from 'mobx-react-lite';
 
 import Main from './Main.jsx';
 
-const style = {
+const style = ({ background }) => ({
   name: {
     marginTop: 16,
     marginBottom: 20,
@@ -17,6 +17,9 @@ const style = {
     flexWrap: 'wrap',
     gap: '17px',
   },
+  tag: {
+    backgroundColor: background.vacancyCity,
+  },
 
   '@media screen and (max-device-width: 576px)': {
     name: {
@@ -27,6 +30,6 @@ const style = {
       marginBottom: 18,
     },
   },
-};
+});
 
 export default memo(withStyle(style)(observer(Main)));

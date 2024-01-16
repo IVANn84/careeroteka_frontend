@@ -89,6 +89,7 @@ export default function Main({
             <Block
               borderRadius="8px"
               borderRadiusMobile="8px"
+              className={classes.tag}
               key={tag}
               mode="dark"
               padding="8px"

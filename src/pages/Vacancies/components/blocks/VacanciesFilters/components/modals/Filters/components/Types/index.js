@@ -44,6 +44,16 @@ const style = ({ font }) => ({
     borderTop: 'none !important',
     borderBottom: 'none !important',
     padding: '25px 28px !important',
+
+    '&:first-child': {
+      borderLeft: 'none !important',
+      paddingLeft: '29px !important',
+    },
+
+    '&:last-child': {
+      borderRight: 'none !important',
+      paddingRight: '29px !important',
+    },
   },
 
   '@media screen and (max-device-width: 576px)': {

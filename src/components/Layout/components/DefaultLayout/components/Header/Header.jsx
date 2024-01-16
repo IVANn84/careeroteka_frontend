@@ -21,7 +21,7 @@ export default function Header({
           exact
           to="/"
         >
-          careeroteka
+          {window.theme.title}
         </NavLink>
         <LeftHeaderNavigation />
       </div>

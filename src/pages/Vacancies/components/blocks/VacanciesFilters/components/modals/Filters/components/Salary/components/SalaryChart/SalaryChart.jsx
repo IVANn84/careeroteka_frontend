@@ -8,11 +8,14 @@ import { useStoreVacanciesPage } from 'Page/Vacancies/stores';
 import MultiRangeSlider from 'Component/MultiRangeSlider';
 import BarChart from 'Component/BarChart';
 
+const { salaryChart } = window.theme;
+
 const options = {
   maintainAspectRatio: false,
   elements: {
     bar: {
-      borderRadius: 5,
+      borderRadius: salaryChart.bar.borderRadius,
+      backgroundColor: salaryChart.bar.backgroundColor,
     },
   },
   scales: {
@@ -32,11 +35,11 @@ const options = {
   },
   plugins: {
     datalabels: {
-      backgroundColor: '#FFF',
-      color: '#1A1C1F',
-      borderRadius: 4,
+      backgroundColor: salaryChart.datalabels.backgroundColor,
+      color: salaryChart.datalabels.color,
+      borderColor: salaryChart.datalabels.borderColor,
+      borderRadius: salaryChart.datalabels.borderRadius,
       borderWidth: 1,
-      borderColor: '#1C1C3A',
       textAlign: 'center',
       font: {
         lineHeight: 1.3,
@@ -91,7 +94,6 @@ export default function SalaryChart({
       {
         data: vacancyList.map(({ count }) => count),
         categoryPercentage: 1,
-        backgroundColor: '#86B0F8',
       },
     ],
     // eslint-disable-next-line react-hooks/exhaustive-deps

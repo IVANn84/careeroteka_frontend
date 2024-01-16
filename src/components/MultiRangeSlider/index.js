@@ -4,7 +4,7 @@ import { observer } from 'mobx-react-lite';
 
 import MultiRangeSlider from './MultiRangeSlider.jsx';
 
-const style = {
+const style = ({ salaryChart: { slider } }) => ({
   container: {
     display: 'flex',
     alignItems: 'center',
@@ -23,7 +23,7 @@ const style = {
       '&::-webkit-slider-thumb': {
         appearance: 'none',
         tapHighlightColor: 'transparent',
-        backgroundColor: 'rgb(54, 124, 243)',
+        backgroundColor: slider.thumb.backgroundColor,
         border: 'none',
         borderRadius: '50%',
         cursor: 'pointer',
@@ -37,7 +37,7 @@ const style = {
       '&::-moz-range-thumb': {
         appearance: 'none',
         tapHighlightColor: 'transparent',
-        backgroundColor: 'rgb(54, 124, 243)',
+        backgroundColor: slider.thumb.backgroundColor,
         border: 'none',
         borderRadius: '50%',
         cursor: 'pointer',
@@ -74,7 +74,7 @@ const style = {
     backgroundColor: '#767779',
     zIndex: 2,
   },
-};
+});
 
 MultiRangeSlider.propTypes = {
   minRange: PropTypes.number.isRequired,

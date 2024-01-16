@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite';
 
 import Grade from './Grade.jsx';
 
-const style = ({ font }) => ({
+const style = ({ font, background }) => ({
   container: {
     position: 'relative',
     width: 240,
@@ -47,7 +47,7 @@ const style = ({ font }) => ({
     textAlign: 'initial',
     width: 280,
     borderRadius: 16,
-    backgroundColor: '#F2F2F3',
+    backgroundColor: background.secondary,
     bottom: 'calc(100% + 5px)',
     padding: 20,
     transition: 'all .2s',

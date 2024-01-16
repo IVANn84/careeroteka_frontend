@@ -22,7 +22,7 @@ const style = ({ customScrollbar }) => ({
     justifyContent: 'space-between',
   },
   button: {
-    color: '#D60C31',
+    color: window.theme.button.tetriary.color,
   },
 
   '@media screen and (max-device-width: 576px)': {

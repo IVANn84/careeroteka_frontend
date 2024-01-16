@@ -82,7 +82,7 @@ const style = ({ font, background }) => ({
     display: 'flex',
     justifyContent: 'space-between',
     marginTop: 10,
-    color: 'rgba(0, 0, 0, .6)',
+    opacity: 0.6,
   },
   copyrightMobile: {
     display: 'none',

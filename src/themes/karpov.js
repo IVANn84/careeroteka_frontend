@@ -1,9 +1,9 @@
 export const colorNegative = '#DB0000';
-export const colorAlternative = '#367CF3';
+export const colorAlternative = '#EC6242';
 
 window.theme = {
-  title: 'careeroteka',
-  companyName: 'ООО «Careeroteka»',
+  title: 'karpov courses',
+  companyName: 'ООО «karpov courses»',
 
   layout: {
     paddingX: {
@@ -13,11 +13,11 @@ window.theme = {
   },
 
   background: {
-    primary: '#FFF',
-    dark: '#000',
-    light: '#FFF',
-    secondary: '#F2F2F3',
-    vacancyCity: '#F3F5F6',
+    primary: '#32353A',
+    dark: '#1E2026',
+    light: '#1E2026',
+    secondary: '#1E2026',
+    vacancyCity: '#32353A',
   },
 
   iconButton: {
@@ -43,23 +43,23 @@ window.theme = {
         background: {
           default: colorAlternative,
           hovered: 'transparent',
-          focused: '#226AE6',
+          focused: colorAlternative,
         },
       },
       dark: {
         border: {
-          default: '#000',
-          hovered: '#2F74EA',
+          default: colorAlternative,
+          hovered: colorAlternative,
         },
         color: {
           default: '#FFF',
-          hovered: '#FFF',
+          hovered: colorAlternative,
           focused: '#FFF',
         },
         background: {
-          default: '#000',
-          hovered: '#2F74EA',
-          focused: '#226AE5',
+          default: colorAlternative,
+          hovered: 'transparent',
+          focused: colorAlternative,
         },
       },
     },
@@ -93,8 +93,8 @@ window.theme = {
         },
         background: {
           default: 'transparent',
-          hovered: '#2F74EA',
-          focused: '#226AE5',
+          hovered: colorAlternative,
+          focused: colorAlternative,
         },
       },
       dark: {
@@ -118,7 +118,7 @@ window.theme = {
           default: 'transparent',
         },
         color: {
-          default: '#000',
+          default: '#FFF',
         },
         background: {
           default: 'transparent',
@@ -126,15 +126,15 @@ window.theme = {
       },
     },
     tetriary: {
-      color: '#D60C31',
+      color: '#EC6242',
     },
   },
 
   font: {
     color: {
       light: '#FFF',
-      regular: '#1A1C1F',
-      secondary: 'rgba(0, 0, 0, .6)',
+      regular: '#FFF',
+      secondary: '#FFF',
       alternative: colorAlternative,
       negative: colorNegative,
     },
@@ -162,21 +162,21 @@ window.theme = {
         yAxis: 17,
       },
     },
-    background: '#FFF',
+    background: '#32353A',
     boxShadow: [[0, 8, 20, 2, 'rgba(0, 0, 0, .1)']],
     border: {
-      default: [[1, 'solid', 'rgba(26, 28, 31, .6)']],
-      filled: [[1, 'solid', '#1A1C1F']],
+      default: [[1, 'solid', '#A3A4A5']],
+      filled: [[1, 'solid', '#A3A4A5']],
       negative: [[1, 'solid', colorNegative]],
     },
     icon: {
       color: {
-        default: '#1A1C1F',
+        default: '#767779',
         negative: colorNegative,
       },
     },
     placeholder: {
-      default: 'rgba(26, 28, 31, .6)',
+      default: '#767779',
       negative: `${colorNegative}99`,
     },
   },
@@ -195,17 +195,17 @@ window.theme = {
     },
     icon: {
       color: {
-        default: '#1A1C1F',
+        default: '#767779',
         negative: colorNegative,
       },
     },
     color: {
-      light: '#1A1C1F',
+      light: '#767779',
       primary: '#FFF',
     },
     placeholder: {
       light: {
-        default: 'rgba(26, 28, 31, .6)',
+        default: '#767779',
         negative: `${colorNegative}99`,
       },
       primary: {
@@ -221,8 +221,8 @@ window.theme = {
     },
     border: {
       light: {
-        default: [[1, 'solid', 'rgba(26, 28, 31, .6)']],
-        filled: [[1, 'solid', '#1A1C1F']],
+        default: [[1, 'solid', '#A3A4A5']],
+        filled: [[1, 'solid', '#A3A4A5']],
         negative: [[1, 'solid', colorNegative]],
       },
       primary: {
@@ -237,7 +237,7 @@ window.theme = {
       reversed: [[0, -20, 20, 2, 'rgba(0, 0, 0, .1)']],
     },
     background: {
-      light: '#FFF',
+      light: '#32353A',
       primary: colorAlternative,
     },
     optionBackground: {
@@ -275,8 +275,8 @@ window.theme = {
       mobile: 20,
     },
     background: {
-      light: '#FFF',
-      dark: '#F2F2F3',
+      light: '#1E2026',
+      dark: '#1E2026',
     },
     boxShadow: [[0, 4, 20, 2, 'rgba(0, 0, 0, .1)']],
   },
@@ -331,7 +331,7 @@ window.theme = {
   },
 
   divider: {
-    color: 'rgba(38, 38, 38, 0.08)',
+    color: 'rgba(255, 255, 255, 0.08)',
     height: 1,
   },
 
@@ -372,17 +372,17 @@ window.theme = {
   salaryChart: {
     bar: {
       borderRadius: 5,
-      backgroundColor: '#86B0F8',
+      backgroundColor: colorAlternative,
     },
     datalabels: {
-      backgroundColor: '#FFF',
-      color: '#1A1C1F',
-      borderColor: '#1C1C3A',
+      backgroundColor: '#1E2026',
+      color: '#FFF',
+      borderColor: '#1E2026',
       borderRadius: 4,
     },
     slider: {
       thumb: {
-        backgroundColor: '#367CF3',
+        backgroundColor: colorAlternative,
       },
     },
   },

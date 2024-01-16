@@ -14,7 +14,7 @@ export default function Footer({
       <div className={classes.footer}>
         <div className={classes.footerLogo}>
           <span className={classes.footerTitle}>
-            careeroteka
+            {window.theme.title}
           </span>
           <div className={classes.footerLinksDesktop}>
             <ExternalLink to="https://vk.com">
@@ -73,7 +73,7 @@ export default function Footer({
             variant="B1"
             variantMobile="B2"
           >
-            ООО «Careeroteka»
+            {window.theme.companyName}
           </Typography>
           <Typography
             component="div"
@@ -99,7 +99,7 @@ export default function Footer({
           variant="B1"
           variantMobile="B2"
         >
-          ООО «Careeroteka»
+          {window.theme.companyName}
         </Typography>
       </div>
     </div>

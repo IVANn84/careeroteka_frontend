@@ -4,7 +4,7 @@ import { observer } from 'mobx-react-lite';
 
 import Vacancy from './Vacancy.jsx';
 
-const style = ({ font }) => ({
+const style = ({ font, background }) => ({
   container: {
     display: 'flex',
     flexDirection: 'column',
@@ -16,7 +16,7 @@ const style = ({ font }) => ({
     minHeight: 192,
     transition: 'transform .2s, box-shadow .2s',
     boxShadow: [[0, 8, 20, 2, 'rgba(0, 0, 0, .1)']],
-    background: font.color.light,
+    background: background.light,
 
     '&:hover, &:focus-visible': {
       transform: 'translateY(-5px)',
@@ -45,7 +45,7 @@ const style = ({ font }) => ({
     padding: [4, 6],
     borderRadius: 8,
     textAlign: 'center',
-    background: '#F3F5F6',
+    background: background.vacancyCity,
   },
   salary: {
     display: 'inline-block',

@@ -6,7 +6,7 @@ import WorkFormat from './WorkFormat.jsx';
 const style = ({ font }) => ({
   title: {
     marginTop: 36,
-    marginBottom: 16,
+    marginBottom: 24,
   },
   variants: {
     display: 'flex',
