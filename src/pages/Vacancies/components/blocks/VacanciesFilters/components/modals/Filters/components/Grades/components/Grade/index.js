@@ -8,7 +8,7 @@ const style = ({ font, background }) => ({
     position: 'relative',
     width: 240,
     padding: 20,
-    border: [1, 'solid', '#767779'],
+    border: [1, 'solid', '#A3A4A5'],
     borderRadius: 16,
     cursor: 'pointer',
     transition: 'transform .2s, box-shadow .2s',

@@ -102,7 +102,7 @@ const style = ({
     display: 'flex',
     color: ({ error, mode }) => (error
       ? icon.color.negative
-      : color[mode]),
+      : icon.color[mode]),
     margin: [0, padding.desktop.xAxis, 0, 8],
 
     '& > *': {

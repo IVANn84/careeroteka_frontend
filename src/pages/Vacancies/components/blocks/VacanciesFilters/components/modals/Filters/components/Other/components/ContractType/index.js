@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite';
 
 import ContractType from './ContractType.jsx';
 
-const style = ({ font }) => ({
+const style = ({ font, chip }) => ({
   title: {
     marginTop: 36,
     marginBottom: 24,
@@ -18,7 +18,7 @@ const style = ({ font }) => ({
     cursor: 'pointer',
     padding: 12,
     borderRadius: 8,
-    border: [1, 'solid', font.color.regular],
+    border: chip.border,
   },
   selected: {
     color: font.color.light,

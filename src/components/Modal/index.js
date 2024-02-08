@@ -21,7 +21,7 @@ const style = ({ background }) => ({
     bottom: 0,
     right: 0,
     overflowY: 'auto',
-    background: 'rgba(0,0,0, 0.8)',
+    background: 'rgba(10, 10, 10, 0.57)',
     padding: [['5vh', '5vw']],
     transition: 'opacity .2s ease-in-out',
   },
@@ -35,7 +35,7 @@ const style = ({ background }) => ({
 
     },
     cloak: {
-      padding: [[157, 0, 0, 0]],
+      padding: [[32, 0, 0, 0]],
     },
   },
 });

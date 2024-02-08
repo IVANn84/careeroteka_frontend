@@ -13,7 +13,7 @@ const types = [
     name: 'Вакансия',
   },
   {
-    value: 'intership',
+    value: 'internship',
     name: 'Стажировка',
   },
   {

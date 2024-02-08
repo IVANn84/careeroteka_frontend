@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { getSnapshot } from 'mobx-state-tree';
 
 import { useStoreVacancyPage } from 'Page/Vacancy/stores';
@@ -15,6 +15,11 @@ export default function VacanciesSlider({
   const {
     vacanciesStore,
   } = useStoreVacancyPage();
+
+  useEffect(() => {
+    vacanciesStore.fetchVacancies();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [vacanciesStore]);
 
   const $slider = useRef(null);
   useSlider({

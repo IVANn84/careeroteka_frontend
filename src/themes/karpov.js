@@ -373,17 +373,23 @@ window.theme = {
     bar: {
       borderRadius: 5,
       backgroundColor: colorAlternative,
+      backgroundColorSecondary: 'rgba(236, 98, 66, .4)',
+
     },
     datalabels: {
       backgroundColor: '#1E2026',
       color: '#FFF',
-      borderColor: '#1E2026',
       borderRadius: 4,
+      boxShadow: '0px 8px 20px 2px #0000001A',
     },
     slider: {
       thumb: {
         backgroundColor: colorAlternative,
       },
     },
+  },
+
+  chip: {
+    border: [[1, 'solid', '#A3A4A5']],
   },
 };

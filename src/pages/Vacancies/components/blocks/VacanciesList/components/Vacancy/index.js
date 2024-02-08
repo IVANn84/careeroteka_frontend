@@ -22,6 +22,10 @@ const style = ({ font, background }) => ({
       transform: 'translateY(-5px)',
     },
   },
+  title: {
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
   company: {
     wordBreak: 'break-word',
     marginBottom: 24,
@@ -57,23 +61,19 @@ const style = ({ font, background }) => ({
   },
   info: {
     display: 'flex',
-    width: '100%',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  conditions: {
-    display: 'flex',
     flexWrap: 'wrap',
     columnGap: '12px',
     rowGap: '8px',
+    width: '100%',
+    alignItems: 'center',
   },
   check: {
-    width: 15,
-    height: 15,
+    width: 16,
+    height: 16,
 
     '& > svg': {
-      width: 15,
-      height: 15,
+      width: 16,
+      height: 16,
       color: font.color.alternative,
       marginLeft: -11,
     },

@@ -9,7 +9,11 @@ const style = {
     marginBottom: 36,
   },
   chart: {
-    height: 200,
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(30px, 1fr))',
+    gap: '4px',
+    alignItems: 'flex-end',
+    margin: [0, 50],
   },
   slider: {
     margin: [0, 50],

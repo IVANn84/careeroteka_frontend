@@ -9,7 +9,7 @@ const style = {
     marginBottom: 16,
   },
   description: {
-    marginBottom: 36,
+    marginBottom: 44,
   },
   inputs: {
     display: 'flex',

@@ -14,7 +14,7 @@ window.theme = {
 
   background: {
     primary: '#FFF',
-    dark: '#000',
+    dark: '#1A1C1F',
     light: '#FFF',
     secondary: '#F2F2F3',
     vacancyCity: '#F3F5F6',
@@ -48,7 +48,7 @@ window.theme = {
       },
       dark: {
         border: {
-          default: '#000',
+          default: '#1A1C1F',
           hovered: '#2F74EA',
         },
         color: {
@@ -57,7 +57,7 @@ window.theme = {
           focused: '#FFF',
         },
         background: {
-          default: '#000',
+          default: '#1A1C1F',
           hovered: '#2F74EA',
           focused: '#226AE5',
         },
@@ -67,7 +67,7 @@ window.theme = {
       light: {
         border: {
           default: '#FFF',
-          hovered: '#000',
+          hovered: '#1A1C1F',
         },
         color: {
           default: '#FFF',
@@ -76,7 +76,7 @@ window.theme = {
         },
         background: {
           default: 'transparent',
-          hovered: '#000',
+          hovered: '#1A1C1F',
           focused: '#191A1B',
           disabled: '#000',
         },
@@ -99,17 +99,17 @@ window.theme = {
       },
       dark: {
         border: {
-          default: '#000',
-          hovered: '#000',
+          default: '#1A1C1F',
+          hovered: '#1A1C1F',
         },
         color: {
-          default: '#000',
+          default: '#1A1C1F',
           hovered: '#FFF',
           focused: '#FFF',
         },
         background: {
           default: 'transparent',
-          hovered: '#000',
+          hovered: '#1A1C1F',
           focused: '#15181B',
         },
       },
@@ -118,7 +118,7 @@ window.theme = {
           default: 'transparent',
         },
         color: {
-          default: '#000',
+          default: '#1A1C1F',
         },
         background: {
           default: 'transparent',
@@ -165,13 +165,13 @@ window.theme = {
     background: '#FFF',
     boxShadow: [[0, 8, 20, 2, 'rgba(0, 0, 0, .1)']],
     border: {
-      default: [[1, 'solid', 'rgba(26, 28, 31, .6)']],
-      filled: [[1, 'solid', '#1A1C1F']],
+      default: [[1, 'solid', '#A3A4A5']],
+      filled: [[1, 'solid', '#767779']],
       negative: [[1, 'solid', colorNegative]],
     },
     icon: {
       color: {
-        default: '#1A1C1F',
+        default: '#A3A4A5',
         negative: colorNegative,
       },
     },
@@ -195,7 +195,8 @@ window.theme = {
     },
     icon: {
       color: {
-        default: '#1A1C1F',
+        light: '#A3A4A5',
+        primary: '#FFF',
         negative: colorNegative,
       },
     },
@@ -221,8 +222,8 @@ window.theme = {
     },
     border: {
       light: {
-        default: [[1, 'solid', 'rgba(26, 28, 31, .6)']],
-        filled: [[1, 'solid', '#1A1C1F']],
+        default: [[1, 'solid', '#A3A4A5']],
+        filled: [[1, 'solid', '#767779']],
         negative: [[1, 'solid', colorNegative]],
       },
       primary: {
@@ -373,17 +374,23 @@ window.theme = {
     bar: {
       borderRadius: 5,
       backgroundColor: '#86B0F8',
+      backgroundColorSecondary: '#D7E5FD',
+      backgroundColorHover: '#6F9AF6',
     },
     datalabels: {
       backgroundColor: '#FFF',
       color: '#1A1C1F',
-      borderColor: '#1C1C3A',
       borderRadius: 4,
+      boxShadow: '0px 8px 20px 2px #0000001A',
     },
     slider: {
       thumb: {
         backgroundColor: '#367CF3',
       },
     },
+  },
+
+  chip: {
+    border: [[1, 'solid', '#A3A4A5']],
   },
 };

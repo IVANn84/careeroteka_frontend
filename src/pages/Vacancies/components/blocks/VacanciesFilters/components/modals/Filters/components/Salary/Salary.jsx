@@ -15,6 +15,9 @@ export default function Salary({
   const {
     filtersModalStore: {
       fieldsStore,
+      averageSalaryStore: {
+        averageSalaryData,
+      },
     },
   } = useStoreVacanciesPage();
   const device = useDevice();
@@ -50,7 +53,9 @@ export default function Salary({
           weight="semiBold"
           weightMobile="medium"
         >
-          {formatMoney(300234)}
+          {fieldsStore.type === 'vacancy' && formatMoney(averageSalaryData.vacancy)}
+          {fieldsStore.type === 'internship' && formatMoney(averageSalaryData.internship)}
+          {fieldsStore.type === 'freelance' && formatMoney(averageSalaryData.freelance)}
           {' '}
           ₽
         </Typography>
