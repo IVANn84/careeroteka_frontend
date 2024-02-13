@@ -15,9 +15,10 @@ const style = {
   },
   vacanciesContainer: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(288px, 1fr))',
+    gridTemplateColumns: 'repeat(auto-fill, 370px)',
     gap: [[24, 30]],
     alignItems: 'start',
+    justifyContent: 'center',
   },
 
   '@media screen and (max-device-width: 576px)': {
@@ -28,6 +29,7 @@ const style = {
       marginBottom: -20,
     },
     vacanciesContainer: {
+      gridTemplateColumns: '1fr',
       gap: 16,
     },
   },

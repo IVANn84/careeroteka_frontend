@@ -1,3 +1,4 @@
+import { useParams } from 'react-router-dom';
 import React, { useEffect, useRef } from 'react';
 import { getSnapshot } from 'mobx-state-tree';
 
@@ -12,6 +13,7 @@ export default function VacanciesSlider({
 
   classes,
 }) {
+  const { id } = useParams();
   const {
     vacanciesStore,
   } = useStoreVacancyPage();
@@ -19,7 +21,7 @@ export default function VacanciesSlider({
   useEffect(() => {
     vacanciesStore.fetchVacancies();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [vacanciesStore]);
+  }, [vacanciesStore, id]);
 
   const $slider = useRef(null);
   useSlider({

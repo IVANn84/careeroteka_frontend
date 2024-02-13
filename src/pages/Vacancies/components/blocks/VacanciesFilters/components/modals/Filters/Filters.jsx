@@ -6,7 +6,7 @@ import Modal from 'Component/Modal';
 import Button from 'Component/Button';
 
 import WordsSearch from './components/WordsSearch';
-import Types from './components/Types';
+// import Types from './components/Types';
 import Salary from './components/Salary';
 import Other from './components/Other';
 import Grades from './components/Grades';
@@ -21,22 +21,24 @@ export default function Filters({
 }) {
   const {
     filtersModalStore: {
-      vacanciesStore,
+      vacanciesStore: salaryStore,
       fieldsStore,
       averageSalaryStore,
     },
+    vacanciesStore,
   } = useStoreVacanciesPage();
   const device = useDevice();
 
   const onReset = useCallback(() => {
     fieldsStore.reset();
+    vacanciesStore.fetchVacancies();
     onDecline();
-  }, [fieldsStore, onDecline]);
+  }, [fieldsStore, onDecline, vacanciesStore]);
 
   useEffect(() => {
-    vacanciesStore.fetchVacancyList();
+    salaryStore.fetchVacancyList();
     averageSalaryStore.fetchAverageSalary();
-  }, [isDisplay, fieldsStore, vacanciesStore, averageSalaryStore]);
+  }, [isDisplay, fieldsStore, salaryStore, averageSalaryStore]);
 
   return (
     <Modal.Modal
@@ -48,7 +50,7 @@ export default function Filters({
         Фильтры
       </Modal.Header>
       <Modal.Content className={classes.content} hasDivider={device === 'desktop'}>
-        <Types />
+        {/* <Types /> */}
         <WordsSearch />
         <Salary />
         <Grades />

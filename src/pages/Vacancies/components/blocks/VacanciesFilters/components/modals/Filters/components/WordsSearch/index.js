@@ -5,7 +5,7 @@ import WordsSearch from './WordsSearch.jsx';
 
 const style = {
   title: {
-    marginTop: 36,
+    // marginTop: 36,
     marginBottom: 32,
   },
   container: {

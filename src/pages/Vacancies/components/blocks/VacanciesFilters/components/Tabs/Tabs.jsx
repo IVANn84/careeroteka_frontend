@@ -26,7 +26,7 @@ export default function Tabs({
       <Tab
         iconName="searchPeopleInside"
         isActive={!filtersModalStore.isFiltersChanged}
-        onClick={() => !vacanciesStore.isLoading && fieldsStore.reset()}
+        onClick={onTabClick(() => fieldsStore.resetTabs())}
       >
         Все вакансии
       </Tab>

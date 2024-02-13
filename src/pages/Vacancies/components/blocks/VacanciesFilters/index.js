@@ -11,17 +11,20 @@ const style = {
   controls: {
     display: 'flex',
     justifyContent: 'space-between',
-    alignItems: 'center',
+    alignItems: 'flex-start',
   },
   filtersContainer: {
     display: 'flex',
     columnGap: 30,
   },
-  searchButton: {
-    minWidth: 370,
+  searchInput: {
+    width: 370,
   },
   gradesDropdown: {
-    minWidth: 270,
+    width: 270,
+  },
+  searchButton: {
+    height: 64,
   },
   tabs: {
     display: 'flex',
@@ -44,21 +47,25 @@ const style = {
       display: 'flex',
       flexDirection: 'column-reverse',
       rowGap: 24,
-      marginTop: 24,
-      marginBottom: 24,
+      margin: [24, 0],
     },
     controls: {
-      display: 'block',
-    },
-    filtersContainer: {
       flexDirection: 'column',
       rowGap: 14,
     },
-    searchButton: {
-      minWidth: 'auto',
+    filtersContainer: {
+      width: '100%',
+      flexDirection: 'column',
+      rowGap: 14,
+    },
+    searchInput: {
+      width: 'auto',
     },
     gradesDropdown: {
-      minWidth: 'auto',
+      width: 'auto',
+    },
+    searchButton: {
+      width: '100%',
     },
     tabs: {
       marginTop: 0,

@@ -10,14 +10,12 @@ export default self => ({
   reset() {
     applySnapshot(self, initialState);
     getParent(self).setIsFiltersChanged(false);
-    getParent(getParent(self)).vacanciesStore.fetchVacancies();
   },
 
   resetTabs() {
     self.workFormat = [];
     self.companySize = [];
-    self.experience = [];
-    self.searchValues = null;
+    getParent(self).setIsFiltersChanged(false);
   },
 
   setTypeVacancy(value) {
@@ -27,7 +25,7 @@ export default self => ({
 
   setSearchValues(value) {
     self.searchValues = value;
-    getParent(self).setIsFiltersChanged(true);
+    // getParent(self).setIsFiltersChanged(true);
   },
 
   setSearchBy(value) {
@@ -70,7 +68,7 @@ export default self => ({
     } else {
       self.maxSalary = value;
     }
-    getParent(self).setIsFiltersChanged(true);
+    // getParent(self).setIsFiltersChanged(true);
   },
 
   setExperience(value) {
@@ -81,7 +79,7 @@ export default self => ({
     } else {
       self.experience.push(value);
     }
-    getParent(self).setIsFiltersChanged(true);
+    // getParent(self).setIsFiltersChanged(true);
   },
 
   setWorkFormat(value) {

@@ -4,7 +4,8 @@ import actions from './actions';
 
 export const FiltersModalFieldsStoreModel = types
   .model('Fields', {
-    type: types.maybeNull(types.string),
+    // type: types.maybeNull(types.string),
+    type: types.optional(types.string, 'vacancy'),
     searchValues: types.maybeNull(types.string),
     searchBy: types.optional(types.array(types.string), []),
     excludeValues: types.maybeNull(types.string),

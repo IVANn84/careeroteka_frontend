@@ -5,7 +5,7 @@ import { useStoreVacancyPage } from 'Page/Vacancy/stores';
 import Typography from 'Component/Typography';
 import Block from 'Component/Block';
 
-import Tabs from './components/Tabs';
+// import Tabs from './components/Tabs';
 
 export default function Description({
   classes,
@@ -21,7 +21,7 @@ export default function Description({
       padding={[[36, 48]]}
       paddingMobile={[[24, 16]]}
     >
-      <Tabs />
+      {/* <Tabs /> */}
       <Typography
         variant="B1"
         variantMobile="B2"

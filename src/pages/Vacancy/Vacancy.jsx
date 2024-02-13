@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 import { useStoreVacancyPage } from 'Page/Vacancy/stores';
 
-import Vacancies from './components/blocks/Vacancies';
+// import Vacancies from './components/blocks/Vacancies';
 import Response from './components/blocks/Response';
 import Main from './components/blocks/Main';
 import Description from './components/blocks/Description';
@@ -48,7 +48,7 @@ export default function Vacancy({
         <Description />
         <Response />
       </div>
-      <Vacancies />
+      {/* <Vacancies /> */}
     </div>
   );
 }

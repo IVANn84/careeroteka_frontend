@@ -78,7 +78,7 @@ export default function VacanciesFilters({
       <form className={classes.controls} onSubmit={onSubmit}>
         <div className={classes.filtersContainer}>
           <Input
-            className={classes.searchButton}
+            className={classes.searchInput}
             isClearable
             isDisabled={vacanciesStore.isLoading}
             isSearchable
@@ -112,16 +112,15 @@ export default function VacanciesFilters({
             selectedValue={source.filter(({ id }) => fieldsStore.experience.includes(id)).map(({ name }) => name).join(', ')}
           />
         </div>
-        {device === 'desktop' && (
-          <Button
-            isDisabled={!fieldsStore.searchValues && !fieldsStore.experience.length}
-            mode="primary"
-            type="submit"
-            variant="filled"
-          >
-            Поиск
-          </Button>
-        )}
+        <Button
+          className={classes.searchButton}
+          isDisabled={!fieldsStore.searchValues && !fieldsStore.experience.length}
+          mode="primary"
+          type="submit"
+          variant="filled"
+        >
+          Поиск
+        </Button>
       </form>
       <div className={classes.tabs}>
         <Tabs />
