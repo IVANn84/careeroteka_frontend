@@ -64,7 +64,7 @@ export default self => ({
         ? JSON.parse(localStorageVacancies)
         : [];
 
-      const formedResults = data.results.map(vacancy => ({
+      const formedResults = data.results.vacancies.map(vacancy => ({
         ...vacancy,
         isRead: visitedVacancyIds.includes(vacancy.id),
       }));
@@ -74,7 +74,6 @@ export default self => ({
         : formedResults);
       self.setNextPage(data.next);
     }
-
     if (isFetchNextPage) {
       self.setIsLoadingNext(false);
     } else {

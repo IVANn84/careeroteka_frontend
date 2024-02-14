@@ -60,6 +60,7 @@ const style = ({ font, background }) => ({
     background: font.color.alternative,
   },
   info: {
+    minHeight: 26,
     display: 'flex',
     flexWrap: 'wrap',
     columnGap: '12px',

@@ -12,9 +12,9 @@ const SalaryModel = types.model('Salary', {
 
 export const VacancyModel = types.model('Vacancy', {
   id: types.number,
-  company: types.string,
-  name: types.string,
-  city: types.string,
+  company: types.maybeNull(types.string),
+  name: types.maybeNull(types.string),
+  city: types.maybeNull(types.string),
   salary: types.maybeNull(types.union(SalaryModel, types.number)),
   isRead: types.maybeNull(types.boolean),
 });
