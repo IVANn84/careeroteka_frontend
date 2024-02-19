@@ -1,0 +1,46 @@
+import withStyle from 'react-jss';
+import { observer } from 'mobx-react-lite';
+
+import RightHeaderNavigation from './RightHeaderNavigation.jsx';
+
+const style = {
+  container: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: 48,
+
+    '& > *': {
+      position: 'relative',
+      cursor: 'pointer',
+
+      '&:not(:first-child)': {
+        marginLeft: 25,
+      },
+
+      '&::after': {
+        content: '""',
+        position: 'absolute',
+        opacity: 0,
+        left: 1,
+        right: 1,
+        bottom: -2,
+        height: 1,
+        width: '80%',
+        margin: 'auto',
+        background: '#000',
+        transition: 'opacity .2s',
+      },
+
+      '&:hover::after, &:focus-visible::after': {
+        opacity: 1,
+      },
+
+      '&:active::after': {
+        opacity: 1,
+        width: '100%',
+      },
+    },
+  },
+};
+
+export default withStyle(style)(observer(RightHeaderNavigation));

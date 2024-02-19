@@ -47,6 +47,14 @@ export default function DefaultLayout({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAuth, currentUser, location]);
 
+  if (location.pathname === '/support') {
+    return (
+      typeof children === 'function'
+        ? children({ isAuth, currentUser })
+        : children
+    );
+  }
+
   return (
     <div className={classes.container}>
       <Header />
