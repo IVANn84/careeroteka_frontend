@@ -68,7 +68,10 @@ export default self => ({
     } else {
       self.maxSalary = value;
     }
-    // getParent(self).setIsFiltersChanged(true);
+  },
+
+  resetMaxSalary() {
+    self.maxSalary = null;
   },
 
   setExperience(value) {
