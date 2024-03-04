@@ -2,7 +2,11 @@ export const colorNegative = '#DB0000';
 export const colorAlternative = '#367CF3';
 
 window.theme = {
-  title: 'careeroteka',
+  title: {
+    name: 'careeroteka',
+    link: '/',
+  },
+
   companyName: 'ООО «Careeroteka»',
 
   layout: {

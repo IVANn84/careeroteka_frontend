@@ -2,7 +2,11 @@ export const colorNegative = '#DB0000';
 export const colorAlternative = '#EC6242';
 
 window.theme = {
-  title: 'karpov courses',
+  title: {
+    name: 'karpov courses',
+    link: '/vacancies',
+  },
+
   companyName: 'ООО «karpov courses»',
 
   layout: {
