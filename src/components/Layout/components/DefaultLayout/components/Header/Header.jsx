@@ -6,6 +6,8 @@ import { useStoreLayoutComponent } from 'Component/Layout/stores';
 import RightHeaderNavigation from './components/RightHeaderNavigation';
 import LeftHeaderNavigation from './components/LeftHeaderNavigation';
 
+const isCareeroteka = window.theme.title.name === 'careeroteka';
+
 export default function Header({
   classes,
 }) {
@@ -19,13 +21,13 @@ export default function Header({
         <NavLink
           className={classes.title}
           exact
-          to="/"
+          to={window.theme.title.link}
         >
-          {window.theme.title}
+          {window.theme.title.name}
         </NavLink>
-        <LeftHeaderNavigation />
+        {isCareeroteka && <LeftHeaderNavigation />}
       </div>
-      {!isLoading && (
+      {!isLoading && isCareeroteka && (
         <RightHeaderNavigation />
       )}
     </div>

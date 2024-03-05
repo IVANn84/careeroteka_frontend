@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import accounting from 'accounting-big';
 
 import { useStoreVacanciesPage } from 'Page/Vacancies/stores';
 import { useDevice } from 'Hook/useDevice';
+import { useDebouncedValue } from 'Hook/useDebouncedValue';
 import Typography from 'Component/Typography';
 import Input from 'Component/Input';
 import Divider from 'Component/Divider';
@@ -12,6 +13,11 @@ import SalaryChart from './components/SalaryChart';
 export default function Salary({
   classes,
 }) {
+  const [maxSalary, setMaxSalary] = useState();
+  const debouncedValue = useDebouncedValue(maxSalary, 1500);
+
+  const device = useDevice();
+
   const {
     filtersModalStore: {
       fieldsStore,
@@ -20,13 +26,23 @@ export default function Salary({
       },
     },
   } = useStoreVacanciesPage();
-  const device = useDevice();
 
   const formatMoney = value => accounting.formatMoney(value, {
     symbol: '',
     precision: 0,
     thousand: ' ',
   });
+
+  useEffect(() => {
+    if (debouncedValue) {
+      fieldsStore.setMaxSalary(debouncedValue);
+    }
+    setMaxSalary(fieldsStore.maxSalary);
+  }, [debouncedValue, fieldsStore]);
+
+  useEffect(() => {
+    setMaxSalary(fieldsStore.maxSalary);
+  }, [fieldsStore.maxSalary]);
 
   return (
     <>
@@ -73,11 +89,11 @@ export default function Salary({
         />
         <Input
           isPlaceholderAtTop
-          onChange={fieldsStore.setMaxSalary}
+          onChange={setMaxSalary}
           placeholder="Максимальная з/п, ₽"
           precision={0}
           type="money"
-          value={fieldsStore.maxSalary}
+          value={maxSalary}
         />
       </div>
       {device === 'desktop' && <Divider />}

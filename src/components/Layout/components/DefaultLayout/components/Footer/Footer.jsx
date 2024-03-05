@@ -14,7 +14,7 @@ export default function Footer({
       <div className={classes.footer}>
         <div className={classes.footerLogo}>
           <span className={classes.footerTitle}>
-            {window.theme.title}
+            {window.theme.title.name}
           </span>
           <div className={classes.footerLinksDesktop}>
             <ExternalLink to="https://vk.com">
