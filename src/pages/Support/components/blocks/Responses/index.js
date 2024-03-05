@@ -6,6 +6,7 @@ const style = ({ font }) => ({
   container: {
     maxWidth: 948,
     margin: [0, 'auto'],
+    marginBottom: 78,
     textAlign: 'center',
   },
   highlight: {
