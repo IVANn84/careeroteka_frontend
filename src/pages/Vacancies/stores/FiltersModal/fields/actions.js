@@ -36,6 +36,10 @@ export default self => ({
     }
   },
 
+  setIsAbroad(value) {
+    self.isAbroad = value;
+  },
+
   setExcludeValues(value) {
     self.excludeValues = value;
     getParent(self).setIsFiltersChanged(true);

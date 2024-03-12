@@ -7,6 +7,7 @@ export const FiltersModalFieldsStoreModel = types
     // type: types.maybeNull(types.string),
     type: types.optional(types.string, 'vacancy'),
     searchValues: types.maybeNull(types.string),
+    isAbroad: types.maybeNull(types.boolean),
     searchBy: types.optional(types.array(types.string), []),
     excludeValues: types.maybeNull(types.string),
     excludeBy: types.optional(types.array(types.string), []),

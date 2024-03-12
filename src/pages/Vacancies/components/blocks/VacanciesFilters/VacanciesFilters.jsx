@@ -32,11 +32,13 @@ const grades = [
 
 const source = [
   {
-    id: 'Россия',
+    id: 1,
+    isAbroad: false,
     name: 'Россия',
   },
   {
-    id: 'Зарубеж',
+    id: 2,
+    isAbroad: true,
     name: 'Зарубеж',
   },
 ];
@@ -101,20 +103,24 @@ export default function VacanciesFilters({
             selectedValue={grades.filter(({ id }) => fieldsStore.experience.includes(id)).map(({ name }) => name).join(', ')}
           />
           <Dropdown
-            // checkIsSelected={({ id }) => fieldsStore.experience.includes(id)}
+            checkIsSelected={({ isAbroad }) => fieldsStore.isAbroad === isAbroad}
             className={classes.gradesDropdown}
             isClearable
             isDisabled={vacanciesStore.isLoading}
             mode="light"
-            // onSelect={onFilterChanged(value => fieldsStore.setSource(value?.id))}
+            onSelect={onFilterChanged(value => fieldsStore.setIsAbroad(value?.isAbroad))}
             options={source}
             placeholder="Где искать"
-            selectedValue={source.filter(({ id }) => fieldsStore.experience.includes(id)).map(({ name }) => name).join(', ')}
+            selectedValue={source.find(({ isAbroad }) => fieldsStore.isAbroad === isAbroad)?.name}
           />
         </div>
         <Button
           className={classes.searchButton}
-          isDisabled={!fieldsStore.searchValues && !fieldsStore.experience.length}
+          isDisabled={
+            !fieldsStore.searchValues
+            && !fieldsStore.experience.length
+            && fieldsStore.isAbroad === null
+          }
           mode="primary"
           type="submit"
           variant="filled"
