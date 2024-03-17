@@ -1,11 +1,12 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const RobotstxtPlugin = require('robotstxt-webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 
 const path = require('path');
 const fs = require("fs");
+const pkg = require("../package.json");
+const webpack = require("webpack");
 
 const themesEntry = fs.readdirSync(path.join(__dirname, '..', 'src', 'themes')).reduce((acc, themePath) => {
   const themeName = themePath.split('.')[0];
@@ -13,90 +14,42 @@ const themesEntry = fs.readdirSync(path.join(__dirname, '..', 'src', 'themes')).
     ? 'theme'
     : `theme-${themeName}`;
 
-  acc[themeFileName] = './themes/' + themePath;
+  acc[themeFileName] = path.join(__dirname, '..', 'src', 'themes', themePath);
   return acc;
 }, {});
 
 module.exports = ({
-  context: path.join(__dirname, '..', 'src'),
   entry: {
     ...themesEntry,
-    index: './index.js',
-    vendor: [
-      'accounting-big',
-      'big.js',
-      'axios',
-      'axios-case-converter',
-      'clone',
-      'jss',
-      'jss-plugin-default-unit',
-      'jss-plugin-vendor-prefixer',
-      'moment',
-      'query-string',
-      'react',
-      'react-dom',
-      'react-jss',
-      'react-router',
-      'react-router-dom',
-      'react-infinite-scroll-component',
-      'react-sticky-el',
-      'react-chartjs-2',
-      'react-content-loader',
-      'chart.js',
-      'mobx',
-      'mobx-react-lite',
-      'mobx-state-tree',
-      'mime-types',
-      'prop-types',
-    ],
+    index: path.join(__dirname, '..', 'src', 'index.tsx'),
+    vendor: Object.keys(pkg.dependencies),
   },
   output: {
     path: path.join(__dirname, '..', 'build'),
     filename: '[name].js?v=[hash]',
+    clean: true,
   },
   resolve: {
     alias: {
       'Util': path.join(__dirname, '..', 'src', 'utils'),
       'Page': path.join(__dirname, '..', 'src', 'pages'),
       'Component': path.join(__dirname, '..', 'src', 'components'),
+      'Type': path.join(__dirname, '..', 'src', 'types'),
       'Api': path.join(__dirname, '..', 'src', 'api', 'methods'),
       'ApiDir': path.join(__dirname, '..', 'src', 'api'),
       'Mock': path.join(__dirname, '..', 'src', 'api', 'mock'),
       'Image': path.join(__dirname, '..', 'src', 'images'),
       'Hook': path.join(__dirname, '..', 'src', 'hooks'),
       'Hoc': path.join(__dirname, '..', 'src', 'hoc'),
-      'Theme': path.join(__dirname, '..', 'src', 'themes'),
     },
     modules: ['node_modules'],
+    extensions: ['.jsx', '.js', '.tsx', '.ts'],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: '../public/index.html',
+      favicon: path.join(__dirname, '..', 'public', 'favicon.ico'),
+      template: path.join(__dirname, '..', 'public', 'index.html'),
       chunks: ['vendor', 'index', 'theme'],
-    }),
-    new FaviconsWebpackPlugin({
-      logo: '../public/favicon.png',
-      mode: 'webapp',
-      devMode: 'light',
-      favicons: {
-        developerURL: null,
-        icons: {
-          android: true,
-          appleIcon: true,
-          appleStartup: true,
-          favicons: true,
-          windows: false,
-          yandex: false,
-        },
-      },
-      shortcuts: [
-        {
-          name: 'Careeroteka',
-          description: 'Энциклопедия о карьере с данными от реальных специалистов и экспертов',
-          url: '/',
-          icon: './images/main-header.png',
-        },
-      ],
     }),
     new RobotstxtPlugin({
       policy: [{
@@ -108,17 +61,13 @@ module.exports = ({
     new CaseSensitivePathsPlugin(),
   ],
   optimization: {
-    minimizer: [new TerserPlugin({
-      chunkFilter: chunk => chunk.name === 'vendor',
-      cache: true,
-      parallel: 2,
-    })],
+    minimizer: [new TerserPlugin()],
     splitChunks: {
       chunks(chunk) {
         return chunk.name !== 'index';
       },
     },
-    noEmitOnErrors: true,
+    emitOnErrors: false,
   },
   module: {
     rules: [
@@ -131,25 +80,43 @@ module.exports = ({
         use: 'html-loader',
       },
       {
-        test: /\.(jsx?)$/,
-        exclude: /(node_modules)/,
-        loader: 'babel-loader',
-        options: {
-          babelrc: false,
-          presets: [
-            '@babel/preset-react',
-            '@babel/preset-env',
-          ],
-          plugins: [
-            ['@babel/plugin-proposal-decorators', { decoratorsBeforeExport: true }],
-          ],
-        },
+        test: /\.[tj]sx?$/,
+        exclude: /node_modules|\.d\.ts$/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              cacheDirectory: true,
+              babelrc: false,
+              presets: [
+                '@babel/preset-react',
+                '@babel/preset-env',
+              ],
+              plugins: [
+                ['@babel/plugin-proposal-decorators', {decoratorsBeforeExport: true}],
+              ],
+            },
+          },
+        ],
+      },
+      {
+        test: /\.tsx?$/,
+        exclude: /node_modules|\.d\.ts$/,
+        use: [
+          {
+            loader: 'ts-loader',
+          },
+        ],
+      },
+      {
+        test: /\.d\.ts$/,
+        loader: 'ignore-loader'
       },
       {
         test: /.*\.(gif|png|jpe?g)$/i,
-        loaders: [
-          'file-loader?hash=sha512&digest=hex&name=[hash].[ext]',
-        ],
+        use: {
+          loader: 'file-loader?hash=sha512&digest=hex&name=[hash].[ext]',
+        },
       },
       {
         test: /\.(eot|svg|ttf|woff|woff2)$/,
