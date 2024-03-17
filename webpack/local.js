@@ -1,5 +1,5 @@
 const path = require('path');
-const merge = require('webpack-merge');
+const { merge } = require('webpack-merge');
 const base = require('./base');
 const argv = require('minimist')(process.argv.slice(2));
 
@@ -9,7 +9,6 @@ const port = argv.port || 3000;
 module.exports = merge(base, {
   devtool: 'eval-source-map',
   devServer: {
-    clientLogLevel: 'warning',
     historyApiFallback: {
       rewrites: [
         {
@@ -18,15 +17,20 @@ module.exports = merge(base, {
         },
       ],
     },
-    contentBase: false,
+    devMiddleware: {
+      publicPath: '/',
+    },
+    hot: true,
+    static: false,
     compress: true,
     host: 'localhost',
-    port: port,
-    overlay: {
-      warnings: false,
-      errors: true,
+    port,
+    client: {
+      overlay: {
+        warnings: false,
+        errors: true,
+      },
     },
-    publicPath: '/',
     proxy: {
       '/api': {
         target: backend,
@@ -43,9 +47,6 @@ module.exports = merge(base, {
         secure: false,
         changeOrigin: true,
       },
-    },
-    watchOptions: {
-      poll: false,
     },
     headers: {
       'Access-Control-Allow-Origin': '*',

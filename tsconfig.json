@@ -1,0 +1,50 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/development",
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "baseUrl": "./",
+    "paths": {
+      "Util/*": ["./src/utils/*"],
+      "Page/*": ["./src/pages/*"],
+      "Component/*": ["./src/components/*"],
+      "Image/*": ["./src/images/*"],
+      "ApiDir/*": ["./src/api/*"],
+      "Type/*": ["./src/types/*"],
+      "Api/*": ["./src/api/methods/*"],
+      "Mock/*": ["./src/api/mock/*"],
+      "Hook/*": ["./src/hooks/*"],
+      "Hoc/*": ["./src/hoc/*"]
+    },
+    "typeRoots": [
+      "node_modules/@types",
+      "src/types"
+    ],
+    "sourceMap": true,
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": false,
+    "jsx": "react-jsx",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "downlevelIteration": true,
+
+    // Изменить после покрытия всего кода TS
+    "strict": false,
+    "strictNullChecks": false
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist", "build"],
+}

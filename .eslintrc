@@ -6,30 +6,18 @@
   "extends": [
     "airbnb",
     "airbnb/hooks",
-    "plugin:perfectionist/recommended-natural"
+    "plugin:perfectionist/recommended-natural",
+    "plugin:@typescript-eslint/recommended"
   ],
   "plugins": [
-    "perfectionist"
+    "perfectionist",
+    "@typescript-eslint"
   ],
   "ignorePatterns": [
     "/*",
     "!/src"
   ],
-  "parser": "@babel/eslint-parser",
-  "parserOptions": {
-    "babelOptions": {
-      "parserOpts": {
-        "plugins": ["jsx"]
-      }
-    },
-    "requireConfigFile": false,
-    "ecmaVersion": 2022,
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "experimentalObjectRestSpread": true,
-      "jsx": true
-    }
-  },
+  "parser": "@typescript-eslint/parser",
   "settings": {
     "import/resolver": {
       "webpack": {
@@ -64,6 +52,15 @@
     "perfectionist/sort-object-types": "off",
     "perfectionist/sort-union-types": "off",
     "no-nested-ternary": "off",
+    "react/jsx-filename-extension": [
+      "error",
+      {
+        "extensions": [
+          ".jsx",
+          ".tsx"
+        ]
+      }
+    ],
     "perfectionist/sort-imports": [
       "error",
       {
@@ -87,6 +84,7 @@
         ],
         "newlines-between": "always",
         "internal-pattern": [
+          "Type/**",
           "Theme/**",
           "Hoc/**",
           "Api/**",
@@ -98,6 +96,11 @@
           "Component/**"
         ]
       }
-    ]
+    ],
+    "no-void": "off",
+
+    // Изменить после покрытия всего кода TS
+    "react/require-default-props": "off",
+    "@typescript-eslint/no-explicit-any": ["warn"]
   }
 }
