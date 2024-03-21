@@ -25,15 +25,13 @@ export default function Filters({
       fieldsStore,
       averageSalaryStore,
     },
-    vacanciesStore,
   } = useStoreVacanciesPage();
   const device = useDevice();
 
   const onReset = useCallback(() => {
     fieldsStore.reset();
-    vacanciesStore.fetchVacancies();
-    onDecline();
-  }, [fieldsStore, onDecline, vacanciesStore]);
+    salaryStore.fetchVacancyList();
+  }, [fieldsStore, salaryStore]);
 
   useEffect(() => {
     salaryStore.fetchVacancyList();
