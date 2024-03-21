@@ -20,6 +20,10 @@
       "Hook/*": ["./src/hooks/*"],
       "Hoc/*": ["./src/hoc/*"]
     },
+    "typeRoots": [
+      "node_modules/@types",
+      "src/types"
+    ],
     "sourceMap": true,
     "allowJs": true,
     "skipLibCheck": true,
@@ -31,7 +35,7 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
+    "noEmit": false,
     "jsx": "react-jsx",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -41,5 +45,6 @@
     "strict": false,
     "strictNullChecks": false
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist", "build"],
 }

@@ -1,42 +1,45 @@
-import {
-  applySnapshot, cast, getSnapshot, types,
-} from 'mobx-state-tree';
+import { cast, getSnapshot, types } from 'mobx-state-tree';
 
 import { filtersModalVacanciesStoreVacanciesPage } from 'Page/Vacancies/stores/FiltersModal/vacancies';
 
-let initialState = {};
+const FiltersModal = types.model('Filters', {
+  // type: types.maybeNull(types.string),
+  type: types.optional(types.string, 'vacancy'),
+  searchValues: types.maybeNull(types.string),
+  isAbroad: types.maybeNull(types.boolean),
+  searchBy: types.optional(types.array(types.string), []),
+  excludeValues: types.maybeNull(types.string),
+  excludeBy: types.optional(types.array(types.string), []),
+  minSalary: types.optional(types.number, 0),
+  maxSalary: types.maybeNull(types.number),
+  experience: types.optional(types.array(types.string), []),
+  workFormat: types.optional(types.array(types.string), []),
+  employmentFormat: types.optional(types.array(types.string), []),
+  contractType: types.optional(types.array(types.string), []),
+  companySize: types.optional(types.array(types.string), []),
+  hasInsurance: types.maybeNull(types.boolean),
+  isAccredited: types.maybeNull(types.boolean),
+  isRelocationRequired: types.maybeNull(types.boolean),
+  source: types.maybeNull(types.string),
+});
 
 export const FiltersModalFieldsStoreModel = types
   .model('Fields', {
     isFiltersChanged: types.optional(types.boolean, false),
-    filters: types.optional(types.model({
-      // type: types.maybeNull(types.string),
-      type: types.optional(types.string, 'vacancy'),
-      searchValues: types.maybeNull(types.string),
-      isAbroad: types.maybeNull(types.boolean),
-      searchBy: types.optional(types.array(types.string), []),
-      excludeValues: types.maybeNull(types.string),
-      excludeBy: types.optional(types.array(types.string), []),
-      minSalary: types.optional(types.number, 0),
-      maxSalary: types.maybeNull(types.number),
-      experience: types.optional(types.array(types.string), []),
-      workFormat: types.optional(types.array(types.string), []),
-      employmentFormat: types.optional(types.array(types.string), []),
-      contractType: types.optional(types.array(types.string), []),
-      companySize: types.optional(types.array(types.string), []),
-      hasInsurance: types.maybeNull(types.boolean),
-      isAccredited: types.maybeNull(types.boolean),
-      isRelocationRequired: types.maybeNull(types.boolean),
-      source: types.maybeNull(types.string),
-    }), {}),
+    filters: types.optional(FiltersModal, {}),
+    savedFilters: types.maybeNull(FiltersModal),
   })
   .actions(self => {
-    function afterCreate() {
-      initialState = getSnapshot(self);
+    function reset() {
+      self.savedFilters = cast(getSnapshot(self.filters));
+      self.filters = cast({});
     }
 
-    function reset() {
-      applySnapshot(self, initialState);
+    function restoreFilters() {
+      if (self.savedFilters) {
+        self.filters = cast(getSnapshot(self.savedFilters));
+        self.savedFilters = cast(null);
+      }
     }
 
     function setIsFiltersChanged(value) {
@@ -194,8 +197,8 @@ export const FiltersModalFieldsStoreModel = types
     }
 
     return {
-      afterCreate,
       reset,
+      restoreFilters,
       resetTabs,
       setTypeVacancy,
       setSearchValues,

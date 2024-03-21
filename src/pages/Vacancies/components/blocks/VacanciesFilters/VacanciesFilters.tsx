@@ -66,6 +66,12 @@ export default function VacanciesFilters({
     closeFiltersModal();
   }, [closeFiltersModal, vacanciesStore]);
 
+  const onDeclineFilters = useCallback(() => {
+    fieldsStore.restoreFilters();
+    void vacanciesStore.fetchVacancies();
+    closeFiltersModal();
+  }, [closeFiltersModal, fieldsStore, vacanciesStore]);
+
   const onFilterChanged = useCallback(fn => value => {
     fn(value);
     // vacanciesStore.fetchVacancies();
@@ -146,7 +152,7 @@ export default function VacanciesFilters({
         <FiltersModal
           isDisplay={isFiltersModalOpen}
           onConfirm={onApplyFilters}
-          onDecline={closeFiltersModal}
+          onDecline={onDeclineFilters}
         />
       </div>
     </div>
