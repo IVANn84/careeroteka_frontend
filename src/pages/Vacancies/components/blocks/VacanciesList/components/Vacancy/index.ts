@@ -34,6 +34,7 @@ const style = ({ font, background }) => ({
     display: '-webkit-box',
     lineClamp: 1,
     boxOrient: 'vertical',
+    paddingRight: 12,
   },
   name: {
     wordBreak: 'break-word',

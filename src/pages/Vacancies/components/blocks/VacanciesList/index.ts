@@ -18,7 +18,7 @@ const style = {
     gridTemplateColumns: 'repeat(auto-fill, 370px)',
     gap: [[24, 30]],
     alignItems: 'start',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
   },
 
   '@media screen and (max-device-width: 576px)': {

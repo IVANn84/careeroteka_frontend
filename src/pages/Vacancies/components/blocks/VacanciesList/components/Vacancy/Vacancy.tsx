@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import React from 'react';
-import accounting from 'accounting-big';
 import { CheckIcon } from '@heroicons/react/24/solid';
 
 import Typography from 'Component/Typography';
@@ -12,21 +11,15 @@ export default function Vacancy({
 
   classes,
 }) {
-  const formatMoney = value => accounting.formatMoney(value, {
-    symbol: '',
-    precision: 0,
-    thousand: ' ',
-  });
-
   let salaryString;
 
   if (salary) {
     if (salary.minValue !== salary.maxValue) {
       salaryString = `${
-        salary.minValue ? `от ${formatMoney(salary.minValue)} ` : ''
-      } ${salary.maxValue ? `до ${formatMoney(salary.maxValue)} ` : ''}`;
+        salary.minValue ? `от ${salary.minValue / 1000}к ` : ''
+      } ${salary.maxValue ? `до ${salary.maxValue / 1000}к ` : ''}`;
     } else {
-      salaryString = `${formatMoney(salary.minValue ?? salary.maxValue)} `;
+      salaryString = `${salary.minValue ? salary.minValue / 1000 : salary.maxValue / 1000}к `;
     }
   }
 
@@ -61,16 +54,14 @@ export default function Vacancy({
         </Typography>
       </abbr>
       <div className={classes.info}>
-        {city && (
-          <Typography
-            className={classes.city}
-            component="p"
-            variant="C1"
-            variantMobile="C1"
-          >
-            {city}
-          </Typography>
-        )}
+        <Typography
+          className={classes.city}
+          component="p"
+          variant="C1"
+          variantMobile="C1"
+        >
+          {city || 'Не определен'}
+        </Typography>
         {salary && (
           <Typography
             className={classes.salary}
