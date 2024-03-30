@@ -1,7 +1,7 @@
 export const colorNegative = '#DB0000';
 export const colorAlternative = '#367CF3';
 
-export const defaultTheme = {
+export const Theme = {
   title: {
     name: 'careeroteka',
     link: '/',
@@ -398,5 +398,3 @@ export const defaultTheme = {
     border: [[1, 'solid', '#A3A4A5']],
   },
 };
-
-window.theme = defaultTheme;

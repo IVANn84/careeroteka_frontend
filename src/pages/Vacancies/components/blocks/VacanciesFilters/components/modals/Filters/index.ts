@@ -1,5 +1,6 @@
 import withStyle from 'react-jss';
 
+import { Theme } from 'Theme/theme';
 import { withIsDisplay } from 'Hoc/withIsDisplay';
 
 import Filters from './Filters';
@@ -22,7 +23,7 @@ const style = ({ customScrollbar }) => ({
     justifyContent: 'space-between',
   },
   button: {
-    color: window.theme.button.tetriary.color,
+    color: Theme.button.tetriary.color,
   },
 
   '@media screen and (max-device-width: 576px)': {

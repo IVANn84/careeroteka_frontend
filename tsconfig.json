@@ -9,6 +9,7 @@
     ],
     "baseUrl": "./",
     "paths": {
+      "Theme/*": ["./src/themes/*"],
       "Util/*": ["./src/utils/*"],
       "Page/*": ["./src/pages/*"],
       "Component/*": ["./src/components/*"],
@@ -18,7 +19,7 @@
       "Api/*": ["./src/api/methods/*"],
       "Mock/*": ["./src/api/mock/*"],
       "Hook/*": ["./src/hooks/*"],
-      "Hoc/*": ["./src/hoc/*"]
+      "Hoc/*": ["./src/hoc/*"],
     },
     "typeRoots": [
       "node_modules/@types",

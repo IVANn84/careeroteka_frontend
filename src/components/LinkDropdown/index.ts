@@ -3,7 +3,7 @@ import { memo } from 'react';
 
 import LinkDropdown from './LinkDropdown';
 
-export const Style = ({ font }: typeof window.theme) => ({
+export const Style = ({ font }) => ({
   link: {
     display: 'inline-block',
     cursor: 'pointer',

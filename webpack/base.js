@@ -2,25 +2,15 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const RobotstxtPlugin = require('robotstxt-webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
+const { CustomResolver } = require('./resolver');
 
 const path = require('path');
 const fs = require("fs");
 const pkg = require("../package.json");
 const webpack = require("webpack");
 
-const themesEntry = fs.readdirSync(path.join(__dirname, '..', 'src', 'themes')).reduce((acc, themePath) => {
-  const themeName = themePath.split('.')[0];
-  const themeFileName = themeName === 'default'
-    ? 'theme'
-    : `theme-${themeName}`;
-
-  acc[themeFileName] = path.join(__dirname, '..', 'src', 'themes', themePath);
-  return acc;
-}, {});
-
-module.exports = ({
+module.exports = (env) => ({
   entry: {
-    ...themesEntry,
     index: path.join(__dirname, '..', 'src', 'index.tsx'),
     vendor: Object.keys(pkg.dependencies),
   },
@@ -31,6 +21,7 @@ module.exports = ({
   },
   resolve: {
     alias: {
+      'Theme': path.join(__dirname, '..', 'src', 'themes'),
       'Util': path.join(__dirname, '..', 'src', 'utils'),
       'Page': path.join(__dirname, '..', 'src', 'pages'),
       'Component': path.join(__dirname, '..', 'src', 'components'),
@@ -41,15 +32,17 @@ module.exports = ({
       'Image': path.join(__dirname, '..', 'src', 'images'),
       'Hook': path.join(__dirname, '..', 'src', 'hooks'),
       'Hoc': path.join(__dirname, '..', 'src', 'hoc'),
+
     },
     modules: ['node_modules'],
     extensions: ['.jsx', '.js', '.tsx', '.ts'],
+    plugins: [CustomResolver(env?.brand)]
   },
   plugins: [
     new HtmlWebpackPlugin({
       favicon: path.join(__dirname, '..', 'public', 'favicon.ico'),
       template: path.join(__dirname, '..', 'public', 'index.html'),
-      chunks: ['vendor', 'index', 'theme'],
+      chunks: ['vendor', 'index'],
     }),
     new RobotstxtPlugin({
       policy: [{

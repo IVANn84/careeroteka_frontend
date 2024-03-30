@@ -9,6 +9,7 @@ const style = ({ font, background }) => ({
   footer: {
     display: 'flex',
     justifyContent: 'space-between',
+    alignItems: 'center',
     background: background.dark,
     boxShadow: [0, 4, 20, 2, 'rgba(0, 0, 0, 0.1)'],
     borderRadius: 32,

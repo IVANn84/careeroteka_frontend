@@ -1,7 +1,7 @@
 export const colorNegative = '#DB0000';
 export const colorAlternative = '#EC6242';
 
-window.theme = {
+export const Theme = {
   title: {
     name: 'karpov courses',
     link: '/vacancies',
