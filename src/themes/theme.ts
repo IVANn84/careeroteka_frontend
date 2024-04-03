@@ -1,14 +1,7 @@
 export const colorNegative = '#DB0000';
-export const colorAlternative = '#EC6242';
+export const colorAlternative = '#367CF3';
 
 export const Theme = {
-  title: {
-    name: 'karpov courses',
-    link: '/vacancies',
-  },
-
-  companyName: 'ООО «karpov courses»',
-
   layout: {
     paddingX: {
       desktop: 135,
@@ -17,11 +10,11 @@ export const Theme = {
   },
 
   background: {
-    primary: '#32353A',
-    dark: '#1E2026',
-    light: '#1E2026',
-    secondary: '#1E2026',
-    vacancyCity: '#32353A',
+    primary: '#FFF',
+    dark: '#1A1C1F',
+    light: '#FFF',
+    secondary: '#F2F2F3',
+    vacancyCity: '#F3F5F6',
   },
 
   iconButton: {
@@ -47,23 +40,23 @@ export const Theme = {
         background: {
           default: colorAlternative,
           hovered: 'transparent',
-          focused: colorAlternative,
+          focused: '#226AE6',
         },
       },
       dark: {
         border: {
-          default: colorAlternative,
-          hovered: colorAlternative,
+          default: '#1A1C1F',
+          hovered: '#2F74EA',
         },
         color: {
           default: '#FFF',
-          hovered: colorAlternative,
+          hovered: '#FFF',
           focused: '#FFF',
         },
         background: {
-          default: colorAlternative,
-          hovered: 'transparent',
-          focused: colorAlternative,
+          default: '#1A1C1F',
+          hovered: '#2F74EA',
+          focused: '#226AE5',
         },
       },
     },
@@ -71,7 +64,7 @@ export const Theme = {
       light: {
         border: {
           default: '#FFF',
-          hovered: '#000',
+          hovered: '#1A1C1F',
         },
         color: {
           default: '#FFF',
@@ -80,7 +73,7 @@ export const Theme = {
         },
         background: {
           default: 'transparent',
-          hovered: '#000',
+          hovered: '#1A1C1F',
           focused: '#191A1B',
           disabled: '#000',
         },
@@ -97,23 +90,23 @@ export const Theme = {
         },
         background: {
           default: 'transparent',
-          hovered: colorAlternative,
-          focused: colorAlternative,
+          hovered: '#2F74EA',
+          focused: '#226AE5',
         },
       },
       dark: {
         border: {
-          default: '#000',
-          hovered: '#000',
+          default: '#1A1C1F',
+          hovered: '#1A1C1F',
         },
         color: {
-          default: '#000',
+          default: '#1A1C1F',
           hovered: '#FFF',
           focused: '#FFF',
         },
         background: {
           default: 'transparent',
-          hovered: '#000',
+          hovered: '#1A1C1F',
           focused: '#15181B',
         },
       },
@@ -122,7 +115,7 @@ export const Theme = {
           default: 'transparent',
         },
         color: {
-          default: '#FFF',
+          default: '#1A1C1F',
         },
         background: {
           default: 'transparent',
@@ -130,15 +123,15 @@ export const Theme = {
       },
     },
     tetriary: {
-      color: '#EC6242',
+      color: '#D60C31',
     },
   },
 
   font: {
     color: {
       light: '#FFF',
-      regular: '#FFF',
-      secondary: '#FFF',
+      regular: '#1A1C1F',
+      secondary: 'rgba(0, 0, 0, .6)',
       alternative: colorAlternative,
       negative: colorNegative,
     },
@@ -166,21 +159,21 @@ export const Theme = {
         yAxis: 17,
       },
     },
-    background: '#32353A',
+    background: '#FFF',
     boxShadow: [[0, 8, 20, 2, 'rgba(0, 0, 0, .1)']],
     border: {
       default: [[1, 'solid', '#A3A4A5']],
-      filled: [[1, 'solid', '#A3A4A5']],
+      filled: [[1, 'solid', '#767779']],
       negative: [[1, 'solid', colorNegative]],
     },
     icon: {
       color: {
-        default: '#767779',
+        default: '#A3A4A5',
         negative: colorNegative,
       },
     },
     placeholder: {
-      default: '#767779',
+      default: 'rgba(26, 28, 31, .6)',
       negative: `${colorNegative}99`,
     },
   },
@@ -199,18 +192,18 @@ export const Theme = {
     },
     icon: {
       color: {
-        light: '#767779',
+        light: '#A3A4A5',
         primary: '#FFF',
         negative: colorNegative,
       },
     },
     color: {
-      light: '#767779',
+      light: '#1A1C1F',
       primary: '#FFF',
     },
     placeholder: {
       light: {
-        default: '#767779',
+        default: 'rgba(26, 28, 31, .6)',
         negative: `${colorNegative}99`,
       },
       primary: {
@@ -227,7 +220,7 @@ export const Theme = {
     border: {
       light: {
         default: [[1, 'solid', '#A3A4A5']],
-        filled: [[1, 'solid', '#A3A4A5']],
+        filled: [[1, 'solid', '#767779']],
         negative: [[1, 'solid', colorNegative]],
       },
       primary: {
@@ -242,7 +235,7 @@ export const Theme = {
       reversed: [[0, -20, 20, 2, 'rgba(0, 0, 0, .1)']],
     },
     background: {
-      light: '#32353A',
+      light: '#FFF',
       primary: colorAlternative,
     },
     optionBackground: {
@@ -280,8 +273,8 @@ export const Theme = {
       mobile: 20,
     },
     background: {
-      light: '#1E2026',
-      dark: '#1E2026',
+      light: '#FFF',
+      dark: '#F2F2F3',
     },
     boxShadow: [[0, 4, 20, 2, 'rgba(0, 0, 0, .1)']],
   },
@@ -336,7 +329,7 @@ export const Theme = {
   },
 
   divider: {
-    color: 'rgba(255, 255, 255, 0.08)',
+    color: 'rgba(38, 38, 38, 0.08)',
     height: 1,
   },
 
@@ -377,19 +370,19 @@ export const Theme = {
   salaryChart: {
     bar: {
       borderRadius: 5,
-      backgroundColor: colorAlternative,
-      backgroundColorSecondary: 'rgba(236, 98, 66, .4)',
-      backgroundColorHover: colorAlternative,
+      backgroundColor: '#86B0F8',
+      backgroundColorSecondary: '#D7E5FD',
+      backgroundColorHover: '#6F9AF6',
     },
     datalabels: {
-      backgroundColor: '#1E2026',
-      color: '#FFF',
+      backgroundColor: '#FFF',
+      color: '#1A1C1F',
       borderRadius: 4,
       boxShadow: '0px 8px 20px 2px #0000001A',
     },
     slider: {
       thumb: {
-        backgroundColor: colorAlternative,
+        backgroundColor: '#367CF3',
       },
     },
   },
@@ -398,3 +391,5 @@ export const Theme = {
     border: [[1, 'solid', '#A3A4A5']],
   },
 };
+
+export type ThemeType = typeof Theme;

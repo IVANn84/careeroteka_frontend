@@ -1,4 +1,7 @@
 {
+  "ts-node": {
+    "compilerOptions": { "module": "commonjs" }
+  },
   "compilerOptions": {
     "outDir": "./dist/development",
     "target": "es5",
@@ -21,10 +24,6 @@
       "Hook/*": ["./src/hooks/*"],
       "Hoc/*": ["./src/hoc/*"],
     },
-    "typeRoots": [
-      "node_modules/@types",
-      "src/types"
-    ],
     "sourceMap": true,
     "allowJs": true,
     "skipLibCheck": true,
@@ -47,5 +46,4 @@
     "strictNullChecks": false
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist", "build"],
 }

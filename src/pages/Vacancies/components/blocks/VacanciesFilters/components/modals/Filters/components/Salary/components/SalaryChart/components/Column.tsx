@@ -1,9 +1,10 @@
 import React from 'react';
 
 import { getNoun } from 'Util/getNoun';
-import { Theme } from 'Theme/theme';
 import { STEP_BAR } from 'Page/Vacancies/stores/FiltersModal/vacancies';
 import Typography from 'Component/Typography';
+
+import { Theme } from '../../../../../../../../../../../../../themes/theme';
 
 const { salaryChart } = Theme;
 

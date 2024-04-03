@@ -1,11 +1,10 @@
 import withStyle from 'react-jss';
 
-import { Theme } from 'Theme/theme';
 import { withIsDisplay } from 'Hoc/withIsDisplay';
 
 import Filters from './Filters';
 
-const style = ({ customScrollbar }) => ({
+const style = ({ customScrollbar, button }) => ({
   container: {
     display: 'flex',
     flexDirection: 'column',
@@ -23,7 +22,7 @@ const style = ({ customScrollbar }) => ({
     justifyContent: 'space-between',
   },
   button: {
-    color: Theme.button.tetriary.color,
+    color: button.tetriary.color,
   },
 
   '@media screen and (max-device-width: 576px)': {

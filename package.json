@@ -11,10 +11,10 @@
   "scripts": {
     "preinstall": "npx only-allow yarn",
     "postinstall": "husky install",
-    "start": "webpack-dev-server --progress --mode=development --config webpack/local.js",
-    "build": "webpack --mode=production --config webpack/production.js",
-    "karpov-dev": "webpack-dev-server --progress --mode=development --config webpack/local.js --env brand=karpov",
-    "karpov-prod": "webpack --mode=production --config webpack/production.js --env brand=karpov",
+    "start": "webpack serve --mode=development",
+    "build": "webpack --mode=production",
+    "start:karpov": "webpack serve --mode=development --env brand=karpov",
+    "build:karpov": "webpack --mode=production --env brand=karpov",
     "typecheck": "tsc --noEmit",
     "linter": "eslint --cache \"src/**/*.{js,jsx,ts,tsx}\"",
     "linter:fix": "eslint --cache --fix \"src/**/*.{js,jsx,ts,tsx}\""
@@ -47,25 +47,14 @@
     "react-sticky-el": "^2.0.9"
   },
   "devDependencies": {
-    "@babel/core": "^7.24.0",
-    "@babel/eslint-parser": "^7.23.10",
-    "@babel/plugin-proposal-decorators": "^7.24.0",
-    "@babel/preset-env": "^7.24.0",
-    "@babel/preset-react": "^7.23.3",
-    "@babel/register": "^7.23.7",
+    "@swc/core": "1.3.75",
     "@types/mime-types": "^2.1.4",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
     "@types/react-router-dom": "^5.3.3",
     "@types/webpack-merge": "^5.0.0",
-    "autoprefixer": "^10.4.18",
-    "babel-loader": "^9.1.3",
-    "babel-plugin-module-resolver": "^5.0.0",
-    "babel-plugin-transform-require-ignore": "^0.1.1",
-    "babel-plugin-webpack-alias": "^2.1.2",
-    "case-sensitive-paths-webpack-plugin": "^2.4.0",
-    "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.5.1",
+    "css-minimizer-webpack-plugin": "^6.0.0",
     "eslint": "^8.29.0",
     "eslint-config-airbnb": "19.0.4",
     "eslint-import-resolver-webpack": "^0.13.8",
@@ -74,64 +63,28 @@
     "eslint-plugin-perfectionist": "^2.7.0",
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "file-loader": "^5.0.2",
+    "fork-ts-checker-webpack-plugin": "^9.0.2",
     "html-loader": "^3.0.1",
     "html-webpack-plugin": "^5.5.0",
     "husky": "^9.0.11",
-    "ignore-loader": "^0.1.2",
     "lint-staged": "^15.2.2",
+    "mini-css-extract-plugin": "^2.8.1",
     "minimist": "^1.2.8",
     "postcss": "^8.4.36",
-    "postcss-import": "^16.0.1",
     "postcss-loader": "^8.1.1",
+    "postcss-preset-env": "^9.5.2",
     "robotstxt-webpack-plugin": "^8.0.0",
     "style-loader": "^3.3.4",
+    "swc-loader": "^0.2.6",
     "terser-webpack-plugin": "^5.3.10",
     "ts-loader": "^9.5.1",
+    "ts-node": "^10.9.2",
+    "tsconfig-to-swcconfig": "^2.7.0",
     "typescript": "^5.4.2",
     "typescript-eslint": "^7.2.0",
     "webpack": "^5.65.0",
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.6.0",
     "webpack-merge": "^5.10.0"
-  },
-  "babel": {
-    "presets": [
-      "@babel/preset-env",
-      "@babel/preset-react"
-    ],
-    "plugins": [
-      [
-        "@babel/plugin-proposal-decorators",
-        {
-          "decoratorsBeforeExport": true
-        }
-      ],
-      [
-        "babel-plugin-transform-require-ignore",
-        {
-          "extensions": [
-            ".css"
-          ]
-        }
-      ],
-      [
-        "module-resolver",
-        {
-          "alias": {
-            "^Util(.*)": "./src/utils\\1",
-            "^Page(.*)": "./src/pages\\1",
-            "^Component(.*)": "./src/components\\1",
-            "^Type(.*)": "./src/types\\1",
-            "^Image": "./src/images\\1",
-            "^Api": "./src/api/methods\\1",
-            "^ApiDir": "./src/api\\1",
-            "^Mock": "./src/api/mock\\1",
-            "^Hook": "./src/hooks\\1",
-            "^Hoc": "./src/hoc\\1"
-          }
-        }
-      ]
-    ]
   }
 }
