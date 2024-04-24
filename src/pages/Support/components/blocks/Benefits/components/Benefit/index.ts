@@ -1,7 +1,6 @@
 import withStyle from 'react-jss';
-import PropTypes from 'prop-types';
 
-import Benefit from './Benefit.jsx';
+import Benefit from './Benefit';
 
 const style = {
   container: {
@@ -25,13 +24,4 @@ const style = {
   },
 };
 
-const Component = withStyle(style)(Benefit);
-
-Component.propTypes = {
-  title: PropTypes.string,
-  color: PropTypes.string,
-  image: PropTypes.string,
-  description: PropTypes.string,
-};
-
-export default Component;
+export default withStyle(style)(Benefit);

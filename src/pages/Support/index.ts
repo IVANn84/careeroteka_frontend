@@ -1,6 +1,6 @@
 import withStyle from 'react-jss';
 
-import Support from './Support.jsx';
+import Support from './Support';
 
 const style = {
   container: {

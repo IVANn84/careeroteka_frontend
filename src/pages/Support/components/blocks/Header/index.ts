@@ -1,7 +1,7 @@
 import withStyle from 'react-jss';
 import { observer } from 'mobx-react-lite';
 
-import Header from './Header.jsx';
+import Header from './Header';
 
 const style = ({ font }) => ({
   container: {

@@ -1,6 +1,6 @@
 import withStyle from 'react-jss';
 
-import Benefits from './Benefits.jsx';
+import Benefits from './Benefits';
 
 const style = ({ font }) => ({
   container: {

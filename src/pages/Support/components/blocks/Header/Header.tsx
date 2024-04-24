@@ -12,9 +12,9 @@ export default function Header({
         <NavLink
           className={classes.title}
           exact
-          to={window.theme.title.link}
+          to="/"
         >
-          {window.theme.title.name}
+          careeroteka
         </NavLink>
       </div>
       <RightHeaderNavigation />

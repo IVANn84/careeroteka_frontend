@@ -1,6 +1,6 @@
 import withStyle from 'react-jss';
 
-import Title from './Title.jsx';
+import Title from './Title';
 
 const style = ({ font }) => ({
   header: {

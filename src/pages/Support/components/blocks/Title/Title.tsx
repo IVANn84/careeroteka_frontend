@@ -18,7 +18,6 @@ export default function Title({ classes }) {
       </Typography>
       <Button
         variant="filled"
-        variantMobile="outlined"
       >
         Оставить заявку
       </Button>

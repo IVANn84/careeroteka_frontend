@@ -1,6 +1,6 @@
 import withStyle from 'react-jss';
 
-import Responses from './Responses.jsx';
+import Responses from './Responses';
 
 const style = ({ font }) => ({
   container: {
