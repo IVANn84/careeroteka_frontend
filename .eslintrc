@@ -6,34 +6,53 @@
   "extends": [
     "airbnb",
     "airbnb/hooks",
-    "plugin:perfectionist/recommended-natural"
+    "plugin:perfectionist/recommended-natural",
+    "plugin:@typescript-eslint/recommended"
   ],
   "plugins": [
-    "perfectionist"
+    "perfectionist",
+    "@typescript-eslint"
   ],
   "ignorePatterns": [
-    "/*",
-    "!/src"
+    "/**",
+    "!/src",
+    "!/webpack",
+    "!/webpack.config.ts",
+    "!/webpack.parts.ts"
   ],
-  "parser": "@babel/eslint-parser",
-  "parserOptions": {
-    "babelOptions": {
-      "parserOpts": {
-        "plugins": ["jsx"]
+  "overrides": [
+    {
+      "files": [
+        "./webpack/**",
+        "./webpack.config.ts",
+        "./webpack.parts.ts"
+      ],
+      "rules": {
+        "import/no-extraneous-dependencies": "off"
       }
     },
-    "requireConfigFile": false,
-    "ecmaVersion": 2022,
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "experimentalObjectRestSpread": true,
-      "jsx": true
+    {
+      "files": "./src/**",
+      "rules": {
+        "no-restricted-imports": [
+          "error",
+          {
+            "patterns": [
+              {
+                "group": ["**/availableWhitelabel*"],
+                "message": "Нельзя затягивать доступные вайтлейблы в код"
+              }
+            ]
+          }
+        ]
+      }
     }
-  },
+  ],
+  "parser": "@typescript-eslint/parser",
   "settings": {
     "import/resolver": {
       "webpack": {
-        "config": "webpack/base.js"
+        "config": "webpack.config.ts"
       }
     }
   },
@@ -64,6 +83,14 @@
     "perfectionist/sort-object-types": "off",
     "perfectionist/sort-union-types": "off",
     "no-nested-ternary": "off",
+    "react/jsx-filename-extension": [
+      "error",
+      {
+        "extensions": [
+          ".tsx"
+        ]
+      }
+    ],
     "perfectionist/sort-imports": [
       "error",
       {
@@ -72,21 +99,27 @@
         "groups": [
           "type",
           [
-            "builtin", "external"
+            "builtin",
+            "external"
           ],
           "internal-type",
           "internal",
           [
-            "parent-type", "sibling-type", "index-type"
+            "parent-type",
+            "sibling-type",
+            "index-type"
           ],
           [
-            "parent", "sibling", "index"
+            "parent",
+            "sibling",
+            "index"
           ],
           "object",
           "unknown"
         ],
         "newlines-between": "always",
         "internal-pattern": [
+          "Type/**",
           "Theme/**",
           "Hoc/**",
           "Api/**",
@@ -98,6 +131,12 @@
           "Component/**"
         ]
       }
+    ],
+    "no-void": "off",
+    // Изменить после покрытия всего кода TS
+    "react/require-default-props": "off",
+    "@typescript-eslint/no-explicit-any": [
+      "warn"
     ]
   }
 }
