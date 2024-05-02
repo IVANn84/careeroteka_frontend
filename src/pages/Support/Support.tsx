@@ -1,6 +1,7 @@
 import React from 'react';
 import first from 'Image/landing/first.png';
 
+import Tools from './components/blocks/Tools';
 import Title from './components/blocks/Title';
 import Responses from './components/blocks/Responses';
 import Header from './components/blocks/Header';
@@ -17,6 +18,7 @@ export default function Support({ classes }) {
         <Responses />
         <Benefits />
         <Assistants />
+        <Tools />
       </main>
     </>
   );

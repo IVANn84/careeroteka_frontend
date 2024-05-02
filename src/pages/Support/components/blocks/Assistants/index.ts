@@ -1,6 +1,6 @@
 import withStyle from 'react-jss';
 
-import Responses from './Assistants';
+import Assistants from './Assistants';
 
 const style = ({ font }) => ({
   container: {
@@ -28,4 +28,4 @@ const style = ({ font }) => ({
   },
 });
 
-export default withStyle(style)(Responses);
+export default withStyle(style)(Assistants);
