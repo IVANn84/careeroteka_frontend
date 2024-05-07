@@ -56,7 +56,8 @@ export default function HintsMenu({
 
   const optionClick = useCallback(option => {
     onSelect?.(option);
-  }, [onSelect]);
+    toggle();
+  }, [onSelect, toggle]);
 
   const optionChildren = useMemo(() => {
     const filteredOptions = options

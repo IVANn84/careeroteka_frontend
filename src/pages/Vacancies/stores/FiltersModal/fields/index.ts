@@ -21,6 +21,7 @@ const FiltersModal = types.model('Filters', {
   isAccredited: types.maybeNull(types.boolean),
   isRelocationRequired: types.maybeNull(types.boolean),
   source: types.maybeNull(types.string),
+  byCourse: types.maybeNull(types.string),
 });
 
 export const FiltersModalFieldsStoreModel = types
@@ -196,6 +197,14 @@ export const FiltersModalFieldsStoreModel = types
       setIsFiltersChanged(true);
     }
 
+    function setCourseId(value) {
+      if (!value) {
+        self.filters.byCourse = null;
+      } else {
+        self.filters.byCourse = value;
+      }
+    }
+
     return {
       reset,
       restoreFilters,
@@ -219,6 +228,7 @@ export const FiltersModalFieldsStoreModel = types
       toggleHasInsurance,
       toggleIsAccredited,
       toggleIsRelocationRequired,
+      setCourseId,
     };
   });
 
