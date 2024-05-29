@@ -17,24 +17,26 @@ export default function Tool({
 } : ToolProps) {
   return (
     <div className={classes.container}>
-      <img alt={name} className={classes.image} src={image} />
-      <Typography
-        className={classes.title}
-        component="p"
-        variant="B2"
-        variantMobile="B1"
-        weight="semiBold"
-      >
-        {name}
-      </Typography>
-      <Typography
-        className={classes.description}
-        component="p"
-        variant="C1"
-        variantMobile="C1"
-      >
-        {description}
-      </Typography>
+      <img alt={name} src={image} />
+      <div className={classes.info}>
+        <Typography
+          className={classes.title}
+          component="p"
+          variant="B2"
+          variantMobile="B1"
+          weight="semiBold"
+        >
+          {name}
+        </Typography>
+        <Typography
+          className={classes.description}
+          component="p"
+          variant="C1"
+          variantMobile="C1"
+        >
+          {description}
+        </Typography>
+      </div>
     </div>
   );
 }

@@ -6,8 +6,12 @@ const style = {
   container: {
     maxWidth: 270,
     borderRadius: 24,
-    padding: [26, 16],
+    paddingTop: 22,
+    paddingBottom: 26,
     backgroundColor: '#FFFFFF',
+  },
+  info: {
+    padding: [0, 16],
   },
   title: {
     margin: [26, 0, 12],

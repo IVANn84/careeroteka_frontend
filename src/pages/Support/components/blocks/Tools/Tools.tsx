@@ -1,5 +1,8 @@
 import React from 'react';
-import image from 'Image/landing/Pic.png';
+import image1 from 'Image/landing/tg.png';
+import image4 from 'Image/landing/lorem_ipsum.png';
+import image2 from 'Image/landing/Cources.png';
+import image3 from 'Image/landing/Calendly.png';
 
 import Typography from 'Component/Typography';
 
@@ -9,22 +12,22 @@ const tools = [
   {
     name: 'Консультант в tg',
     description: 'Мы соберём всю информацию о компании  и продукте',
-    image,
+    image: image1,
   },
   {
     name: 'Парсер вакансий',
     description: 'Мы соберём всю информацию о компании  и продукте',
-    image,
+    image: image2,
   },
   {
     name: 'Calendly',
     description: 'Мы соберём всю информацию о компании  и продукте',
-    image,
+    image: image3,
   },
   {
     name: 'Реферальные программы',
     description: 'Мы соберём всю информацию о компании  и продукте',
-    image,
+    image: image4,
   },
 ];
 
