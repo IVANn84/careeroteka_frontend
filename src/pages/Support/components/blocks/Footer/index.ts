@@ -1,14 +1,14 @@
 import withStyle from 'react-jss';
 import { observer } from 'mobx-react-lite';
 
-import Header from './Header';
+import Footer from './Footer';
 
 const style = ({ font }) => ({
   container: {
     display: 'flex',
     justifyContent: 'space-between',
     maxWidth: 1170,
-    margin: [32, 'auto', 58],
+    margin: [62, 'auto', 90],
   },
   leftSideContainer: {
     display: 'flex',
@@ -22,4 +22,4 @@ const style = ({ font }) => ({
   },
 });
 
-export default withStyle(style)(observer(Header));
+export default withStyle(style)(observer(Footer));

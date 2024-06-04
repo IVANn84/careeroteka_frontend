@@ -76,7 +76,7 @@ export default function Rates({ classes }) {
             variantMobile="B1"
             weight="semiBold"
           >
-            Подготовка к поиску
+            Сопровождение
           </Typography>
           <Typography
             className={classes.card_description}
@@ -92,7 +92,7 @@ export default function Rates({ classes }) {
             variant="H5"
             variantMobile="H5"
           >
-            7 000 ₽
+            15 000 ₽
             {' '}
             <Typography
               component="span"
@@ -118,6 +118,9 @@ export default function Rates({ classes }) {
             Что входит в тариф:
           </Typography>
           <ul className={classes.card_list}>
+            <li>Создание резюме</li>
+            <li>Создание резюме</li>
+            <li>Создание резюме</li>
             <li>Создание резюме</li>
             <li>Создание резюме</li>
             <li>Создание резюме</li>
@@ -132,7 +135,7 @@ export default function Rates({ classes }) {
             variantMobile="B1"
             weight="semiBold"
           >
-            Подготовка к поиску
+            Только для випоФФ
           </Typography>
           <Typography
             className={classes.card_description}
@@ -148,7 +151,7 @@ export default function Rates({ classes }) {
             variant="H5"
             variantMobile="H5"
           >
-            7 000 ₽
+            60 000 ₽
             {' '}
             <Typography
               component="span"
@@ -174,6 +177,10 @@ export default function Rates({ classes }) {
             Что входит в тариф:
           </Typography>
           <ul className={classes.card_list}>
+            <li>Создание резюме</li>
+            <li>Создание резюме</li>
+            <li>Создание резюме</li>
+            <li>Создание резюме</li>
             <li>Создание резюме</li>
             <li>Создание резюме</li>
             <li>Создание резюме</li>
