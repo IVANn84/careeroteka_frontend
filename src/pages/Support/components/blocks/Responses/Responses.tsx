@@ -37,7 +37,7 @@ const iconsMap = [
 export default function Responses({ classes }) {
   return (
     <section className={classes.container}>
-      <Typography component="h2" variant="H2" variantMobile="H2">
+      <Typography component="h2" variant="H2" variantMobile="H3">
         Делаем
         {' '}
         <span className={classes.highlight}>сотни</span>
@@ -49,7 +49,7 @@ export default function Responses({ classes }) {
         className={classes.description}
         component="p"
         variant="B1"
-        variantMobile="B1"
+        variantMobile="B2"
       >
         Мы&nbsp;используем все возможные технологии, чтобы находить уникальные
         вакансии, чтобы&nbsp;кандидат быстрее находил работу мечты
@@ -58,7 +58,7 @@ export default function Responses({ classes }) {
         className={classes.link}
         to="/vacancies"
       >
-        <Typography variant="B1" variantMobile="B1">
+        <Typography variant="B1" variantMobile="B2">
           Посмотреть истории трудоустройств →
         </Typography>
       </Link>
@@ -66,7 +66,7 @@ export default function Responses({ classes }) {
         {iconsMap.map(({ name, icon }, index) => (
           <div className={classes.icon} key={index}>
             <img alt={name} src={icon} />
-            <Typography variant="B1" variantMobile="B1" weight="semiBold">
+            <Typography variant="B1" variantMobile="C1" weight="semiBold">
               {name}
             </Typography>
           </div>

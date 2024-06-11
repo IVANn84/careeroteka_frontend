@@ -20,6 +20,23 @@ const style = ({ font }) => ({
   highlight: {
     color: font.color.alternative,
   },
+
+  '@media screen and (max-device-width: 576px)': {
+    container: {
+      margin: [0, 16],
+
+      '& > div': {
+        marginBottom: 40,
+
+        '& > img': {
+          order: 1,
+        },
+      },
+    },
+    title: {
+      marginBottom: 32,
+    },
+  },
 });
 
 export default withStyle(style)(Benefits);

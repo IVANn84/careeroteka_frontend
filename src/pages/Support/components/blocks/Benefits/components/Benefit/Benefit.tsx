@@ -14,7 +14,7 @@ export default function Benefit({
           className={classes.title}
           component="h3"
           variant="H3"
-          variantMobile="H3"
+          variantMobile="H4"
         >
           {title}
         </Typography>
@@ -22,12 +22,12 @@ export default function Benefit({
           className={classes.description}
           component="p"
           variant="B1"
-          variantMobile="B1"
+          variantMobile="B2"
         >
           {description}
         </Typography>
         <Link className={classes.link} to="/">
-          <Typography variant="B1" variantMobile="B1">
+          <Typography variant="B1" variantMobile="B2">
             Посмотреть пример →
           </Typography>
         </Link>

@@ -11,7 +11,7 @@ const style = {
     alignItems: 'center',
   },
   image: {
-    maxWidth: 729,
+    width: 729,
   },
   title: {
     color: ({ color }) => color,
@@ -20,7 +20,19 @@ const style = {
   link: {
     display: 'block',
     color: ({ color }) => color,
-    marginTop: 20,
+    marginTop: 24,
+  },
+
+  '@media screen and (max-device-width: 576px)': {
+    container: {
+      flexDirection: 'column',
+      marginLeft: 0,
+      marginRight: 0,
+      gap: 26,
+    },
+    title: {
+      marginBottom: 16,
+    },
   },
 };
 

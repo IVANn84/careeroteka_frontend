@@ -20,6 +20,18 @@ const style = ({ font }) => ({
     fontSize: 32,
     lineHeight: '40px',
   },
+
+  '@media screen and (max-device-width: 576px)': {
+    container: {
+      margin: 18,
+      marginBottom: 30,
+    },
+    title: {
+      fontWeight: font.weight.extraBold,
+      fontSize: 24,
+      lineHeight: '29px',
+    },
+  },
 });
 
 export default withStyle(style)(observer(Header));

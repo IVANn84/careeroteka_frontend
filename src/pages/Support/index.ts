@@ -9,9 +9,16 @@ const style = {
   },
   image: {
     display: 'block',
-    maxWidth: 1024,
+    width: 1024,
     margin: [0, 'auto'],
     marginBottom: 108,
+  },
+
+  '@media screen and (max-device-width: 576px)': {
+    image: {
+      padding: [0, 16],
+      marginBottom: 62,
+    },
   },
 };
 

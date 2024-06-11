@@ -19,6 +19,19 @@ const style = ({ font }) => ({
     maxWidth: 730,
     margin: [36, 'auto', 24, 'auto'],
   },
+
+  '@media screen and (max-device-width: 576px)': {
+    header: {
+      marginBottom: 22,
+      margin: [0, 16],
+    },
+    title: {
+      letterSpacing: 'normal',
+    },
+    description: {
+      margin: [24, 'auto'],
+    },
+  },
 });
 
 export default withStyle(style)(Title);

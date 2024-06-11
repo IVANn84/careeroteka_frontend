@@ -35,10 +35,10 @@ const benefits = [
 export default function Benefits({ classes }) {
   return (
     <section className={classes.container}>
-      <Typography className={classes.title} component="h2" variant="H2" variantMobile="H2">
+      <Typography className={classes.title} component="h2" variant="H2" variantMobile="H3">
         Наконец, больше
         {' '}
-        <span className={classes.highlight}>не нужно</span>
+        <span className={classes.highlight}>не&nbsp;нужно</span>
         {' '}
         самому искать работу
       </Typography>
