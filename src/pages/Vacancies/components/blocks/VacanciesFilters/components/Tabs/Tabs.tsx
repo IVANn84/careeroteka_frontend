@@ -9,7 +9,7 @@ export default function Tabs({
   const {
     filtersModalStore: {
       fieldsStore,
-      fieldsStore: { filters },
+      // fieldsStore: { filters },
     },
     vacanciesStore,
   } = useStoreVacanciesPage();
@@ -30,7 +30,7 @@ export default function Tabs({
       >
         Все вакансии
       </Tab>
-      <Tab
+      {/* <Tab
         iconName="companyHouse"
         isActive={filters.companySize.includes('corporation')}
         onClick={onTabClick(() => fieldsStore.setCompanySizeForTabs('corporation'))}
@@ -50,7 +50,7 @@ export default function Tabs({
         onClick={onTabClick(() => fieldsStore.setWorkFormatForTabs('remote'))}
       >
         Удаленка
-      </Tab>
+      </Tab> */}
       {/* <Tab
         iconName="cookie"
         isActive={filters.hasInsurance}
