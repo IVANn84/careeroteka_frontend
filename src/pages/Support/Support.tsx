@@ -1,6 +1,9 @@
 import React from 'react';
 import first from 'Image/landing/first.png';
 
+import { useDevice } from 'Hook/useDevice';
+import MobileFooter from 'Component/Layout/components/DefaultLayout/components/Footer';
+
 import Tools from './components/blocks/Tools';
 import Title from './components/blocks/Title';
 import Responses from './components/blocks/Responses';
@@ -14,6 +17,8 @@ import Benefits from './components/blocks/Benefits';
 import Assistants from './components/blocks/Assistants';
 
 export default function Support({ classes }) {
+  const device = useDevice();
+
   return (
     <>
       <Header />
@@ -29,7 +34,13 @@ export default function Support({ classes }) {
         <Request />
         <Faq />
       </main>
-      <Footer />
+      {device === 'desktop' ? (
+        <Footer />
+      ) : (
+        <footer className={classes.footer}>
+          <MobileFooter />
+        </footer>
+      )}
     </>
   );
 }

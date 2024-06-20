@@ -26,6 +26,18 @@ const style = ({ font }) => ({
     justifyContent: 'space-between',
     flexWrap: 'wrap',
   },
+
+  '@media screen and (max-device-width: 576px)': {
+    container: {
+      margin: [0, 16, 62],
+    },
+    description: {
+      marginBottom: 28,
+    },
+    list: {
+      rowGap: 29,
+    },
+  },
 });
 
 export default withStyle(style)(Assistants);

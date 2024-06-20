@@ -34,7 +34,7 @@ const items = [
 export default function Faq({ classes }) {
   return (
     <section className={classes.container}>
-      <Typography className={classes.title} component="h2" variant="H2" variantMobile="H2">
+      <Typography className={classes.title} component="h2" variant="H2" variantMobile="H3">
         Остались
         {' '}
         <span className={classes.highlight}>вопросы?</span>

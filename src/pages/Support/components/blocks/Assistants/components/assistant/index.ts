@@ -12,6 +12,12 @@ const style = {
   description: {
     color: '#767779',
   },
+
+  '@media screen and (max-device-width: 576px)': {
+    container: {
+      maxWidth: 168,
+    },
+  },
 };
 
 export default withStyle(style)(Assistant);

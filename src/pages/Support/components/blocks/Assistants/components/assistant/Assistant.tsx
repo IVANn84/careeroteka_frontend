@@ -17,12 +17,12 @@ export default function Assistant({
 } : AssistantProps) {
   return (
     <div className={classes.container}>
-      <img alt={name} className={classes.image} src={image} />
+      <img alt={name} src={image} />
       <Typography
         className={classes.title}
         component="p"
         variant="B1"
-        variantMobile="B1"
+        variantMobile="B2"
         weight="semiBold"
       >
         {name}

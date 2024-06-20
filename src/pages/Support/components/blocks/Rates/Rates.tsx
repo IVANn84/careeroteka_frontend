@@ -6,7 +6,7 @@ import Button from 'Component/Button';
 export default function Rates({ classes }) {
   return (
     <section className={classes.container}>
-      <Typography className={classes.title} component="h2" variant="H2" variantMobile="H2">
+      <Typography className={classes.title} component="h2" variant="H2" variantMobile="H3">
         <span className={classes.highlight}>Тарифы</span>
         {' '}
         работы

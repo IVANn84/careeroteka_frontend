@@ -33,6 +33,12 @@ const style = {
     lineHeight: '20px',
     fontWeight: 600,
   },
+
+  '@media screen and (max-device-width: 576px)': {
+    container: {
+      maxWidth: '100%',
+    },
+  },
 };
 
 export default withStyle(style)(Card);

@@ -4,14 +4,16 @@ import Tool from './Tool';
 
 const style = {
   container: {
-    maxWidth: 270,
+    width: 270,
+    flexShrink: 0,
     borderRadius: 24,
     paddingTop: 22,
     paddingBottom: 26,
     backgroundColor: '#FFFFFF',
+    whiteSpace: 'normal',
   },
   info: {
-    padding: [0, 16],
+    margin: [0, 16],
   },
   title: {
     margin: [26, 0, 12],

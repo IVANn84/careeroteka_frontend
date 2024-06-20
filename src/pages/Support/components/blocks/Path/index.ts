@@ -5,7 +5,7 @@ import Path from './Path';
 const style = ({ font }) => ({
   container: {
     maxWidth: 1170,
-    margin: [107, 'auto', 78],
+    margin: [107, 'auto', 0],
   },
   title: {
     maxWidth: 490,
@@ -39,6 +39,15 @@ const style = ({ font }) => ({
     flexDirection: 'column',
     gap: 13,
     marginTop: 14,
+  },
+
+  '@media screen and (max-device-width: 576px)': {
+    container: {
+      margin: [62, 16, 0],
+    },
+    title: {
+      marginBottom: 42,
+    },
   },
 });
 

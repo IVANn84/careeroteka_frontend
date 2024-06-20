@@ -18,6 +18,17 @@ const style = ({ font }) => ({
     display: 'flex',
     justifyContent: 'space-between',
     flexWrap: 'wrap',
+    maxWidth: 1170,
+    margin: '0 auto',
+  },
+
+  '@media screen and (max-device-width: 576px)': {
+    container: {
+      padding: [60, 16],
+    },
+    title: {
+      marginBottom: 16,
+    },
   },
 });
 

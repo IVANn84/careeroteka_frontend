@@ -22,7 +22,7 @@ const style = ({ font }) => ({
     marginTop: 46,
   },
   card: {
-    maxWidth: 370,
+    width: 370,
     padding: [20, 20],
     border: '1px solid #D1D2D2',
     borderRadius: 24,
@@ -55,6 +55,19 @@ const style = ({ font }) => ({
 
     '& li': {
       marginBottom: 8,
+    },
+  },
+
+  '@media screen and (max-device-width: 576px)': {
+    container: {
+      margin: [62, 16, 58],
+    },
+    lists: {
+      gap: 28,
+      marginTop: 40,
+    },
+    card: {
+      width: '100%',
     },
   },
 });

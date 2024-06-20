@@ -16,6 +16,15 @@ const style = ({ font }) => ({
   highlight: {
     color: font.color.alternative,
   },
+
+  '@media screen and (max-device-width: 576px)': {
+    container: {
+      margin: [56, 16, 64],
+    },
+    title: {
+      marginBottom: 24,
+    },
+  },
 });
 
 export default withStyle(style)(Faq);

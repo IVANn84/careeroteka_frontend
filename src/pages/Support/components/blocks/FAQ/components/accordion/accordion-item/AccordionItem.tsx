@@ -26,7 +26,7 @@ export default function AccordionItem({
         type="button"
       >
         <div className={classes.header}>
-          <Typography component="p" variant="B1" variantMobile="B1">{item.title}</Typography>
+          <Typography component="p" variant="B1" variantMobile="C1">{item.title}</Typography>
           <img alt="" className={`${isOpen ? classes.chevron_open : ''} ${classes.chevron}`} src={chevron} />
         </div>
         <p

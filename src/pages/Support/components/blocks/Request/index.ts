@@ -19,6 +19,12 @@ const style = ({ font }) => ({
     maxWidth: 830,
     margin: [24, 'auto', 30],
   },
+
+  '@media screen and (max-device-width: 576px)': {
+    container: {
+      padding: [48, 16],
+    },
+  },
 });
 
 export default withStyle(style)(Request);

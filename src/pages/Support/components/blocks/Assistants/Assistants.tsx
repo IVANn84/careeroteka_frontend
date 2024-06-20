@@ -31,7 +31,7 @@ const assistants = [
 export default function Assistants({ classes }) {
   return (
     <section className={classes.container}>
-      <Typography className={classes.title} component="h2" variant="H2" variantMobile="H2">
+      <Typography className={classes.title} component="h2" variant="H2" variantMobile="H3">
         Кто будет
         {' '}
         <span className={classes.highlight}>помогать мне</span>
@@ -42,7 +42,7 @@ export default function Assistants({ classes }) {
         className={classes.description}
         component="p"
         variant="B1"
-        variantMobile="B1"
+        variantMobile="B2"
       >
         В&nbsp;нашей команде 100+ карьерных консультантов и&nbsp;рекрутеров,
         которые регулярно работают с&nbsp;рынком. Подберём тех, кто разбирается

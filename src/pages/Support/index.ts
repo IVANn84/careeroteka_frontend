@@ -4,7 +4,6 @@ import Support from './Support';
 
 const style = {
   container: {
-    maxWidth: 1440,
     margin: [0, 'auto'],
   },
   image: {
@@ -13,11 +12,15 @@ const style = {
     margin: [0, 'auto'],
     marginBottom: 108,
   },
+  footer: {},
 
   '@media screen and (max-device-width: 576px)': {
     image: {
       padding: [0, 16],
       marginBottom: 62,
+    },
+    footer: {
+      padding: [0, 16, 106],
     },
   },
 };

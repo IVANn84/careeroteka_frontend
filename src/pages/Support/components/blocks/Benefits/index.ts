@@ -4,6 +4,9 @@ import Benefits from './Benefits';
 
 const style = ({ font }) => ({
   container: {
+    maxWidth: 1440,
+    margin: [0, 'auto'],
+
     '& > div': {
       marginBottom: 78,
     },
@@ -31,6 +34,10 @@ const style = ({ font }) => ({
         '& > img': {
           order: 1,
         },
+      },
+
+      '& > div:last-of-type': {
+        marginBottom: 60,
       },
     },
     title: {

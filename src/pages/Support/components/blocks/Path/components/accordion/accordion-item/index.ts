@@ -4,39 +4,38 @@ import AccordionItem from './AccordionItem';
 
 const style = () => ({
   item: {
-    backgroundColor: '#D9D9D933',
-    borderRadius: 16,
+    borderRadius: 24,
   },
   button: {
     width: '100%',
     cursor: 'pointer',
-    padding: [20, 24],
+    paddingTop: 18,
+    transition: 'padding 0.3s linear',
   },
   header: {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
+    margin: [0, 16],
+    height: 24,
   },
-  chevron: {
-    transition: 'transform 0.3s linear',
+  highlight: {
+    color: '#A3A4A5',
   },
-  chevron_open: {
-    transform: 'rotate(-180deg)',
+  icon: {
+    width: 24,
+    padding: [0, 3],
   },
   content: {
     overflow: 'hidden',
     transition: 'height 0.3s linear',
   },
   body: {
-    display: 'block',
-    paddingTop: 17,
-    paddingBottom: 20,
-  },
-
-  '@media screen and (max-device-width: 576px)': {
-    button: {
-      padding: [20, 16],
-    },
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 16,
+    paddingTop: 18,
+    margin: [0, 16],
   },
 });
 
