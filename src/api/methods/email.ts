@@ -1,15 +1,15 @@
-import CheckToken from 'ApiDir/intercepters/checkToken';
-
-import RequireAuth from '../intercepters/requireAuth';
 import Format from '../intercepters/format';
 import { axiosWithConverter } from '../axiosWithConverter';
 
 class EmailApi {
-  @RequireAuth
-  @CheckToken
   @Format
-  SendConfirmation() {
-    return axiosWithConverter.get('/api/v1/confirmation_email/');
+  EmailResend(params) {
+    return axiosWithConverter.post('/api/v1/signup/email-resend/', params);
+  }
+
+  @Format
+  SendConfirmation(uid: string) {
+    return axiosWithConverter.get(`/api/v1/confirmation_email/${uid}/`);
   }
 }
 

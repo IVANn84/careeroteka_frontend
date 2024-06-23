@@ -1,10 +1,10 @@
 import type { ThemeType } from '../theme';
 
 export const colorNegative = '#DB0000';
-export const colorAlternative = '#EC6242';
+export const colorAlternative = '#DA6631';
 
 export const Theme: ThemeType = {
-  title: 'karpov courses',
+  title: 'бруноям',
 
   layout: {
     paddingX: {
@@ -14,11 +14,11 @@ export const Theme: ThemeType = {
   },
 
   background: {
-    primary: '#32353A',
-    dark: '#1E2026',
-    light: '#1E2026',
-    secondary: '#1E2026',
-    vacancyCity: '#32353A',
+    primary: '#FFF',
+    dark: '#1A1C1F',
+    light: '#FFF',
+    secondary: '#F2F2F3',
+    vacancyCity: '#E0E0E0',
     alternative: colorAlternative,
   },
 
@@ -69,7 +69,7 @@ export const Theme: ThemeType = {
       light: {
         border: {
           default: '#FFF',
-          hovered: '#000',
+          hovered: '#1A1C1F',
         },
         color: {
           default: '#FFF',
@@ -78,7 +78,7 @@ export const Theme: ThemeType = {
         },
         background: {
           default: 'transparent',
-          hovered: '#000',
+          hovered: '#1A1C1F',
           focused: '#191A1B',
           disabled: '#000',
         },
@@ -95,23 +95,23 @@ export const Theme: ThemeType = {
         },
         background: {
           default: 'transparent',
-          hovered: colorAlternative,
-          focused: colorAlternative,
+          hovered: '#2F74EA',
+          focused: '#226AE5',
         },
       },
       dark: {
         border: {
-          default: '#000',
-          hovered: '#000',
+          default: '#1A1C1F',
+          hovered: '#1A1C1F',
         },
         color: {
-          default: '#000',
+          default: '#1A1C1F',
           hovered: '#FFF',
           focused: '#FFF',
         },
         background: {
           default: 'transparent',
-          hovered: '#000',
+          hovered: '#1A1C1F',
           focused: '#15181B',
         },
       },
@@ -120,7 +120,7 @@ export const Theme: ThemeType = {
           default: 'transparent',
         },
         color: {
-          default: '#FFF',
+          default: '#1A1C1F',
         },
         background: {
           default: 'transparent',
@@ -128,15 +128,15 @@ export const Theme: ThemeType = {
       },
     },
     tetriary: {
-      color: '#EC6242',
+      color: '#D60C31',
     },
   },
 
   font: {
     color: {
       light: '#FFF',
-      regular: '#FFF',
-      secondary: '#FFF',
+      regular: '#1A1C1F',
+      secondary: 'rgba(0, 0, 0, .6)',
       alternative: colorAlternative,
       negative: colorNegative,
     },
@@ -164,21 +164,21 @@ export const Theme: ThemeType = {
         yAxis: 17,
       },
     },
-    background: '#32353A',
+    background: '#FFF',
     boxShadow: [[0, 8, 20, 2, 'rgba(0, 0, 0, .1)']],
     border: {
       default: [[1, 'solid', '#A3A4A5']],
-      filled: [[1, 'solid', '#A3A4A5']],
+      filled: [[1, 'solid', '#767779']],
       negative: [[1, 'solid', colorNegative]],
     },
     icon: {
       color: {
-        default: '#767779',
+        default: '#A3A4A5',
         negative: colorNegative,
       },
     },
     placeholder: {
-      default: '#767779',
+      default: 'rgba(26, 28, 31, .6)',
       negative: `${colorNegative}99`,
     },
   },
@@ -197,18 +197,18 @@ export const Theme: ThemeType = {
     },
     icon: {
       color: {
-        light: '#767779',
+        light: '#A3A4A5',
         primary: '#FFF',
         negative: colorNegative,
       },
     },
     color: {
-      light: '#767779',
+      light: '#1A1C1F',
       primary: '#FFF',
     },
     placeholder: {
       light: {
-        default: '#767779',
+        default: 'rgba(26, 28, 31, .6)',
         negative: `${colorNegative}99`,
       },
       primary: {
@@ -225,7 +225,7 @@ export const Theme: ThemeType = {
     border: {
       light: {
         default: [[1, 'solid', '#A3A4A5']],
-        filled: [[1, 'solid', '#A3A4A5']],
+        filled: [[1, 'solid', '#767779']],
         negative: [[1, 'solid', colorNegative]],
       },
       primary: {
@@ -240,7 +240,7 @@ export const Theme: ThemeType = {
       reversed: [[0, -20, 20, 2, 'rgba(0, 0, 0, .1)']],
     },
     background: {
-      light: '#32353A',
+      light: '#FFF',
       primary: colorAlternative,
     },
     optionBackground: {
@@ -278,8 +278,8 @@ export const Theme: ThemeType = {
       mobile: 20,
     },
     background: {
-      light: '#1E2026',
-      dark: '#1E2026',
+      light: '#FFF',
+      dark: '#F2F2F3',
     },
     boxShadow: [[0, 4, 20, 2, 'rgba(0, 0, 0, .1)']],
   },
@@ -334,7 +334,7 @@ export const Theme: ThemeType = {
   },
 
   divider: {
-    color: 'rgba(255, 255, 255, 0.08)',
+    color: 'rgba(38, 38, 38, 0.08)',
     height: 1,
   },
 
@@ -376,12 +376,12 @@ export const Theme: ThemeType = {
     bar: {
       borderRadius: 5,
       backgroundColor: colorAlternative,
-      backgroundColorSecondary: 'rgba(236, 98, 66, .4)',
+      backgroundColorSecondary: 'rgba(218, 102, 49, .4)',
       backgroundColorHover: colorAlternative,
     },
     datalabels: {
-      backgroundColor: '#1E2026',
-      color: '#FFF',
+      backgroundColor: '#FFF',
+      color: '#1A1C1F',
       borderRadius: 4,
       boxShadow: '0px 8px 20px 2px #0000001A',
     },
@@ -394,10 +394,10 @@ export const Theme: ThemeType = {
 
   grades: {
     backgroundColor: {
-      intern: '#DD657B',
-      junior: '#F3CA46',
-      middle: '#7ADA2E',
-      senior: '#4861AB',
+      intern: '#CC6374',
+      junior: '#9B56AF',
+      middle: '#4175DF',
+      senior: '#D1D94E',
     },
   },
 

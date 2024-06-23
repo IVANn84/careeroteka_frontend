@@ -2,6 +2,8 @@ export const colorNegative = '#DB0000';
 export const colorAlternative = '#367CF3';
 
 export const Theme = {
+  title: 'careeroteka',
+
   layout: {
     paddingX: {
       desktop: 135,
@@ -15,6 +17,7 @@ export const Theme = {
     light: '#FFF',
     secondary: '#F2F2F3',
     vacancyCity: '#F3F5F6',
+    alternative: colorAlternative,
   },
 
   iconButton: {
@@ -384,6 +387,15 @@ export const Theme = {
       thumb: {
         backgroundColor: '#367CF3',
       },
+    },
+  },
+
+  grades: {
+    backgroundColor: {
+      intern: '#DD657B',
+      junior: '#F3CA46',
+      middle: '#7ADA2E',
+      senior: '#4861AB',
     },
   },
 

@@ -17,6 +17,7 @@ const style = ({ font }) => ({
     fontWeight: font.weight.extraBold,
     fontSize: 24,
     lineHeight: '29px',
+    color: ({ variant }) => (variant === 'whitetitle' ? font.color.light : ''),
   },
 });
 

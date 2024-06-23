@@ -15,7 +15,7 @@ export default function Login({
   const {
     login,
     reset,
-    stateStore,
+    entityStore,
     fieldsStore,
   } = useStoreLoginPage();
 
@@ -34,7 +34,10 @@ export default function Login({
     }
   };
 
-  const onLogin = () => login(redirectAfterLogin);
+  const onLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    login(redirectAfterLogin);
+  };
 
   const gotoRecovery = () => history.push('/password-recovery');
   const gotoRegistration = () => history.push('/signup');
@@ -45,41 +48,34 @@ export default function Login({
         className={classes.title}
         component="h1"
         variant="H1"
-        variantMobile="H1"
+        variantMobile="H4"
       >
         Войти в сервис
       </Typography>
-      <div className={classes.inputs}>
+      <form className={classes.inputs} onSubmit={onLogin}>
         <Input
-          isClearable
-          isDisabled={stateStore.isLoading}
-          isRequired
+          error={entityStore.errors.email}
           onChange={fieldsStore.setEmail}
-          onSubmit={onLogin}
-          placeholder="Почта"
+          placeholder="Введите e-mail"
           type="text"
           value={fieldsStore.email}
         />
         <Input
-          error={stateStore.error}
-          isClearable
-          isDisabled={stateStore.isLoading}
-          isRequired
+          error={entityStore.errors.password}
           onChange={fieldsStore.setPassword}
-          onSubmit={onLogin}
-          placeholder="Пароль"
+          placeholder="Введите пароль"
           type="password"
           value={fieldsStore.password}
         />
-      </div>
-      <Button
-        className={classes.button}
-        isDisabled={stateStore.isLoading || !fieldsStore.email || !fieldsStore.password}
-        mode="primary"
-        onClick={onLogin}
-      >
-        Продолжить
-      </Button>
+        <Button
+          className={classes.button}
+          isDisabled={entityStore.isLoading || !fieldsStore.email || !fieldsStore.password}
+          mode="primary"
+          type="submit"
+        >
+          Продолжить
+        </Button>
+      </form>
       <div className={classes.links}>
         <Typography
           className={classes.link}
@@ -93,6 +89,7 @@ export default function Login({
         </Typography>
         <Typography
           className={classes.registration}
+          component="p"
           variant="B2"
           variantMobile="B2"
         >

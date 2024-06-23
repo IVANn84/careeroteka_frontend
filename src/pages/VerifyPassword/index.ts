@@ -1,44 +1,34 @@
 import withStyle from 'react-jss';
 import { observer } from 'mobx-react-lite';
 
-import Login from './Login';
+import VerifyPassword from './VerifyPassword';
 
 const style = ({ font }) => ({
   container: {
-    margin: '0 auto',
-    width: 470,
     display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-  },
-  title: {
-    textAlign: 'center',
-  },
-  inputs: {
-    margin: '0 auto',
-    width: '100%',
-    marginTop: 32,
-
-    '& > *:nth-child(2)': {
-      marginTop: 20,
-    },
-  },
-  button: {
-    width: '100%',
-    marginTop: 32,
-  },
-  links: {
-    display: 'flex',
+    maxWidth: 632,
+    minWidth: 554,
     flexDirection: 'column',
     alignItems: 'center',
-    margin: '0 auto',
+    margin: 'auto',
+  },
+  center: {
+    textAlign: 'center',
+  },
+  row: {
+    marginBottom: 32,
+  },
+  description: {
+    width: '98%',
+    marginBottom: 36,
+  },
+  request: {
+    marginBottom: 16,
   },
   link: {
     position: 'relative',
     cursor: 'pointer',
     transition: 'color .2s',
-    marginTop: 32,
-    marginBottom: 16,
 
     '&::after': {
       content: '""',
@@ -61,25 +51,25 @@ const style = ({ font }) => ({
       background: font.color.alternative,
     },
   },
-  registration: {
-    textAlign: 'center',
+  disabledLink: {
+    cursor: 'not-allowed',
+    opacity: 0.6,
+
+    '&:hover, &:focus-visible': {
+      color: 'inherit',
+    },
+
+    '&:hover::after, &:focus-visible::after': {
+      background: '#000',
+    },
   },
 
   '@media screen and (max-device-width: 576px)': {
     container: {
-      width: '100%',
-    },
-    inputs: {
-      marginTop: 24,
-
-      '& > *:not(:first-child)': {
-        marginTop: 14,
-      },
-    },
-    link: {
-      marginTop: 14,
+      maxWidth: '100%',
+      minWidth: '100%',
     },
   },
 });
 
-export default withStyle(style)(observer(Login));
+export default withStyle(style)(observer(VerifyPassword));

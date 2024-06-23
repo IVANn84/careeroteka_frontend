@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 import { useStoreLayoutComponent } from 'Component/Layout/stores';
 
-import DefaultLayout from './components/DefaultLayout';
+import DefaultLayout from './components/DefaultLayout/styles';
 
 type Props = React.ComponentProps<typeof DefaultLayout>;
 

@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite';
 
 import Register from './Register';
 
-const style = {
+const style = ({ font }) => ({
   container: {
     margin: '0 auto',
     width: 470,
@@ -22,12 +22,13 @@ const style = {
     marginTop: 32,
     marginBottom: 32,
 
-    '& > *:not(:first-child)': {
-      marginTop: 16,
+    '& > div:not(:first-child)': {
+      marginTop: 20,
     },
   },
   button: {
     width: '100%',
+    marginTop: 32,
   },
   links: {
     width: 322,
@@ -35,11 +36,10 @@ const style = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-
-    '& > *': {
-      marginTop: 25,
-      marginBottom: 14,
-    },
+    margin: '0 auto',
+  },
+  registration: {
+    marginTop: 16,
   },
   link: {
     position: 'relative',
@@ -58,8 +58,12 @@ const style = {
       transition: 'width .2s',
     },
 
+    '&:hover, &:focus-visible': {
+      color: font.color.alternative,
+    },
+
     '&:hover::after, &:focus-visible::after': {
-      width: '90%',
+      background: font.color.alternative,
     },
   },
 
@@ -67,7 +71,12 @@ const style = {
     container: {
       width: '100%',
     },
+    links: {
+      '& > *': {
+        marginBottom: 0,
+      },
+    },
   },
-};
+});
 
 export default withStyle(style)(observer(Register));

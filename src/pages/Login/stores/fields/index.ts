@@ -1,6 +1,6 @@
 import { types } from 'mobx-state-tree';
 
-import { stateStoreLoginPage } from 'Page/Login/stores/state';
+import { entityStoreLoginPage } from 'Page/Login/stores/entity';
 
 export const FieldsStoreModel = types
   .model('Fields', {
@@ -10,12 +10,12 @@ export const FieldsStoreModel = types
   .actions(self => {
     function setEmail(value) {
       self.email = value;
-      stateStoreLoginPage.setError(null);
+      entityStoreLoginPage.setErrors('email', null);
     }
 
     function setPassword(value) {
       self.password = value;
-      stateStoreLoginPage.setError(null);
+      entityStoreLoginPage.setErrors('password', null);
     }
 
     return {

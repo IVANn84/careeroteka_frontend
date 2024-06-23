@@ -1,15 +1,16 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import { useHistory, useLocation } from 'react-router';
 import React, { useEffect, useState } from 'react';
 
 import { onEnter } from 'Util/onEnter';
 import Typography from 'Component/Typography';
-import EmailApi from 'Api/email';
+import ResetPasswordApi from 'Api/passwordRecovery';
 
 interface Props {
   classes: { [className: string]: string };
 }
 
-export default function VerifyEmail({ classes }: Props) {
+export default function VerifyPassword({ classes }: Props) {
   const { state } = useLocation<{ email: string }>();
   const history = useHistory();
   const [intervalTimer, setIntervalTimer] = useState(null);
@@ -23,14 +24,14 @@ export default function VerifyEmail({ classes }: Props) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const sendVerifyToEmail = async () => {
+  const sendVerifyToPassword = async () => {
     if (!isCanClick) {
       return;
     }
 
     setIsCanClick(false);
     setTimer(30);
-    void EmailApi.EmailResend({
+    void ResetPasswordApi.ResetPassword({
       email: state.email,
     });
 
@@ -59,7 +60,7 @@ export default function VerifyEmail({ classes }: Props) {
         variant="H1"
         variantMobile="H1"
       >
-        Подтвердите свою почту
+        Восстановление пароля
       </Typography>
       <Typography
         className={`${classes.description} ${classes.center}`}
@@ -67,9 +68,8 @@ export default function VerifyEmail({ classes }: Props) {
         variant="B1"
         variantMobile="B2"
       >
-        Мы&nbsp;почти закончили! Пожалуйста, перейдите во&nbsp;входящие
-        сообщения на&nbsp;почте, для подтверждения email адреса. Проверьте папку
-        спам, если не&nbsp;видите сообщения от&nbsp;нас.
+        Ссылка для сброса пароля была отправлена вам на почту!
+        Проверьте папку спам, если вы не видите сообщение от нас.
       </Typography>
       <Typography
         className={`${classes.request} ${classes.center}`}
@@ -84,8 +84,8 @@ export default function VerifyEmail({ classes }: Props) {
           className={`${classes.link} ${
             !isCanClick ? classes.disabledLink : ''
           }`}
-          onClick={sendVerifyToEmail}
-          onKeyDown={onEnter(sendVerifyToEmail)}
+          onClick={sendVerifyToPassword}
+          onKeyDown={onEnter(sendVerifyToPassword)}
           role="button"
           tabIndex={0}
         >
@@ -93,9 +93,6 @@ export default function VerifyEmail({ classes }: Props) {
           {' '}
           {!isCanClick && ` через ${timer}`}
         </span>
-      </Typography>
-      <Typography className={classes.center} component="p" variant="B2" variantMobile="B2">
-        Ничего не пришло? Напишите нам support@careeroteka.com
       </Typography>
     </div>
   );

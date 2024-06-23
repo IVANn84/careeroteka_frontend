@@ -2,8 +2,9 @@ import {
   applySnapshot, flow, getSnapshot, types,
 } from 'mobx-state-tree';
 
-import { StateStoreModel, stateStoreLoginPage } from 'Page/Login/stores/state';
+import { testEmail } from 'Util/testEmail';
 import { FieldsStoreModel, fieldsStoreLoginPage } from 'Page/Login/stores/fields';
+import { EntityStoreModel, entityStoreLoginPage } from 'Page/Login/stores/entity';
 import { rootStoreLayoutComponent } from 'Component/Layout/stores/root';
 import UserApi from 'Api/user';
 
@@ -11,8 +12,8 @@ let initialState = {};
 
 export const RootStoreModel = types
   .model('Root', {
+    entityStore: types.maybe(EntityStoreModel),
     fieldsStore: types.maybe(FieldsStoreModel),
-    stateStore: types.maybe(StateStoreModel),
   })
   .actions(self => {
     function afterCreate() {
@@ -23,28 +24,50 @@ export const RootStoreModel = types
       applySnapshot(self, initialState);
     }
 
+    function validateFields() {
+      const { email, password } = self.fieldsStore;
+      let isValid = true;
+
+      if (!email) {
+        entityStoreLoginPage.setErrors('email', 'Почта обязательна');
+        isValid = false;
+      } else if (!testEmail(email)) {
+        entityStoreLoginPage.setErrors('email', 'Неверный формат почты');
+        isValid = false;
+      }
+
+      if (!password) {
+        entityStoreLoginPage.setErrors('password', 'Пароль обязателен');
+        isValid = false;
+      }
+
+      return isValid;
+    }
+
     const login = flow(function* (redirectAfterLogin) {
       const {
         email,
         password,
       } = self.fieldsStore;
 
-      if (!email || !password) {
+      if (!validateFields()) {
         return;
       }
 
-      self.stateStore.setIsLoading(true);
+      entityStoreLoginPage.clearErrors();
+      entityStoreLoginPage.setIsLoading(true);
 
       const { errors, data } = yield UserApi.Login({
         email,
         password,
       });
 
-      self.stateStore.setIsLoading(false);
+      entityStoreLoginPage.setIsLoading(false);
 
       if (errors) {
         // TODO: сделать нормальную обработку ошибок
-        self.stateStore.setError(errors.detail || 'Неизвестная ошибка');
+        entityStoreLoginPage.setErrors('email', 'Неверная почта или пароль');
+        entityStoreLoginPage.setErrors('password', 'Неверная почта или пароль');
       } else if (data) {
         localStorage.setItem('refresh', data.refresh);
         yield rootStoreLayoutComponent.fetchCurrentUser();
@@ -61,5 +84,5 @@ export const RootStoreModel = types
 
 export const rootStoreLoginPage = RootStoreModel.create({
   fieldsStore: fieldsStoreLoginPage,
-  stateStore: stateStoreLoginPage,
+  entityStore: entityStoreLoginPage,
 });

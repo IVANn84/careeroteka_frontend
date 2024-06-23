@@ -2,6 +2,7 @@ import {
   applySnapshot, flow, getSnapshot, types,
 } from 'mobx-state-tree';
 
+import { testEmail } from 'Util/testEmail';
 import { FieldsStoreModel, fieldsStoreRegisterPage } from 'Page/Register/stores/fields';
 import { EntityStoreModel, entityStoreRegisterPage } from 'Page/Register/stores/entity';
 import UserApi from 'Api/user';
@@ -29,7 +30,7 @@ export const RootStoreModel = types
       if (!email) {
         entityStoreRegisterPage.setErrors('email', 'Почта обязательна');
         isValid = false;
-      } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(email)) {
+      } else if (!testEmail(email)) {
         entityStoreRegisterPage.setErrors('email', 'Неверный формат почты');
         isValid = false;
       }
@@ -53,8 +54,10 @@ export const RootStoreModel = types
       return isValid;
     }
 
-    const signup = flow(function* (gotoLogin) {
-      const { email, password, confirmPassword } = self.fieldsStore;
+    const signup = flow(function* (func) {
+      const {
+        email, password, confirmPassword, courseId,
+      } = self.fieldsStore;
 
       if (!validateFields()) {
         return;
@@ -63,15 +66,21 @@ export const RootStoreModel = types
       entityStoreRegisterPage.clearErrors();
       entityStoreRegisterPage.setIsLoading(true);
 
-      yield UserApi.Register({
+      const { errors } = yield UserApi.Register({
         email,
         password,
         confirmPassword,
+        course: courseId,
       });
 
       entityStoreRegisterPage.setIsLoading(false);
 
-      gotoLogin();
+      if (errors) {
+        entityStoreRegisterPage.setErrors('email', 'Пользователь с такой почтой уже существует');
+        return;
+      }
+
+      func();
     });
 
     return {

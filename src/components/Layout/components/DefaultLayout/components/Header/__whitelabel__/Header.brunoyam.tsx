@@ -3,13 +3,12 @@ import React from 'react';
 
 import { useStoreLayoutComponent } from 'Component/Layout/stores';
 
-import RightHeaderNavigation from './components/RightHeaderNavigation';
-import LeftHeaderNavigation from './components/LeftHeaderNavigation';
+import RightHeaderNavigation from '../components/RightHeaderNavigation';
 
 interface Props {
   classes: {[className: string]: string};
   // eslint-disable-next-line react/no-unused-prop-types
-  variant?: 'whitetitle' | 'blacktitle';
+  variant?: 'blacktitle' | 'whitetitle';
 }
 
 export default function Header({
@@ -27,9 +26,8 @@ export default function Header({
           exact
           to="/"
         >
-          careeroteka
+          бруноям
         </NavLink>
-        <LeftHeaderNavigation />
       </div>
       {!isLoading && (
         <RightHeaderNavigation />

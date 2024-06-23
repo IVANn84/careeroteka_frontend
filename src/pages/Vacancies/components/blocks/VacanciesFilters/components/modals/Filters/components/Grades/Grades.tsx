@@ -1,5 +1,6 @@
 import React, { useCallback, useRef } from 'react';
 
+import { Theme } from 'Theme/theme';
 import { useStoreVacanciesPage } from 'Page/Vacancies/stores';
 import { useDevice } from 'Hook/useDevice';
 import Typography from 'Component/Typography';
@@ -12,25 +13,25 @@ const grades = [
   {
     value: 'no_experience',
     name: 'Intern',
-    color: '#DD657B',
+    color: Theme.grades.backgroundColor.intern,
     description: 'стажёр, проходящий испытательный срок и\u00A0претендующий на\u00A0полноценную ставку в\u00A0организации, занимается простыми задачами под кураторством более опытного специалиста.',
   },
   {
     value: 'from_one_to_three',
     name: 'Junior',
-    color: '#F3CA46',
+    color: Theme.grades.backgroundColor.junior,
     description: 'начинающий специалист, решающий простые и\u00A0зачастую рутинные задачи, под кураторством более опытного специалиста',
   },
   {
     value: 'from_three_to_six',
     name: 'Middle',
-    color: '#7ADA2E',
+    color: Theme.grades.backgroundColor.middle,
     description: 'специалист среднего уровня, который самостоятельно решает более сложные задачи, по\u00A0сравнению с\u00A0Junior, старшие коллеги только проверяют результат.',
   },
   {
     value: 'more_then_six',
     name: 'Senior',
-    color: '#4861AB',
+    color: Theme.grades.backgroundColor.senior,
     description: 'старший специалист, самостоятельно решающий задачи, отвечающий за\u00A0результат, ведёт кураторство над Junior и\u00A0Middle-специалистами.',
   },
 ];

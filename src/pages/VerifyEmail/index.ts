@@ -6,7 +6,8 @@ import VerifyEmail from './VerifyEmail';
 const style = ({ font }) => ({
   container: {
     display: 'flex',
-    width: '70%',
+    maxWidth: 632,
+    minWidth: 554,
     flexDirection: 'column',
     alignItems: 'center',
     margin: 'auto',
@@ -15,10 +16,14 @@ const style = ({ font }) => ({
     textAlign: 'center',
   },
   row: {
-    marginBottom: 24,
+    marginBottom: 32,
   },
   description: {
-    marginBottom: 40,
+    width: '98%',
+    marginBottom: 36,
+  },
+  request: {
+    marginBottom: 16,
   },
   link: {
     position: 'relative',
@@ -56,6 +61,13 @@ const style = ({ font }) => ({
 
     '&:hover::after, &:focus-visible::after': {
       background: '#000',
+    },
+  },
+
+  '@media screen and (max-device-width: 576px)': {
+    container: {
+      maxWidth: '100%',
+      minWidth: '100%',
     },
   },
 });
