@@ -4,8 +4,8 @@ import React from 'react';
 
 import WorkFormat from './components/WorkFormat';
 import EmploymentFormats from './components/EmploymentFormat';
-import EmployabilityFormats from './components/ContractType';
-import CompanySizes from './components/CompanySize';
+// import EmployabilityFormats from './components/ContractType';
+// import CompanySizes from './components/CompanySize';
 
 export default function Other({
   classes,
@@ -14,8 +14,8 @@ export default function Other({
     <div className={classes.container}>
       <WorkFormat />
       <EmploymentFormats />
-      <EmployabilityFormats />
-      <CompanySizes />
+      {/* <EmployabilityFormats /> */}
+      {/* <CompanySizes /> */}
       {/* <Divider /> */}
     </div>
   );
