@@ -16,6 +16,7 @@
     "start:karpov": "webpack serve --mode=development --env brand=karpov",
     "build:karpov": "webpack --mode=production --env brand=karpov",
     "start:brunoyam": "webpack serve --mode=development --env brand=brunoyam",
+    "build:brunoyam": "webpack --mode=production --env brand=brunoyam",
     "typecheck": "tsc --noEmit",
     "linter": "eslint --cache \"src/**/*.{js,jsx,ts,tsx}\"",
     "linter:fix": "eslint --cache --fix \"src/**/*.{js,jsx,ts,tsx}\""

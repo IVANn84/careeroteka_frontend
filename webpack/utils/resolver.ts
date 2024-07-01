@@ -9,7 +9,6 @@ interface ResolverCache {
   request: string;
 }
 
-const resolverCache: { [key: string]: ResolverCache } = {};
 export const WHITELABEL_DIR_NAME = '__whitelabel__';
 
 const convertToWhiteLabelPath = (filePath: string, brand: string) => path.join(
@@ -22,6 +21,7 @@ const fileExists = (filePath: string) => fs.existsSync(`${filePath}.tsx`) || fs.
 
 export const CustomResolver = (brand?: string) => ({
   apply(resolver: Resolver) {
+    const resolverCache: { [key: string]: ResolverCache } = {};
     const target = resolver.ensureHook('resolve');
 
     resolver
