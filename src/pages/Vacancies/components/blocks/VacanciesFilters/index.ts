@@ -8,24 +8,6 @@ const style = {
     marginTop: 36,
     marginBottom: 80,
   },
-  controls: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'flex-start',
-  },
-  filtersContainer: {
-    display: 'flex',
-    columnGap: 30,
-  },
-  searchInput: {
-    width: 370,
-  },
-  gradesDropdown: {
-    width: 270,
-  },
-  searchButton: {
-    height: 64,
-  },
   tabs: {
     display: 'flex',
     justifyContent: 'space-between',
@@ -48,24 +30,6 @@ const style = {
       flexDirection: 'column-reverse',
       rowGap: 24,
       margin: [24, 0],
-    },
-    controls: {
-      flexDirection: 'column',
-      rowGap: 14,
-    },
-    filtersContainer: {
-      width: '100%',
-      flexDirection: 'column',
-      rowGap: 14,
-    },
-    searchInput: {
-      width: 'auto',
-    },
-    gradesDropdown: {
-      width: 'auto',
-    },
-    searchButton: {
-      width: '100%',
     },
     tabs: {
       marginTop: 0,

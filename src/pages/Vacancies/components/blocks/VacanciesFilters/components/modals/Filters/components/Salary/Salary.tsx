@@ -6,7 +6,6 @@ import { useDevice } from 'Hook/useDevice';
 import { useDebouncedValue } from 'Hook/useDebouncedValue';
 import Typography from 'Component/Typography';
 import Input from 'Component/Input';
-import Divider from 'Component/Divider';
 
 import SalaryChart from './components/SalaryChart';
 
@@ -50,7 +49,7 @@ export default function Salary({
       <Typography
         className={classes.title}
         component="p"
-        variant="H4"
+        variant="H5"
         variantMobile="B1"
         weightMobile="semiBold"
       >
@@ -97,7 +96,6 @@ export default function Salary({
           value={maxSalary}
         />
       </div>
-      {device === 'desktop' && <Divider />}
     </>
   );
 }

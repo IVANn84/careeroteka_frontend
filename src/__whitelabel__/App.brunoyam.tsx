@@ -17,7 +17,9 @@ const VerifyEmail = React.lazy(() => import('Page/VerifyEmail'));
 const VerifyPassword = React.lazy(() => import('Page/VerifyPassword'));
 const EmailConfirmation = React.lazy(() => import('Page/EmailConfirmation'));
 const PasswordRecovery = React.lazy(() => import('Page/PasswordRecovery'));
-const PasswordRecoveryConfirmation = React.lazy(() => import('Page/PasswordRecoveryConfirmation'));
+const PasswordRecoveryConfirmation = React.lazy(
+  () => import('Page/PasswordRecoveryConfirmation'),
+);
 const Vacancies = React.lazy(() => import('Page/Vacancies'));
 const Vacancy = React.lazy(() => import('Page/Vacancy'));
 
@@ -26,10 +28,7 @@ function App() {
     <ThemeProvider theme={Theme}>
       <BrowserRouter>
         <Layout>
-          {({
-            isAuth,
-            currentUser,
-          }) => (
+          {({ isAuth, currentUser }) => (
             <ErrorBoundary
               style={{
                 display: 'flex',
@@ -43,7 +42,17 @@ function App() {
                   {isAuth && (
                     <Switch>
                       <Route exact path="/">
-                        {currentUser?.isEmailConfirmed ? <Vacancies /> : <Redirect push to="/verify-email" />}
+                        {currentUser?.isEmailConfirmed ? (
+                          <Vacancies />
+                        ) : (
+                          <Redirect
+                            push
+                            to={{
+                              pathname: '/verify-email',
+                              state: { email: currentUser?.email },
+                            }}
+                          />
+                        )}
                       </Route>
                       {currentUser?.isEmailConfirmed && (
                         <Route component={Vacancy} path="/vacancies/:id(\d+)" />
@@ -52,7 +61,10 @@ function App() {
                         <Route component={VerifyEmail} path="/verify-email" />
                       )}
                       {!currentUser?.isEmailConfirmed && (
-                        <Route component={EmailConfirmation} path="/confirmation_email/:uid" />
+                        <Route
+                          component={EmailConfirmation}
+                          path="/confirmation_email/:uid"
+                        />
                       )}
                       <Redirect push to="/" />
                     </Switch>
@@ -61,11 +73,29 @@ function App() {
                     <Switch>
                       <Route component={Login} exact path="/login" />
                       <Route component={Register} exact path="/signup" />
-                      <Route component={PasswordRecovery} exact path="/password-recovery" />
-                      <Route component={VerifyEmail} exact path="/verify-email" />
-                      <Route component={VerifyPassword} exact path="/verify-password" />
-                      <Route component={EmailConfirmation} path="/confirmation_email/:uid" />
-                      <Route component={PasswordRecoveryConfirmation} path="/password-reset-confirm/:uid" />
+                      <Route
+                        component={PasswordRecovery}
+                        exact
+                        path="/password-recovery"
+                      />
+                      <Route
+                        component={VerifyEmail}
+                        exact
+                        path="/verify-email"
+                      />
+                      <Route
+                        component={VerifyPassword}
+                        exact
+                        path="/verify-password"
+                      />
+                      <Route
+                        component={EmailConfirmation}
+                        path="/confirmation_email/:uid"
+                      />
+                      <Route
+                        component={PasswordRecoveryConfirmation}
+                        path="/password-reset-confirm/:uid"
+                      />
                       <Redirect push to="/login" />
                     </Switch>
                   )}

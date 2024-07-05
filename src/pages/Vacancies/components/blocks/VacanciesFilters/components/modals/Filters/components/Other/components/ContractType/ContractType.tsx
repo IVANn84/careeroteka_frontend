@@ -47,7 +47,7 @@ export default function ContractType({
       <Typography
         className={classes.title}
         component="p"
-        variant="H4"
+        variant="B1"
         variantMobile="B1"
         weightMobile="semiBold"
       >

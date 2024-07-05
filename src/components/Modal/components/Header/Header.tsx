@@ -16,7 +16,7 @@ interface Props {
 export default function Header({
   classes,
   children,
-  hasDivider = true,
+  hasDivider = false,
   className,
   onDecline,
 }: Props) {

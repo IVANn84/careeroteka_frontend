@@ -7,7 +7,7 @@ const style = {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 48,
+    marginBottom: 36,
 
     '& > svg': {
       height: 24,

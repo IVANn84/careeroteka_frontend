@@ -1,10 +1,8 @@
 import React from 'react';
 
 import { useStoreVacanciesPage } from 'Page/Vacancies/stores';
-import { useDevice } from 'Hook/useDevice';
 import Typography from 'Component/Typography';
 import Input from 'Component/Input';
-import Divider from 'Component/Divider';
 import Checkbox from 'Component/Checkbox';
 
 export default function WordsSearch({
@@ -16,14 +14,13 @@ export default function WordsSearch({
       fieldsStore: { filters },
     },
   } = useStoreVacanciesPage();
-  const device = useDevice();
 
   return (
     <>
       <Typography
         className={classes.title}
         component="p"
-        variant="H4"
+        variant="H5"
         variantMobile="B1"
         weightMobile="semiBold"
       >
@@ -52,6 +49,7 @@ export default function WordsSearch({
             component="p"
             variant="B1"
             variantMobile="B2"
+            weight="semiBold"
             weightMobile="medium"
           >
             Искать только:
@@ -120,7 +118,6 @@ export default function WordsSearch({
           </div>
         </div>
       </div>
-      {device === 'desktop' && <Divider />}
     </>
   );
 }

@@ -3,7 +3,6 @@ import React from 'react';
 import { useStoreVacanciesPage } from 'Page/Vacancies/stores';
 import { useDevice } from 'Hook/useDevice';
 import Typography from 'Component/Typography';
-import Divider from 'Component/Divider';
 import Checkbox from 'Component/Checkbox';
 
 export default function Characteristics({
@@ -22,11 +21,11 @@ export default function Characteristics({
       <Typography
         className={classes.title}
         component="p"
-        variant="H4"
+        variant="H5"
         variantMobile="B1"
         weightMobile="semiBold"
       >
-        Характеристики
+        {device === 'desktop' ? 'Прочее' : 'Характеристики'}
       </Typography>
       {device === 'desktop' && (
         <Typography
@@ -84,7 +83,6 @@ export default function Characteristics({
           />
         </div>
       </div>
-      {device === 'desktop' && <Divider />}
     </>
   );
 }

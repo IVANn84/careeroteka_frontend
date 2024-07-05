@@ -40,6 +40,12 @@ const style = {
       },
     },
   },
+
+  right: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: 48,
+  },
 };
 
 export default withStyle(style)(observer(RightHeaderNavigation));
