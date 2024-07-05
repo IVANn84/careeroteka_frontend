@@ -3,7 +3,7 @@ import React from 'react';
 // import Divider from 'Component/Divider';
 
 import WorkFormat from './components/WorkFormat';
-import EmploymentFormats from './components/EmploymentFormat';
+// import EmploymentFormats from './components/EmploymentFormat';
 // import EmployabilityFormats from './components/ContractType';
 // import CompanySizes from './components/CompanySize';
 
@@ -13,7 +13,7 @@ export default function Other({
   return (
     <div className={classes.container}>
       <WorkFormat />
-      <EmploymentFormats />
+      {/* <EmploymentFormats /> */}
       {/* <EmployabilityFormats /> */}
       {/* <CompanySizes /> */}
       {/* <Divider /> */}

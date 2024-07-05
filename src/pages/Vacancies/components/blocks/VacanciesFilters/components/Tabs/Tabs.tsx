@@ -9,7 +9,7 @@ export default function Tabs({
   const {
     filtersModalStore: {
       fieldsStore,
-      // fieldsStore: { filters },
+      fieldsStore: { filters },
     },
     vacanciesStore,
   } = useStoreVacanciesPage();
@@ -36,21 +36,21 @@ export default function Tabs({
         onClick={onTabClick(() => fieldsStore.setCompanySizeForTabs('corporation'))}
       >
         Корпорации
-      </Tab>
-      <Tab
+      </Tab> */}
+      {/* <Tab
         iconName="rocket"
         isActive={filters.companySize.includes('startup')}
         onClick={onTabClick(() => fieldsStore.setCompanySizeForTabs('startup'))}
       >
         Стартапы
-      </Tab>
+      </Tab> */}
       <Tab
         iconName="remote"
         isActive={filters.workFormat.includes('remote')}
         onClick={onTabClick(() => fieldsStore.setWorkFormatForTabs('remote'))}
       >
         Удаленка
-      </Tab> */}
+      </Tab>
       {/* <Tab
         iconName="cookie"
         isActive={filters.hasInsurance}
