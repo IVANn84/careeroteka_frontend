@@ -5,7 +5,7 @@ import Modal from 'Component/Modal';
 import Button from 'Component/Button';
 
 import WordsSearch from './components/WordsSearch';
-import Types from './components/Types';
+// import Types from './components/Types';
 import Salary from './components/Salary';
 import Other from './components/Other';
 import Grades from './components/Grades';
@@ -45,7 +45,7 @@ export default function Filters({
         Фильтры
       </Modal.Header>
       <Modal.Content className={classes.content}>
-        <Types />
+        {/* <Types /> */}
         <WordsSearch />
         <Salary />
         <Grades />

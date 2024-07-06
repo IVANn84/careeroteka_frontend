@@ -4,9 +4,9 @@ import { useDevice } from 'Hook/useDevice';
 import Typography from 'Component/Typography';
 
 import WorkFormat from './components/WorkFormat';
-import EmploymentFormats from './components/EmploymentFormat';
-import EmployabilityFormats from './components/ContractType';
-import CompanySizes from './components/CompanySize';
+// import EmploymentFormats from './components/EmploymentFormat';
+// import EmployabilityFormats from './components/ContractType';
+// import CompanySizes from './components/CompanySize';
 
 export default function Other({ classes }) {
   const device = useDevice();
@@ -24,9 +24,9 @@ export default function Other({ classes }) {
         </Typography>
       )}
       <WorkFormat />
-      <EmploymentFormats />
-      <EmployabilityFormats />
-      <CompanySizes />
+      {/* <EmploymentFormats /> */}
+      {/* <EmployabilityFormats /> */}
+      {/* <CompanySizes /> */}
     </div>
   );
 }
