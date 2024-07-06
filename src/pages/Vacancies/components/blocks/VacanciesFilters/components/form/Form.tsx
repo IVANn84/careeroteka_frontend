@@ -57,47 +57,45 @@ export default function Form({ classes }) {
 
   return (
     <form className={classes.controls} onSubmit={onSubmit}>
-      <div className={classes.filtersContainer}>
-        <Input
-          className={classes.searchInput}
-          isClearable
-          isDisabled={vacanciesStore.isLoading}
-          isSearchable
-          onChange={fieldsStore.setSearchValues}
-          onClear={() => vacanciesStore.fetchVacancies(false)}
-          onSubmit={() => vacanciesStore.fetchVacancies(false)}
-          placeholder="Профессия"
-          type="text"
-          value={filters.searchValues}
-        />
-        <Dropdown
-          checkIsSelected={({ id }) => filters.experience.includes(id)}
-          className={classes.gradesDropdown}
-          isClearable
-          isDisabled={vacanciesStore.isLoading}
-          mode="light"
-          onSelect={onFilterChanged(value => fieldsStore.setExperience(value?.id))}
-          options={grades}
-          placeholder="Выберите грейд"
-          selectedValue={grades
-            .filter(({ id }) => filters.experience.includes(id))
-            .map(({ name }) => name)
-            .join(', ')}
-        />
-        <Dropdown
-          checkIsSelected={({ isAbroad }) => filters.isAbroad === isAbroad}
-          className={classes.gradesDropdown}
-          isClearable
-          isDisabled={vacanciesStore.isLoading}
-          mode="light"
-          onSelect={onFilterChanged(value => fieldsStore.setIsAbroad(value?.isAbroad))}
-          options={source}
-          placeholder="Где искать"
-          selectedValue={
+      <Input
+        className={classes.searchInput}
+        isClearable
+        isDisabled={vacanciesStore.isLoading}
+        isSearchable
+        onChange={fieldsStore.setSearchValues}
+        onClear={() => vacanciesStore.fetchVacancies(false)}
+        onSubmit={() => vacanciesStore.fetchVacancies(false)}
+        placeholder="Профессия"
+        type="text"
+        value={filters.searchValues}
+      />
+      <Dropdown
+        checkIsSelected={({ id }) => filters.experience.includes(id)}
+        className={classes.gradesDropdown}
+        isClearable
+        isDisabled={vacanciesStore.isLoading}
+        mode="light"
+        onSelect={onFilterChanged(value => fieldsStore.setExperience(value?.id))}
+        options={grades}
+        placeholder="Выберите грейд"
+        selectedValue={grades
+          .filter(({ id }) => filters.experience.includes(id))
+          .map(({ name }) => name)
+          .join(', ')}
+      />
+      <Dropdown
+        checkIsSelected={({ isAbroad }) => filters.isAbroad === isAbroad}
+        className={classes.gradesDropdown}
+        isClearable
+        isDisabled={vacanciesStore.isLoading}
+        mode="light"
+        onSelect={onFilterChanged(value => fieldsStore.setIsAbroad(value?.isAbroad))}
+        options={source}
+        placeholder="Где искать"
+        selectedValue={
             source.find(({ isAbroad }) => filters.isAbroad === isAbroad)?.name
           }
-        />
-      </div>
+      />
       <Button
         className={classes.searchButton}
         isDisabled={

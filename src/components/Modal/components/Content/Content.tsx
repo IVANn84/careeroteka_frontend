@@ -9,7 +9,7 @@ interface Props {
 }
 
 export default function Content({
-  hasDivider = true,
+  hasDivider = false,
   className,
   children,
 }: Props) {

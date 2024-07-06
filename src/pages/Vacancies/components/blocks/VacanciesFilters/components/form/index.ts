@@ -6,12 +6,9 @@ import Form from './Form';
 const style = {
   controls: {
     display: 'flex',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     alignItems: 'flex-start',
-  },
-  filtersContainer: {
-    display: 'flex',
-    columnGap: 30,
+    columnGap: 20,
   },
   searchInput: {
     width: 370,
@@ -26,6 +23,7 @@ const style = {
   '@media screen and (max-device-width: 576px)': {
     controls: {
       flexDirection: 'column',
+      alignItems: 'stretch',
       rowGap: 14,
     },
     filtersContainer: {

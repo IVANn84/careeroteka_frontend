@@ -12,8 +12,6 @@ const style = ({ customScrollbar, button }) => ({
     height: '100%',
   },
   content: {
-    paddingTop: 36,
-    paddingBottom: 36,
     overflowY: 'scroll',
     ...customScrollbar,
   },

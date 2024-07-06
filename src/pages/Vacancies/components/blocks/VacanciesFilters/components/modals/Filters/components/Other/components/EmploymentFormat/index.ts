@@ -5,14 +5,13 @@ import EmploymentFormat from './EmploymentFormat';
 
 const style = ({ font, chip }) => ({
   title: {
-    marginTop: 36,
-    marginBottom: 24,
+    marginBottom: 16,
   },
   variants: {
     display: 'flex',
     gap: '16px',
     flexWrap: 'wrap',
-    marginBottom: 36,
+    marginBottom: 28,
   },
   variant: {
     cursor: 'pointer',

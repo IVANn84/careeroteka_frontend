@@ -5,7 +5,6 @@ import { useStoreVacanciesPage } from 'Page/Vacancies/stores';
 import { useDevice } from 'Hook/useDevice';
 import Typography from 'Component/Typography';
 import Dropdown from 'Component/Dropdown';
-import Divider from 'Component/Divider';
 
 import Grade from './components/Grade';
 
@@ -61,7 +60,7 @@ export default function Grades({
       <Typography
         className={classes.title}
         component="p"
-        variant="H4"
+        variant="H5"
         variantMobile="B1"
         weightMobile="semiBold"
       >
@@ -76,19 +75,16 @@ export default function Grades({
         Выберите необходимый грейд:
       </Typography>
       {device === 'desktop' ? (
-        <>
-          <div className={classes.variants} ref={$container}>
-            {grades.map(grade => (
-              <Grade
-                $container={$container}
-                key={grade.value}
-                onClick={onClick}
-                value={grade}
-              />
-            ))}
-          </div>
-          <Divider />
-        </>
+        <div className={classes.variants} ref={$container}>
+          {grades.map(grade => (
+            <Grade
+              $container={$container}
+              key={grade.value}
+              onClick={onClick}
+              value={grade}
+            />
+          ))}
+        </div>
       ) : (
         <Dropdown
           checkIsSelected={({ value }) => filters.experience.includes(value)}

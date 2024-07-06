@@ -5,7 +5,6 @@ import { useStoreVacanciesPage } from 'Page/Vacancies/stores';
 import { useDevice } from 'Hook/useDevice';
 import Typography from 'Component/Typography';
 import Dropdown from 'Component/Dropdown';
-import Divider from 'Component/Divider';
 
 const types = [
   {
@@ -51,7 +50,7 @@ export default function Types({
       <Typography
         className={classes.title}
         component="p"
-        variant="H4"
+        variant="H5"
         variantMobile="B1"
         weightMobile="semiBold"
       >
@@ -114,7 +113,6 @@ export default function Types({
           )}
         </div>
       )}
-      {device === 'desktop' && <Divider />}
     </>
   );
 }

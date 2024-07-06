@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect } from 'react';
 
 import { useStoreVacanciesPage } from 'Page/Vacancies/stores';
-import { useDevice } from 'Hook/useDevice';
 import Modal from 'Component/Modal';
 import Button from 'Component/Button';
 
@@ -26,8 +25,6 @@ export default function Filters({
       averageSalaryStore,
     },
   } = useStoreVacanciesPage();
-  const device = useDevice();
-
   const onReset = useCallback(() => {
     fieldsStore.reset();
     salaryStore.fetchVacancyList();
@@ -44,10 +41,10 @@ export default function Filters({
       isDisplayed={isDisplay}
       onClose={onDecline}
     >
-      <Modal.Header hasDivider={device === 'desktop'} onDecline={onDecline}>
+      <Modal.Header onDecline={onDecline}>
         Фильтры
       </Modal.Header>
-      <Modal.Content className={classes.content} hasDivider={device === 'desktop'}>
+      <Modal.Content className={classes.content}>
         {/* <Types /> */}
         <WordsSearch />
         <Salary />

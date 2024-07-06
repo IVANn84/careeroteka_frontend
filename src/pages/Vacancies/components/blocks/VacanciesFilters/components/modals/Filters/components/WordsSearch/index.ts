@@ -5,8 +5,7 @@ import WordsSearch from './WordsSearch';
 
 const style = {
   title: {
-    // marginTop: 36,
-    marginBottom: 32,
+    marginBottom: 16,
   },
   container: {
     display: 'grid',
@@ -18,7 +17,7 @@ const style = {
     marginBottom: 16,
   },
   descriptionAt: {
-    marginTop: 36,
+    marginTop: 24,
     marginBottom: 24,
   },
   variants: {
