@@ -8,7 +8,7 @@ import Dropdown from 'Component/Dropdown';
 
 const variants = [
   {
-    value: 'in_office',
+    value: 'office',
     name: 'Офис',
   },
   {
