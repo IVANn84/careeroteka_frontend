@@ -59,9 +59,7 @@ const style = ({ font: { color } }) => ({
 
   '@media screen and (max-device-width: 576px)': {
     title: {
-      textAlign: 'left',
-      flexDirection: 'column',
-      alignItems: 'start',
+      justifyContent: 'flex-start',
       marginTop: 0,
     },
 

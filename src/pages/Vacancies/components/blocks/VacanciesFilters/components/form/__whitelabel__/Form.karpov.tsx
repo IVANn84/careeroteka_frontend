@@ -38,7 +38,12 @@ const source = [
   },
 ];
 
-export default function Form({ classes }) {
+interface Props {
+  onConfirm?: () => void;
+  classes: {[className: string]: string};
+}
+
+export default function Form({ classes, onConfirm }: Props) {
   const [val, setValue] = useState('');
   const [error, setError] = useState(false);
   const debouncedValue = useDebouncedValue(val, 500);
@@ -61,10 +66,13 @@ export default function Form({ classes }) {
       const value = coursesByPartnerStore.values.find(({ name }) => name === debouncedValue);
 
       if (value) {
-        fieldsStore.setCourseId(String(value?.id));
+        fieldsStore.setCourse({
+          id: value?.id,
+          name: value?.name,
+        });
         setError(false);
       } else {
-        fieldsStore.setCourseId(null);
+        fieldsStore.setCourse(null);
         setError(true);
       }
     } else {
@@ -79,6 +87,7 @@ export default function Form({ classes }) {
   const onSubmit = e => {
     e.preventDefault();
     void vacanciesStore.fetchVacancies();
+    onConfirm?.();
   };
 
   return (
@@ -94,12 +103,12 @@ export default function Form({ classes }) {
         onChange={value => setValue(value)}
         onClear={() => {
           setError(false);
-          fieldsStore.setCourseId(null);
+          fieldsStore.setCourse(null);
           vacanciesStore.fetchVacancies(false);
         }}
         onHintSelect={onFilterChanged(value => {
           setValue(value?.name);
-          fieldsStore.setCourseId(String(value?.id));
+          fieldsStore.setCourse(value);
         })}
         onSubmit={() => {
           if (coursesByPartnerStore.values.find(({ name }) => name === val)) {

@@ -2,6 +2,11 @@ import { cast, getSnapshot, types } from 'mobx-state-tree';
 
 import { filtersModalVacanciesStoreVacanciesPage } from 'Page/Vacancies/stores/FiltersModal/vacancies';
 
+const CourseByPartnerModel = types.model('CourseByPartner', {
+  id: types.number,
+  name: types.maybeNull(types.string),
+});
+
 const FiltersModal = types.model('Filters', {
   // type: types.maybeNull(types.string),
   type: types.optional(types.string, 'vacancy'),
@@ -21,7 +26,7 @@ const FiltersModal = types.model('Filters', {
   isAccredited: types.maybeNull(types.boolean),
   isRelocationRequired: types.maybeNull(types.boolean),
   source: types.maybeNull(types.string),
-  byCourse: types.maybeNull(types.string),
+  byCourse: types.maybeNull(CourseByPartnerModel),
 });
 
 export const FiltersModalFieldsStoreModel = types
@@ -197,7 +202,7 @@ export const FiltersModalFieldsStoreModel = types
       setIsFiltersChanged(true);
     }
 
-    function setCourseId(value) {
+    function setCourse(value) {
       if (!value) {
         self.filters.byCourse = null;
       } else {
@@ -228,7 +233,7 @@ export const FiltersModalFieldsStoreModel = types
       toggleHasInsurance,
       toggleIsAccredited,
       toggleIsRelocationRequired,
-      setCourseId,
+      setCourse,
     };
   });
 

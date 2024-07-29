@@ -5,6 +5,7 @@ interface Props {
   onClose: () => void;
   children: React.ReactNode;
   className?: string;
+  variant?: string;
   classes: {[className: string]: string};
 }
 
@@ -14,6 +15,8 @@ export default function Modal({
   onClose,
 
   className,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  variant,
   classes,
   children,
 }: Props) {

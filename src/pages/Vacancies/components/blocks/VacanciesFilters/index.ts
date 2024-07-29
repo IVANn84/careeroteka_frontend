@@ -3,11 +3,13 @@ import { observer } from 'mobx-react-lite';
 
 import VacanciesFilters from './VacanciesFilters';
 
-const style = {
+const style = ({ background }) => ({
   container: {
     marginTop: 36,
     marginBottom: 80,
   },
+  button: {},
+  profession: {},
   tabs: {
     display: 'flex',
     justifyContent: 'space-between',
@@ -27,9 +29,22 @@ const style = {
   '@media screen and (max-device-width: 576px)': {
     container: {
       display: 'flex',
-      flexDirection: 'column-reverse',
-      rowGap: 24,
+      flexDirection: 'column',
+      rowGap: 20,
       margin: [24, 0],
+    },
+    button: {
+      padding: [12, 18],
+      minHeight: 64,
+      backgroundColor: background.tetriary,
+      borderRadius: 16,
+      width: '79%',
+      cursor: 'pointer',
+    },
+    profession: {
+      overflowX: 'hidden',
+      textOverflow: 'ellipsis',
+      whiteSpace: 'nowrap',
     },
     tabs: {
       marginTop: 0,
@@ -37,10 +52,21 @@ const style = {
     filterButton: {
       minWidth: 'auto',
       position: 'absolute',
-      top: 22,
+      top: 59,
       right: 0,
+      padding: [17, 15],
+      borderRadius: 16,
+      backgroundColor: background.tetriary,
+
+      '&:hover': {
+        backgroundColor: background.tetriary,
+      },
+
+      '& svg': {
+        marginRight: 0,
+      },
     },
   },
-};
+});
 
 export default withStyle(style)(observer(VacanciesFilters));

@@ -18,6 +18,7 @@ export const Theme = {
     secondary: '#F2F2F3',
     vacancyCity: '#F3F5F6',
     alternative: colorAlternative,
+    tetriary: '#F2F2F3',
   },
 
   iconButton: {

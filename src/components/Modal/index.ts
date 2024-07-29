@@ -24,22 +24,23 @@ const style = ({ background }) => ({
     padding: [['5vh', '5vw']],
     transition: 'opacity .2s ease-in-out',
   },
+  small: {},
 
   '@media screen and (max-device-width: 576px)': {
     container: {
       padding: [24, 0],
-      borderRadius: 24,
       borderBottomLeftRadius: 0,
       borderBottomRightRadius: 0,
-
+      borderTopLeftRadius: ({ variant }) => (variant === 'small' ? 0 : 24),
+      borderTopRightRadius: ({ variant }) => (variant === 'small' ? 0 : 24),
     },
     cloak: {
-      padding: [[32, 0, 0, 0]],
+      padding: ({ variant }) => (variant === 'small' ? 0 : [[32, 0, 0, 0]]),
     },
   },
 });
 
-const ModalComponent = withStyle(style)(Modal);
+const ModalComponent = withStyle(style as any)(Modal);
 
 export default {
   Modal: ModalComponent,

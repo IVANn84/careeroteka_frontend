@@ -6,7 +6,7 @@ import Typography from 'Component/Typography';
 import Divider from 'Component/Divider';
 
 interface Props {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   hasDivider?: boolean;
   className?: string;
   classes: {[className: string]: string};

@@ -33,7 +33,7 @@ const style = {
     },
     container: {
       gridTemplateColumns: '1fr',
-      gap: '18px',
+      gap: '34px',
       marginBottom: 0,
     },
     descriptionInput: {
