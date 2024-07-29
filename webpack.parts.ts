@@ -17,7 +17,7 @@ import { availableWhitelabel, isDefault } from './webpack/utils/availableWhitela
 
 const argv = minimist(process.argv.slice(2));
 
-const backend = argv.backend || 'http://130.193.50.229:8080/';
+const backend = argv.backend || 'http://51.250.81.153:8080/';
 const port = argv.port || 3000;
 
 export const devServer = (): Configuration => {
