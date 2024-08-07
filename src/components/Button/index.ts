@@ -10,7 +10,7 @@ const style = ({ button }) => ({
     minHeight: 32,
     cursor: ({ isDisabled }) => !isDisabled && 'pointer',
     transition: [['background', '.2s'], ['color', '.2s']],
-    padding: ({ mode = 'primary' }) => (mode !== 'secondary' && [[15, 19]]),
+    padding: ({ mode = 'primary' }) => (mode !== 'secondary' && [[15, 31]]),
     textAlign: 'center',
     color: ({ variant = 'filled', mode = 'primary' }) => button[variant][mode].color.default,
     background: ({ variant = 'filled', mode = 'primary', isDisabled }) => (mode === 'light'

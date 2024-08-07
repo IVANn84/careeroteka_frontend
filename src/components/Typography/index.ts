@@ -7,7 +7,7 @@ const style = ({ typography }) => ({
   typography: {
     fontSize: ({ variant }) => typography.variants[variant].fontSize,
     lineHeight: ({ variant }) => typography.variants[variant].lineHeight,
-    fontWeight: ({ variant, weight }) => typography.fontWeight[['H1', 'H2', 'H3', 'H4', 'H5'].includes(variant)
+    fontWeight: ({ variant, weight }) => typography.fontWeight[['H1', 'H1Lending', 'H2', 'H3', 'H4', 'H5'].includes(variant)
       ? 'bold'
       : weight],
 
