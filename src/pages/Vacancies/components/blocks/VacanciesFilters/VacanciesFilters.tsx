@@ -13,10 +13,10 @@ import Form from './components/form';
 import Tabs from './components/Tabs';
 
 const grades = {
-  no_experience: 'Intern',
-  from_one_to_three: 'Junior',
-  from_three_to_six: 'Middle',
-  more_then_six: 'Senior',
+  'no experience': 'Intern',
+  'between 1 and 3 years': 'Junior',
+  'between 3 and 6 years': 'Middle',
+  'more than 6 years': 'Senior',
 };
 
 export default function VacanciesFilters({ classes }) {

@@ -16,6 +16,9 @@ const style = {
   gradesDropdown: {
     width: 270,
   },
+  locationsDropdown: {
+    width: 270,
+  },
   searchButton: {
     height: 64,
   },
@@ -33,12 +36,19 @@ const style = {
     },
     searchInput: {
       width: 'auto',
+      order: 0,
     },
     gradesDropdown: {
       width: 'auto',
+      order: 2,
+    },
+    locationsDropdown: {
+      width: 'auto',
+      order: 1,
     },
     searchButton: {
       width: '100%',
+      order: 3,
     },
   },
 };

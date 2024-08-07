@@ -204,7 +204,7 @@ export const Theme: ThemeType = {
       },
     },
     color: {
-      light: '#FFF',
+      light: '#F2F2F3',
       primary: '#FFF',
     },
     placeholder: {

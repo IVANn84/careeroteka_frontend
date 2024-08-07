@@ -12,7 +12,6 @@ const style = ({ customScrollbar, dropdown }) => ({
     height: '100%',
   },
   content: {
-    overflowY: 'scroll',
     ...customScrollbar,
   },
   footer: {

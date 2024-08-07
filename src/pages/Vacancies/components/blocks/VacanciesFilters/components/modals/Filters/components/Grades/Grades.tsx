@@ -10,25 +10,25 @@ import Grade from './components/Grade';
 
 const grades = [
   {
-    value: 'no_experience',
+    value: 'no experience',
     name: 'Intern',
     color: Theme.grades.backgroundColor.intern,
     description: 'стажёр, проходящий испытательный срок и\u00A0претендующий на\u00A0полноценную ставку в\u00A0организации, занимается простыми задачами под кураторством более опытного специалиста.',
   },
   {
-    value: 'from_one_to_three',
+    value: 'between 1 and 3 years',
     name: 'Junior',
     color: Theme.grades.backgroundColor.junior,
     description: 'начинающий специалист, решающий простые и\u00A0зачастую рутинные задачи, под кураторством более опытного специалиста',
   },
   {
-    value: 'from_three_to_six',
+    value: 'between 3 and 6 years',
     name: 'Middle',
     color: Theme.grades.backgroundColor.middle,
     description: 'специалист среднего уровня, который самостоятельно решает более сложные задачи, по\u00A0сравнению с\u00A0Junior, старшие коллеги только проверяют результат.',
   },
   {
-    value: 'more_then_six',
+    value: 'more than 6 years',
     name: 'Senior',
     color: Theme.grades.backgroundColor.senior,
     description: 'старший специалист, самостоятельно решающий задачи, отвечающий за\u00A0результат, ведёт кураторство над Junior и\u00A0Middle-специалистами.',

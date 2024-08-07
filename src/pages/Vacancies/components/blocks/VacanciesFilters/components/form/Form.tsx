@@ -8,19 +8,19 @@ import Button from 'Component/Button';
 
 const grades = [
   {
-    id: 'no_experience',
+    id: 'no experience',
     name: 'Intern',
   },
   {
-    id: 'from_one_to_three',
+    id: 'between 1 and 3 years',
     name: 'Junior',
   },
   {
-    id: 'from_three_to_six',
+    id: 'between 3 and 6 years',
     name: 'Middle',
   },
   {
-    id: 'more_then_six',
+    id: 'more than 6 years',
     name: 'Senior',
   },
 ];
@@ -135,7 +135,7 @@ export default function Form({ classes, onConfirm }: Props) {
       />
       <Dropdown
         checkIsSelected={({ isAbroad }) => filters.isAbroad === isAbroad}
-        className={classes.gradesDropdown}
+        className={classes.locationsDropdown}
         isClearable
         isDisabled={vacanciesStore.isLoading}
         mode="light"
