@@ -22,7 +22,7 @@ export const EntityModel = types
     id: types.maybeNull(types.number),
     name: types.maybeNull(types.string),
     salary: types.maybeNull(SalaryModel),
-    contacts: types.optional(types.array(ContactModel), []),
+    contacts: types.maybeNull(types.array(ContactModel)),
     company: types.maybeNull(types.string),
     link: types.maybeNull(types.string),
     workFormat: types.maybeNull(types.string),
