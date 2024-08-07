@@ -314,6 +314,10 @@ export const Theme: ThemeType = {
         fontSize: 24,
         lineHeight: '30px',
       },
+      H1Lending: {
+        fontSize: 74,
+        lineHeight: '78px',
+      },
 
       // Body
       B1: {
