@@ -20,6 +20,7 @@ export const Theme: ThemeType = {
     secondary: '#1E2026',
     vacancyCity: '#32353A',
     alternative: colorAlternative,
+    tetriary: '#48494C',
   },
 
   iconButton: {
@@ -173,7 +174,7 @@ export const Theme: ThemeType = {
     },
     icon: {
       color: {
-        default: '#767779',
+        default: '#A3A4A5',
         negative: colorNegative,
       },
     },
@@ -197,13 +198,13 @@ export const Theme: ThemeType = {
     },
     icon: {
       color: {
-        light: '#767779',
+        light: '#A3A4A5',
         primary: '#FFF',
         negative: colorNegative,
       },
     },
     color: {
-      light: '#767779',
+      light: '#F2F2F3',
       primary: '#FFF',
     },
     placeholder: {

@@ -12,10 +12,16 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 interface Props {
-  children: (
-    ({ isAuth, currentUser }: { isAuth: RootStoreType['isAuth'], currentUser: UserType }
-  ) => React.ReactNode) |React.ReactNode;
-  classes: {[className: string]: string};
+  children:
+    | (({
+      isAuth,
+      currentUser,
+    }: {
+        isAuth: RootStoreType['isAuth'];
+        currentUser: UserType;
+      }) => React.ReactNode)
+    | React.ReactNode;
+  classes: { [className: string]: string };
 }
 
 export default function DefaultLayout({
@@ -52,7 +58,7 @@ export default function DefaultLayout({
             {device === 'desktop' && (
               <div className={classes.contentHeader}>
                 <Typography component="h2" variant="H2" variantMobile="H2">
-                  Добро пожаловать в&nbsp;Бруноям х&nbsp;Careeroteka!
+                  Сервис поиска вакансий
                 </Typography>
                 <Typography
                   className={classes.contentText}
@@ -60,13 +66,12 @@ export default function DefaultLayout({
                   variant="B1"
                   variantMobile="B1"
                 >
-                  Хотелось&nbsp;бы вам быстро находить вакансии с&nbsp;разных
-                  платформ онлайн-рекрутинга, специально подобранные для вас?
-                  Мы&nbsp;поможем!
+                  В проекте Бруноям х Careeroteka мы собираем подходящие
+                  вакансии на рынке с десятков каналов и досок вакансий, чтобы
+                  сэкономить ваше время на поиск работы мечты.
                 </Typography>
                 <Typography component="p" variant="B1" variantMobile="B1">
-                  Бруноям х&nbsp;Careeroteka&nbsp;&mdash; найдём подходящие
-                  вакансии, чтобы вы&nbsp;не&nbsp;тратили на&nbsp;поиск время.
+                  Это абсолютно бесплатно, понадобится только регистрация.
                 </Typography>
               </div>
             )}

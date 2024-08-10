@@ -1,6 +1,7 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import { useStoreVacanciesPage } from 'Page/Vacancies/stores';
+import { useDebouncedValue } from 'Hook/useDebouncedValue';
 import Input from 'Component/Input';
 import Dropdown from 'Component/Dropdown';
 import Button from 'Component/Button';
@@ -37,14 +38,47 @@ const source = [
   },
 ];
 
-export default function Form({ classes }) {
+interface Props {
+  onConfirm?: () => void;
+  classes: {[className: string]: string};
+}
+
+export default function Form({ classes, onConfirm }: Props) {
+  const [val, setValue] = useState('');
+  const [error, setError] = useState(false);
+  const debouncedValue = useDebouncedValue(val, 500);
+
   const {
     filtersModalStore: {
       fieldsStore,
+      professionsStore,
       fieldsStore: { filters },
     },
     vacanciesStore,
   } = useStoreVacanciesPage();
+
+  useEffect(() => {
+    void professionsStore.fetchProfessions();
+  }, [professionsStore]);
+
+  useEffect(() => {
+    if (debouncedValue) {
+      const value = professionsStore.values.find(({ name }) => name === debouncedValue);
+
+      if (value) {
+        fieldsStore.setCourse({
+          id: value?.id,
+          name: value?.name,
+        });
+        setError(false);
+      } else {
+        fieldsStore.setCourse(null);
+        setError(true);
+      }
+    } else {
+      setError(false);
+    }
+  }, [debouncedValue, fieldsStore, professionsStore.values]);
 
   const onFilterChanged = useCallback(fn => value => {
     fn(value);
@@ -53,21 +87,37 @@ export default function Form({ classes }) {
   const onSubmit = e => {
     e.preventDefault();
     void vacanciesStore.fetchVacancies();
+    onConfirm?.();
   };
 
   return (
     <form className={classes.controls} onSubmit={onSubmit}>
       <Input
         className={classes.searchInput}
+        hasHint
+        hintOptions={professionsStore.values
+          .map(({ id, name }) => ({ id, name }))}
         isClearable
-        isDisabled={vacanciesStore.isLoading}
+        isDisabled={professionsStore.isLoading}
         isSearchable
-        onChange={fieldsStore.setSearchValues}
-        onClear={() => vacanciesStore.fetchVacancies(false)}
-        onSubmit={() => vacanciesStore.fetchVacancies(false)}
+        onChange={value => setValue(value)}
+        onClear={() => {
+          setError(false);
+          fieldsStore.setCourse(null);
+          vacanciesStore.fetchVacancies(false);
+        }}
+        onHintSelect={onFilterChanged(value => {
+          setValue(value?.name);
+          fieldsStore.setCourse(value);
+        })}
+        onSubmit={() => {
+          if (professionsStore.values.find(({ name }) => name === val)) {
+            vacanciesStore.fetchVacancies(false);
+          }
+        }}
         placeholder="Профессия"
         type="text"
-        value={filters.searchValues}
+        value={val}
       />
       <Dropdown
         checkIsSelected={({ id }) => filters.experience.includes(id)}
@@ -85,7 +135,7 @@ export default function Form({ classes }) {
       />
       <Dropdown
         checkIsSelected={({ isAbroad }) => filters.isAbroad === isAbroad}
-        className={classes.gradesDropdown}
+        className={classes.locationsDropdown}
         isClearable
         isDisabled={vacanciesStore.isLoading}
         mode="light"
@@ -99,9 +149,9 @@ export default function Form({ classes }) {
       <Button
         className={classes.searchButton}
         isDisabled={
-          !filters.searchValues
-          && !filters.experience.length
-          && filters.isAbroad === null
+          (error || !filters.byCourse)
+          && (error || !filters.experience.length)
+          && (error || filters.isAbroad === null)
         }
         mode="primary"
         type="submit"

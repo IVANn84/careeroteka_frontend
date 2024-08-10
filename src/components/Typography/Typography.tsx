@@ -32,7 +32,7 @@ import React, { AllHTMLAttributes } from 'react';
 //   & HTMLAttributes<any>;
 
 type Variant = 'H1' | 'H2' | 'H3' | 'H4' | 'H5' | 'B1' | 'B2' | 'C1' | 'H1Lending';
-type Weight = 'regular' | 'semiBold' | 'medium';
+type Weight = 'regular' | 'semiBold' | 'medium' | 'bold';
 
 interface Props extends AllHTMLAttributes<HTMLElement> {
   children: React.ReactNode;

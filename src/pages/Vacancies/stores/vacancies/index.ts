@@ -74,6 +74,9 @@ export const VacanciesStoreModel = types
         excludeValues: filters.excludeValues
           ? filters.excludeValues.split(',')
           : null,
+        byCourse: filters.byCourse
+          ? filters.byCourse.id
+          : null,
         page: isFetchNextPage
           ? self.nextPage
           : null,

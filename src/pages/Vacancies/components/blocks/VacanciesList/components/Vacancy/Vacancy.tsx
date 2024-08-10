@@ -1,19 +1,20 @@
 import { Link } from 'react-router-dom';
 import React from 'react';
-import { CheckIcon } from '@heroicons/react/24/solid';
+// import { CheckIcon } from '@heroicons/react/24/solid';
 
 import Typography from 'Component/Typography';
 
 export default function Vacancy({
   value: {
-    id, company, name, city, salary, isRead,
+    id, company, name, city, salary,
+    // isRead,
   },
 
   classes,
 }) {
   let salaryString;
 
-  if (salary) {
+  if (salary && (salary.minValue || salary.maxValue)) {
     if (salary.minValue !== salary.maxValue) {
       salaryString = `${
         salary.minValue ? `от ${salary.minValue / 1000}к ` : ''
@@ -36,10 +37,10 @@ export default function Vacancy({
             {company}
           </Typography>
         </abbr>
-        <div className={classes.check}>
+        {/* <div className={classes.check}>
           <CheckIcon />
           {isRead && <CheckIcon />}
-        </div>
+        </div> */}
       </div>
       <abbr title={name}>
         <Typography
@@ -62,7 +63,7 @@ export default function Vacancy({
         >
           {city || 'Не определен'}
         </Typography>
-        {salary && (
+        {salaryString && (
           <Typography
             className={classes.salary}
             component="p"

@@ -20,6 +20,7 @@ export const Theme: ThemeType = {
     secondary: '#F2F2F3',
     vacancyCity: '#E0E0E0',
     alternative: colorAlternative,
+    tetriary: '',
   },
 
   iconButton: {

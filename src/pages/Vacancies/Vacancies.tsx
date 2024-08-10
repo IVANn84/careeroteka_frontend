@@ -38,7 +38,7 @@ export default function Vacancies({
         variant="H1"
         variantMobile="H4"
       >
-        Поиск классной
+        Поиск
         <div className={classes.flip}>
           <div className={classes.word}>подработки</div>
           <div className={classes.word}>работы</div>

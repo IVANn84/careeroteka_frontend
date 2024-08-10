@@ -28,7 +28,7 @@ export default function Main({
 
   let salaryString;
 
-  if (salary) {
+  if (salary && (salary.minValue || salary.maxValue)) {
     if (salary.minValue !== salary.maxValue) {
       salaryString = `${salary.minValue
         ? `от ${formatMoney(salary.minValue)} `
@@ -67,7 +67,7 @@ export default function Main({
           {entityStore.entity?.name}
         </TextSkeleton>
       </Typography>
-      {salary && (
+      {salaryString && (
         <Typography
           className={classes.salary}
           component="p"

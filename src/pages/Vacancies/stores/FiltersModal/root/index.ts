@@ -1,6 +1,7 @@
 import { applySnapshot, getSnapshot, types } from 'mobx-state-tree';
 
 import { FiltersModalVacanciesStoreModel, filtersModalVacanciesStoreVacanciesPage } from '../vacancies';
+import { FiltersModalProfessionsStoreModel, filtersModalProfessionsVacanciesPage } from '../professions';
 import { FiltersModalFieldsStoreModel, filtersModalFieldsStoreVacanciesPage } from '../fields';
 import { FiltersModalCoursesByPartnerStoreModel, filtersModalCoursesByPartnerVacanciesPage } from '../coursesByPartner';
 import { FiltersModalAverageSalaryStoreModel, filtersModalAverageSalaryStoreVacanciesPage } from '../averageSalary';
@@ -13,6 +14,7 @@ export const RootStoreFiltersModalModel = types
     vacanciesStore: types.maybe(FiltersModalVacanciesStoreModel),
     averageSalaryStore: types.maybe(FiltersModalAverageSalaryStoreModel),
     coursesByPartnerStore: types.maybe(FiltersModalCoursesByPartnerStoreModel),
+    professionsStore: types.maybe(FiltersModalProfessionsStoreModel),
   })
   .actions(self => {
     function afterCreate() {
@@ -34,4 +36,5 @@ export const rootStoreFiltersModalVacanciesPage = RootStoreFiltersModalModel.cre
   vacanciesStore: filtersModalVacanciesStoreVacanciesPage,
   averageSalaryStore: filtersModalAverageSalaryStoreVacanciesPage,
   coursesByPartnerStore: filtersModalCoursesByPartnerVacanciesPage,
+  professionsStore: filtersModalProfessionsVacanciesPage,
 });
