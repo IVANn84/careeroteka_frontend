@@ -31,7 +31,7 @@ import React, { AllHTMLAttributes } from 'react';
 //   (MobileHeaderProps | MobileTextProps)
 //   & HTMLAttributes<any>;
 
-type Variant = 'H1' | 'H2' | 'H3' | 'H4' | 'H5' | 'B1' | 'B2' | 'C1';
+type Variant = 'H1' | 'H2' | 'H3' | 'H4' | 'H5' | 'B1' | 'B2' | 'C1' | 'H1Lending';
 type Weight = 'regular' | 'semiBold' | 'medium' | 'bold';
 
 interface Props extends AllHTMLAttributes<HTMLElement> {
