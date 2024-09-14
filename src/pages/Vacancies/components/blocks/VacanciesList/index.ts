@@ -15,23 +15,8 @@ const style = {
   },
   vacanciesContainer: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, 370px)',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(370px, 1fr))',
     gap: [[24, 30]],
-    alignItems: 'start',
-    justifyContent: 'space-between',
-  },
-
-  '@media screen and (max-device-width: 576px)': {
-    infiniteScroll: {
-      padding: 0,
-      margin: 0,
-      overflow: 'visible !important',
-      marginBottom: -20,
-    },
-    vacanciesContainer: {
-      gridTemplateColumns: '1fr',
-      gap: 16,
-    },
   },
 };
 
