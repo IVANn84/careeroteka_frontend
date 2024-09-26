@@ -9,9 +9,7 @@ import Input from 'Component/Input';
 
 import SalaryChart from './components/SalaryChart';
 
-export default function Salary({
-  classes,
-}) {
+export default function Salary({ classes }) {
   const [maxSalary, setMaxSalary] = useState<number | string>();
   const debouncedValue = useDebouncedValue(maxSalary, 1500);
 
@@ -21,9 +19,7 @@ export default function Salary({
     filtersModalStore: {
       fieldsStore,
       fieldsStore: { filters },
-      averageSalaryStore: {
-        averageSalaryData,
-      },
+      averageSalaryStore: { averageSalaryData },
     },
   } = useStoreVacanciesPage();
 
@@ -70,14 +66,16 @@ export default function Salary({
           weightMobile="medium"
         >
           {filters.type === 'vacancy' && formatMoney(averageSalaryData.vacancy)}
-          {filters.type === 'internship' && formatMoney(averageSalaryData.internship)}
-          {filters.type === 'freelance' && formatMoney(averageSalaryData.freelance)}
+          {filters.type === 'internship'
+            && formatMoney(averageSalaryData.internship)}
+          {filters.type === 'freelance'
+            && formatMoney(averageSalaryData.freelance)}
           {' '}
           ₽
         </Typography>
         .
       </Typography>
-      {device === 'desktop' && <SalaryChart />}
+      {['desktop', 'tablet'].includes(device) && <SalaryChart />}
       <div className={classes.inputs}>
         <Input
           isPlaceholderAtTop

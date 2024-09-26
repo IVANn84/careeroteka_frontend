@@ -23,7 +23,7 @@ const style = {
     },
   },
 
-  '@media screen and (max-device-width: 576px)': {
+  '@media screen and (max-device-width: 760px)': {
     container: {
       '& > *:not(:last-child)': {
         marginTop: 0,

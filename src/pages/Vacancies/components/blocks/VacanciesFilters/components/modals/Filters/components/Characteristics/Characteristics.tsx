@@ -5,9 +5,7 @@ import { useDevice } from 'Hook/useDevice';
 import Typography from 'Component/Typography';
 import Checkbox from 'Component/Checkbox';
 
-export default function Characteristics({
-  classes,
-}) {
+export default function Characteristics({ classes }) {
   const {
     filtersModalStore: {
       fieldsStore,
@@ -25,9 +23,9 @@ export default function Characteristics({
         variantMobile="B1"
         weightMobile="semiBold"
       >
-        {device === 'desktop' ? 'Прочее' : 'Характеристики'}
+        {['desktop', 'tablet'].includes(device) ? 'Прочее' : 'Характеристики'}
       </Typography>
-      {device === 'desktop' && (
+      {['desktop', 'tablet'].includes(device) && (
         <Typography
           className={classes.description}
           component="p"

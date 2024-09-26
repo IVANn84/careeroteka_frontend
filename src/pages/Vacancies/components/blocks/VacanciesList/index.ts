@@ -5,9 +5,6 @@ import { observer } from 'mobx-react-lite';
 import VacanciesList from './VacanciesList';
 
 const style = {
-  container: {
-    position: 'relative',
-  },
   infiniteScroll: {
     padding: [30],
     margin: [-30],
@@ -15,8 +12,15 @@ const style = {
   },
   vacanciesContainer: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(370px, 1fr))',
-    gap: [[24, 30]],
+    justifyContent: 'space-around',
+    gridTemplateColumns: 'repeat(auto-fit, 370px)',
+    gap: [[28, 30]],
+  },
+  '@media screen and (max-device-width: 760px)': {
+    vacanciesContainer: {
+      gridTemplateColumns: 'repeat(auto-fit, 343px)',
+      gap: [[28, 5]],
+    },
   },
 };
 

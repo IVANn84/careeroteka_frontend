@@ -26,7 +26,7 @@ const style = ({ background }) => ({
     },
   },
 
-  '@media screen and (max-device-width: 576px)': {
+  '@media screen and (max-device-width: 760px)': {
     container: {
       display: 'flex',
       flexDirection: 'column',
@@ -38,7 +38,7 @@ const style = ({ background }) => ({
       minHeight: 64,
       backgroundColor: background.tetriary,
       borderRadius: 16,
-      width: '79%',
+      width: '90%',
       cursor: 'pointer',
     },
     profession: {
@@ -52,7 +52,7 @@ const style = ({ background }) => ({
     filterButton: {
       minWidth: 'auto',
       position: 'absolute',
-      top: 59,
+      top: 182,
       right: 0,
       padding: [17, 15],
       borderRadius: 16,
@@ -65,6 +65,15 @@ const style = ({ background }) => ({
       '& svg': {
         marginRight: 0,
       },
+    },
+  },
+
+  '@media screen and (max-device-width: 576px)': {
+    button: {
+      width: '80%',
+    },
+    filterButton: {
+      top: 59,
     },
   },
 });

@@ -7,9 +7,7 @@ import Typography from 'Component/Typography';
 import VacanciesList from './components/blocks/VacanciesList';
 import VacanciesFilters from './components/blocks/VacanciesFilters';
 
-export default function Vacancies({
-  classes,
-}) {
+export default function Vacancies({ classes }) {
   const {
     filtersModalStore: {
       fieldsStore: { filters },
@@ -45,7 +43,7 @@ export default function Vacancies({
           <div className={classes.word}>стажировки</div>
         </div>
       </Typography>
-      {device === 'desktop' && (
+      {['desktop', 'tablet'].includes(device) && (
         <Typography
           className={classes.subTitle}
           component="p"

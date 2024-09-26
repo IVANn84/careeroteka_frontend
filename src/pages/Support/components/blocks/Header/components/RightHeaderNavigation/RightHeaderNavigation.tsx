@@ -9,19 +9,19 @@ export default function RightHeaderNavigation({ classes }) {
 
   return (
     <div className={classes.container}>
-      { device === 'desktop' && (
-      <>
-        <Link to="/vacancies">
-          <Typography variant="B1" variantMobile="B2">
-            Вакансии
-          </Typography>
-        </Link>
-        <Link to="/">
-          <Typography variant="B1" variantMobile="B2">
-            Вики карьеры
-          </Typography>
-        </Link>
-      </>
+      {['desktop', 'tablet'].includes(device) && (
+        <>
+          <Link to="/vacancies">
+            <Typography variant="B1" variantMobile="B2">
+              Вакансии
+            </Typography>
+          </Link>
+          <Link to="/">
+            <Typography variant="B1" variantMobile="B2">
+              Вики карьеры
+            </Typography>
+          </Link>
+        </>
       )}
       <Link to="/login">
         <Typography variant="B1" variantMobile="B2">

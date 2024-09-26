@@ -1,13 +1,16 @@
 import { useEffect, useState } from 'react';
 
-function getDeviceType(): 'desktop' | 'mobile' {
-  return window.innerWidth <= 576
-    ? 'mobile'
-    : 'desktop';
+function getDeviceType(): 'desktop' | 'tablet' | 'mobile' {
+  if (window.innerWidth > 762) {
+    return 'desktop';
+  }
+  if (window.innerWidth > 576) {
+    return 'tablet';
+  }
+  return 'mobile';
 }
 
-// Получение типа устройства
-export function useDevice(): 'desktop' | 'mobile' {
+export function useDevice(): ReturnType<typeof getDeviceType> {
   const [device, setDevice] = useState(getDeviceType());
 
   useEffect(() => {

@@ -52,10 +52,14 @@ export default function DefaultLayout({
   if (!isAuth || (isAuth && !currentUser?.isEmailConfirmed)) {
     return (
       <div className={classes.containerAuth}>
-        <Header variant={device === 'desktop' ? 'whitetitle' : 'blacktitle'} />
+        <Header
+          variant={
+            ['desktop', 'tablet'].includes(device) ? 'whitetitle' : 'blacktitle'
+          }
+        />
         <main className={classes.contentContainerAuth}>
           <div className={classes.content}>
-            {device === 'desktop' && (
+            {['desktop', 'tablet'].includes(device) && (
               <div className={classes.contentHeader}>
                 <Typography component="h2" variant="H2" variantMobile="H2">
                   Сервис поиска вакансий

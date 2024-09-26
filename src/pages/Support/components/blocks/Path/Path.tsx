@@ -36,22 +36,27 @@ export default function Path({ classes }) {
 
   return (
     <section className={classes.container}>
-      <Typography className={classes.title} component="h2" variant="H2" variantMobile="H3">
+      <Typography
+        className={classes.title}
+        component="h2"
+        variant="H2"
+        variantMobile="H3"
+      >
         Так может выглядеть путь до
         <span className={classes.highlight}>&nbsp;оффера мечты</span>
       </Typography>
-      {device === 'desktop' && (
-      <Typography
-        className={classes.description}
-        component="p"
-        variant="B1"
-        variantMobile="B1"
-      >
-        Тут будет текст Тут будет текст Тут будет текст Тут будет текст Тут будет текст
-        Тут будет текст Тут будет текст Тут будет текст
-      </Typography>
+      {['desktop', 'tablet'].includes(device) && (
+        <Typography
+          className={classes.description}
+          component="p"
+          variant="B1"
+          variantMobile="B1"
+        >
+          Тут будет текст Тут будет текст Тут будет текст Тут будет текст Тут
+          будет текст Тут будет текст Тут будет текст Тут будет текст
+        </Typography>
       )}
-      {device === 'desktop' ? (
+      {['desktop', 'tablet'].includes(device) ? (
         <div className={classes.lists}>
           <div className={classes.list}>
             <Typography

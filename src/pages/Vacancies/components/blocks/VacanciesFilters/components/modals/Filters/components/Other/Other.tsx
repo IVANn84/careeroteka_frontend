@@ -13,7 +13,7 @@ export default function Other({ classes }) {
 
   return (
     <div className={classes.container}>
-      {device === 'desktop' && (
+      {['desktop', 'tablet'].includes(device) && (
         <Typography
           component="p"
           variant="H5"

@@ -21,9 +21,7 @@ const types = [
   },
 ];
 
-export default function Types({
-  classes,
-}) {
+export default function Types({ classes }) {
   const {
     filtersModalStore: {
       fieldsStore,
@@ -41,9 +39,12 @@ export default function Types({
     thousand: ' ',
   });
 
-  const onFilterChanged = useCallback(fn => value => {
-    fn(value);
-  }, []);
+  const onFilterChanged = useCallback(
+    fn => value => {
+      fn(value);
+    },
+    [],
+  );
 
   return (
     <>
@@ -56,7 +57,7 @@ export default function Types({
       >
         Тип предложения
       </Typography>
-      {device === 'desktop' && (
+      {['desktop', 'tablet'].includes(device) && (
         <Typography
           className={classes.description}
           component="p"
@@ -68,47 +69,54 @@ export default function Types({
       )}
       {!isLoading && (
         <div className={classes.variants}>
-          {device === 'desktop' ? types.map(type => (
-            <button
-              className={filters.type === type.value ? classes.selectedVariant : ''}
-              key={type.value}
-              onClick={() => fieldsStore.setTypeVacancy(type.value)}
-              type="button"
-            >
-              <Typography
-                component="p"
-                variant="B2"
-                variantMobile="B2"
-                weight="semiBold"
-                weightMobile="semiBold"
+          {['desktop', 'tablet'].includes(device) ? (
+            types.map(type => (
+              <button
+                className={
+                  filters.type === type.value ? classes.selectedVariant : ''
+                }
+                key={type.value}
+                onClick={() => fieldsStore.setTypeVacancy(type.value)}
+                type="button"
               >
-                {type.name}
-              </Typography>
-              <Typography
-                component="p"
-                variant="B2"
-                variantMobile="B2"
-              >
-                {`${formatMoney(averageSalaryData[type.value])} ₽`}
-              </Typography>
-              <Typography
-                component="p"
-                variant="B2"
-                variantMobile="B2"
-              >
-                в среднем
-              </Typography>
-            </button>
-          )) : (
+                <Typography
+                  component="p"
+                  variant="B2"
+                  variantMobile="B2"
+                  weight="semiBold"
+                  weightMobile="semiBold"
+                >
+                  {type.name}
+                </Typography>
+                <Typography component="p" variant="B2" variantMobile="B2">
+                  {`${formatMoney(averageSalaryData[type.value])} ₽`}
+                </Typography>
+                <Typography component="p" variant="B2" variantMobile="B2">
+                  в среднем
+                </Typography>
+              </button>
+            ))
+          ) : (
             <Dropdown
               checkIsSelected={({ value }) => filters.type === value}
               isClearable
               mode="light"
               onSelect={onFilterChanged(type => fieldsStore.setTypeVacancy(type?.value))}
-              options={types.map(type => ({ value: type.value, name: `${type.name} (≈ ${formatMoney(averageSalaryData[type.value])} ₽)` }))}
+              options={types.map(type => ({
+                value: type.value,
+                name: `${type.name} (≈ ${formatMoney(
+                  averageSalaryData[type.value],
+                )} ₽)`,
+              }))}
               placeholder="Выберите тип предложения"
-              selectedValue={types.filter(type => filters.type === type.value)
-                .map(type => `${type.name} (≈ ${formatMoney(averageSalaryData[type.value])} ₽)`).join('')}
+              selectedValue={types
+                .filter(type => filters.type === type.value)
+                .map(
+                  type => `${type.name} (≈ ${formatMoney(
+                    averageSalaryData[type.value],
+                  )} ₽)`,
+                )
+                .join('')}
             />
           )}
         </div>

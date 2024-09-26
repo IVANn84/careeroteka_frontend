@@ -21,9 +21,7 @@ const variants = [
   },
 ];
 
-export default function WorkFormat({
-  classes,
-}) {
+export default function WorkFormat({ classes }) {
   const {
     filtersModalStore: {
       fieldsStore,
@@ -34,9 +32,12 @@ export default function WorkFormat({
 
   const onClick = value => fieldsStore.setWorkFormat(value);
 
-  const onFilterChanged = useCallback(fn => value => {
-    fn(value);
-  }, []);
+  const onFilterChanged = useCallback(
+    fn => value => {
+      fn(value);
+    },
+    [],
+  );
 
   return (
     <>
@@ -49,13 +50,15 @@ export default function WorkFormat({
       >
         Формат работы
       </Typography>
-      {device === 'desktop' ? (
+      {['desktop', 'tablet'].includes(device) ? (
         <div className={classes.variants}>
           {variants.map(variant => (
             <Typography
-              className={`${classes.variant} ${filters.workFormat.includes(variant.value)
-                ? classes.selected
-                : ''}`}
+              className={`${classes.variant} ${
+                filters.workFormat.includes(variant.value)
+                  ? classes.selected
+                  : ''
+              }`}
               key={variant.value}
               onClick={() => onClick(variant.value)}
               onKeyDown={onEnter(() => onClick(variant.value))}
@@ -76,7 +79,10 @@ export default function WorkFormat({
           onSelect={onFilterChanged(value => fieldsStore.setWorkFormat(value?.value))}
           options={variants}
           placeholder="Выберите формат работы"
-          selectedValue={variants.filter(({ value }) => filters.workFormat.includes(value)).map(({ name }) => name).join(', ')}
+          selectedValue={variants
+            .filter(({ value }) => filters.workFormat.includes(value))
+            .map(({ name }) => name)
+            .join(', ')}
         />
       )}
     </>

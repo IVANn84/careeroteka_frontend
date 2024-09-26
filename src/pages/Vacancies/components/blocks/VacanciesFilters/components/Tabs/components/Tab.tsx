@@ -12,7 +12,7 @@ interface Props {
   iconName: IconProps['name'];
   onClick?: () => void;
   isActive?: boolean;
-  classes: {[className: string]: boolean};
+  classes: { [className: string]: boolean };
 }
 
 export default function Tab({
@@ -27,16 +27,18 @@ export default function Tab({
 
   return (
     <div
-      className={`${classes.tab} ${isActive ? classes.selectedTab : ''} ${className || ''}`}
+      className={`${classes.tab} ${isActive ? classes.selectedTab : ''} ${
+        className || ''
+      }`}
       onClick={onClick}
       onKeyDown={onEnter(onClick)}
       role="button"
       tabIndex={0}
     >
       <Icon
-        height={device === 'desktop' ? 48 : 38}
+        height={['desktop', 'tablet'].includes(device) ? 48 : 38}
         name={iconName}
-        width={device === 'desktop' ? 48 : 38}
+        width={['desktop', 'tablet'].includes(device) ? 48 : 38}
       />
       <Typography variant="B2" variantMobile="C1">
         {children}

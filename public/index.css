@@ -25,6 +25,13 @@ select:-webkit-autofill:focus {
     transition: background-color 5000s ease-in-out 0s;
 }
 
+@media screen and (max-device-width: 760px) {
+    body {
+        min-width: 704px;
+    }
+}
+
+
 @media screen and (max-device-width: 576px) {
     body {
         min-width: auto;

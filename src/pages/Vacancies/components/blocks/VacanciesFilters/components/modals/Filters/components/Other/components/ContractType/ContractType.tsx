@@ -25,9 +25,7 @@ const variants = [
   },
 ];
 
-export default function ContractType({
-  classes,
-}) {
+export default function ContractType({ classes }) {
   const {
     filtersModalStore: {
       fieldsStore,
@@ -38,9 +36,12 @@ export default function ContractType({
 
   const onClick = value => fieldsStore.setContractType(value);
 
-  const onFilterChanged = useCallback(fn => value => {
-    fn(value);
-  }, []);
+  const onFilterChanged = useCallback(
+    fn => value => {
+      fn(value);
+    },
+    [],
+  );
 
   return (
     <>
@@ -53,13 +54,15 @@ export default function ContractType({
       >
         Формат трудоустройства
       </Typography>
-      {device === 'desktop' ? (
+      {['desktop', 'tablet'].includes(device) ? (
         <div className={classes.variants}>
           {variants.map(variant => (
             <Typography
-              className={`${classes.variant} ${filters.contractType.includes(variant.value)
-                ? classes.selected
-                : ''}`}
+              className={`${classes.variant} ${
+                filters.contractType.includes(variant.value)
+                  ? classes.selected
+                  : ''
+              }`}
               key={variant.value}
               onClick={() => onClick(variant.value)}
               onKeyDown={onEnter(() => onClick(variant.value))}
@@ -80,7 +83,10 @@ export default function ContractType({
           onSelect={onFilterChanged(value => fieldsStore.setContractType(value?.value))}
           options={variants}
           placeholder="Выберите формат трудоустройства"
-          selectedValue={variants.filter(({ value }) => filters.contractType.includes(value)).map(({ name }) => name).join(', ')}
+          selectedValue={variants
+            .filter(({ value }) => filters.contractType.includes(value))
+            .map(({ name }) => name)
+            .join(', ')}
         />
       )}
     </>

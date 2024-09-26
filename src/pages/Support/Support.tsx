@@ -34,7 +34,7 @@ export default function Support({ classes }) {
         <Request />
         <Faq />
       </main>
-      {device === 'desktop' ? (
+      {['desktop', 'tablet'].includes(device) ? (
         <Footer />
       ) : (
         <footer className={classes.footer}>

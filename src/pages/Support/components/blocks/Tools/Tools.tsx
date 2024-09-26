@@ -42,18 +42,25 @@ export default function Tools({ classes }) {
 
   return (
     <section className={classes.container}>
-      <Typography className={classes.title} component="h2" variant="H2" variantMobile="H3">
+      <Typography
+        className={classes.title}
+        component="h2"
+        variant="H2"
+        variantMobile="H3"
+      >
         С чем мы будем
         {' '}
         <span className={classes.highlight}>работать?</span>
       </Typography>
-      {device === 'desktop' ? (
+      {['desktop', 'tablet'].includes(device) ? (
         <div className={classes.list}>
           {tools.map(assistant => (
             <Tool key={assistant.id} {...assistant} />
           ))}
         </div>
-      ) : <ToolsSlider toolsList={tools} />}
+      ) : (
+        <ToolsSlider toolsList={tools} />
+      )}
     </section>
   );
 }

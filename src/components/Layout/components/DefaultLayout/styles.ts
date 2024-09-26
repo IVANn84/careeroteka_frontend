@@ -20,6 +20,19 @@ const style = ({ layout, background, font }) => ({
     margin: [60, 0, 100, 0],
   },
 
+  // I don't know exactly where else this layer occurs,
+  // so I left both optionsI
+
+  '@media screen and (max-device-width: 760px)': {
+    container: {
+      padding: [18, 28, 47, 28],
+    },
+
+    contentContainer: {
+      margin: [38, 0, 50, 0],
+    },
+  },
+
   '@media screen and (max-device-width: 576px)': {
     container: {
       padding: [18, layout.paddingX.mobile, 32, layout.paddingX.mobile],

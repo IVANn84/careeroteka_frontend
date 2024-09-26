@@ -25,9 +25,7 @@ const variants = [
   },
 ];
 
-export default function EmploymentFormat({
-  classes,
-}) {
+export default function EmploymentFormat({ classes }) {
   const {
     filtersModalStore: {
       fieldsStore,
@@ -38,9 +36,12 @@ export default function EmploymentFormat({
 
   const onClick = value => fieldsStore.setEmploymentFormat(value);
 
-  const onFilterChanged = useCallback(fn => value => {
-    fn(value);
-  }, []);
+  const onFilterChanged = useCallback(
+    fn => value => {
+      fn(value);
+    },
+    [],
+  );
 
   return (
     <>
@@ -53,13 +54,15 @@ export default function EmploymentFormat({
       >
         Формат занятости
       </Typography>
-      {device === 'desktop' ? (
+      {['desktop', 'tablet'].includes(device) ? (
         <div className={classes.variants}>
           {variants.map(variant => (
             <Typography
-              className={`${classes.variant} ${filters.employmentFormat.includes(variant.value)
-                ? classes.selected
-                : ''}`}
+              className={`${classes.variant} ${
+                filters.employmentFormat.includes(variant.value)
+                  ? classes.selected
+                  : ''
+              }`}
               key={variant.value}
               onClick={() => onClick(variant.value)}
               onKeyDown={onEnter(() => onClick(variant.value))}
@@ -80,7 +83,10 @@ export default function EmploymentFormat({
           onSelect={onFilterChanged(value => fieldsStore.setEmploymentFormat(value?.value))}
           options={variants}
           placeholder="Выберите формат занятости"
-          selectedValue={variants.filter(({ value }) => filters.employmentFormat.includes(value)).map(({ name }) => name).join(', ')}
+          selectedValue={variants
+            .filter(({ value }) => filters.employmentFormat.includes(value))
+            .map(({ name }) => name)
+            .join(', ')}
         />
       )}
     </>

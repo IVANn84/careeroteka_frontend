@@ -23,7 +23,7 @@ const style = {
     height: 64,
   },
 
-  '@media screen and (max-device-width: 576px)': {
+  '@media screen and (max-device-width: 760px)': {
     controls: {
       flexDirection: 'column',
       alignItems: 'stretch',

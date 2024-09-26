@@ -7,13 +7,9 @@ import { useDevice } from 'Hook/useDevice';
 import Typography from 'Component/Typography';
 import Block from 'Component/Block';
 
-export default function Response({
-  classes,
-}) {
+export default function Response({ classes }) {
   const device = useDevice();
-  const {
-    entityStore,
-  } = useStoreVacancyPage();
+  const { entityStore } = useStoreVacancyPage();
 
   return (
     <Block
@@ -22,11 +18,7 @@ export default function Response({
       padding={[[36, 24]]}
       paddingMobile={[[24, 16]]}
     >
-      <Typography
-        component="h3"
-        variant="H3"
-        variantMobile="H5"
-      >
+      <Typography component="h3" variant="H3" variantMobile="H5">
         Отклик
       </Typography>
       <Typography
@@ -41,7 +33,7 @@ export default function Response({
       <ul className={classes.list}>
         {/* <li className={classes.item}>
           <img alt="habr" src={habr} />
-          {device === 'desktop' && (
+          {['desktop', 'tablet'].includes(device) && (
           <Typography
             component="p"
             variant="B1"
@@ -54,20 +46,16 @@ export default function Response({
         <a href={entityStore.entity.link} rel="noreferrer" target="_blank">
           <li className={classes.item}>
             <img alt="hh" src={hh} />
-            {device === 'desktop' && (
-            <Typography
-              component="p"
-              variant="B1"
-              variantMobile="B1"
-            >
-              hh.ru
-            </Typography>
+            {['desktop', 'tablet'].includes(device) && (
+              <Typography component="p" variant="B1" variantMobile="B1">
+                hh.ru
+              </Typography>
             )}
           </li>
         </a>
         {/* <li className={classes.item}>
           <img alt="habr" src={habr} />
-          {device === 'desktop' && (
+          {['desktop', 'tablet'].includes(device) && (
           <Typography
             component="p"
             variant="B1"
@@ -79,7 +67,7 @@ export default function Response({
         </li>
         <li className={classes.item}>
           <img alt="habr" src={hh} />
-          {device === 'desktop' && (
+          {['desktop', 'tablet'].includes(device) && (
           <Typography
             component="p"
             variant="B1"

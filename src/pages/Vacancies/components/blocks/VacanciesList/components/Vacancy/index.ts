@@ -9,7 +9,7 @@ const style = ({ font, background }) => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
-    padding: [24, 20],
+    padding: [24, 24],
     borderRadius: 16,
     cursor: 'pointer',
     height: '100%',
@@ -81,10 +81,10 @@ const style = ({ font, background }) => ({
     },
   },
 
-  '@media screen and (max-device-width: 576px)': {
+  '@media screen and (max-device-width: 760px)': {
     container: {
       width: '100%',
-      minHeight: 177,
+      minHeight: 181,
       boxShadow: [[0, 4, 10, 2, 'rgba(0, 0, 0, .15)']],
 
       '&:hover, &:focus-visible': {

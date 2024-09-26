@@ -50,19 +50,19 @@ export default function RightHeaderNavigation({ classes }) {
           Войти
         </Typography>
       </div>
-      {device === 'desktop' && (
-      <div className={classes.container}>
-        <Typography
-          onClick={gotoRegister}
-          onKeyDown={onEnter(gotoRegister)}
-          tabIndex={0}
-          variant="B1"
-          variantMobile="B2"
-          weight="semiBold"
-        >
-          Создать аккаунт
-        </Typography>
-      </div>
+      {['desktop', 'tablet'].includes(device) && (
+        <div className={classes.container}>
+          <Typography
+            onClick={gotoRegister}
+            onKeyDown={onEnter(gotoRegister)}
+            tabIndex={0}
+            variant="B1"
+            variantMobile="B2"
+            weight="semiBold"
+          >
+            Создать аккаунт
+          </Typography>
+        </div>
       )}
     </div>
   );

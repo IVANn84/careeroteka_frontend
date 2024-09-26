@@ -21,9 +21,7 @@ const variants = [
   },
 ];
 
-export default function CompanySize({
-  classes,
-}) {
+export default function CompanySize({ classes }) {
   const {
     filtersModalStore: {
       fieldsStore,
@@ -34,9 +32,12 @@ export default function CompanySize({
 
   const onClick = value => fieldsStore.setCompanySize(value);
 
-  const onFilterChanged = useCallback(fn => value => {
-    fn(value);
-  }, []);
+  const onFilterChanged = useCallback(
+    fn => value => {
+      fn(value);
+    },
+    [],
+  );
 
   return (
     <>
@@ -49,13 +50,15 @@ export default function CompanySize({
       >
         Размер компании
       </Typography>
-      {device === 'desktop' ? (
+      {['desktop', 'tablet'].includes(device) ? (
         <div className={classes.variants}>
           {variants.map(variant => (
             <Typography
-              className={`${classes.variant} ${filters.companySize.includes(variant.value)
-                ? classes.selected
-                : ''}`}
+              className={`${classes.variant} ${
+                filters.companySize.includes(variant.value)
+                  ? classes.selected
+                  : ''
+              }`}
               key={variant.value}
               onClick={() => onClick(variant.value)}
               onKeyDown={onEnter(() => onClick(variant.value))}
@@ -76,7 +79,10 @@ export default function CompanySize({
           onSelect={onFilterChanged(value => fieldsStore.setCompanySize(value?.value))}
           options={variants}
           placeholder="Выберите размер компании"
-          selectedValue={variants.filter(({ value }) => filters.companySize.includes(value)).map(({ name }) => name).join(', ')}
+          selectedValue={variants
+            .filter(({ value }) => filters.companySize.includes(value))
+            .map(({ name }) => name)
+            .join(', ')}
         />
       )}
     </>
