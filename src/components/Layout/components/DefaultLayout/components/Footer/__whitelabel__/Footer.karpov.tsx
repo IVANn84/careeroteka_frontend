@@ -13,10 +13,10 @@ export default function Footer({ classes }) {
         <div className={classes.footerLogo}>
           <span className={classes.footerTitle}>karpov courses</span>
           <div className={classes.footerLinksDesktop}>
-            <ExternalLink href="https://vk.com">
+            <ExternalLink href="https://vk.com/karpovcourses">
               <Icon height={32} name="vk" width={32} />
             </ExternalLink>
-            <ExternalLink href="https://vk.com">
+            <ExternalLink href="https://t.me/KarpovCourses">
               <Icon height={32} name="telegram" width={32} />
             </ExternalLink>
           </div>
@@ -25,10 +25,10 @@ export default function Footer({ classes }) {
           <NavLink to="/bug">Нашли ошибку?</NavLink>
         </Typography>
         <div className={classes.footerLinksMobile}>
-          <ExternalLink href="https://vk.com">
+          <ExternalLink href="https://vk.com/karpovcourses">
             <Icon name="vk" />
           </ExternalLink>
-          <ExternalLink href="https://telegram.com">
+          <ExternalLink href="https://t.me/KarpovCourses">
             <Icon name="telegram" />
           </ExternalLink>
         </div>
