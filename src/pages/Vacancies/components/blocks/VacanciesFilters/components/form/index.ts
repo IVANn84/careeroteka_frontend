@@ -6,18 +6,20 @@ import Form from './Form';
 const style = {
   controls: {
     display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'flex-start',
+    justifyContent: 'space-between',
     columnGap: 20,
   },
   searchInput: {
-    width: 370,
+    display: 'flex',
+    flex: '1 1 370px',
   },
   gradesDropdown: {
-    width: 270,
+    display: 'flex',
+    flex: '1 1 310px',
   },
   locationsDropdown: {
-    width: 270,
+    display: 'flex',
+    flex: '1 1 310px',
   },
   searchButton: {
     height: 64,

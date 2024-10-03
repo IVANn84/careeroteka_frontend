@@ -19,6 +19,7 @@ const style = ({
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
+    width: '100%',
     background: ({ mode }) => background[mode],
     boxShadow: ({ isOpen }) => isOpen && valueBoxShadow,
     borderRadius: ({ isOpen, isReversedY }) => {

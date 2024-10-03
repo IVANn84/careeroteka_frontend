@@ -23,7 +23,7 @@ const style = ({ layout, background, font }) => ({
   // I don't know exactly where else this layer occurs,
   // so I left both optionsI
 
-  '@media screen and (max-device-width: 760px)': {
+  '@media screen and (max-device-width: 1920px)': {
     container: {
       padding: [18, 28, 47, 28],
     },

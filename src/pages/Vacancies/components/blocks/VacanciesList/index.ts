@@ -12,13 +12,13 @@ const style = {
   },
   vacanciesContainer: {
     display: 'grid',
-    justifyContent: 'space-around',
-    gridTemplateColumns: 'repeat(auto-fit, 370px)',
+    justifyContent: 'center',
+    gridTemplateColumns: 'repeat(auto-fill, 370px)',
     gap: [[28, 30]],
   },
   '@media screen and (max-device-width: 760px)': {
     vacanciesContainer: {
-      gridTemplateColumns: 'repeat(auto-fit, 343px)',
+      gridTemplateColumns: 'repeat(auto-fill, 343px)',
       gap: [[28, 5]],
     },
   },

@@ -5,6 +5,9 @@ import VacanciesFilters from './VacanciesFilters';
 
 const style = ({ background }) => ({
   container: {
+    display: 'flex',
+    flexDirection: 'column',
+    padding: '0 8%',
     marginTop: 36,
     marginBottom: 80,
   },
@@ -32,6 +35,7 @@ const style = ({ background }) => ({
       flexDirection: 'column',
       rowGap: 20,
       margin: [24, 0],
+      padding: '0',
     },
     button: {
       padding: [12, 18],
