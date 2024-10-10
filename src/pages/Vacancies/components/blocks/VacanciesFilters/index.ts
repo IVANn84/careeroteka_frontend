@@ -80,6 +80,11 @@ const style = ({ background }) => ({
       top: 59,
     },
   },
+  '@media screen and (max-device-width: 350px)': {
+    button: {
+      width: '76%',
+    },
+  },
 });
 
 export default withStyle(style)(observer(VacanciesFilters));

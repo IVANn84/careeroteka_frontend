@@ -42,6 +42,11 @@ const style = {
       },
     },
   },
+  '@media screen and (max-device-width: 320px)': {
+    container: {
+      marginLeft: '3%',
+    },
+  },
 };
 
 export default withStyle(style)(observer(LeftHeaderNavigation));

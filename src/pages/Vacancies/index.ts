@@ -76,6 +76,12 @@ const style = ({ font: { color } }) => ({
       padding: 0,
     },
   },
+
+  '@media screen and (max-device-width: 320px)': {
+    title: {
+      paddingRight: 20,
+    },
+  },
 });
 
 export default withStyle(style)(observer(Vacancies));

@@ -37,15 +37,15 @@ const style = {
       rowGap: 14,
     },
     searchInput: {
-      width: 'auto',
+      flex: '1 1 auto',
       order: 0,
     },
     gradesDropdown: {
-      width: 'auto',
+      flex: '1 1 auto',
       order: 2,
     },
     locationsDropdown: {
-      width: 'auto',
+      flex: '1 1 auto',
       order: 1,
     },
     searchButton: {

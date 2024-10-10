@@ -18,10 +18,14 @@ const style = {
   },
   '@media screen and (max-device-width: 760px)': {
     vacanciesContainer: {
-      gridTemplateColumns: 'repeat(auto-fill, 343px)',
+      gridTemplateColumns: 'repeat(auto-fill, minmax(288px, 343px))',
       gap: [[28, 5]],
     },
   },
+  '@media screen and (max-device-width: 375px)': {
+    vacanciesContainer: {
+      rowGap: 12,
+    },
+  },
 };
-
 export default memo(withStyle(style)(observer(VacanciesList)));
