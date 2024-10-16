@@ -9,7 +9,7 @@ import ScrollToTop from 'Component/ScrollToTop';
 import Layout from 'Component/Layout';
 import ErrorBoundary from 'Component/ErrorBoundary';
 
-import { Theme } from './themes/theme';
+import { Theme } from '../themes/theme';
 
 const Login = React.lazy(() => import('Page/Login'));
 const Register = React.lazy(() => import('Page/Register'));
