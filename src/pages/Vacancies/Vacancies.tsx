@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
 
 import { useStoreVacanciesPage } from 'Page/Vacancies/stores';
@@ -13,18 +14,21 @@ export default function Vacancies({ classes }) {
       fieldsStore: { filters },
     },
     vacanciesStore,
+    partnersStore,
     reset,
   } = useStoreVacanciesPage();
   const device = useDevice();
 
   useEffect(() => {
     void vacanciesStore.fetchVacancies();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filters]);
+
+  useEffect(() => {
+    void partnersStore.fetchPartners();
+  }, []);
 
   useEffect(
     () => reset,
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     [],
   );
 

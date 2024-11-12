@@ -4,7 +4,7 @@ import { observer } from 'mobx-react-lite';
 
 import VacanciesList from './VacanciesList';
 
-const style = {
+const style = () => ({
   infiniteScroll: {
     padding: [30],
     margin: [-30],
@@ -16,6 +16,17 @@ const style = {
     gridTemplateColumns: 'repeat(auto-fill, 370px)',
     gap: [[28, 30]],
   },
+  banner: {
+    width: '100%',
+    gridColumn: '1 / -1',
+    gridRow: '3 / 4',
+    borderRadius: 16,
+    cursor: 'pointer',
+    minHeight: 180,
+    backgroundPositionX: 'center',
+    backgroundSize: 'cover',
+  },
+
   '@media screen and (max-device-width: 760px)': {
     vacanciesContainer: {
       gridTemplateColumns: 'repeat(auto-fill, minmax(288px, 343px))',
@@ -27,5 +38,5 @@ const style = {
       rowGap: 12,
     },
   },
-};
+});
 export default memo(withStyle(style)(observer(VacanciesList)));
