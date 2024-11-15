@@ -48,7 +48,6 @@ export default function Vacancy({
         <Description />
         <Response />
       </div>
-      {/* <Vacancies /> */}
     </div>
   );
 }

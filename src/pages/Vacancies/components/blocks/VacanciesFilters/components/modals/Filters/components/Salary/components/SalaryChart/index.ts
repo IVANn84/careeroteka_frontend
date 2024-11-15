@@ -10,13 +10,19 @@ const style = {
   },
   chart: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(30px, 1fr))',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(20px, 5.77%))',
     gap: '4px',
     alignItems: 'flex-end',
     margin: [0, 50],
   },
   slider: {
     margin: [0, 50],
+  },
+
+  '@media screen and (max-device-width: 660px)': {
+    chart: {
+      gridTemplateColumns: 'repeat(auto-fit, minmax(10px, 1fr))',
+    },
   },
 };
 

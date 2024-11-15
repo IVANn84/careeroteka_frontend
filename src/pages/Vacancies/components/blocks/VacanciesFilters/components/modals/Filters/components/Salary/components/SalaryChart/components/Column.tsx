@@ -27,7 +27,7 @@ function Column({
     : salaryChart.bar.backgroundColorSecondary;
 
   return (
-    <div className={classes.bar} style={{ height: count / 3, backgroundColor: bg }}>
+    <div className={classes.bar} style={{ height: (count / 3) * 100, backgroundColor: bg }}>
       <div className={classes.label}>
         <Typography component="p" variant="C1" variantMobile="C1">
           <span className={classes.count}>
