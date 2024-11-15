@@ -7,7 +7,7 @@ const style = {
   container: {
     '& > *:not(:last-child)': {
       marginTop: 26,
-      marginBottom: 36,
+      marginBottom: 32,
     },
 
     '& > *:last-child': {
@@ -17,9 +17,11 @@ const style = {
 
   inlineBlocks: {
     display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
 
-    '& > *:not(:last-child)': {
-      marginRight: 32,
+    '& > *:last-child': {
+      margin: [28, 0],
     },
   },
 
@@ -28,16 +30,6 @@ const style = {
       '& > *:not(:last-child)': {
         marginTop: 0,
         marginBottom: 16,
-      },
-    },
-    inlineBlocks: {
-      display: 'grid',
-      gridTemplateColumns: '1fr',
-      gridRowGap: 16,
-
-      '& > *:not(:last-child)': {
-        marginRight: 0,
-        gridRow: 2,
       },
     },
   },
