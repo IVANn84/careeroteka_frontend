@@ -5,7 +5,6 @@ interface Props extends AnchorHTMLAttributes<HTMLAnchorElement> {
   children: React.ReactNode;
 }
 
-// Внешняя ссылка
 export default function ExternalLink({
   children,
   target = '_blank',

@@ -1,10 +1,11 @@
 import withStyle from 'react-jss';
+// import { contentType } from 'mime-types';
 
 import { withIsDisplay } from 'Hoc/withIsDisplay';
 
-import SmallFilters from './SharedLinkBox';
+import SharedLinkBox from './SharedLinkBox';
 
-const style = ({ customScrollbar, dropdown }) => ({
+const style = ({ dropdown }) => ({
   container: {
     position: 'absolute',
     top: 0,
@@ -16,19 +17,49 @@ const style = ({ customScrollbar, dropdown }) => ({
 
     display: 'flex',
     flexDirection: 'column',
-    width: 429,
-    height: 229,
+    alignItems: 'center',
+    width: 'min-content',
+    height: 'min-content',
   },
+
   content: {
-    ...customScrollbar,
-  },
-  footer: {
     display: 'flex',
-    justifyContent: 'space-between',
+    flexDirection: 'column',
+    gap: 13,
   },
-  button: {},
-  header: {},
-  title: {},
+
+  buttonResponse: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+
+    width: 430,
+    height: 48,
+    padding: '12px 16px',
+    background: 'none',
+    borderRadius: 8,
+    borderColor: '#1A1C1F',
+
+    '& > *': {
+      fontSize: 16,
+      lineHeight: '22px',
+    },
+  },
+
+  header: {
+    position: 'absolute',
+    top: '-24px',
+    right: '-20px',
+
+    margin: 0,
+    borderRadius: '50%',
+  },
+
+  contentInner: {
+    display: 'flex',
+    gap: 4,
+    color: 'black',
+  },
 
   '@media screen and (max-device-width: 576px)': {
     container: {
@@ -67,4 +98,4 @@ const style = ({ customScrollbar, dropdown }) => ({
   },
 });
 
-export default withIsDisplay(withStyle(style)(SmallFilters));
+export default withIsDisplay(withStyle(style)(SharedLinkBox));

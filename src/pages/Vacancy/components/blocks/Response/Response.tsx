@@ -1,4 +1,3 @@
-/* eslint-disable import/no-unresolved */
 import React from 'react';
 
 import { useStoreVacancyPage } from 'Page/Vacancy/stores';
@@ -6,8 +5,8 @@ import { useModal } from 'Hook/useModal';
 import Button from 'Component/Button';
 import Block from 'Component/Block';
 
-import ShareIcon from './ShareIcon';
 import ShareLinkBox from '../ShareLinkBox';
+import ShareIcon from '../../../../../components/Icon/icons/ShareIcon';
 
 export default function Response({ classes }) {
   const { isOpen, open, close } = useModal();

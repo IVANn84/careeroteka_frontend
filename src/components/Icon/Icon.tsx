@@ -1,6 +1,7 @@
 import React, { SVGAttributes } from 'react';
 
 import WorldBag from './icons/WorldBag';
+import Whatsapp from './icons/Whatsapp';
 import Vk from './icons/Vk';
 import Telegram from './icons/Telegram';
 import TechScience from './icons/TechScience';
@@ -23,10 +24,10 @@ export interface IconProps extends SVGAttributes<SVGElement> {
     'remote' |
     'cookie' |
     'worldBag' |
-    'graduate';
+    'graduate'|
+    'whatsapp';
 }
 
-// Иконка
 export default function Icon({
   name,
   width = 24,
@@ -128,6 +129,15 @@ export default function Icon({
     case 'graduate':
       return (
         <Graduate
+          height={height}
+          width={width}
+          {...props}
+        />
+      );
+
+    case 'whatsapp':
+      return (
+        <Whatsapp
           height={height}
           width={width}
           {...props}
