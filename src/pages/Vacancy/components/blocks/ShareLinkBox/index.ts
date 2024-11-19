@@ -5,7 +5,7 @@ import { withIsDisplay } from 'Hoc/withIsDisplay';
 
 import SharedLinkBox from './SharedLinkBox';
 
-const style = ({ dropdown }) => ({
+const style = () => ({
   container: {
     position: 'absolute',
     top: 0,
@@ -16,7 +16,6 @@ const style = ({ dropdown }) => ({
     margin: 'auto',
 
     display: 'flex',
-    flexDirection: 'column',
     alignItems: 'center',
     width: 'min-content',
     height: 'min-content',
@@ -38,11 +37,12 @@ const style = ({ dropdown }) => ({
     padding: '12px 16px',
     background: 'none',
     borderRadius: 8,
-    borderColor: '#1A1C1F',
+    borderColor: '#A3A4A5',
 
     '& > *': {
       fontSize: 16,
       lineHeight: '22px',
+      color: '#1A1C1F',
     },
   },
 
@@ -51,49 +51,38 @@ const style = ({ dropdown }) => ({
     top: '-24px',
     right: '-20px',
 
-    margin: 0,
+    border: '1px solid',
     borderRadius: '50%',
+
+    margin: 0,
+    background: '#EAEBEB',
   },
 
   contentInner: {
     display: 'flex',
     gap: 4,
-    color: 'black',
+    color: '#1A1C1F',
   },
 
   '@media screen and (max-device-width: 576px)': {
+
     container: {
-      width: '100vw',
-      justifyContent: 'center',
-      position: 'relative',
+      width: '100%',
+      flexDirection: 'column',
+
+      margin: ['auto', 0, 0, 0],
     },
+
     content: {
-      padding: [0, 16],
-      '&::-webkit-scrollbar': {
-        display: 'none',
-      },
+      gap: 12,
+    },
+
+    buttonResponse: {
+      width: '91.47vw',
+      height: 46,
     },
     header: {
-      position: 'absolute',
-      top: 28,
-      right: 0,
-    },
-    title: {
-      marginBottom: 20,
-    },
-    footer: {
-      flexDirection: 'column',
-      gap: '16px',
-      padding: [0, 32],
-    },
-    button: {
-      width: '100%',
-      color: dropdown.placeholder.light.default,
-      marginTop: 8,
-      '& span': {
-        fontSize: 13,
-        lineHeight: '19px',
-      },
+      display: 'none',
     },
   },
 });

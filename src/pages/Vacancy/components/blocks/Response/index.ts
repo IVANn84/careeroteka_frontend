@@ -49,6 +49,9 @@ const style = () => ({
       height: 70,
       padding: [12, 20],
     },
+
+    content: { display: 'flex' },
+
     buttonResponse: {
       width: 151,
       height: 46,
