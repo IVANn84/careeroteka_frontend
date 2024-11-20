@@ -2,7 +2,7 @@ import withStyle from 'react-jss';
 
 import { withIsDisplay } from 'Hoc/withIsDisplay';
 
-import ShareLinkBox from './SharedLinkBox';
+import ResponseButtonsBox from './ResponseButtonsBox';
 
 const style = () => ({
   container: {
@@ -85,4 +85,4 @@ const style = () => ({
   },
 });
 
-export default withIsDisplay(withStyle(style)(ShareLinkBox));
+export default withIsDisplay(withStyle(style)(ResponseButtonsBox));

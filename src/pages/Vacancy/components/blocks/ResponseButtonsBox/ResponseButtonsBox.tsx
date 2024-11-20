@@ -14,7 +14,7 @@ const copyTextToClipboard = async (text: string) => {
   }
 };
 
-export default function ShareLinkBox({ classes, isDisplay, onDecline }) {
+export default function ResponseButtonsBox({ classes, isDisplay, onDecline }) {
   const { entityStore } = useStoreVacancyPage();
   return (
     <Modal.Modal
