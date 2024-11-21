@@ -11,24 +11,25 @@ import ErrorBoundary from 'Component/ErrorBoundary';
 
 import { Theme } from '../themes/theme';
 
+const Main = React.lazy(() => import('Page/Vacancies'));
+const Survey = React.lazy(() => import('Page/Survey'));
 const Login = React.lazy(() => import('Page/Login'));
 const Register = React.lazy(() => import('Page/Register'));
+const Profession = React.lazy(() => import('Page/Profession'));
+const Onboarding = React.lazy(() => import('Page/Onboarding'));
 const VerifyEmail = React.lazy(() => import('Page/VerifyEmail'));
-const VerifyPassword = React.lazy(() => import('Page/VerifyPassword'));
-const EmailConfirmation = React.lazy(() => import('Page/EmailConfirmation'));
-const PasswordRecovery = React.lazy(() => import('Page/PasswordRecovery'));
-const PasswordRecoveryConfirmation = React.lazy(
-  () => import('Page/PasswordRecoveryConfirmation'),
-);
-const Vacancies = React.lazy(() => import('Page/Vacancies'));
 const Vacancy = React.lazy(() => import('Page/Vacancy'));
+const Support = React.lazy(() => import('Page/Support'));
 
 function App() {
   return (
     <ThemeProvider theme={Theme}>
       <BrowserRouter>
         <Layout>
-          {({ isAuth, currentUser }) => (
+          {({
+            isAuth,
+            currentUser,
+          }) => (
             <ErrorBoundary
               style={{
                 display: 'flex',
@@ -39,66 +40,27 @@ function App() {
             >
               <Suspense fallback={<PageSkeleton />}>
                 <ScrollToTop>
-                  {isAuth && (
-                    <Switch>
-                      <Route exact path="/">
-                        {currentUser?.isEmailConfirmed ? (
-                          <Vacancies />
-                        ) : (
-                          <Redirect
-                            push
-                            to={{
-                              pathname: '/verify-email',
-                              state: { email: currentUser?.email },
-                            }}
-                          />
-                        )}
-                      </Route>
-                      {currentUser?.isEmailConfirmed && (
-                        <Route component={Vacancy} path="/vacancies/:id(\d+)" />
-                      )}
-                      {!currentUser?.isEmailConfirmed && (
-                        <Route component={VerifyEmail} path="/verify-email" />
-                      )}
-                      {!currentUser?.isEmailConfirmed && (
-                        <Route
-                          component={EmailConfirmation}
-                          path="/confirmation_email/:uid"
-                        />
-                      )}
-                      <Redirect push to="/" />
-                    </Switch>
-                  )}
-                  {!isAuth && (
-                    <Switch>
-                      <Route component={Login} exact path="/login" />
-                      <Route component={Register} exact path="/signup" />
-                      <Route
-                        component={PasswordRecovery}
-                        exact
-                        path="/password-recovery"
-                      />
-                      <Route
-                        component={VerifyEmail}
-                        exact
-                        path="/verify-email"
-                      />
-                      <Route
-                        component={VerifyPassword}
-                        exact
-                        path="/verify-password"
-                      />
-                      <Route
-                        component={EmailConfirmation}
-                        path="/confirmation_email/:uid"
-                      />
-                      <Route
-                        component={PasswordRecoveryConfirmation}
-                        path="/password-reset-confirm/:uid"
-                      />
-                      <Redirect push to="/login" />
-                    </Switch>
-                  )}
+                  <Switch>
+                    <Route component={Main} exact path="/" />
+                    <Route component={Survey} path="/survey" />
+                    <Route component={Support} exact path="/support" />
+                    <Route component={Vacancy} path="/vacancies/:id(\d+)" />
+                    <Route component={Profession} path="/professions/:id(\d+)" />
+
+                    {!isAuth && (
+                      <Route component={Register} path="/signup" />
+                    )}
+                    {!isAuth && (
+                      <Route component={Login} path="/login" />
+                    )}
+                    {isAuth && !currentUser?.isOnboardingDone && (
+                      <Route component={Onboarding} path="/onboarding" />
+                    )}
+                    {isAuth && !currentUser?.isEmailConfirmed && (
+                      <Route component={VerifyEmail} path="/verify-email" />
+                    )}
+                    <Redirect from="*" push to="/" />
+                  </Switch>
                 </ScrollToTop>
               </Suspense>
             </ErrorBoundary>
