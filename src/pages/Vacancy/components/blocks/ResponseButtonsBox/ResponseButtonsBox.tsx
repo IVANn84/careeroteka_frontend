@@ -1,21 +1,13 @@
 import React from 'react';
+import hh from 'Image/hh.png';
+import habr from 'Image/habr.png';
 
-import { useStoreVacancyPage } from 'Page/Vacancy/stores';
 import Modal from 'Component/Modal';
-import Icon from 'Component/Icon';
+import ArowTopRght from 'Component/Icon/icons/ArowTopRght';
 import ExternalLink from 'Component/ExternalLink';
 import Button from 'Component/Button';
 
-const copyTextToClipboard = async (text: string) => {
-  try {
-    await navigator.clipboard.writeText(text);
-  } catch (err) {
-    throw new Error('Something went wrong');
-  }
-};
-
 export default function ResponseButtonsBox({ classes, isDisplay, onDecline }) {
-  const { entityStore } = useStoreVacancyPage();
   return (
     <Modal.Modal
       className={classes.container}
@@ -24,53 +16,53 @@ export default function ResponseButtonsBox({ classes, isDisplay, onDecline }) {
     >
       <Modal.Header className={classes.header} onDecline={onDecline} />
       <Modal.Content className={classes.content}>
+        <ExternalLink href="https://spb.rabota.ru/">
+          <Button
+            className={classes.buttonResponse}
+            mode="secondary"
+            variant="outlined"
+          >
+            rabota.ru
+          </Button>
+        </ExternalLink>
+
+        <ExternalLink href="https://career.habr.com/">
+          <Button
+            className={classes.buttonResponse}
+            mode="secondary"
+            variant="outlined"
+          >
+            <div className={classes.contentInner}>
+              <img alt="hh" src={habr} />
+              habr.com
+            </div>
+          </Button>
+        </ExternalLink>
+
+        <ExternalLink href="https://spb.hh.ru/">
+          <Button
+            className={classes.buttonResponse}
+            mode="secondary"
+            variant="outlined"
+          >
+            <div className={classes.contentInner}>
+              <img alt="hh" src={hh} />
+              hh.ru
+            </div>
+          </Button>
+        </ExternalLink>
+
         <Button
           className={classes.buttonResponse}
-          mode="secondary"
-          onClick={() => copyTextToClipboard(entityStore.entity?.link)}
-          variant="outlined"
+          mode="dark"
+          variant="filled"
         >
-          Скопировать ссылку
+          <div className={classes.contentInner}>
+            Напрямую рекрутеру
+            <ArowTopRght />
+          </div>
         </Button>
 
-        <ExternalLink href="https://web.whatsapp.com/">
-          <Button
-            className={classes.buttonResponse}
-            mode="secondary"
-            variant="outlined"
-          >
-            <div className={classes.contentInner}>
-              <Icon height={24} name="whatsapp" width={24} />
-              WhatsApp
-            </div>
-          </Button>
-        </ExternalLink>
-
-        <ExternalLink href="https://web.telegram.org">
-          <Button
-            className={classes.buttonResponse}
-            mode="secondary"
-            variant="outlined"
-          >
-            <div className={classes.contentInner}>
-              <Icon height={24} name="telegram" width={24} />
-              Telegram
-            </div>
-          </Button>
-        </ExternalLink>
-
-        <ExternalLink href="https://vk.com">
-          <Button
-            className={classes.buttonResponse}
-            mode="secondary"
-            variant="outlined"
-          >
-            <div className={classes.contentInner}>
-              <Icon height={24} name="vk" width={24} />
-              ВКонтате
-            </div>
-          </Button>
-        </ExternalLink>
       </Modal.Content>
     </Modal.Modal>
   );

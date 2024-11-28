@@ -24,6 +24,10 @@ const style = () => ({
     display: 'flex',
     flexDirection: 'column',
     gap: 13,
+    '& > :last-child': {
+      background: '#367CF3',
+      borderRadius: 8,
+    },
   },
 
   buttonResponse: {
@@ -59,6 +63,7 @@ const style = () => ({
 
   contentInner: {
     display: 'flex',
+    alignItems: 'center',
     gap: 4,
     color: '#1A1C1F',
   },

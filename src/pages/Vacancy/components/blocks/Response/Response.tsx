@@ -2,12 +2,11 @@ import React from 'react';
 
 import { useStoreVacancyPage } from 'Page/Vacancy/stores';
 import { useModal } from 'Hook/useModal';
-// import ResponseButtonsBox from '../ResponseButtonsBox/ResponseButtonsBox';
-import ShareIcon from 'Component/Icon/icons/ShareIcon';
 import Button from 'Component/Button';
 import Block from 'Component/Block';
 
-import ShareLinkBox from '../ShareLinkBox';
+import ShareButton from './ShareButton';
+import ResponseButtonsBox from '../ResponseButtonsBox';
 
 export default function Response({ classes }) {
   const { isOpen, open, close } = useModal();
@@ -30,25 +29,12 @@ export default function Response({ classes }) {
       >
         Откликнуться
       </Button>
-      {/* <ResponseButtonsBox
-        isDisplay={isOpen}
-        onConfirm={close}
-        onDecline={close}
-      /> */}
-      <Button
-        className={classes.buttonShare}
-        isDisabled={entityStore.isLoading}
-        mode="secondary"
-        onClick={open}
-        variant="outlined"
-      >
-        <ShareIcon />
-      </Button>
-      <ShareLinkBox
+      <ResponseButtonsBox
         isDisplay={isOpen}
         onConfirm={close}
         onDecline={close}
       />
+      <ShareButton />
     </Block>
   );
 }
