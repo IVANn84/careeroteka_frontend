@@ -86,3 +86,11 @@ export const rootStoreLoginPage = RootStoreModel.create({
   fieldsStore: fieldsStoreLoginPage,
   entityStore: entityStoreLoginPage,
 });
+
+declare global {
+  interface Window { // ⚠️ notice that "Window" is capitalized here
+    __MOBX_VISUALIZER__: any;
+  }
+}
+// eslint-disable-next-line no-underscore-dangle
+window.__MOBX_VISUALIZER__ = rootStoreLoginPage;

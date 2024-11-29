@@ -23,7 +23,9 @@ const style = () => ({
   content: {
     display: 'flex',
     flexDirection: 'column',
+    alignItems: 'center',
     gap: 13,
+    textAlign: 'center',
     '& > :last-child': {
       background: '#367CF3',
       borderRadius: 8,
@@ -66,6 +68,11 @@ const style = () => ({
     alignItems: 'center',
     gap: 4,
     color: '#1A1C1F',
+  },
+
+  link: {
+    fontSize: 13,
+    color: '#367CF3',
   },
 
   '@media screen and (max-device-width: 576px)': {

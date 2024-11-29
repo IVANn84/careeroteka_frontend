@@ -3,24 +3,17 @@ import React from 'react';
 import { useStoreVacancyPage } from 'Page/Vacancy/stores';
 import { useModal } from 'Hook/useModal';
 import Button from 'Component/Button';
-import Block from 'Component/Block';
 
-import ShareButton from './ShareButton';
-import ResponseButtonsBox from './ResponseButton/ResponseButtonsBox';
+import ResponseButtonsBox from './ResponseButtonsBox';
 
-export default function Response({ classes }) {
-  const { isOpen, open, close } = useModal();
-
+interface Props {
+  classes?: { [className: string]: string };
+}
+export default function ResponseButton({ classes }: Props) {
   const { entityStore } = useStoreVacancyPage();
-
+  const { isOpen, open, close } = useModal();
   return (
-    <Block
-      borderRadius={12}
-      borderRadiusMobile={12}
-      className={classes.container}
-      padding={[[16, 20]]}
-      paddingMobile={[[24, 16]]}
-    >
+    <>
       <Button
         className={classes.buttonResponse}
         isDisabled={entityStore.isLoading}
@@ -34,7 +27,6 @@ export default function Response({ classes }) {
         onConfirm={close}
         onDecline={close}
       />
-      <ShareButton />
-    </Block>
+    </>
   );
 }

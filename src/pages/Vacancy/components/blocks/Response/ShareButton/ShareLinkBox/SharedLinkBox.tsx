@@ -33,7 +33,7 @@ export default function ShareLinkBox({ classes, isDisplay, onDecline }) {
           Скопировать ссылку
         </Button>
 
-        <ExternalLink href="https://web.whatsapp.com/">
+        <ExternalLink href="https://web.whatsapp.com">
           <Button
             className={classes.buttonResponse}
             mode="secondary"
