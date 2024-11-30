@@ -1,15 +1,45 @@
-import React from 'react';
-import rabota from 'Image/rabota.png';
-import hh from 'Image/hh.png';
-import habr from 'Image/habr.png';
+import { useHistory } from 'react-router';
+import React, { useEffect } from 'react';
 
+import { onEnter } from 'Util/onEnter';
+import { useStoreLoginPage } from 'Page/Login/stores';
 import Typography from 'Component/Typography';
 import Modal from 'Component/Modal';
-import ArowTopRght from 'Component/Icon/icons/ArowTopRght';
-import ExternalLink from 'Component/ExternalLink';
+import Input from 'Component/Input';
 import Button from 'Component/Button';
 
 export default function UnauthorizedBox({ classes, isDisplay, onDecline }) {
+  const history = useHistory();
+  const {
+    login,
+    reset,
+    entityStore,
+    fieldsStore,
+  } = useStoreLoginPage();
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => reset, []);
+
+  // Если пользователь авторизовался, то редиректим на прошлую страницу или на главную
+  const redirectAfterLogin = () => {
+    const unauthorizedFromUrl = sessionStorage.getItem('unauthorizedFromUrl');
+
+    if (unauthorizedFromUrl) {
+      sessionStorage.removeItem('unauthorizedFromUrl');
+      history.push(unauthorizedFromUrl);
+    } else {
+      history.push('/');
+    }
+  };
+
+  const onLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    login(redirectAfterLogin);
+  };
+
+  const gotoRecovery = () => history.push('/password-recovery');
+  const gotoRegistration = () => history.push('/signup');
+
   return (
     <Modal.Modal
       className={classes.container}
@@ -27,72 +57,62 @@ export default function UnauthorizedBox({ classes, isDisplay, onDecline }) {
           Войдите, чтобы открыть контакты
         </Typography>
         <Typography
+          className={classes.description}
           variant="B1"
           variantMobile="B2"
           weightMobile="regular"
           width="regular"
         >
-          Покажем контакты рекрутера, чтобы откликнуться напрямую
+          Покажем контакты рекрутера, чтобы откликнуться
           <br />
-          и увеличить шанс трудоустройства
+          напрямую и увеличить шанс трудоустройства
         </Typography>
-        <ExternalLink href="https://spb.rabota.ru/">
+        <form className={classes.inputs} onSubmit={onLogin}>
+          <Input
+            error={entityStore.errors.email}
+            onChange={fieldsStore.setEmail}
+            placeholder="Введите e-mail"
+            type="text"
+            value={fieldsStore.email}
+          />
+          <Input
+            error={entityStore.errors.password}
+            onChange={fieldsStore.setPassword}
+            placeholder="Введите пароль"
+            type="password"
+            value={fieldsStore.password}
+          />
           <Button
             className={classes.buttonResponse}
-            mode="secondary"
-            variant="outlined"
+            isDisabled={entityStore.isLoading || !fieldsStore.email || !fieldsStore.password}
+            mode="primary"
+            type="submit"
           >
-            <div className={classes.contentInner}>
-              <img alt="hh" height={34} src={rabota} />
-              rabota.ru
-            </div>
+            Продолжить
           </Button>
-        </ExternalLink>
-
-        <ExternalLink href="https://career.habr.com/">
-          <Button
-            className={classes.buttonResponse}
-            mode="secondary"
-            variant="outlined"
-          >
-            <div className={classes.contentInner}>
-              <img alt="hh" src={habr} />
-              habr.com
-            </div>
-          </Button>
-        </ExternalLink>
-
-        <ExternalLink href="https://spb.hh.ru/">
-          <Button
-            className={classes.buttonResponse}
-            mode="secondary"
-            variant="outlined"
-          >
-            <div className={classes.contentInner}>
-              <img alt="hh" src={hh} />
-              hh.ru
-            </div>
-          </Button>
-        </ExternalLink>
+        </form>
         <Typography
           className={classes.link}
-          variant="B1"
+          component="p"
+          onClick={gotoRecovery}
+          tabIndex={0}
+          variant="B2"
           variantMobile="B2"
-          weightMobile="regular"
-          width="regular"
         >
-          Показать еще 4 канала.
+          Нет аккаунта
+          {' '}
+          <span
+            // className={classes.link}
+            onClick={gotoRegistration}
+            onKeyDown={onEnter(gotoRegistration)}
+            role="button"
+            tabIndex={0}
+          >
+            или
+          </span>
+          {' '}
+          забыли пароль?
         </Typography>
-        <Button
-          className={classes.buttonResponse}
-          mode="dark"
-          variant="filled"
-        >
-          <div className={classes.contentInner}>
-            Напрямую рекрутеру
-            <ArowTopRght />
-          </div>
-        </Button>
       </Modal.Content>
     </Modal.Modal>
   );

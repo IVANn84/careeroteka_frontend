@@ -23,13 +23,24 @@ const style = () => ({
   content: {
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center',
+    width: 'min-content',
     gap: 13,
-    textAlign: 'center',
+
+    textAlign: 'left',
+
     '& > :last-child': {
-      background: '#367CF3',
       borderRadius: 8,
     },
+  },
+
+  inputs: {
+    '& > *:nth-child(2)': {
+      marginTop: 16,
+    },
+  },
+  description: {
+    textAlign: 'left',
+    fontSize: 14,
   },
 
   buttonResponse: {
@@ -39,8 +50,9 @@ const style = () => ({
 
     width: 430,
     height: 48,
+    margin: '24px 0 0 0',
     padding: '12px 16px',
-    background: 'none',
+    background: '#367CF3',
     borderRadius: 8,
     borderColor: '#A3A4A5',
 
