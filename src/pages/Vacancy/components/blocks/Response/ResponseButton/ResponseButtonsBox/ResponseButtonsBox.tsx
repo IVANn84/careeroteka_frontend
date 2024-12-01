@@ -12,16 +12,6 @@ import Button from 'Component/Button';
 
 import UnauthorizedBox from './UnauthorizedBox';
 
-// function Handler() {
-//   const unauthorizedFromUrl = sessionStorage.getItem('unauthorizedFromUrl');
-
-//   if (unauthorizedFromUrl) {
-//     console.log('Opa!');
-//   }
-//   console.log('NE HYS!');
-//   return (<UnauthorizedBox />);
-// }
-
 export default function ResponseButtonsBox({ classes, isDisplay, onDecline }) {
   const { isOpen, open, close } = useModal();
   return (

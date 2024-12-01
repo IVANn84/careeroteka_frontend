@@ -1,14 +1,18 @@
 import { useHistory } from 'react-router';
 import React, { useEffect } from 'react';
 
-import { onEnter } from 'Util/onEnter';
+// import { onEnter } from 'Util/onEnter';
 import { useStoreLoginPage } from 'Page/Login/stores';
+import { useModal } from 'Hook/useModal';
 import Typography from 'Component/Typography';
 import Modal from 'Component/Modal';
 import Input from 'Component/Input';
+import ChevronLeft from 'Component/Icon/icons/ChevronLeft';
 import Button from 'Component/Button';
 
 export default function UnauthorizedBox({ classes, isDisplay, onDecline }) {
+  const { close } = useModal();
+
   const history = useHistory();
   const {
     login,
@@ -38,7 +42,7 @@ export default function UnauthorizedBox({ classes, isDisplay, onDecline }) {
   };
 
   const gotoRecovery = () => history.push('/password-recovery');
-  const gotoRegistration = () => history.push('/signup');
+  // const gotoRegistration = () => history.push('/signup');
 
   return (
     <Modal.Modal
@@ -91,6 +95,30 @@ export default function UnauthorizedBox({ classes, isDisplay, onDecline }) {
             Продолжить
           </Button>
         </form>
+        {/* <form className={classes.inputs} onSubmit={onLogin}>
+          <Input
+            error={entityStore.errors.email}
+            onChange={fieldsStore.setEmail}
+            placeholder="Введите e-mail"
+            type="text"
+            value={fieldsStore.email}
+          />
+          <Input
+            error={entityStore.errors.password}
+            onChange={fieldsStore.setPassword}
+            placeholder="Введите пароль"
+            type="password"
+            value={fieldsStore.password}
+          />
+          <Button
+            className={classes.button}
+            isDisabled={entityStore.isLoading || !fieldsStore.email || !fieldsStore.password}
+            mode="primary"
+            type="submit"
+          >
+            Продолжить
+          </Button>
+        </form> */}
         <Typography
           className={classes.link}
           component="p"
@@ -102,17 +130,24 @@ export default function UnauthorizedBox({ classes, isDisplay, onDecline }) {
           Нет аккаунта
           {' '}
           <span
-            // className={classes.link}
-            onClick={gotoRegistration}
-            onKeyDown={onEnter(gotoRegistration)}
-            role="button"
-            tabIndex={0}
+            className={classes.link}
           >
             или
           </span>
           {' '}
           забыли пароль?
         </Typography>
+        <div className={classes.contentInner}>
+          <ChevronLeft />
+          <span
+            onClick={onDecline}
+            onKeyDown={close}
+            role="button"
+            tabIndex={0}
+          >
+            Назад
+          </span>
+        </div>
       </Modal.Content>
     </Modal.Modal>
   );

@@ -26,10 +26,8 @@ const style = () => ({
     width: 'min-content',
     gap: 13,
 
-    textAlign: 'left',
-
-    '& > :last-child': {
-      borderRadius: 8,
+    '& > :nth-last-child(2)': {
+      textAlign: 'center',
     },
   },
 
@@ -77,9 +75,7 @@ const style = () => ({
 
   contentInner: {
     display: 'flex',
-    alignItems: 'center',
-    gap: 4,
-    color: '#1A1C1F',
+    justifyContent: 'center',
   },
 
   link: {
